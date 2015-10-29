@@ -1,0 +1,423 @@
+/* General CSS for H5P. Licensed under the MIT License.*/
+
+/* Custom H5P font to use for icons. */
+@font-face {
+  font-family: 'h5p';
+  src:url('../fonts/h5p.eot?ny');
+  src:url('../fonts/h5p.eot?#iefix-ny') format('embedded-opentype'),
+	url('data:application/font-woff;base64,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') format('woff'),
+  url('../fonts/h5p.ttf?ny') format('truetype'),
+  url('../fonts/h5p.svg?ny#h5p') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html.h5p-iframe, html.h5p-iframe > body {
+  font-family: Sans-Serif; /* Use the browser's default sans-serif font. (Since Heletica doesn't look nice on Windows, and Arial on OS X.) */
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.h5p-semi-fullscreen, .h5p-fullscreen, html.h5p-iframe .h5p-container {
+  overflow: hidden;
+}
+.h5p-content {
+  position: relative;
+  background: #fefefe;
+  border: 1px solid #EEE;
+  border-bottom: none;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+html.h5p-iframe .h5p-content {
+  font-size: 16px;
+  line-height: 1.5em;
+  width: 100%;
+  height: auto;
+}
+html.h5p-iframe .h5p-fullscreen .h5p-content,
+html.h5p-iframe .h5p-semi-fullscreen .h5p-content {
+  height: 100%;
+}
+.h5p-content.h5p-no-frame,
+.h5p-fullscreen .h5p-content,
+.h5p-semi-fullscreen .h5p-content {
+  border: 0;
+}
+.h5p-container {
+  position: relative;
+  z-index: 1;
+}
+.h5p-iframe-wrapper.h5p-fullscreen {
+  background-color: #000;
+}
+body.h5p-semi-fullscreen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.h5p-container.h5p-semi-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+}
+
+.h5p-content-controls {
+  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3;
+}
+.h5p-fullscreen .h5p-content-controls {
+  display: none;
+}
+
+.h5p-content-controls > a:link, .h5p-content-controls > a:visited, a.h5p-disable-fullscreen:link, a.h5p-disable-fullscreen:visited {
+  color: #e5eef6;
+}
+
+.h5p-enable-fullscreen:before {
+  font-family: 'H5P';
+  content: "\e88c";
+}
+.h5p-disable-fullscreen:before {
+  font-family: 'H5P';
+  content: "\e891";
+}
+.h5p-enable-fullscreen, .h5p-disable-fullscreen {
+  cursor: pointer;
+  color: #EEE;
+  background: rgb(0,0,0);
+  background: rgba(0,0,0,0.3);
+  line-height: 0.975em;
+  font-size: 2em;
+  width: 1.125em;
+  height: 0.925em;
+  text-indent: -0.0875em;
+  outline: none;
+}
+.h5p-disable-fullscreen {
+  line-height: 0.925em;
+  width: 1.1em;
+  height: 0.9em;
+}
+.h5p-enable-fullscreen:hover, .h5p-disable-fullscreen:hover {
+  background: rgba(0,0,0,0.5);
+}
+.h5p-semi-fullscreen .h5p-enable-fullscreen {
+  display: none;
+}
+
+div.h5p-fullscreen {
+  width: 100%;
+  height: 100%;
+}
+.h5p-iframe-wrapper {
+  width: auto;
+  height: auto;
+}
+
+.h5p-fullscreen .h5p-iframe-wrapper,
+.h5p-semi-fullscreen .h5p-iframe-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.h5p-iframe-wrapper.h5p-semi-fullscreen {
+  width: auto;
+  height: auto;
+  background: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100001;
+}
+.h5p-iframe-wrapper.h5p-semi-fullscreen .buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 20;
+}
+.h5p-iframe-wrapper iframe.h5p-iframe {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  overflow: hidden;
+  border: 0;
+  display: block;
+}
+
+.h5p-content ul.h5p-actions {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  overflow: hidden;
+  list-style: none;
+  padding: 0px 10px;
+  margin: 0;
+  height: 25px;
+  font-size: 12px;
+  background: #FAFAFA;
+  border-top: 1px solid #EEE;
+  border-bottom: 1px solid #EEE;
+  clear: both;
+  font-family: Sans-Serif;
+}
+.h5p-fullscreen .h5p-actions, .h5p-semi-fullscreen .h5p-actions {
+  display: none;
+}
+.h5p-actions > .h5p-button {
+  float: left;
+  cursor: pointer;
+  margin: 0 1.5em 0 0;
+  background: none;
+  padding: 0;
+  vertical-align: top;
+  color: #999;
+  text-decoration: none;
+  outline: none;
+}
+.h5p-actions > .h5p-button:hover {
+  color: #666;
+}
+.h5p-actions > .h5p-button:before {
+  font-family: 'H5P';
+  font-size: 1em;
+  padding-right: 0;
+  font-size: 1.7em;
+  line-height: 1.125em;
+  vertical-align: middle;
+}
+.h5p-actions > .h5p-button.h5p-export:before {
+  content: "\e893";
+}
+.h5p-actions > .h5p-button.h5p-copyrights:before {
+  content: "\e88f";
+}
+.h5p-actions > .h5p-button.h5p-embed:before {
+  content: "\e892";
+}
+.h5p-actions .h5p-link {
+  float: right;
+  margin-right: 0;
+  font-size: 2.0em;
+  line-height: 1;
+  overflow: hidden;
+  color: #999;
+  text-decoration: none;
+  outline: none;
+}
+.h5p-actions .h5p-link:before {
+  font-family: 'H5P';
+  content: "\e88e";
+}
+.h5p-actions > li {
+  margin: 0;
+}
+.h5p-popup-dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  padding: 2em;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+  background:#000;
+  background:rgba(0,0,0,0.75);
+}
+.h5p-popup-dialog.h5p-open {
+  opacity: 1;
+}
+.h5p-popup-dialog .h5p-inner {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background: #fff;
+  height: 100%;
+  max-height: 100%;
+  position: relative;
+}
+.h5p-popup-dialog .h5p-inner > h2 {
+  position: absolute;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  background: #eee;
+  display: block;
+  color: #656565;
+  font-size: 1.25em;
+  padding: 0.325em 0.5em 0.25em;
+  line-height: 1.25em;
+  border-bottom: 1px solid #ccc;
+}
+.h5p-embed-dialog .h5p-inner {
+  width: 300px;
+  left: 50%;
+  top: 50%;
+  margin: 0 0 0 -150px;
+  transition: margin 250ms linear 100ms;
+}
+.h5p-embed-dialog .h5p-embed-code-container,
+.h5p-embed-size {
+  resize: none;
+  outline: none;
+  width: 100%;
+  padding: 0.375em 0.5em 0.25em;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 2px 0 #d0d0d0 inset;
+  font-size: 0.875em;
+  letter-spacing: 0.065em;
+  font-family: sans-serif;
+  white-space: pre;
+  line-height: 1.5em;
+  height: 2.0714em;
+  background: #f5f5f5;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.h5p-embed-dialog .h5p-embed-code-container:focus {
+  height: 5em;
+}
+.h5p-embed-size {
+  width: 3.5em;
+  text-align: right;
+  margin: 0.5em 0;
+  line-height: 2em;
+}
+.h5p-popup-dialog .h5p-scroll-content {
+  border-top: 2.25em solid transparent;
+  padding: 1em;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: #555555;
+}
+.h5p-popup-dialog .h5p-scroll-content::-webkit-scrollbar {
+  width: 8px;
+}
+.h5p-popup-dialog .h5p-scroll-content::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+.h5p-popup-dialog .h5p-scroll-content::-webkit-scrollbar-thumb {
+  box-shadow: 0 0 10px #000 inset;
+  border-radius: 4px;
+}
+.h5p-popup-dialog .h5p-close {
+  cursor: pointer;
+  outline:none
+}
+.h5p-popup-dialog .h5p-close:after {
+  font-family: 'H5P';
+  content: "\e894";
+  font-size: 2em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1.125em;
+  height: 1.125em;
+  line-height: 1.125em;
+  color: #656565;
+  cursor: pointer;
+  text-indent: -0.065em;
+}
+.h5p-popup-dialog .h5p-close:hover:after,
+.h5p-popup-dialog .h5p-close:focus:after {
+  color: #454545;
+}
+.h5p-popup-dialog .h5p-close:active:after {
+  color: #252525;
+}
+.h5p-poopup-dialog h2 {
+  margin: 0.25em 0 0.5em;
+}
+.h5p-popup-dialog h3 {
+  margin: 0.75em 0 0.25em;
+}
+.h5p-popup-dialog dl {
+  margin: 0.25em 0 0.75em;
+}
+.h5p-popup-dialog dt {
+  float: left;
+  margin: 0 0.75em 0 0;
+}
+.h5p-popup-dialog dt:after {
+  content: ':';
+}
+.h5p-popup-dialog dd {
+  margin: 0;
+}
+.h5p-expander {
+  cursor: pointer;
+  font-size: 1.125em;
+  outline: none;
+  margin: 0.5em 0 0;
+  display: inline-block;
+}
+.h5p-expander:before {
+  content: "+";
+  width: 1em;
+  display: inline-block;
+  font-weight: bold;
+}
+.h5p-expander.h5p-open:before {
+  content: "-";
+  text-indent: 0.125em;
+}
+.h5p-expander:hover,
+.h5p-expander:focus {
+  color: #303030;
+}
+.h5p-expander:active {
+  color: #202020;
+}
+.h5p-expander-content {
+  display: none;
+}
+.h5p-expander-content p {
+  margin: 0.5em 0;
+}
+.h5p-content-copyrights {
+  border-left: 0.25em solid #d0d0d0;
+  margin-left: 0.25em;
+  padding-left: 0.25em;
+}
+.h5p-throbber {
+  background: url('../images/throbber.gif?ver=1.2.1') 10px center no-repeat;
+  padding-left: 38px;
+  min-height: 30px;
+  line-height: 30px;
+}
+.h5p-dialog-ok-button {
+  cursor: default;
+  float: right;
+  outline: none;
+  border: 2px solid #ccc;
+  padding: 0.25em 0.75em 0.125em;
+  background: #eee;
+}
+.h5p-dialog-ok-button:hover,
+.h5p-dialog-ok-button:focus {
+  background: #fafafa;
+}
+.h5p-dialog-ok-button:active {
+  background: #eeffee;
+}
