@@ -1,0 +1,23 @@
+{
+  "libraryStrings": {
+    "confirmDeleteSlide": "Er du sikker på at du vil slette dette skjermbiletet?",
+    "sortSlide": "Sorter skjermbilete - :dir",
+    "removeSlide": "Fjern skjermbilete",
+    "cloneSlide": "Klon skjermbilete",
+    "newSlide": "Legg til nytt skjermbilete",
+    "insertElement": "Klikk og dra for å plassere :type",
+    "newKeyword": "Nytt nøkkelord",
+    "deleteKeyword": "Fjern dette nøkkelordet",
+    "removeKeywords": "Er du sikker på at du vil fjerne dette nøkkelordet? Denne handlinga kan ikkje gjerast om.",
+    "disableKeywords": "Fjern nøkkelorda",
+    "removeElement": "Slett dette elementet",
+    "confirmRemoveElement": "Er du sikker på at du vil slette dette elementet?",
+    "cancel": "Avbryt",
+    "done": "Ferdig",
+    "remove": "Fjern",
+    "keywordsTip": "Dra inn nøkkelord",
+    "popupTitle": "Rediger :type",
+    "loading": "Laster...",
+    "element": "Element"
+  }
+}

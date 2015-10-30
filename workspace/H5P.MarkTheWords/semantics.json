@@ -1,0 +1,81 @@
+[
+  {
+    "label": "Task description",
+    "name": "taskDescription",
+    "type": "text",
+    "widget": "html",
+    "description": "Describe how the user should solve the task.",
+    "placeholder": "Click on all the verbs in the text that follows.",
+    "enterMode": "p",
+    "tags": [
+      "strong",
+      "em",
+      "u",
+      "a",
+      "ul",
+      "ol",
+      "h2",
+      "h3",
+      "hr"
+    ]
+  },
+  {
+    "label": "Textfield",
+    "name": "textField",
+    "type": "text",
+    "widget": "textarea",
+    "placeholder": "This is an answer: *answer*.",
+    "description": "Marked words are added with an asterix (*). An asterix may be escaped with another asterix, resulting in ** = *. Example: The correct words are marked with like this: *correctword*, and a character asterix is written like this: **."
+  },
+  {
+    "label": "Text for \"Check\" button",
+    "name": "checkAnswerButton",
+    "type": "text",
+    "default": "Check",
+    "common": true
+  },
+  {
+    "label": "Text for \"Retry\" button",
+    "name": "tryAgainButton",
+    "type": "text",
+    "default": "Retry",
+    "common": true
+  },
+  {
+    "label": "Text for \"Show solution\" button",
+    "name": "showSolutionButton",
+    "type": "text",
+    "default": "Show solution",
+    "common": true
+  },
+  {
+    "label": "Feedback text",
+    "name": "score",
+    "type": "text",
+    "default": "You got @score of @total points.",
+    "placeholder": "You got @score of @total points.",
+    "description": "Feedback text, variables available: @score @total @correct @wrong @missed. Example: 'Score : @score of @total, correct: @correct, wrong: @wrong, missed: @missed.'",
+    "common": true
+  },
+  {
+    "name": "behaviour",
+    "type": "group",
+    "label": "Behavioural settings.",
+    "description": "These options will let you control how the task behaves.",
+    "optional": true,
+    "fields": [
+      {
+        "name": "enableRetry",
+        "type": "boolean",
+        "label": "Enable \"Retry\"",
+        "default": true
+      },
+      {
+        "name": "enableSolutionsButton",
+        "type": "boolean",
+        "label": "Enable \"Show solution\" button",
+        "default": true
+      }
+    ]
+  }
+]

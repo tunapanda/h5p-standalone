@@ -1,0 +1,20 @@
+.h5p-moving {
+  cursor: move;
+  opacity: 0.6;
+}
+
+.h5peditor .h5p-dragnbar-element.focused,
+.h5peditor .h5p-dragnbar-element:hover {
+  outline: 1px solid #0099ff;
+}
+
+/* Display outline on label for h5p nil */
+.h5p-dragnbar-element.h5p-nil-interaction.focused,
+.h5p-dragnbar-element.h5p-nil-interaction:hover {
+  outline: none;
+}
+
+.h5peditor .h5p-dragnbar-element.h5p-nil-interaction.focused > .h5p-interaction-label,
+.h5peditor .h5p-dragnbar-element.h5p-nil-interaction:hover > .h5p-interaction-label {
+  outline: 1px solid #0099ff;
+}

@@ -1,0 +1,19 @@
+{
+  "title": "H5PEditor.Wizard",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 8,
+  "runnable": 0,
+  "machineName": "H5PEditor.Wizard",
+  "author": "Frode Petterson",
+  "preloadedJs": [
+    {
+      "path": "Scripts/Wizard.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "Styles/Wizard.css"
+    }
+  ]
+}

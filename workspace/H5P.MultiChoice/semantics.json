@@ -1,0 +1,198 @@
+[
+  {
+    "name": "image",
+    "type": "image",
+    "label": "Question image",
+    "optional": true,
+    "description": "An optional image to display above the question."
+  },
+  {
+    "name": "question",
+    "type": "text",
+    "widget": "html",
+    "label": "Question",
+    "enterMode": "p",
+    "tags": [
+      "strong",
+      "em",
+      "sub",
+      "sup",
+      "h2",
+      "h3"
+    ]
+  },
+  {
+    "name": "answers",
+    "type": "list",
+    "label": "Available options",
+    "description": "The alternatives the user may choose from.",
+    "entity": "option",
+    "min": 1,
+    "defaultNum": 2,
+    "field": {
+      "name": "answer",
+      "type": "group",
+      "label": "Option",
+      "fields": [
+        {
+          "name": "text",
+          "type": "text",
+          "widget": "html",
+          "label": "Text",
+          "tags": [
+            "strong",
+            "em",
+            "sub",
+            "sup"
+          ]
+        },
+        {
+          "name": "correct",
+          "type": "boolean",
+          "label": "Correct"
+        },
+        {
+          "name": "tipsAndFeedback",
+          "type": "group",
+          "label": "Tips and feedback",
+          "optional": true,
+          "fields": [
+            {
+              "name": "tip",
+              "label": "Tip text",
+              "type": "text",
+              "optional": true
+            },
+            {
+              "name": "chosenFeedback",
+              "type": "text",
+              "widget": "html",
+              "label": "Chosen feedback",
+              "description": "Will be displayed when the users checks his answer.",
+              "optional": true,
+              "tags": [
+                "strong",
+                "em",
+                "sub",
+                "sup"
+              ]
+            },
+            {
+              "name": "notChosenFeedback",
+              "type": "text",
+              "widget": "html",
+              "label": "Not chosen feedback",
+              "description": "Will be displayed when the solution is displayed.",
+              "optional": true,
+              "tags": [
+                "strong",
+                "em",
+                "sub",
+                "sup"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "UI",
+    "type": "group",
+    "label": "User interface translations for multichoice",
+    "common": true,
+    "fields": [
+      {
+        "name": "checkAnswerButton",
+        "type": "text",
+        "label": "Check answer button label",
+        "default": "Check"
+      },
+      {
+        "name": "showSolutionButton",
+        "type": "text",
+        "label": "Show solution button label",
+        "default": "Show solution"
+      },
+      {
+        "name": "tryAgainButton",
+        "type": "text",
+        "label": "Retry button label",
+        "default": "Retry",
+        "optional": true
+      },
+      {
+        "name": "correctText",
+        "type": "text",
+        "label": "Correct answer feedback",
+        "default": "Correct!",
+        "deprecated": true
+      },
+      {
+        "name": "almostText",
+        "type": "text",
+        "label": "Almost correct answer feedback",
+        "default": "Almost!",
+        "deprecated": true
+      },
+      {
+        "name": "wrongText",
+        "type": "text",
+        "label": "Not correct answer feedback",
+        "default": "Wrong",
+        "deprecated": true
+      }
+    ]
+  },
+  {
+    "name": "behaviour",
+    "type": "group",
+    "label": "Behavioural settings.",
+    "description": "These options will let you control how the task behaves.",
+    "optional": true,
+    "fields": [
+      {
+        "name": "enableRetry",
+        "type": "boolean",
+        "label": "Enable \"Retry\" button",
+        "default": true,
+        "optional": true
+      },
+      {
+        "name": "enableSolutionsButton",
+        "type": "boolean",
+        "label": "Enable \"Show Solution\" button",
+        "default": true,
+        "optional": true
+      },
+      {
+        "name": "singleAnswer",
+        "type": "boolean",
+        "label": "Single answer",
+        "description": "Enable to allow only single option answer.",
+        "default": true
+      },
+      {
+        "name": "singlePoint",
+        "type": "boolean",
+        "label": "Give one point for the whole task",
+        "description": "Enable to give a total of one point for multiple correct answers. This will not be an option in \"Single answer\" mode.",
+        "default": true
+      },
+      {
+        "name": "randomAnswers",
+        "type": "boolean",
+        "label": "Randomize answers",
+        "description": "Enable to randomize the order of questions on display.",
+        "default": true
+      },
+      {
+        "label": "Require user input before the solution can be viewed",
+        "name": "showSolutionsRequiresInput",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      }
+    ]
+  }
+]

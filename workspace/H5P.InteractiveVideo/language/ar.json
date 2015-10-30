@@ -1,0 +1,203 @@
+{
+  "semantics": [
+    {
+      "label": "محرر الفيديو التفاعلي",
+      "fields": [
+        {
+          "label": "تحميل الفيديو",
+          "fields": [
+            {
+              "label": "ملفات الفيديو",
+              "description": "حدد ملفات الفيديو التي ترغب في استخدامها في الفيديو التفاعلي الخاص بك. لضمان أقصى قدر من الدعم في متصفحات على الأقل إضافة نسخة من شريط الفيديو في ويب إم و MP4 الأشكال"
+            },
+            {
+              "label": "الملصق"
+            },
+            {
+              "label": "The title of this interactive video",
+              "default": "Interactive Video",
+              "description": "Used in summaries, statistics etc."
+            },
+            {
+              "label": "Video start screen options",
+              "fields": [
+                {
+                  "label": "Hide title on video start screen"
+                },
+                {
+                  "label": "Short description (Optional)",
+                  "description": "Optional. Display a short description text on the video start screen."
+                }
+              ]
+            },
+            {
+              "label": "معلومات حقوق النشر فيديو",
+              "description": "معلومات بشأن حقوق الطبع والنشر من شريط الفيديو والعناصر المستخدمة في الفيديو"
+            }
+          ]
+        },
+        {
+          "label": "إضافة التفاعلات",
+          "fields": [
+            {
+              "field": {
+                "fields": [
+                  {
+                    "label": "عرض الوقت",
+                    "fields": [
+                      {},
+                      {}
+                    ]
+                  },
+                  {
+                    "label": "إيقاف مؤقت"
+                  },
+                  {
+                    "label": "Display as",
+                    "description": "<b>Button</b> is a collapsed interaction the user must press to open. <b>Poster</b> is an expanded interaction displayed directly on top of the video",
+                    "options": [
+                      {
+                        "label": "Button"
+                      },
+                      {
+                        "label": "Poster"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "التسمية",
+                    "description": "تسمية تظهر بجوار رمز التفاعل"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "قابلية التكيف",
+                    "fields": [
+                      {
+                        "label": "إجراء بشأن كلها صحيحة",
+                        "fields": [
+                          {
+                            "label": "تحرك الي",
+                            "description": "أدخل رمز الوقت في تنسيق M: SS"
+                          },
+                          {
+                            "label": "تسمح للمستخدم لاختيار التجاوز والاستمرار"
+                          },
+                          {
+                            "label": "رسالة"
+                          },
+                          {
+                            "label": "تسمية زر التحرك الي"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "إجراء بشأن كلها خطاء",
+                        "fields": [
+                          {
+                            "label": "تحرك الي",
+                            "description": "أدخل رمز الوقت في تنسيق M: SS"
+                          },
+                          {
+                            "label": "تسمح للمستخدم لاختيار التجاوز والاستمرار"
+                          },
+                          {
+                            "label": "رسالة"
+                          },
+                          {
+                            "label": "تسمية زر التحرك الي"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "field": {
+                "fields": [
+                  {},
+                  {}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "ملخص النشاط",
+          "fields": [
+            {
+              "default": {
+                "params": {}
+              }
+            },
+            {
+              "label": "عرض في",
+              "description": "عدد الثواني قبل انتهاء الفيديو"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "إعدادات \"مشاهدة حل \" الزر، و\"إعادة المحاولة \".",
+      "description": "وهذه الخيارات تمكنك من تجاوز وقت عرض زر \"مشاهدة حل \" و \"إعادة المحاولة \" في محتويات متكامل h5p.",
+      "fields": [
+        {
+          "label": "تفعيل تجاوز ل \"مشاهدة حل \" و إعدادات \"إعادة المحاولة \"",
+          "description": "وإذا تم تفعيل هذه الأسئلة سيتم تجاهل الإعدادات الخاصة وسيتم استخدام الضبط أدناه بدلا من ذلك"
+        },
+        {
+          "label": "تفعيل أزرار \"إظهار حل \"",
+          "description": "تفعيل هذا الخيار يجعل الأسئلة تظهر \"مشاهدة حل \" زر"
+        },
+        {
+          "label": "تفعيل \"إعادة المحاولة \"",
+          "description": "تفعيل هذا الخيار يجعل المستخدم قادرا على \"إعادة المحاولة\""
+        }
+      ]
+    },
+    {
+      "label": "Localize",
+      "fields": [
+        {
+          "label": "عنوان التفاعل"
+        },
+        {
+          "label": "لقب التشغيل"
+        },
+        {
+          "label": "عنوان إيقاف مؤقت"
+        },
+        {
+          "label": "عنوان كتم الصوت"
+        },
+        {
+          "label": "عنوان عدم كتمان الصوت"
+        },
+        {
+          "label": "عنوان جودة الفيديو"
+        },
+        {
+          "label": "عنوان ملء الشاشة"
+        },
+        {
+          "label": "عنوان الخروج ملء الشاشة"
+        },
+        {
+          "label": "عنوان الملخص"
+        },
+        {
+          "label": "عنوان الإشارات المرجعية"
+        },
+        {
+          "label": "التسمية الافتراضية لقابلية التكيف زر السعى"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Blob",
+  "contentType": "Media",
+  "description": "Provides a library for dealing with files",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 3,
+  "runnable": 0,
+  "machineName": "blob",
+  "preloadedJs": [
+    {
+      "path": "scripts/Blob.js"
+    }
+  ]
+}

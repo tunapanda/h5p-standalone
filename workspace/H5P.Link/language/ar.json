@@ -1,0 +1,32 @@
+{
+  "semantics": [
+    {
+      "label": "العنوان"
+    },
+    {
+      "fields": [
+        {
+          "label": "بروتوكول",
+          "options": [
+            {
+              "value": "http://",
+              "label": "http://"
+            },
+            {
+              "value": "https://",
+              "label": "https://"
+            },
+            {
+              "value": "/",
+              "label": "(نسبي)"
+            }
+          ],
+          "default": "http://"
+        },
+        {
+          "label": "الرابط"
+        }
+      ]
+    }
+  ]
+}

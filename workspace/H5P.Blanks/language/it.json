@@ -1,0 +1,59 @@
+{
+  "semantics": [
+    {
+    },
+    {
+      "label": "Descrizione attivit�",
+      "description": "Una guida deve indicare all'utente come rispondere a questo compito."
+    },
+    {
+      "label": "Blocchi di testo",
+      "entity": "Blocco di testo",
+      "field": {
+        "label": "Linea di testo",
+        "description": "Gli spazi vuoti sono aggiunti con un asterisco (*) davanti e dietro la parola/frase corretta. Risposte alternative sono separate con una barra (/). Si pu� aggiungere un suggerimento testuale, usando i due punti (:) prima del suggerimento. Esempio: Il contentuto H5P pu� essere editato utilizzando un *browser/web-browser:Qualcosa che usi tutti i giorni*."
+      }
+    },
+    {
+      "label": "Testo del Feedback",
+      "description": "Testo del Feedback (Riscontro), variabili consentite: @score e @total. Esempio: 'Hai ottenuto il punteggio @score su @total punti possibili.'"
+    },
+    {
+      "label": "Testo per il pulsante \"Mostra soluzioni\""
+    },
+    {
+      "label": "Testo per il pulsante \"Indietro\""
+    },
+    {
+      "label": "Testo per il pulsante \"Verifica\""
+    },
+    {
+      "label": "Testo per il messaggio \"Non compilato\""
+    },
+    {
+      "label": "Impostazioni esecuzione",
+      "description": "Queste opzioni consentono di controllare l'andamento del compito.",
+      "fields": [
+        {
+          "label": "Abilita \"Riprova\""
+        },
+        {
+          "label": "Abilita il pulsante \"Mostra soluzioni\""
+        },
+        {
+          "label": "Controlla automaticamente le risposte dopo l'immissione"
+        },
+        {
+          "label": "Maiuscole e minuscole",
+          "description": "Assicurare che i caratteri inseriti dall'utente siano esattamente gli stessi della risposta."
+        },
+        {
+          "label": "Richiedere che tutti i campi siano completati prima di visualizzare la soluzione"
+        },
+        {
+          "label": "Immettere i campi su righe separate"
+        }
+      ]
+    }
+  ]
+}

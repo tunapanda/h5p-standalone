@@ -1,0 +1,210 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                      "label": "Commentaires",
+                      "description": "Les commentaires sont affichés pour aider le utilisateurs pendant le diaporama."
+                    },
+                    {
+                      "label": "Toujours afficher les commentaires"
+                    },
+                    {
+                      "label": "Opacité de l'arrière-plan"
+                    },
+                    {
+                      "label": "Montrer comme bouton"
+                    },
+                    {
+                      "label": "Titre"
+                    },
+                    {
+                      "label": "Aller à la diapositive"
+                    },
+                    {
+                      "label": "Invisible",
+                      "description": "Curseur par défaut, pas de titre, pas d'index. Attention: Les utilisateurs mal à l'aise avec le clavier auront des difficultés à réaliser cette activité."
+                    },
+                    {
+                      "label": "Metadata",
+                      "fields": [
+                        {
+                          "label": "Titre"
+                        },
+                        {
+                          "label": "Auteur"
+                        },
+                        {
+                          "label": "Licence"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+              }
+            ]
+          }
+        },
+        {},
+        {
+          "label": "Liste des mots-clés"
+        },
+        {
+          "label": "Toujours montrer"
+        },
+        {
+          "label": "Cacher automatiquement"
+        },
+        {
+          "label": "Opacité"
+        }
+      ]
+    },
+    {
+      "label": "Localisation",
+      "fields": [
+        {
+          "label": "Traduction pour \"Diapositive\""
+        },
+        {
+          "label": "Traduction pour \"Score\""
+        },
+        {
+          "label": "Traduction pour \"Score maximum\""
+        },
+        {
+          "label": "Félicitations pour ce très bon score",
+          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
+        },
+        {
+          "label": "Bravo pour ce bon score",
+          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
+        },
+        {
+          "label": "Mauvais score",
+          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
+        },
+        {
+          "label": "Traduction pour \"Total\""
+        },
+        {
+          "label": "Texte pour le bouton Montrer la solution"
+        },
+        {
+          "label": "Texte pour le bouton Réessayer"
+        },
+        {
+          "label": "Traduction pour \"Titre\""
+        },
+        {
+          "label": "Traduction pour \"Auteur/créateur\""
+        },
+        {
+          "label": "Traduction pour \"Licence\""
+        },
+        {
+          "label": "Traduction pour \"Licence\""
+        },
+        {
+          "label": "Texte du bouton d'exportation"
+        },
+        {
+          "label": "Texte pour le bouton \"Droits d'utilisation\""
+        },
+        {
+          "label": "Cacher le bouton d'affichage de la liste des mots-clés"
+        },
+        {
+          "label": "Montrer le bouton d'affichage de la liste des mots-clés"
+        },
+        {
+          "label": "Texte de mise en plein écran"
+        },
+        {
+          "label": "Texte de sortie du plein écran"
+        },
+        {
+          "label": "Texte d'accès à la diapositive précédente"
+        },
+        {
+          "label": "Texte d'accès à la diapositive suivante"
+        },
+        {
+          "label": "Texte pour la diapositive affichée"
+        },
+        {
+          "label": "Texte de la dernière diapositive"
+        },
+        {
+          "label": "Texte de sortie du mode de solution"
+        },
+        {
+          "label": "Texte du mode de solution"
+        },
+        {
+          "label": "Texte affiché lors de multiples activités sur une page"
+        },
+        {
+          "label": "Texte d'affichage du score"
+        },
+        {
+          "label": "Texte de partage sur Facebook"
+        },
+        {
+          "label": "Texte de partage sur Twitter"
+        },
+        {
+          "label": "Titre de la légende de la diapositive",
+          "default": "Légende"
+        },
+        {
+          "label": "Titre pour l'icône de commentaire",
+          "default": "Montrer les commentaires"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        }
+      ]
+    },
+    {
+      "label": "Paramètres",
+      "description": "Ces options vous permettent de proposer de passer certaines séquences.",
+      "fields": [
+        {
+          "label": "Activer la possibilité de passer certaines séquences.",
+          "description": "Si cette option est choisie, les réglages seront valables pour toutes les questions, les réglages individuels ne seront pas pris en compte."
+        },
+        {
+          "label": "Afficher le bouton \"Solution\".",
+          "description": "Affiche le bouton \"Solution\"."
+        },
+        {
+          "label": "Afficher le bouton \"Réessayer\".",
+          "description": "Affiche le bouton \"Réessayer\"."
+        },
+        {
+          "label": "Comportement",
+          "description": "Style de la légende de la diapositive"
+        }
+      ]
+    }
+  ]
+}

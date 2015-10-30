@@ -1,0 +1,49 @@
+{
+  "title": "Summary",
+  "description": "Test your users with fill in the summary tasks.",
+  "majorVersion": 1,
+  "minorVersion": 4,
+  "patchVersion": 0,
+  "runnable": 1,
+  "machineName": "H5P.Summary",
+  "license": "MIT",
+  "author": "Amendor AS",
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 6
+  },
+  "preloadedCss": [
+    {
+      "path": "css/summary.css"
+    }
+  ],
+  "preloadedJs": [
+    {
+      "path": "js/summary.js"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 3
+    },
+    {
+      "machineName": "H5P.JoubelUI",
+      "majorVersion": 1,
+      "minorVersion": 2
+    },
+    {
+      "machineName": "H5P.Question",
+      "majorVersion": 1,
+      "minorVersion": 1
+    }
+  ],
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.SummaryTextualEditor",
+      "majorVersion": 1,
+      "minorVersion": 0
+    }
+  ]
+}

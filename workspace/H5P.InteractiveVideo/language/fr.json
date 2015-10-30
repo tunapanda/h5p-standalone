@@ -1,0 +1,186 @@
+{
+  "semantics": [
+    {
+      "label": "Éditeur de vidéo interactive",
+      "fields": [
+        {
+          "label": "Envoyer une vidéo",
+          "fields": [
+            {
+              "label": "Fichiers vidéo",
+              "description": "Sélectionnez les fichiers vidéo que vous souhaitez utiliser dans votre vidéo interactive. Pour assurer une compatibilité maximum avec les navigateurs, merci d'utiliser des vidéos au format mp4 ou webm."
+            },
+            {
+              "label": "Affiche"
+            },
+            {
+              "label": "Titre"
+            },
+            {
+              "label": "Ajoute des interactions",
+              "fields": [
+                {
+                  "label": "Cacher le titre au début de la vidéo"
+                },
+                {
+                  "label": "Courte description (Optionel)",
+                  "description": "Optionel. Affiche une courte description au début de la vidéo."
+                }
+              ]
+            },
+            {
+              "label": "Information sur le copyright de la vidéo",
+              "description": "Information sur le copyright de la vidéo et de ses éléments."
+            }
+          ]
+        },
+        {
+          "label": "Ajouter une interaction",
+          "fields": [
+            {
+              "field": {
+                "fields": [
+                  {
+                    "label": "Montrer la durée"
+                  },
+                  {
+                    "label": "Pause",
+                    "description": "Mettre la lecture en pause quand l'activité interactive est commencée."
+                  },
+                  {
+                    "label": "Montrer comme",
+                    "description": "<b>Bouton</b> est une interaction effondré l'utilisateur doit appuyer sur pour ouvrir. <b>Affiche</b> est une interaction élargie affiché directement sur le dessus de la vidéo.",
+                    "options": [
+                      {
+                        "label": "Bouton"
+                      },
+                      {
+                        "label": "Affiche"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Texte",
+                    "description": "Texte affiché à côté de l'icône de l'activité interactive."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Synchronisation",
+                    "fields": [
+                      {
+                        "label": "Action quand tout est correct",
+                        "fields": [
+                          {
+                            "label": "Aller à",
+                            "description": "Entrer le timecode au format M:SS"
+                          },
+                          {
+                            "label": "Autoriser les utilisateurs à passer et à continuer"
+                          },
+                          {
+                            "label": "Recherche"
+                          },
+                          {
+                            "label": "Texte du bouton de recherche"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "Action en cas de réponse fausse",
+                        "fields": [
+                          {
+                            "label": "Aller à",
+                            "description": "Entrer le timecode au format M:SS"
+                          },
+                          {
+                            "label": "Autoriser les utilisateurs à passer et à continuer"
+                          },
+                          {
+                            "label": "Recherche"
+                          },
+                          {
+                            "label": "Texte du bouton de recherche"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Résumé de l'exercice",
+          "fields": [
+            {},
+            {
+              "label": "Montrer à",
+              "description": "Nombre de secondes avant la fin de la vidéo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Options pour les boutons \"Montrer la solution\" et \"Réessayer\".",
+      "description": "Ces options vous permettent de choisir quand afficher les boutons \"Solutions\" et \"Réessayer\" dans votre acivité h5p..",
+      "fields": [
+        {
+          "label": "Activer les réglages par défaut pour les boutons \"Solution\" et \"Réessayer\".",
+          "description": "Si cette option est choisie, les réglages seront valables pour toutes les questions, les réglages individuels ne seront pas pris en compte."
+        },
+        {
+          "label": "Afficher le bouton \"Solution\".",
+          "description": "Affiche le bouton \"Solution\"."
+        },
+        {
+          "label": "Afficher le bouton \"Réessayer\".",
+          "description": "Affiche le bouton \"Réessayer\"."
+        }
+      ]
+    },
+    {
+      "label": "Localiser",
+      "fields": [
+        {
+          "label": "Titre de l'activité"
+        },
+        {
+          "label": "Jouer le titre"
+        },
+        {
+          "label": "Pause"
+        },
+        {
+          "label": "Couper le son"
+        },
+        {
+          "label": "Remettre le son"
+        },
+        {
+          "label": "Qualité vidéo"
+        },
+        {
+          "label": "Plein écran"
+        },
+        {
+          "label": "Sortir du plein écran"
+        },
+        {
+          "label": "Résumé"
+        },
+        {
+          "label": "Favoris"
+        },
+        {
+          "label": "Texte du texte de recherche"
+        }
+      ]
+    }
+  ]
+}

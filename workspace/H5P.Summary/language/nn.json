@@ -1,0 +1,111 @@
+{
+  "semantics": [
+    {
+      "label": "Introduksjonstekst",
+      "default": "Vel riktig påstand.",
+      "description": "Vil vises øvst i oppsummeringsoppgåva."
+    },
+    {
+      "label": "Oppsummering",
+      "description": "Liste av påstandar",
+      "entity": "påstandar",
+      "field": {
+        "label": "Påstandar",
+        "fields": [
+          {
+            "label": "Påstandar til oppsummeringa. Første påstand er riktig.",
+            "entity": "påstand",
+            "field": {
+              "label": "Påstand"
+            }
+          },
+          {
+            "label": "Tips",
+            "fields": [
+              {
+                "label": "Tipstekst"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Tekst som vises før antall påstandar som er løst i oppsummeringsoppgåva.",
+      "default": "Løst:",
+      "description": "Vil vises over påstandane. Eksempel: 'Løst: 2/5'"
+    },
+    {
+      "label": "Tekst som vises før antall feil påstander som er valgt i oppsummeringsoppgåva.",
+      "default": "Antall feil:",
+      "description": "Vil vises over påstandane. Eksempel: 'Antall feil: 4'"
+    },
+    {
+      "label": "Overskrift over tilbakemelding",
+      "default": "Ditt resultat:",
+      "description": "Vil vises over tilbakemelding på oppsummeringsoppgåva."
+    },
+    {
+      "label": "Tilbakemelding på oppsummeringsoppgåva",
+      "fields": [
+        {
+          "label": "Alt riktig",
+          "fields": [
+            {
+              "label": "Tittel for tilbakemeldinga",
+              "default": "Alt rett: PERFEKT!"
+            },
+            {
+              "label": "Tilbakemelding",
+              "default": "Du fikk alt rett . Ver stolt!"
+            }
+          ]
+        },
+        {
+          "label": "70 % - 99 % rett",
+          "fields": [
+            {
+              "label": "Tittel for tilbakemeldinga",
+              "default": "70 - 99%: Bra!"
+            },
+            {
+              "label": "Tilbakemelding",
+              "default": "Du fikk mesteparten av påstandane rett på første forsøk."
+            }
+          ]
+        },
+        {
+          "label": "40 % - 69 % rett",
+          "fields": [
+            {
+              "label": "Tittel for tilbakemeldinga",
+              "default": "40 % - 69 % rett: Ok"
+            },
+            {
+              "label": "Tilbakemelding",
+              "default": "Du fikk nokre av påstandane rett . Det er ennå rom for forbetring!"
+            }
+          ]
+        },
+        {
+          "label": "0 % - 39 % rett",
+          "fields": [
+            {
+              "label": "Tittel for tilbakemeldinga",
+              "default": "0 % - 39 % rett: Ikkje bra"
+            },
+            {
+              "label": "Tilbakemelding",
+              "default": "Du må jobbe meir med dette."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Visning av resultat",
+      "default": "Du fikk @score av @total påstandar (@percent %) rett på første forsøk.",
+      "description": "Tilgjengelige variablar: @score, @total, @percent. Eksempel: Du fikk @score av @total påstandar (@percent %) rett."
+    }
+  ]
+}

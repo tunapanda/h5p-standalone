@@ -1,0 +1,63 @@
+{
+  "title": "Drag Question Editor",
+  "majorVersion": 1,
+  "minorVersion": 4,
+  "patchVersion": 0,
+  "runnable": 0,
+  "author": "Joubel AS",
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 1
+  },
+  "machineName": "H5PEditor.DragQuestion",
+  "preloadedJs": [
+    {
+      "path": "H5PEditor.DragQuestion.js"
+    },
+    {
+      "path": "H5PEditor.DynamicCheckboxes.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "H5PEditor.DragQuestion.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "H5PEditor.Wizard",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 3
+    },
+    {
+      "machineName": "H5P.DragNBar",
+      "majorVersion": 1,
+      "minorVersion": 1
+    },
+    {
+      "machineName": "H5P.AdvancedText",
+      "majorVersion": 1,
+      "minorVersion": 1
+    },
+    {
+      "machineName": "H5P.Image",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "jQuery.ui",
+      "majorVersion": 1,
+      "minorVersion": 10
+    },
+    {
+      "machineName": "H5P.JoubelUI",
+      "majorVersion": 1,
+      "minorVersion": 2
+    }
+  ]
+}

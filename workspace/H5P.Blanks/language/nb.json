@@ -1,0 +1,68 @@
+{
+  "semantics": [
+    {
+      "label": "Oppgavebilde",
+      "description": "Et valgfritt bilde som vises over oppgaven."
+    },
+    {
+      "label": "Oppgavetekst",
+      "description": "En tekst som forteller brukeren hvordan oppgaven skal løses",
+      "default": "Fyll inn teksten som mangler"
+    },
+    {
+      "label": "Tekstlinjer",
+      "entity": "tekstlinje",
+      "field": {
+        "label": "Tekstlinje",
+        "placeholder": "Oslo er hovedstaden i *Norge*",
+        "description": "Åpne felter merkes med en stjerne * foran og bak det korrekte ordet/uttrykket. Alternativer angis med en skråstrek: *Norge/Noreg*. Tips angis med et kolon (:) før tipset: *Norge/Noreg:Verdens beste land*"
+      }
+    },
+    {
+      "label": "Tilbakemeldinger",
+      "default": "Du fikk @score av @total felt rett.",
+      "description": "Tekstlig tilbakemelding, tilgjengelige variabler: @score og @total. Eksempel: 'Du fikk @score av @total felt rett.'"
+    },
+    {
+      "label": "Tekst for \"Vis svar\" knapp",
+      "default": "Vis svar"
+    },
+    {
+      "label": "Tekst for \"Prøv igjen\" knapp",
+      "default": "Prøv igjen"
+    },
+    {
+      "label": "Tekst for \"Sjekk svar\" knapp",
+      "default": "Sjekk"
+    },
+    {
+      "label": "Tekst for \"Ikke utfyllt\"-melding",
+      "default": "Du må fylle inn alle felter"
+    },
+    {
+      "label": "Innstillinger for oppgave-oppførsel",
+      "description": "Disse instillingene lar deg bestemme hvordan oppgavetypen skal oppføre seg.",
+      "fields": [
+        {
+          "label": "Aktiver \"Prøv igjen\""
+        },
+        {
+          "label": "Aktiver \"Vis svar\" knapp"
+        },
+        {
+          "label": "Gi tilbakemelding med en gang brukeren har avgitt svar"
+        },
+        {
+          "label": "Skill mellom store og små bokstaver",
+          "description": "Sørger for at svaret til brukeren må være nøyaktig det samme som i oppgaven."
+        },
+        {
+          "label": "Krev at alle felter er besvart før fasit gis"
+        },
+        {
+          "label": "Sett inntastingsfelt på egne linjer"
+        }
+      ]
+    }
+  ]
+}

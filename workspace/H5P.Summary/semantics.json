@@ -1,0 +1,194 @@
+[
+  {
+    "name": "intro",
+    "type": "text",
+    "widget": "html",
+    "label": "Introduction text",
+    "default": "Choose the correct statement.",
+    "description": "Will be displayed above the summary task.",
+    "enterMode": "p",
+    "tags": [
+      "strong",
+      "em",
+      "u",
+      "a",
+      "ul",
+      "ol",
+      "h2",
+      "h3",
+      "hr"
+    ],
+    "common": false
+  },
+  {
+    "name": "summaries",
+    "type": "list",
+    "widgets": [
+      {
+        "name": "ListEditor",
+        "label": "Default"
+      },
+      {
+        "name": "SummaryTextualEditor",
+        "label": "Textual"
+      }
+    ],
+    "label": "Summary",
+    "description": "List of summaries",
+    "entity": "statements",
+    "max": 100,
+    "min": 1,
+    "field": {
+      "name": "statements",
+      "type": "group",
+      "label": "Statements",
+      "fields": [
+        {
+          "name": "summary",
+          "type": "list",
+          "label": "List of statements for the summary. The first statement is correct.",
+          "entity": "statement",
+          "min": 2,
+          "field": {
+            "name": "text",
+            "type": "text",
+            "label": "Statement",
+            "widget": "html",
+            "enterMode": "p",
+            "tags": []
+          }
+        },
+        {
+          "name": "tip",
+          "type": "group",
+          "label": "Tip",
+          "optional": true,
+          "fields": [
+            {
+              "name": "tip",
+              "label": "Tip text",
+              "type": "text",
+              "optional": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "solvedLabel",
+    "type": "text",
+    "label": "Text displayed before number of statements solved in the summary task.",
+    "default": "Progress:",
+    "description": "Will be displayed above the statements. Example: 'Progress: 2/5'",
+    "common": true
+  },
+  {
+    "name": "scoreLabel",
+    "type": "text",
+    "label": "Text displayed before number of wrong statements selected in the summary task.",
+    "default": "Wrong answers:",
+    "description": "Will be displayed above the statements. Example: 'Wrong answers: 4'",
+    "common": true
+  },
+  {
+    "name": "resultLabel",
+    "type": "text",
+    "label": "Summary feedback header",
+    "default": "Your result",
+    "description": "Will be displayed above the summary feedback.",
+    "common": true
+  },
+  {
+    "name": "response",
+    "label": "Summary feedback",
+    "type": "group",
+    "common": true,
+    "fields": [
+      {
+        "label": "Everything correct",
+        "name": "scorePerfect",
+        "type": "group",
+        "fields": [
+           {
+             "name": "title",
+             "type": "text",
+             "label": "Feedback title",
+             "default": "PERFECT!"
+           },
+           {
+             "name": "message",
+             "type": "text",
+             "label": "Feedback message",
+             "default": "You got everything correct on your first try!"
+           }
+        ]
+      },
+      {
+        "label": "70 % - 99 % correct",
+        "name": "scoreOver70",
+        "type": "group",
+        "fields": [
+           {
+             "name": "title",
+             "type": "text",
+             "label": "Feedback title",
+             "default": "Great!"
+           },
+           {
+             "name": "message",
+             "type": "text",
+             "label": "Feedback message",
+             "default": "You got most of the statements correct on your first try."
+           }
+        ]
+      },
+      {
+        "label": "40 % - 69 % correct",
+        "name": "scoreOver40",
+        "type": "group",
+        "fields": [
+           {
+             "name": "title",
+             "type": "text",
+             "label": "Feedback title",
+             "default": "Ok"
+           },
+           {
+             "name": "message",
+             "type": "text",
+             "label": "Feedback message",
+             "default": "You got some of the statements correct on your first try."
+           }
+        ]
+      },
+      {
+        "label": "0 % - 39 % correct",
+        "name": "scoreOver0",
+        "type": "group",
+        "fields": [
+           {
+             "name": "title",
+             "type": "text",
+             "label": "Feedback title",
+             "default": "A few mistakes."
+           },
+           {
+             "name": "message",
+             "type": "text",
+             "label": "Feedback message",
+             "default": "Have another try!"
+           }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "summary",
+    "type": "text",
+    "label": "Feedback summary",
+    "default": "You got @score of @total statements (@percent %) correct on your first try.",
+    "description": "Available variables: @score, @total, @percent. Example: You got @score of @total statements (@percent %) correct.",
+    "common": true
+  }
+]

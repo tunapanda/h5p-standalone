@@ -1,0 +1,25 @@
+{
+  "title": "Image",
+  "contentType": "Media",
+  "description": "Simple library that displays an image.",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 23,
+  "runnable": 0,
+  "machineName": "H5P.Image",
+  "author": "Amendor AS",
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 1
+  },
+  "preloadedJs": [
+    {
+      "path": "image.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "image.css"
+    }
+  ]
+}

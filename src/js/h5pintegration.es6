@@ -47,7 +47,7 @@
 
   H5PIntegration.init = function(pathToContent = 'workspace') {
 
-    H5PIntegration.url = `/${pathToContent}`;
+    H5PIntegration.url = `${pathToContent}`;
 
     let getInfo = getJSONPromise(`${pathToContent}/h5p.json`);
     let getContent = getJSONPromise(`${pathToContent}/content/content.json`);

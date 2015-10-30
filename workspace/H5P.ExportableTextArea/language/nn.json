@@ -1,0 +1,13 @@
+{
+  "semantics": [
+    {
+      "label": "Tittel",
+      "description": "Tittel brukes også ved eksport"
+    },
+    {},
+    {
+      "label": "Infotekst for \"ikkje støtta eksport\"",
+      "default": "Eksport er ikkje støtta på eininga di"
+    }
+  ]
+}

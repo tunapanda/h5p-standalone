@@ -1,0 +1,40 @@
+{
+  "semantics": [
+    {
+      "label": "Consigne",
+      "description": "Explique ce que doit faire l'utilisateur."
+    },
+    {
+      "label": "Champ de texte",
+      "description": "Les mots à placer sont identifiés par une astérisque (*) avant et après le mot/la phrase. Vous pouvez ajouter une aide en utilisant les deux ponts (:) devant le message d'aide. Exemple: On peut créer des exercices h5p en utilisant un *navigateur:Quelque chose que vous utilisez tous les jours*."
+    },
+    {
+      "label": "Texte pour le bouton \"Vérifier\""
+    },
+    {
+      "label": "Texte pour le bouton \"Réessayer\""
+    },
+    {
+      "label": "Texte pour le bouton \"Montrer la Solution\""
+    },
+    {
+      "label": "Texte de Feedback",
+      "description": "Texte de Feedback, variables possibles: @score et @total. Exemple: 'Vous avez @score sur un total possible de @total points'"
+    },
+    {
+      "label": "Options des exercices.",
+      "description": "Ces options permettent de paramétrer les variables des exercices.",
+      "fields": [
+        {
+          "label": "Activer \"Réessayer\""
+        },
+        {
+          "label": "Activer le bouton \"Montrer la solution\""
+        },
+        {
+          "label": "Feedback instantané"
+        }
+      ]
+    }
+  ]
+}

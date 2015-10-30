@@ -1,0 +1,282 @@
+[
+  {
+    "name": "scoreShow",
+    "type": "text",
+    "label": "Check answer button",
+    "default": "Check",
+    "common": true
+  },
+  {
+    "name": "tryAgain",
+    "type": "text",
+    "label": "Retry button",
+    "default": "Retry",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "correct",
+    "type": "text",
+    "label": "Correct solution label text",
+    "default": "Solution",
+    "common": true
+  },
+  {
+    "label": "Feedback text",
+    "name": "feedback",
+    "type": "text",
+    "default": "You placed @score out of @total correct.",
+    "description": "Feedback text, variables available: @score and @total. Example: 'You placed @score out of @total correct'",
+    "common": true
+  },
+  {
+    "name": "question",
+    "type": "group",
+    "widget": "wizard",
+    "fields": [
+      {
+        "name": "settings",
+        "type": "group",
+        "label": "Settings",
+        "fields": [
+          {
+            "name": "questionTitle",
+            "type": "text",
+            "label": "The title of this question",
+            "default": "Drag and Drop",
+            "description": "Used in summaries, statistics etc."
+          },
+          {
+            "name": "background",
+            "type": "image",
+            "label": "Background image",
+            "optional": true,
+            "description": "Optional. Select an image to use as background for your drag and drop task."
+          },
+          {
+            "name": "size",
+            "type": "group",
+            "widget": "dimensions",
+            "label": "Task size",
+            "description": "Specify how large (in px) the play area should be.",
+            "default": {
+              "width": 620,
+              "height": 310,
+              "field": "background"
+            },
+            "fields": [
+              {
+                "name": "width",
+                "type": "number"
+              },
+              {
+                "name": "height",
+                "type": "number"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "task",
+        "type": "group",
+        "widget": "dragQuestion",
+        "label": "Task",
+        "description": "Start by placing your drop zones.<br/>Next, place your droppable elements and check off the appropriate drop zones.<br/>Last, edit your drop zone again and check off the correct answers.",
+        "fields": [
+          {
+            "name": "elements",
+            "type": "list",
+            "label": "Elements",
+            "entity": "element",
+            "field": {
+              "type": "group",
+              "label": "Element",
+              "fields": [
+                {
+                  "name": "type",
+                  "type": "library",
+                  "description": "Choose the type of content you would like to add.",
+                  "options": [
+                    "H5P.AdvancedText 1.1",
+                    "H5P.Image 1.0"
+                  ]
+                },
+                {
+                  "name": "x",
+                  "type": "number",
+                  "widget": "none"
+                },
+                {
+                  "name": "y",
+                  "type": "number",
+                  "widget": "none"
+                },
+                {
+                  "name": "height",
+                  "type": "number",
+                  "widget": "none"
+                },
+                {
+                  "name": "width",
+                  "type": "number",
+                  "widget": "none"
+                },
+                {
+                  "name": "dropZones",
+                  "type": "select",
+                  "widget": "dynamicCheckboxes",
+                  "label": "Select drop zones",
+                  "multiple": true
+                },
+                {
+                  "name": "backgroundOpacity",
+                  "type": "number",
+                  "label": "Background Opacity",
+                  "min": 0,
+                  "max": 100,
+                  "step": 5,
+                  "default": 100,
+                  "optional": true
+                },
+                {
+                  "name": "multiple",
+                  "type": "boolean",
+                  "label": "Infinite number of element instances",
+                  "description": "Clones this element so that it can be dragged to multiple drop zones.",
+                  "default": false,
+                  "optional": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "dropZones",
+            "type": "list",
+            "label": "Drop Zones",
+            "entity": "Drop Zone",
+            "field": {
+              "type": "group",
+              "label": "Drop Zone",
+              "fields": [
+                {
+                  "name": "label",
+                  "type": "text",
+                  "widget": "html",
+                  "label": "Label",
+                  "enterMode": "div",
+                  "tags": [
+                    "strong",
+                    "em",
+                    "del"
+                  ]
+
+                },
+                {
+                  "name": "showLabel",
+                  "type": "boolean",
+                  "label": "Show label"
+                },
+                {
+                  "name": "x",
+                  "type": "number",
+                  "widget": "none"
+                },
+                {
+                  "name": "y",
+                  "type": "number",
+                  "widget": "none"
+                },
+                {
+                  "name": "height",
+                  "type": "number",
+                  "widget": "none"
+                },
+                {
+                  "name": "width",
+                  "type": "number",
+                  "widget": "none"
+                },
+                {
+                  "name": "correctElements",
+                  "type": "select",
+                  "widget": "dynamicCheckboxes",
+                  "label": "Select correct elements",
+                  "multiple": true
+                },
+                {
+                  "name": "backgroundOpacity",
+                  "type": "number",
+                  "label": "Background Opacity",
+                  "min": 0,
+                  "max": 100,
+                  "step": 5,
+                  "default": 100,
+                  "optional": true
+                },
+                {
+                  "name": "tip",
+                  "type": "group",
+                  "label": "Tip",
+                  "optional": true,
+                  "fields": [
+                    {
+                      "name": "tip",
+                      "label": "Tip text",
+                      "type": "text",
+                      "optional": true
+                    }
+                  ]
+                },
+                {
+                  "name": "single",
+                  "type": "boolean",
+                  "label": "This drop zone can only contain one element. Make sure there is only one correct answer for this dropzone.",
+                  "default": false,
+                  "optional": true
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "backgroundOpacity",
+    "type": "text",
+    "label": "Background opacity for draggables",
+    "description": "If this field is set, it will override opacity set on all draggable elements. This should be a number between 0 and 100, where 0 means full transparency and 100 means no transparency",
+    "optional": true
+  },
+  {
+    "name": "behaviour",
+    "type": "group",
+    "label": "Behavioural settings.",
+    "description": "These options will let you control how the task behaves.",
+    "optional": true,
+    "fields": [
+      {
+        "name": "enableRetry",
+        "type": "boolean",
+        "label": "Enable \"Retry\"",
+        "default": true,
+        "optional": true
+      },
+      {
+        "name": "singlePoint",
+        "type": "boolean",
+        "label": "Give one point for the whole task",
+        "description": "Disable to give one point for each draggable that is placed correctly.",
+        "default": true
+      },
+      {
+        "label": "Require user input before the solution can be viewed",
+        "name": "showSolutionsRequiresInput",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      }
+    ]
+  }
+]

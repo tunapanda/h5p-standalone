@@ -1,0 +1,13 @@
+.h5peditor .h5p-link-widget .h5p-link-fields {
+  display: flex;
+}
+
+.h5peditor .h5p-link-url,
+.h5peditor .h5p-link-protocol-selector {
+  display: inline-block;
+  margin: 0 1em 0 0;
+}
+
+.h5peditor .h5p-link-url {
+  flex: 2;
+}

@@ -1,0 +1,19 @@
+{
+  "machineName": "H5PEditor.SummaryTextualEditor",
+  "title": "H5P Editor Summary Textual Editor",
+  "license": "MIT",
+  "author": "Joubel AS (icc)",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 2,
+  "runnable": 0,
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 4
+  },
+  "preloadedJs": [
+    {
+      "path": "summary-textual-editor.js"
+    }
+  ]
+}

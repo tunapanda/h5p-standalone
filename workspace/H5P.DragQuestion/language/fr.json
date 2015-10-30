@@ -1,0 +1,117 @@
+{
+  "semantics": [
+    {
+      "label": "Bouton Vérifier"
+    },
+    {
+      "label": "Bouton Réessayer"
+    },
+    {
+      "label": "Texte solution"
+    },
+    {
+      "fields": [
+        {
+          "label": "Réglages",
+          "fields": [
+            {},
+            {
+              "label": "image de fond",
+              "description": "Optionnel. Selectionner une image de fond pour l'activité glisser et déposer."
+            },
+            {
+              "label": "Taille",
+              "description": "Specifier la largeur (en px) de la zone de jeu."
+            }
+          ]
+        },
+        {
+          "label": "Tache",
+          "description": "Commencer par glisser vos étiquettes.<br/>Suivant, déposer vos étiquettes dans les trous et Vérifier si elles sont dans la zone approppriée.<br/>Fin, corriger vos étiquettes et Vérifier si vous avez la bonne réponse.",
+          "fields": [
+            {
+              "label": "Elements",
+              "entity": "element",
+              "field": {
+                "label": "Element",
+                "fields": [
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Sélectionner la zone de dépôt"
+                  },
+                  {
+                    "label": "Opacité"
+                  },
+                  {
+                    "label": "Infinite number of element instances",
+                    "description": "Cloner l'élement  de façon à ce qu'il corresponde à plusieurs zones."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Zones de dépôt",
+              "entity": "Zones de dépôt",
+              "field": {
+                "label": "Zone de dépôt",
+                "fields": [
+                  {
+                    "label": "Etiquette"
+                  },
+                  {
+                    "label": "Montrer l'étiquette"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Sélectionner les éléments corrects"
+                  },
+                  {
+                    "label": "Opacité"
+                  },
+                  {
+                    "label": "Conseil",
+                    "fields": [
+                      {
+                        "label": "Texte de conseil"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Cette zone de dépôt ne peut contenir qu'un seul élément. Soyez sur qu'il n'existe qu'une seule bonne réponse pour cette zone."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Opacité des étiquettes",
+      "description": "Si ce champ est correct, cela accentuera l'opacité de toutes les étiquettes. Doit être un nombre compris entre 0 and 100, où 0 signifie complète transparence and 100 signifie très opaque"
+    },
+    {
+      "label": "Options générales.",
+      "description": "Cette option vous donnera le contrôle de la tâche.",
+      "fields": [
+        {
+          "label": "Activer \"Réessayer\""
+        },
+        {
+          "label": "Donner une direction pour l'ensemble de la tâche",
+          "description": "Désactiver pour donner une direction pour chaque étiquette placée correctement."
+        },
+        {
+          "label": "L'utilisateur doit entrer la solution avant d'afficher le résultat."
+        }
+      ]
+    }
+  ]
+}

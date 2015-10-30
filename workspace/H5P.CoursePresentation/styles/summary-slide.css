@@ -1,0 +1,191 @@
+/* --------------------------------------- Summary slide styling ---------------------------- */
+.h5p-course-presentation .h5p-summary-slide {
+  background: #fff;
+  text-align: center;
+  color: #333;
+}
+
+.h5p-course-presentation .h5p-summary-slide.h5p-summary-only-export {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+/* Summary header */
+.h5p-course-presentation .h5p-score-message {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  -webkit-justify-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+
+  padding: 1.5em 0;
+  font-size: 0.8em;
+}
+
+.h5p-course-presentation .h5p-score-message-percentage {
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+/* Summary task table */
+.h5p-course-presentation .h5p-summary-task-title {
+  width: 60%;
+  text-align: left;
+  font-size: 0.7em;
+}
+
+.h5p-course-presentation .h5p-summary-task-title .h5p-slide-link {
+  cursor: pointer;
+}
+
+/* Rectangular summary score meter */
+.h5p-course-presentation .h5p-summary-score-bar {
+  position: relative;
+}
+.h5p-course-presentation .h5p-td.h5p-summary-score-bar {
+  border-top-width: 2px;
+}
+.h5p-course-presentation .h5p-summary-score-meter {
+  height: 0.4em;
+  background: #e0e0e0;
+}
+
+.h5p-course-presentation .h5p-summary-score-meter > span {
+  display: block;
+  height: 100%;
+  background-color: #096bcb;
+}
+
+.h5p-course-presentation .h5p-summary-footer {
+  font-size: 0.75em;
+}
+
+/* ------------------------------- Summary table style -----------------------------------  */
+.h5p-course-presentation .h5p-summary-table-holder {
+  height: 61%;
+  margin: 0 1em;
+}
+
+.h5p-course-presentation .h5p-summary-table-pages {
+  overflow: auto;
+  max-height: 85%;
+}
+
+.h5p-course-presentation .h5p-summary-total-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.h5p-course-presentation .h5p-score-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+.h5p-course-presentation .h5p-td, .h5p-course-presentation .h5p-th {
+  padding-right: 0.3em;
+}
+
+.h5p-course-presentation .h5p-th {
+  border-bottom: 1px solid #ddd;
+}
+
+.h5p-course-presentation .h5p-td {
+  border-top: 1px solid #ddd;
+}
+
+/* No top border for first score entry */
+.h5p-course-presentation .h5p-score-table tr:first-child .h5p-td {
+  border-top: 0;
+}
+
+/* Total score top border */
+.h5p-course-presentation .h5p-summary-total-table .h5p-td.h5p-summary-task-title {
+  border-top: 2px solid #ddd;
+}
+
+.h5p-course-presentation .h5p-td p {
+  display: inline;
+  color: -webkit-link;
+  text-decoration: underline;
+}
+
+/* ---------------------------- Social media styles ---------------------------------------------- */
+
+/* Facebook and Twitter link styling */
+.h5p-course-presentation .h5p-summary-twitter-message,
+.h5p-course-presentation .h5p-summary-facebook-message {
+  cursor: pointer;
+  font-size: 0.7em;
+  padding: 0 0.5em;
+  color: #999;
+}
+
+.h5p-course-presentation .h5p-summary-twitter-message:hover,
+.h5p-course-presentation .h5p-summary-facebook-message:hover {
+  color: #096bcb;
+}
+
+.h5p-course-presentation .h5p-summary-twitter-message > span,
+.h5p-course-presentation .h5p-summary-facebook-message > span {
+  text-decoration: none;
+}
+
+.h5p-course-presentation .h5p-summary-twitter-message:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f099";
+  padding-right: 0.5em;
+}
+
+.h5p-course-presentation .h5p-summary-facebook-message:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f09a";
+  padding-right: 0.5em;
+}
+
+/* --------------------------------- Button styling ----------------------------------------------- */
+
+.h5p-course-presentation .h5p-summary-slide .h5p-eta-export:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f0f6";
+  margin-right: 0.5em;
+}
+
+.h5p-course-presentation .h5p-summary-slide .h5p-show-solutions:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f06e";
+  margin-right: 0.5em;
+}
+
+.h5p-course-presentation .h5p-summary-slide .h5p-cp-retry-button:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f021";
+  margin-right: 0.5em;
+}

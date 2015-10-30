@@ -1,0 +1,21 @@
+{
+  "title": "Table",
+  "contentType": "Static content",
+  "description": "Simple library that displays table.",
+  "majorVersion": 1,
+  "minorVersion": 1,
+  "patchVersion": 0,
+  "runnable": 0,
+  "machineName": "H5P.Table",
+  "author": "Amendor AS",
+  "preloadedJs": [
+    {
+      "path": "scripts/table.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "styles/table.css"
+    }
+  ]
+}

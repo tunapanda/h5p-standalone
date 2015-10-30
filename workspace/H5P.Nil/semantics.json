@@ -1,0 +1,9 @@
+[
+  {
+    "name": "nil",
+    "type": "boolean",
+    "widget": "none",
+    "description": "Don't ask.",
+    "optional": true
+  }
+]

@@ -1,0 +1,99 @@
+{
+  "semantics": [
+    {
+      "label": "Spørsmålsbilde",
+      "description": "Et valgfritt bilde som skal vises over spørsmålet."
+    },
+    {
+      "label": "Spørsmål"
+    },
+    {
+      "label": "Svaralternativer",
+      "description": "Svaralternativene brukeren kan velge mellom",
+      "entity": "svaralternativ",
+      "field": {
+        "label": "Svaralternativ",
+        "fields": [
+          {
+            "label": "Tekst"
+          },
+          {
+            "label": "Riktig"
+          },
+          {
+            "label": "Tips",
+            "fields": [
+              {
+                "label": "Tipstekst"
+              },
+              {
+                "label": "Tilbakemelding for valgt alternativ",
+                "description": "Vises når brukerne sjekker svaret hans."
+              },
+              {
+                "label": "Tilbakemelding for ikke valgt alternativ",
+                "description": "Vises når løsningen vises."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Oversettelser for ledetekster i flervalg",
+      "fields": [
+        {
+          "label": "Tekst for \"Sjekk svar\" knapp",
+          "default": "Sjekk"
+        },
+        {
+          "label": "Tekst for \"Vis svar\" knapp",
+          "default": "Vis svar"
+        },
+        {
+          "label": "Merkelapp for «Prøv igjen»-knappen.",
+          "default": "Prøv igjen"
+        },
+        {
+          "label": "Tilbakemelding ved riktig svar",
+          "default": "Rett!"
+        },
+        {
+          "label": "Tilbakemelding ved nesten riktig svar",
+          "default": "Nesten!"
+        },
+        {
+          "label": "Tilbakemelding ved galt svar",
+          "default": "Feil"
+        }
+      ]
+    },
+    {
+      "label": "Innstillinger for oppgave-oppførsel",
+      "description": "Disse instillingene lar deg bestemme hvordan oppgavetypen skal oppføre seg.",
+      "fields": [
+        {
+          "label": "Aktiver \"Prøv igjen\""
+        },
+        {
+          "label": "Aktiver \"Vis svar\" knapp"
+        },
+        {
+          "label": "Bare ett svar",
+          "description": "Lar brukeren kun avgi ett svar"
+        },
+        {
+          "label": "Gi ett poeng for hele oppgaven",
+          "description": "Gir ett poeng totalt for flere rette alternativ. Kun valgbar hvis \"Bare ett svar\" er avslått."
+        },
+        {
+          "label": "Tilfeldige svaralternativ",
+          "description": "Slå på for å vise alternativene i tilfeldig rekkefølge."
+        },
+        {
+          "label": "Krev inndata fra brukeren før fasit gis."
+        }
+      ]
+    }
+  ]
+}

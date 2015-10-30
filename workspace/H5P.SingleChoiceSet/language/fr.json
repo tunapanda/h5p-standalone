@@ -1,0 +1,67 @@
+{
+  "semantics": [
+    {
+      "label": "Liste des questions",
+      "entity": "question",
+      "field": {
+        "label": "Question & alternatives",
+        "fields": [
+          {
+            "label": "Question"
+          },
+          {
+            "label": "Alternatives - première réponse alternative possible",
+            "entity": "réponse",
+            "field": {
+              "label": "Réponse alternative"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Options générales",
+      "fields": [
+        {
+          "label": "Fin du temps en cas de réponse corrrecte",
+          "description": "En millisecondes"
+        },
+        {
+          "label": "Fin du temps en cas de réponse incorrecte",
+          "description": "En millisecondes"
+        },
+        {
+          "label": "Activer les effets sonores"
+        },
+        {
+          "label": "Activer le bouton \"Réessayer\""
+        },
+        {
+          "label": "Activer le bouton \"Montrer la solution\""
+        }
+      ]
+    },
+    {
+      "label": "Localisation de la série de questions à choix unique",
+      "fields": [
+        {
+          "label": "Titre de la diapositive des résultats",
+          "default": "Vous avez :numcorrect sur :maxscore correct",
+          "description": ":numcorrect est remplacé par le nombre de réponses correctes et :maxscore par le nombre de questions"
+        },
+        {
+      "label": "Texte pour le bouton \"Montrer la solution\"",
+      "default": "Solution"
+        },
+        {
+      "label": "Texte pour le bouton \"Réessayer\"",
+      "default": "Réessayer"
+        },
+        {
+       "label": "Texte pour le bouton \"Retour\"",
+      "default": "Retour"
+        }
+      ]
+    }
+  ]
+}

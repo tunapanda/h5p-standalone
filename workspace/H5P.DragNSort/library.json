@@ -1,0 +1,23 @@
+{
+  "title": "Drag N Sort",
+  "contentType": "API",
+  "description": "A library that aims to make drag and sort operations easier for other libraries by providing an api.",
+  "majorVersion": 1,
+  "minorVersion": 1,
+  "patchVersion": 0,
+  "runnable": 0,
+  "machineName": "H5P.DragNSort",
+  "author": "Amendor AS",
+  "preloadedJs": [
+    {
+      "path": "scripts/drag-n-sort.js"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "H5P.DragNDrop",
+      "majorVersion": 1,
+      "minorVersion": 1
+    }
+  ]
+}

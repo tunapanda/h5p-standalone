@@ -9548,7 +9548,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
   H5PIntegration.init = function () {
     var pathToContent = arguments.length <= 0 || arguments[0] === undefined ? 'workspace' : arguments[0];
 
-    H5PIntegration.url = "/" + pathToContent;
+    H5PIntegration.url = "" + pathToContent;
 
     var getInfo = getJSONPromise(pathToContent + "/h5p.json");
     var getContent = getJSONPromise(pathToContent + "/content/content.json");
@@ -9656,6 +9656,683 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
     H5PIntegration.init(options.h5pContent);
   };
 })(H5P.jQuery);
+/**
+ * H5P.ContentType is a base class for all content types. Used by newRunnable()
+ *
+ * Functions here may be overridable by the libraries. In special cases,
+ * it is also possible to override H5P.ContentType on a global level.
+ * */
+H5P.ContentType = function (isRootLibrary, library) {
+
+  function ContentType() {};
+
+  // Inherit from EventDispatcher.
+  ContentType.prototype = new H5P.EventDispatcher();
+
+  /**
+   * Is library standalone or not? Not beeing standalone, means it is
+   * included in another library
+   *
+   * @method isStandalone
+   * @return {Boolean}
+   */
+  ContentType.prototype.isRoot = function () {
+    return isRootLibrary;
+  };
+
+  /**
+   * Returns the file path of a file in the current library
+   * @method getLibraryFilePath
+   * @param  {string} filePath The path to the file relative to the library folder
+   * @return {string} The full path to the file
+   */
+  ContentType.prototype.getLibraryFilePath = function (filePath) {
+    return H5P.getLibraryPath(this.libraryInfo.versionedNameNoSpaces) + '/' + filePath;
+  };
+
+  return ContentType;
+};
+
+var H5P = H5P || {};
+
+/**
+ * The Event class for the EventDispatcher.
+ *
+ * @class
+ * @param {string} type
+ * @param {*} data
+ * @param {Object} [extras]
+ * @param {boolean} [extras.bubbles]
+ * @param {boolean} [extras.external]
+ */
+H5P.Event = function(type, data, extras) {
+  this.type = type;
+  this.data = data;
+  var bubbles = false;
+
+  // Is this an external event?
+  var external = false;
+
+  // Is this event scheduled to be sent externally?
+  var scheduledForExternal = false;
+
+  if (extras === undefined) {
+    extras = {};
+  }
+  if (extras.bubbles === true) {
+    bubbles = true;
+  }
+  if (extras.external === true) {
+    external = true;
+  }
+
+  /**
+   * Prevent this event from bubbling up to parent
+   */
+  this.preventBubbling = function() {
+    bubbles = false;
+  };
+
+  /**
+   * Get bubbling status
+   *
+   * @returns {boolean}
+   *   true if bubbling false otherwise
+   */
+  this.getBubbles = function() {
+    return bubbles;
+  };
+
+  /**
+   * Try to schedule an event for externalDispatcher
+   *
+   * @returns {boolean}
+   *   true if external and not already scheduled, otherwise false
+   */
+  this.scheduleForExternal = function() {
+    if (external && !scheduledForExternal) {
+      scheduledForExternal = true;
+      return true;
+    }
+    return false;
+  };
+};
+
+/**
+ * Callback type for event listeners.
+ *
+ * @callback H5P.EventCallback
+ * @param {H5P.Event} event
+ */
+
+H5P.EventDispatcher = (function () {
+
+  /**
+   * The base of the event system.
+   * Inherit this class if you want your H5P to dispatch events.
+   *
+   * @class
+   * @memberof H5P
+   */
+  function EventDispatcher() {
+    var self = this;
+
+    /**
+     * Keep track of listeners for each event.
+     *
+     * @private
+     * @type {Object}
+     */
+    var triggers = {};
+
+    /**
+     * Add new event listener.
+     *
+     * @throws {TypeError}
+     *   listener must be a function
+     * @param {string} type
+     *   Event type
+     * @param {H5P.EventCallback} listener
+     *   Event listener
+     * @param {Object} thisArg
+     *   Optionally specify the this value when calling listener.
+     */
+    this.on = function (type, listener, thisArg) {
+      if (typeof listener !== 'function') {
+        throw TypeError('listener must be a function');
+      }
+
+      // Trigger event before adding to avoid recursion
+      self.trigger('newListener', {'type': type, 'listener': listener});
+
+      var trigger = {'listener': listener, 'thisArg': thisArg};
+      if (!triggers[type]) {
+        // First
+        triggers[type] = [trigger];
+      }
+      else {
+        // Append
+        triggers[type].push(trigger);
+      }
+    };
+
+    /**
+     * Add new event listener that will be fired only once.
+     *
+     * @throws {TypeError}
+     *   listener must be a function
+     * @param {string} type
+     *   Event type
+     * @param {H5P.EventCallback} listener
+     *   Event listener
+     * @param {Object} thisArg
+     *   Optionally specify the this value when calling listener.
+     */
+    this.once = function (type, listener, thisArg) {
+      if (!(listener instanceof Function)) {
+        throw TypeError('listener must be a function');
+      }
+
+      var once = function (event) {
+        self.off(event, once);
+        listener.apply(this, event);
+      };
+
+      self.on(type, once, thisArg);
+    };
+
+    /**
+     * Remove event listener.
+     * If no listener is specified, all listeners will be removed.
+     *
+     * @throws {TypeError}
+     *   listener must be a function
+     * @param {string} type
+     *   Event type
+     * @param {H5P.EventCallback} listener
+     *   Event listener
+     */
+    this.off = function (type, listener) {
+      if (listener !== undefined && !(listener instanceof Function)) {
+        throw TypeError('listener must be a function');
+      }
+
+      if (triggers[type] === undefined) {
+        return;
+      }
+
+      if (listener === undefined) {
+        // Remove all listeners
+        delete triggers[type];
+        self.trigger('removeListener', type);
+        return;
+      }
+
+      // Find specific listener
+      for (var i = 0; i < triggers[type].length; i++) {
+        if (triggers[type][i].listener === listener) {
+          triggers[type].splice(i, 1);
+          self.trigger('removeListener', type, {'listener': listener});
+          break;
+        }
+      }
+
+      // Clean up empty arrays
+      if (!triggers[type].length) {
+        delete triggers[type];
+      }
+    };
+
+    /**
+     * Try to call all event listeners for the given event type.
+     *
+     * @private
+     * @param {string} Event type
+     */
+    var call = function (type, event) {
+      if (triggers[type] === undefined) {
+        return;
+      }
+
+      // Clone array (prevents triggers from being modified during the event)
+      var handlers = triggers[type].slice();
+
+      // Call all listeners
+      for (var i = 0; i < handlers.length; i++) {
+        var trigger = handlers[i];
+        var thisArg = (trigger.thisArg ? trigger.thisArg : this);
+        trigger.listener.call(thisArg, event);
+      }
+    };
+
+    /**
+     * Dispatch event.
+     *
+     * @param {string|H5P.Event} event
+     *   Event object or event type as string
+     * @param {*} [eventData]
+     *   Custom event data(used when event type as string is used as first
+     *   argument).
+     * @param {Object} [extras]
+     * @param {boolean} [extras.bubbles]
+     * @param {boolean} [extras.external]
+     */
+    this.trigger = function (event, eventData, extras) {
+      if (event === undefined) {
+        return;
+      }
+      if (event instanceof String || typeof event === 'string') {
+        event = new H5P.Event(event, eventData, extras);
+      }
+      else if (eventData !== undefined) {
+        event.data = eventData;
+      }
+
+      // Check to see if this event should go externally after all triggering and bubbling is done
+      var scheduledForExternal = event.scheduleForExternal();
+
+      // Call all listeners
+      call.call(this, event.type, event);
+
+      // Call all * listeners
+      call.call(this, '*', event);
+
+      // Bubble
+      if (event.getBubbles() && self.parent instanceof H5P.EventDispatcher &&
+          (self.parent.trigger instanceof Function || typeof self.parent.trigger === 'function')) {
+        self.parent.trigger(event);
+      }
+
+      if (scheduledForExternal) {
+        H5P.externalDispatcher.trigger.call(this, event);
+      }
+    };
+  }
+
+  return EventDispatcher;
+})();
+
+var H5P = H5P || {};
+
+/**
+ * Used for xAPI events.
+ *
+ * @class
+ * @extends H5P.Event
+ */
+H5P.XAPIEvent = function () {
+  H5P.Event.call(this, 'xAPI', {'statement': {}}, {bubbles: true, external: true});
+};
+
+H5P.XAPIEvent.prototype = Object.create(H5P.Event.prototype);
+H5P.XAPIEvent.prototype.constructor = H5P.XAPIEvent;
+
+/**
+ * Set scored result statements.
+ *
+ * @param {number} score
+ * @param {number} maxScore
+ */
+H5P.XAPIEvent.prototype.setScoredResult = function (score, maxScore, instance) {
+  this.data.statement.result = {
+    'score': {
+      'min': 0,
+      'max': maxScore,
+      'raw': score
+    }
+  };
+  if (maxScore > 0) {
+    this.data.statement.result.score.scaled = Math.round(score / maxScore * 10000) / 10000;
+  }
+  if (instance && instance.activityStartTime) {
+    var duration = Math.round((Date.now() - instance.activityStartTime ) / 10) / 100;
+    // xAPI spec allows a precision of 0.01 seconds
+    
+    this.data.statement.result.duration = 'PT' + duration + 'S';
+  }
+};
+
+/**
+ * Set a verb.
+ *
+ * @param {string} verb
+ *   Verb in short form, one of the verbs defined at
+ *   {@link http://adlnet.gov/expapi/verbs/|ADL xAPI Vocabulary}
+ *
+ */
+H5P.XAPIEvent.prototype.setVerb = function (verb) {
+  if (H5P.jQuery.inArray(verb, H5P.XAPIEvent.allowedXAPIVerbs) !== -1) {
+    this.data.statement.verb = {
+      'id': 'http://adlnet.gov/expapi/verbs/' + verb,
+      'display': {
+        'en-US': verb
+      }
+    };
+  }
+  else if (verb.id !== undefined) {
+    this.data.statement.verb = verb;
+  }
+};
+
+/**
+ * Get the statements verb id.
+ *
+ * @param {boolean} full
+ *   if true the full verb id prefixed by http://adlnet.gov/expapi/verbs/
+ *   will be returned
+ * @returns {string}
+ *   Verb or null if no verb with an id has been defined
+ */
+H5P.XAPIEvent.prototype.getVerb = function (full) {
+  var statement = this.data.statement;
+  if ('verb' in statement) {
+    if (full === true) {
+      return statement.verb;
+    }
+    return statement.verb.id.slice(31);
+  }
+  else {
+    return null;
+  }
+};
+
+/**
+ * Set the object part of the statement.
+ *
+ * The id is found automatically (the url to the content)
+ *
+ * @param {Object} instance
+ *   The H5P instance
+ */
+H5P.XAPIEvent.prototype.setObject = function (instance) {
+  if (instance.contentId) {
+    this.data.statement.object = {
+      'id': this.getContentXAPIId(instance),
+      'objectType': 'Activity',
+      'definition': {
+        'extensions': {
+          'http://h5p.org/x-api/h5p-local-content-id': instance.contentId
+        }
+      }
+    };
+    if (instance.subContentId) {
+      this.data.statement.object.definition.extensions['http://h5p.org/x-api/h5p-subContentId'] = instance.subContentId;
+      // Don't set titles on main content, title should come from publishing platform
+      if (typeof instance.getTitle === 'function') {
+        this.data.statement.object.definition.name = {
+          "en-US": instance.getTitle()
+        };
+      }
+    }
+    else {
+      if (H5PIntegration && H5PIntegration.contents && H5PIntegration.contents['cid-' + instance.contentId].title) {
+        this.data.statement.object.definition.name = {
+          "en-US": H5P.createTitle(H5PIntegration.contents['cid-' + instance.contentId].title)
+        };
+      }
+    }
+  }
+};
+
+/**
+ * Set the context part of the statement.
+ *
+ * @param {Object} instance
+ *   The H5P instance
+ */
+H5P.XAPIEvent.prototype.setContext = function (instance) {
+  if (instance.parent && (instance.parent.contentId || instance.parent.subContentId)) {
+    var parentId = instance.parent.subContentId === undefined ? instance.parent.contentId : instance.parent.subContentId;
+    this.data.statement.context = {
+      "contextActivities": {
+        "parent": [
+          {
+            "id": this.getContentXAPIId(instance.parent),
+            "objectType": "Activity"
+          }
+        ]
+      }
+    };
+  }
+  if (instance.libraryInfo) {
+    if (this.data.statement.context === undefined) {
+      this.data.statement.context = {"contextActivities":{}};
+    }
+    this.data.statement.context.contextActivities.category = [
+      {
+        "id": "http://h5p.org/libraries/" + instance.libraryInfo.versionedNameNoSpaces,
+        "objectType": "Activity"
+      }
+    ];
+  }
+};
+
+/**
+ * Set the actor. Email and name will be added automatically.
+ */
+H5P.XAPIEvent.prototype.setActor = function () {
+  if (H5PIntegration.user !== undefined) {
+    this.data.statement.actor = {
+      'name': H5PIntegration.user.name,
+      'mbox': 'mailto:' + H5PIntegration.user.mail,
+      'objectType': 'Agent'
+    };
+  }
+  else {
+    var uuid;
+    if (localStorage.H5PUserUUID) {
+      uuid = localStorage.H5PUserUUID;
+    }
+    else {
+      uuid = H5P.createUUID();
+      localStorage.H5PUserUUID = uuid;
+    }
+    this.data.statement.actor = {
+      'account': {
+        'name': uuid,
+        'homePage': H5PIntegration.siteUrl
+      },
+      'objectType': 'Agent'
+    };
+  }
+};
+
+/**
+ * Get the max value of the result - score part of the statement
+ *
+ * @returns {number}
+ *   The max score, or null if not defined
+ */
+H5P.XAPIEvent.prototype.getMaxScore = function() {
+  return this.getVerifiedStatementValue(['result', 'score', 'max']);
+};
+
+/**
+ * Get the raw value of the result - score part of the statement
+ *
+ * @returns {number}
+ *   The score, or null if not defined
+ */
+H5P.XAPIEvent.prototype.getScore = function() {
+  return this.getVerifiedStatementValue(['result', 'score', 'raw']);
+};
+
+/**
+ * Get content xAPI ID.
+ *
+ * @param {Object} instance
+ *   The H5P instance
+ */
+H5P.XAPIEvent.prototype.getContentXAPIId = function (instance) {
+  var xAPIId;
+  if (instance.contentId && H5PIntegration && H5PIntegration.contents) {
+    xAPIId =  H5PIntegration.contents['cid-' + instance.contentId].url;
+    if (instance.subContentId) {
+      xAPIId += '?subContentId=' +  instance.subContentId;
+    }
+  }
+  return xAPIId;
+};
+
+/**
+ * Figure out if a property exists in the statement and return it
+ *
+ * @param {string[]} keys
+ *   List describing the property we're looking for. For instance
+ *   ['result', 'score', 'raw'] for result.score.raw
+ * @returns {*}
+ *   The value of the property if it is set, null otherwise.
+ */
+H5P.XAPIEvent.prototype.getVerifiedStatementValue = function(keys) {
+  var val = this.data.statement;
+  for (var i = 0; i < keys.length; i++) {
+    if (val[keys[i]] === undefined) {
+      return null;
+    }
+    val = val[keys[i]];
+  }
+  return val;
+};
+
+/**
+ * List of verbs defined at {@link http://adlnet.gov/expapi/verbs/|ADL xAPI Vocabulary}
+ *
+ * @type Array
+ */
+H5P.XAPIEvent.allowedXAPIVerbs = [
+  'answered',
+  'asked',
+  'attempted',
+  'attended',
+  'commented',
+  'completed',
+  'exited',
+  'experienced',
+  'failed',
+  'imported',
+  'initialized',
+  'interacted',
+  'launched',
+  'mastered',
+  'passed',
+  'preferred',
+  'progressed',
+  'registered',
+  'responded',
+  'resumed',
+  'scored',
+  'shared',
+  'suspended',
+  'terminated',
+  'voided'
+];
+
+var H5P = H5P || {};
+
+/**
+ * The external event dispatcher. Others, outside of H5P may register and
+ * listen for H5P Events here.
+ *
+ * @type {H5P.EventDispatcher}
+ */
+H5P.externalDispatcher = new H5P.EventDispatcher();
+
+// EventDispatcher extensions
+
+/**
+ * Helper function for triggering xAPI added to the EventDispatcher.
+ *
+ * @param {string} verb
+ *   The short id of the verb we want to trigger
+ * @param {Oject} [extra]
+ *   Extra properties for the xAPI statement
+ */
+H5P.EventDispatcher.prototype.triggerXAPI = function (verb, extra) {
+  this.trigger(this.createXAPIEventTemplate(verb, extra));
+};
+
+/**
+ * Helper function to create event templates added to the EventDispatcher.
+ *
+ * Will in the future be used to add representations of the questions to the
+ * statements.
+ *
+ * @param {string} verb
+ *   Verb id in short form
+ * @param {Object} [extra]
+ *   Extra values to be added to the statement
+ * @returns {H5P.XAPIEvent}
+ *   Instance
+ */
+H5P.EventDispatcher.prototype.createXAPIEventTemplate = function (verb, extra) {
+  var event = new H5P.XAPIEvent();
+
+  event.setActor();
+  event.setVerb(verb);
+  if (extra !== undefined) {
+    for (var i in extra) {
+      event.data.statement[i] = extra[i];
+    }
+  }
+  if (!('object' in event.data.statement)) {
+    event.setObject(this);
+  }
+  if (!('context' in event.data.statement)) {
+    event.setContext(this);
+  }
+  return event;
+};
+
+/**
+ * Helper function to create xAPI completed events
+ *
+ * DEPRECATED - USE triggerXAPIScored instead
+ *
+ * @deprecated
+ *   since 1.5, use triggerXAPIScored instead.
+ * @param {number} score
+ *   Will be set as the 'raw' value of the score object
+ * @param {number} maxScore
+ *   will be set as the "max" value of the score object
+ */
+H5P.EventDispatcher.prototype.triggerXAPICompleted = function (score, maxScore) {
+  this.triggerXAPIScored(score, maxScore, 'completed');
+};
+
+/**
+ * Helper function to create scored xAPI events
+ *
+ * @param {number} score
+ *   Will be set as the 'raw' value of the score object
+ * @param {number} maxScore
+ *   Will be set as the "max" value of the score object
+ * @param {string} verb
+ *   Short form of adl verb
+ */
+H5P.EventDispatcher.prototype.triggerXAPIScored = function (score, maxScore, verb) {
+  var event = this.createXAPIEventTemplate(verb);
+  event.setScoredResult(score, maxScore, this);
+  this.trigger(event);
+};
+
+H5P.EventDispatcher.prototype.setActivityStarted = function() {
+  this.activityStartTime = Date.now();
+};
+
+/**
+ * Internal H5P function listening for xAPI completed events and stores scores
+ *
+ * @param {H5P.XAPIEvent} event
+ */
+H5P.xAPICompletedListener = function (event) {
+  if (event.getVerb() === 'completed' && !event.getVerifiedStatementValue(['context', 'contextActivities', 'parent'])) {
+    var score = event.getScore();
+    var maxScore = event.getMaxScore();
+    var contentId = event.getVerifiedStatementValue(['object', 'definition', 'extensions', 'http://h5p.org/x-api/h5p-local-content-id']);
+    H5P.setFinished(contentId, score, maxScore);
+  }
+};
+
 /*jshint multistr: true */
 // TODO: Should we split up the generic parts needed by the editor(and others), and the parts needed to "run" H5Ps?
 
@@ -11651,10 +12328,10 @@ H5P.getPath = function (path, contentId) {
     return;
   }
 
-  if (!hasProtocol(prefix)) {
-    // Use absolute urls
-    prefix = window.location.protocol + "//" + window.location.host + prefix;
-  }
+  // if (!hasProtocol(prefix)) {
+  //   // Use absolute urls
+  //   prefix = window.location.protocol + "//" + window.location.host + prefix;
+  // }
 
   return prefix + '/' + path;
 };

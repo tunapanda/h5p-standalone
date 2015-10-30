@@ -1,0 +1,21 @@
+{
+  "title": "Drag'N Resize",
+  "contentType": "API",
+  "description": "A library that aims to make resize operations easier for other libraries.",
+  "majorVersion": 1,
+  "minorVersion": 1,
+  "patchVersion": 0,
+  "runnable": 0,
+  "machineName": "H5P.DragNResize",
+  "author": "Frode Petterson",
+  "preloadedJs": [
+    {
+      "path": "H5P.DragNResize.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "H5P.DragNResize.css"
+    }
+  ]
+}

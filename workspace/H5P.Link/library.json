@@ -1,0 +1,22 @@
+{
+  "title": "Link",
+  "description": "A library for display a single link.",
+  "majorVersion": 1,
+  "minorVersion": 1,
+  "patchVersion": 0,
+  "runnable": 0,
+  "machineName": "H5P.Link",
+  "author": "Amendor AS",
+  "preloadedJs": [
+    {
+      "path": "link.js"
+    }
+  ],
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.UrlField",
+      "majorVersion": 1,
+      "minorVersion": 0
+    }
+  ]
+}

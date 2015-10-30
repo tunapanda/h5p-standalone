@@ -1,0 +1,93 @@
+{
+  "semantics": [
+    {
+      "label": "Immagine domanda",
+      "description": "Immagine opzionale da visualizzare sopra la domanda."
+    },
+    {
+      "label": "Domanda"
+    },
+    {
+      "label": "Opzioni disponibili",
+      "description": "Le alternative tra cui l'utente pu� scegliere.",
+      "entity": "opzione",
+      "field": {
+        "label": "Opzione",
+        "fields": [
+          {
+            "label": "Testo"
+          },
+          {
+            "label": "Corretto"
+          },
+          {
+            "label": "Suggerimento",
+            "fields": [
+              {
+                "label": "Testo del suggerimento"
+              },
+              {
+                "label": "Feedback scelto",
+                "description": "Viene visualizzato quando l'utente verifica la sua risposta."
+              },
+              {
+                "label": "Feedback non scelto",
+                "description": "Viene visualizzato quando la soluzione viene mostrata."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Traduzioni dell'interfaccia utente per scelta multipla",
+      "fields": [
+        {
+          "label": "Etichetta pulsante Verifica risposta"
+        },
+        {
+          "label": "Etichetta pulsante Mostra soluzione"
+        },
+        {
+          "label": "Etichetta pulsante Riprova"
+        },
+        {
+          "label": "Feedback risposta corretta"
+        },
+        {
+          "label": "Feedback risposta quasi corretta"
+        },
+        {
+          "label": "Feedback risposta non corretta"
+        }
+      ]
+    },
+    {
+      "label": "Impostazioni esecuzione",
+      "description": "Queste opzioni consentono di controllare l'andamento del compito.",
+      "fields": [
+        {
+          "label": "Abilita pulsante \"Riprova\""
+        },
+        {
+          "label": "Abilita pulsante \"Mostra soluzione\""
+        },
+        {
+          "label": "Risposta singola",
+          "description": "Abilitare per consentire solo risposte singole."
+        },
+        {
+          "label": "Assegna un punto per il completamento del compito",
+          "description": "Abilitare per assegnare un totale di un punto per risposte multiple corrette. Non � opzionabile in modalit� \"Risposta singola\"."
+        },
+        {
+          "label": "Risposte in ordine casuale",
+          "description": "Abilita per rendere casuale l'ordine delle domande visualizzate."
+        },
+        {
+          "label": "Richiedere l'immissione dei dati all'utente prima che la soluzione sia visualizzata"
+        }
+      ]
+    }
+  ]
+}

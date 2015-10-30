@@ -1,0 +1,170 @@
+.h5p-dragnbar-context-menu {
+  display: block;
+  background-color: #c4e3f7;
+  height: 36px;
+  margin-top: -51px;
+  position: absolute;
+  border: 1px solid #0099ff;
+  line-height: 36px;
+  -webkit-filter: drop-shadow(0px 0 3px rgba(70,70,70,1));
+  filter        : drop-shadow(0px 0 3px rgba(70,70,70,1));
+  -ms-filter    : "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=2, Color='#444')";
+  filter        : "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=2, Color='#444')";
+  z-index: 100;
+  font-size: 16px;
+}
+
+.h5p-dragnbar-context-menu.left-aligned:after {
+  position: absolute;
+  display: block;
+  content: "";
+  border-style: solid;
+  border-width: 8px 7px 0 0;
+  border-color: #fff transparent transparent transparent;
+  bottom: -7px;
+  right: 0;
+  left: initial;
+  z-index: 1;
+  transform: scaleX(-1);
+}
+
+.h5p-dragnbar-context-menu.left-aligned:before {
+  position: absolute;
+  display: block;
+  content: "";
+  border-style: solid;
+  border-width: 10px 10px 0 0;
+  border-color: #0099ff transparent transparent transparent;
+  bottom: -10px;
+  left: initial;
+  right: -1px;
+  transform: scaleX(-1);
+}
+
+.h5p-dragnbar-context-menu.left-aligned .h5p-context-menu-buttons {
+  float: left;
+}
+
+.h5p-dragnbar-context-menu:before {
+  position: absolute;
+  display: block;
+  content: "";
+  border-style: solid;
+  border-width: 9px 9px 0 0;
+  border-color: #0099ff transparent transparent transparent;
+  bottom: -9px;
+  left: -1px;
+}
+
+.h5p-dragnbar-context-menu:after {
+  position: absolute;
+  display: block;
+  content: "";
+  border-style: solid;
+  border-width: 8px 7px 0 0;
+  border-color: #fff transparent transparent transparent;
+  bottom: -7px;
+  left: 0;
+  z-index: 1;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button,
+.h5p-dragnbar-context-menu .h5p-context-menu-buttons,
+.h5p-dragnbar-context-menu .h5p-dragnbar-coordinates {
+  display: inline-block;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-coordinates {
+  padding: 0 0.75em;
+  background-color: #fff;
+  color: #0061a2;
+  border-right: 1px solid #0099ff;
+  line-height: 35px;
+}
+
+.h5p-dragnbar-context-menu.left-aligned .h5p-dragnbar-coordinates {
+  border-right: none;
+  border-left: 1px solid #0099ff;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button {
+  width: 37px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-coordinates .h5p-dragnbar-x-container,
+.h5p-dragnbar-context-menu .h5p-dragnbar-coordinates .h5p-dragnbar-y-container {
+  display: inline-block;
+  position: relative;
+}
+
+/* Button stylings */
+.h5p-dragnbar-context-menu .h5p-dragnbar-coordinates .h5p-dragnbar-x-container:hover:before,
+.h5p-dragnbar-context-menu .h5p-dragnbar-coordinates .h5p-dragnbar-y-container:hover:before,
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button:hover:before {
+  background-color: #000;
+  color: #fff;
+  opacity: 0.75;
+  content: attr(aria-label);
+  position: absolute;
+  bottom: 42px;
+  padding: 0 0.5em;
+  transform: translateX(-50%);
+  left: 50%;
+  font-size: 14px;
+  line-height: 2;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button:after {
+  font-family: "H5PFontAwesome4";
+  content: '\f059';
+  color: #0061a2;
+  padding: 3px 5px;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button:hover:after {
+  border: 1px solid #61bfff;
+  border-radius: 2px;
+  color: #003c65;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button.edit:after {
+  content: '\f040';
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button.remove:after {
+  content: '\f1f8';
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button.bringToFront:after {
+
+}
+
+.ui-widget .h5p-dragnbar-coordinates input,
+.h5p-dragnbar-coordinates input {
+  font-family: Arial, "Liberation Sans", sans-serif;
+  font-size: 13px;
+  background: none repeat scroll 0 0 transparent;
+  border: medium none;
+  width: 2em;
+  text-align: left;
+  color: #0061a2;
+  cursor: pointer;
+}
+
+.h5p-dragnbar-coordinates input.h5p-dragnbar-x {
+  text-align: right;
+}
+
+.h5p-dragnbar-coordinates .h5p-dragnbar-coordinates-separater {
+  margin: 0 0.2em;
+  cursor: default;
+}
+
+.h5p-dragnbar-coordinates input:focus {
+  outline: none;
+}

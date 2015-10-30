@@ -1,0 +1,47 @@
+{
+  "title": "Drag Text",
+  "description": "Drag and drop pieces of text to create complete sentences.",
+  "majorVersion": 1,
+  "minorVersion": 4,
+  "patchVersion": 0,
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 6
+  },
+  "runnable": 1,
+  "author": "Joubel AS",
+  "license": "MIT",
+  "machineName": "H5P.DragText",
+  "preloadedCss": [
+    {
+      "path": "drag-text.css"
+    }
+  ],
+  "preloadedJs": [
+    {
+      "path": "drag-text.js"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 3
+    },
+    {
+      "machineName": "jQuery.ui",
+      "majorVersion": 1,
+      "minorVersion": 10
+    },
+    {
+      "machineName": "H5P.JoubelUI",
+      "majorVersion": 1,
+      "minorVersion": 2
+    },
+    {
+      "machineName": "H5P.Question",
+      "majorVersion": 1,
+      "minorVersion": 1
+    }
+  ]
+}

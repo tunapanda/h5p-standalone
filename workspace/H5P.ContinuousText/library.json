@@ -1,0 +1,16 @@
+{
+  "title": "Continuous Text",
+  "contentType": "Static content",
+  "description": "A library that handles splitting up a large text into several div-containers in a Course Presentation.",
+  "majorVersion": 1,
+  "minorVersion": 2,
+  "patchVersion": 0,
+  "runnable": 0,
+  "machineName": "H5P.ContinuousText",
+  "author": "Amendor AS",
+  "preloadedJs": [
+    {
+      "path": "scripts/ct.js"
+    }
+  ]
+}

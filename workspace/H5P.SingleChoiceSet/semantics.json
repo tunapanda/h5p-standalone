@@ -1,0 +1,108 @@
+[
+  {
+    "name": "choices",
+    "type": "list",
+    "label": "List of questions",
+    "entity": "question",
+    "min": 1,
+    "defaultNum": 2,
+    "field": {
+      "name": "choice",
+      "type": "group",
+      "label": "Question & alternatives",
+      "fields": [
+        {
+          "name": "question",
+          "type": "text",
+          "label": "Question"
+        },
+        {
+          "name": "answers",
+          "type": "list",
+          "label": "Alternatives - first alternative is the correct one",
+          "entity": "answer",
+          "min": 2,
+          "max": 4,
+          "defaultNum": 2,
+          "field": {
+            "name": "answer",
+            "type": "text",
+            "label": "Alternative"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "behaviour",
+    "type": "group",
+    "label": "Behavioural settings",
+    "fields": [
+      {
+        "name": "timeoutCorrect",
+        "type": "number",
+        "label": "Timeout on correct answers",
+        "description": "Value in milliseconds",
+        "default": 2000
+      },
+      {
+        "name": "timeoutWrong",
+        "type": "number",
+        "label": "Timeout on wrong answers",
+        "description": "Value in milliseconds",
+        "default": 3000
+      },
+      {
+        "name": "soundEffectsEnabled",
+        "type": "boolean",
+        "label": "Enable sound effects",
+        "default": true
+      },
+      {
+        "name": "enableRetry",
+        "type": "boolean",
+        "label": "Enable retry button",
+        "default": true
+      },
+      {
+        "name": "enableSolutionsButton",
+        "type": "boolean",
+        "label": "Enable show solution button",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "l10n",
+    "type": "group",
+    "label": "Localize single choice set",
+    "common": true,
+    "fields": [
+      {
+        "name": "resultSlideTitle",
+        "type": "text",
+        "label": "Title for result slide",
+        "default": "You got :numcorrect of :maxscore correct",
+        "description": ":numcorrect is replaced by the number of correct answers and :maxscore is replaced by number of questions"
+      },
+      {
+        "name": "showSolutionButtonLabel",
+        "type": "text",
+        "label": "Label for the \"Show solution\" button",
+        "default": "Show solution"
+      },
+      {
+        "name": "retryButtonLabel",
+        "type": "text",
+        "label": "Label for the \"Retry\" button",
+        "default": "Retry"
+      },
+      {
+        "name": "solutionViewTitle",
+        "type": "text",
+        "label": "Title for the show solution view",
+        "default": "Solution"
+      }
+    ]
+  }
+]

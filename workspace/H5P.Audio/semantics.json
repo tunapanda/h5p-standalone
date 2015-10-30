@@ -1,0 +1,141 @@
+[
+  {
+    "name": "files",
+    "type": "audio",
+    "label": "Source files"
+  },
+  {
+    "name": "playerMode",
+    "type": "select",
+    "label": "Player mode",
+    "description": "Select the layout of the player.",
+    "options": [
+      {
+        "value": "minimalistic",
+        "label": "Minimalistic"
+      },
+      {
+        "value": "full",
+        "label": "Full"
+      }
+    ],
+    "default": "minimalistic"
+  },
+  {
+    "name": "fitToWrapper",
+    "type": "boolean",
+    "label": "Fit to wrapper",
+    "default": false,
+    "descriptions": "Adjust audioplayer size to use available space"
+  },
+  {
+    "name": "controls",
+    "type": "boolean",
+    "label": "Enable controls",
+    "default": true,
+    "description": "Controls allow the user to for instance pause the audio"
+  },
+  {
+    "name": "autoplay",
+    "type": "boolean",
+    "label": "Enable autoplay",
+    "description": "With autoplay the audio starts to play immediately. If autoplay is disabled the user presses a play button to start the audio."
+  },
+  {
+    "name": "copyright",
+    "type": "group",
+    "label": "Copyright information",
+    "deprecated": true,
+    "optional": true,
+    "fields": [
+      {
+        "name": "title",
+        "type": "text",
+        "label": "Title",
+        "placeholder": "Für Elise",
+        "optional": true
+      },
+      {
+        "name": "author",
+        "type": "text",
+        "label": "Author",
+        "placeholder": "Ludwig van Beethoven",
+        "optional": true
+      },
+      {
+        "name": "source",
+        "type": "text",
+        "label": "Source",
+        "placeholder": "http://en.wikipedia.org/wiki/F%C3%BCr_Elise",
+        "optional": true,
+        "regexp": {
+          "pattern": "^http[s]?://.+",
+          "modifiers": "i"
+        }
+      },
+      {
+        "name": "license",
+        "type": "select",
+        "label": "License",
+        "default": "U",
+        "options": [
+          {
+            "value": "U",
+            "label": "Undisclosed"
+          },
+          {
+            "value": "CC BY",
+            "label": "Attribution"
+          },
+          {
+            "value": "CC BY-SA",
+            "label": "Attribution-ShareAlike"
+          },
+          {
+            "value": "CC BY-ND",
+            "label": "Attribution-NoDerivs"
+          },
+          {
+            "value": "CC BY-NC",
+            "label": "Attribution-NonCommercial"
+          },
+          {
+            "value": "CC BY-NC-SA",
+            "label": "Attribution-NonCommercial-ShareAlike"
+          },
+          {
+            "value": "CC BY-NC-ND",
+            "label": "Attribution-NonCommercial-NoDerivs"
+          },
+          {
+            "value": "GNU GPL",
+            "label": "General Public License"
+          },
+          {
+            "value": "PD",
+            "label": "Public Domain"
+          },
+          {
+            "value": "ODC PDDL",
+            "label": "Public Domain Dedication and Licence"
+          },
+          {
+            "value": "CC PDM",
+            "label": "Public Domain Mark"
+          },
+          {
+            "value": "C",
+            "label": "Copyright"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "contentName",
+    "type": "text",
+    "label": "Audio content name",
+    "common": true,
+    "default": "Audio"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "label": "Room name",
+    "name": "appearRoom",
+    "type": "text",
+    "default": "h5p",
+    "description": "Name of the appear.in room"
+  },
+  {
+    "label": "Fit to container",
+    "name": "fitToContainer",
+    "type": "boolean",
+    "default": true,
+    "description": "Make the room fit its container, will override any height and width defined with 100% values."
+  },
+  {
+    "label": "Height",
+    "name": "appearHeight",
+    "type": "number",
+    "default": "400",
+    "description": "Set Height of chat/talk room"
+  },
+  {
+    "label": "Width",
+    "name": "appearWidth",
+    "type": "number",
+    "default": "550",
+    "description": "Set Width of chat/talk room"
+  }
+]

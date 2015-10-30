@@ -1,0 +1,21 @@
+{
+  "title": "Text",
+  "contentType": "Static content",
+  "description": "Simple library that displays text.",
+  "majorVersion": 1,
+  "minorVersion": 1,
+  "patchVersion": 0,
+  "runnable": 0,
+  "machineName": "H5P.Text",
+  "author": "Amendor AS",
+  "preloadedJs": [
+    {
+      "path": "scripts/text.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "styles/text.css"
+    }
+  ]
+}

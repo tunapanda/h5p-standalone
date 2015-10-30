@@ -1,0 +1,93 @@
+{
+  "semantics": [
+    {
+      "label": "Image de la question",
+      "description": "Une image optionnelle peut être ajoutée."
+    },
+    {
+      "label": "Question"
+    },
+    {
+      "label": "Options disponibles",
+      "description": "L'utilisateur peut choisir ces options alternatives.",
+      "entity": "option",
+      "field": {
+        "label": "Option",
+        "fields": [
+          {
+            "label": "Texte"
+          },
+          {
+            "label": "Correct"
+          },
+          {
+            "label": "Aide",
+            "fields": [
+              {
+                "label": "Texte de l'aide"
+              },
+              {
+                "label": "Feedback",
+                "description": "Texte de feedback choisi."
+              },
+              {
+                "label": "Feedback pour la solution",
+                "description": "Affiché quand la solution est montrée."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Traduction de l'interface utilisateur pour les questions à choix multiples",
+      "fields": [
+        {
+          "label": "Texte du bouton vérifier"
+        },
+        {
+          "label": "Texte du bouton montrer la solution"
+        },
+        {
+          "label": "Texte du bouton Réessayer"
+        },
+        {
+          "label": "Feedback pour une réponse correcte"
+        },
+        {
+          "label": "Feedback pour une réponse presque correcte"
+        },
+        {
+          "label": "Feedback pour une mauvaise réponse"
+         }
+      ]
+    },
+    {
+      "label": "Options générales.",
+      "description": "Ces options vous permettent de contrôler le déroulement de vos activités.",
+      "fields": [
+        {
+          "label": "Activer le bouton \"Réessayer\""
+        },
+        {
+          "label": "Activer le bouton \"Solution\""
+        },
+        {
+          "label": "Question à choix unique",
+          "description": "Une seule réponse est possible."
+        },
+        {
+          "label": "Donner un point pour chaque activité",
+          "description": "Un point par réponse correcte dans les QCM. Ce ne sera pas une option dans les \"Questions à choix unique\"."
+        },
+        {
+          "label": "Questions aléatoires",
+          "description": "Les questions seront affichées dans l'ordre aléatoire."
+        },
+        {
+          "label": "Une réponse est obligatoire pour montrer la solution"
+        }
+      ]
+    }
+  ]
+}

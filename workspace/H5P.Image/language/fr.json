@@ -1,0 +1,73 @@
+{
+  "semantics": [
+    {
+      "label": "Image"
+    },
+    {
+      "label": "Texte alternatif",
+      "description": "Obligatoire. Ce texte sera affiché si l'image n'apparaît pas dans le navigateur."
+    },
+    {
+      "label": "Texte de survol",
+      "description": "Optionnel. Ce texte est affiché quand la souris survole une image."
+    },
+    {
+      "label": "Informations sur le Copyright",
+      "fields": [
+        {
+          "label": "Titre"
+        },
+        {
+          "label": "Auteur"
+        },
+        {
+          "label": "Source"
+        },
+        {
+          "label": "Licence",
+          "options": [
+            {
+              "label": "Non précisé"
+            },
+            {
+              "label": "Attribution"
+            },
+            {
+              "label": "Attribution-Partage à l'identique"
+            },
+            {
+              "label": "Attribution-Pas de modifications"
+            },
+            {
+              "label": "Attribution-Pas d'utilisation commerciale"
+            },
+            {
+              "label": "Attribution-Pas d'utilisation commerciale-Partage à l'identique"
+            },
+            {
+              "label": "Attribution-Pas d'utilisation commerciale-Pas de modifications"
+            },
+            {
+              "label": "GPL"
+            },
+            {
+              "label": "Domaine public"
+            },
+            {
+              "label": "Domaine public"
+            },
+            {
+              "label": "Domaine public"
+            },
+            {
+              "label": "Copyright"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Légende"
+    }
+  ]
+}

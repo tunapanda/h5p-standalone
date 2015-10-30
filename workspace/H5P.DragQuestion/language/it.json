@@ -1,0 +1,127 @@
+{
+  "semantics": [
+    {
+      "label": "Pulsante Controlla risposta"
+    },
+    {
+      "label": "Pulsante Riprova"
+    },
+    {
+      "label": "Testo dell'etichetta Soluzione corretta"
+    },
+    {
+      "label": "Testo del Feedback",
+      "description": "Testo del Feedback (Riscontro), variabili consentite: @score e @total. Esempio: 'Hai ottenuto il punteggio @score su @total punti possibili.'"
+    },
+    {
+      "fields": [
+        {
+          "label": "Impostazioni",
+          "fields": [
+            {
+              "label": "Immagine di sfondo",
+              "description": "Opzionale. Selezionare un'immagine da utilizzare come sfondo per il vostro compito drag and drop."
+            },
+            {
+              "label": "Dimensione attivit�",
+              "description": "Specifare quanto larga (in px) l'area di gioco dovrebbe essere.",
+              "default": {},
+              "fields": [
+                {},
+                {}
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Attivit�",
+          "description": "Iniziate mettendo le zone di trascinamento.<br/>Successivamente, posizionate gli elementi trascinabili e mettete la spunta sulle relative aree di rilascio.<br/>Infine, modificate nuovamente la zona di rilascio e mettete la spunta sulle risposte corrette.",
+          "fields": [
+            {
+              "label": "Elementi",
+              "entity": "elemento",
+              "field": {
+                "label": "Elemento",
+                "fields": [
+                  {
+                    "description": "Scegliere il tipo di contenuto che si desidera aggiungere."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Selezionare zona di rilascio"
+                  },
+                  {
+                    "label": "Opacit� Sfondo"
+                  },
+                  {
+                    "label": "Numero infinito di istanze di elementi",
+                    "description": "Clonare questo elemento in modo che possa essere trascinato su pi� zone di trascinamento."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Zone di rilascio",
+              "entity": "Zona di rilascio",
+              "field": {
+                "label": "Zona di rilascio",
+                "fields": [
+                  {
+                    "label": "Etichetta"
+                  },
+                  {
+                    "label": "Mostra etichetta"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Selezionare gli elementi corretti"
+                  },
+                  {
+                    "label": "Opacit� Sfondo"
+                  },
+                  {
+                    "label": "Suggerimento",
+                    "fields": [
+                      {
+                        "label": "Testo di suggerimento"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Questa zona di rilascio pu� contenere un solo elemento. Assicurarsi che ci sia una sola risposta corretta per questa zona di rilascio."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Opacit� Sfondo per elementi trascinabili",
+      "description": "Se questo campo � impostato sovrasciver� l'opacit� impostata su tutti gli elementi trascinabili. Questo dovrebbe essere un numero compreso tra 0 e 100, dove 0 indica la piena trasparenza e 100 equivale a nessuna trasparenza."
+    },
+    {
+      "label": "Impostazioni esecuzione",
+      "description": "Queste opzioni consentono di controllare l'andamento del compito.",
+      "fields": [
+        {
+          "label": "Abilita \"Riprova\""
+        },
+        {
+          "label": "Assegna un punto per il completamento del compito",
+          "description": "Disabilitare per assegnare un punto per ogni elemento trascinabile che viene inserito correttamente."
+        },
+        {
+          "label": "Richiedere l'immissione dei dati all'utente prima che la soluzione sia visualizzata"
+        }
+      ]
+    }
+  ]
+}

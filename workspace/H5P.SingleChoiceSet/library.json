@@ -1,0 +1,81 @@
+{
+  "machineName": "H5P.SingleChoiceSet",
+  "title": "Single Choice Set",
+  "description": "Create sets of single choice tasks",
+  "license": "MIT",
+  "author": "Joubel AS (fnoks)",
+  "majorVersion": 1,
+  "minorVersion": 3,
+  "patchVersion": 1,
+  "runnable": 1,
+  "fullscreen": 0,
+  "embedTypes": [
+    "div"
+  ],
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 6
+  },
+  "preloadedCss": [
+    {
+      "path": "styles/single-choice-set.css"
+    }
+  ],
+  "preloadedJs": [
+    {
+      "path": "scripts/sound-effects.js"
+    },
+    {
+      "path": "scripts/event-emitter.js"
+    },
+    {
+      "path": "scripts/result-slide.js"
+    },
+    {
+      "path": "scripts/solution-view.js"
+    },
+    {
+      "path": "scripts/single-choice-alternative.js"
+    },
+    {
+      "path": "scripts/single-choice.js"
+    },
+    {
+      "path": "scripts/single-choice-set.js"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 3
+    },
+    {
+      "machineName": "H5P.JoubelUI",
+      "majorVersion": 1,
+      "minorVersion": 2
+    },
+    {
+      "machineName": "H5P.Transition",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "H5P.SoundJS",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "H5P.Question",
+      "majorVersion": 1,
+      "minorVersion": 1
+    }
+  ],
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.VerticalTabs",
+      "majorVersion": 1,
+      "minorVersion": 1
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "semantics": [
+    {
+      "label": "Vis svar knappen",
+      "default": "Vis svar"
+    },
+    {
+      "label": "«Prøv igjen»-knapp",
+      "default": "Prøv igjen"
+    },
+    {
+      "label": "Ledetekst for riktig svar i fasiten",
+      "default": "Korrekt"
+    },
+    {
+      "label": "Tilbakemeldingar",
+      "default": "Du plasserte @score av totalt @total rett.",
+      "description": "Tekstleg tilbakemelding, tilgjengelege variablar: @score og @total. Eksempel: 'Du fikk @score av @total poeng.'"
+    },
+    {
+      "fields": [
+        {
+          "label": "Innstillinger",
+          "fields": [
+            {
+              "label": "Spørsmålets tittel",
+              "default": "Dra og slipp",
+              "description": "Brukes i oppsummeringer, statistikk o.l."
+            },
+            {
+              "label": "Bakgrunnsbilde",
+              "description": "Valgfritt. Velg et bakgrunnsbilde for oppgaven."
+            },
+            {
+              "label": "Oppgavens størrelse",
+              "description": "Spesifiser størrelse i piksler som oppgaven vanligvis vil vises i."
+            }
+          ]
+        },
+        {
+          "label": "Oppgave",
+          "description": "Begynn med å plassere målområder.<br/>Plasser så flyttbare elementer, og merk av hvilke målområder de skal kunne dras til.<br/>Til slutt redigeres målområdene igjen for å angi fasit.",
+          "fields": [
+            {
+              "label": "Elementer",
+              "entity": "element",
+              "field": {
+                "label": "Element",
+                "fields": [
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Velg målområder"
+                  },
+                  {
+                    "label": "Opasitet for bakgrunn"
+                  },
+                  {
+                    "label": "Uendelig antall instanser av elementet",
+                    "description": "Klon dette elementet slik at det kan dras til flere målområder."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Målområder",
+              "entity": "målområde",
+              "field": {
+                "label": "Målområde",
+                "fields": [
+                  {
+                    "label": "Tittel"
+                  },
+                  {
+                    "label": "Vis tittel"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Velg riktige elementer"
+                  },
+                  {
+                    "label": "Opasitet for bakgrunn"
+                  },
+                  {
+                    "label": "Tips",
+                    "fields": [
+                      {
+                        "label": "Tipstekst"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Dette målområdet kan bare innehalde eit element. Pass på at det bare finnes eit riktig svar for dette målområdet."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Bakgrunnsopasitet på flyttbare elementer",
+      "description": "Hvis denne verdien er satt, vil den overstyre instillingene til alle flyttbare elementer. Feltet skal inneholde verdier fra 0 til 100, hvor 0 betyr full gjennsomsiktighet og 100 betyr ingen gjennomsiktighet"
+    },
+    {
+      "label": "Innstillinger for oppgave-oppførsel",
+      "description": "Disse instillingene lar deg bestemme hvordan oppgavetypen skal oppføre seg.",
+      "fields": [
+        {
+          "label": "Aktiver \"Prøv igjen\"-knapp"
+        },
+        {
+          "label": "Gje eitt poeng for heile oppgåva",
+          "description": "Slå av for å gje eitt poeng for kvart draobjekt som er plassert korrekt."
+        },
+        {
+          "label": "Krev inndata fra brukeren før fasit gis."
+        }
+      ]
+    }
+  ]
+}

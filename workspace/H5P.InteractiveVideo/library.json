@@ -1,0 +1,67 @@
+{
+  "title": "Interactive Video",
+  "description": "Put texts, tasks and other medias on top of your video.",
+  "license": "MIT",
+  "contentType": "Media",
+  "majorVersion": 1,
+  "minorVersion": 7,
+  "patchVersion": 1,
+  "machineName": "H5P.InteractiveVideo",
+  "author": "Joubel AS",
+  "embedTypes": [
+    "iframe"
+  ],
+  "runnable": 1,
+  "fullscreen": 1,
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 6
+  },
+  "preloadedJs": [
+    {
+      "path": "scripts/interaction.js"
+    },
+    {
+      "path": "scripts/interactive-video.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "styles/interactive-video.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 3
+    },
+    {
+      "machineName": "jQuery.ui",
+      "majorVersion": 1,
+      "minorVersion": 10
+    },
+    {
+      "machineName": "H5P.Video",
+      "majorVersion": 1,
+      "minorVersion": 1
+    },
+    {
+      "machineName": "H5P.DragNBar",
+      "majorVersion": 1,
+      "minorVersion": 1
+    }
+  ],
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.Wizard",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "H5PEditor.InteractiveVideo",
+      "majorVersion": 1,
+      "minorVersion": 7
+    }
+  ]
+}

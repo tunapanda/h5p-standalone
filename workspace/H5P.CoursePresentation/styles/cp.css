@@ -1,0 +1,746 @@
+/* DroidSans font by Steve Matteson licensed under Apache License, version 2.0 - See DroidSans/LICENSE.txt */
+@font-face {
+  font-family: 'H5PDroidSans';
+  src: url('../fonts/DroidSans.ttf') format('truetype');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'H5PDroidSans';
+  src: url('../fonts/DroidSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+/* IcoMoon font licensed under the GNU General Public License: http://www.gnu.org/licenses/gpl.html */
+@font-face {
+  font-family: 'H5PCoursePresentation';
+  src:url('../fonts/H5P.eot');
+  src:url('../fonts/H5P.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/H5P.woff') format('woff'),
+    url('../fonts/H5P.ttf') format('truetype'),
+    url('../fonts/H5P.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.h5p-container.h5p-course-presentation {
+  margin-bottom: 0em;
+}
+
+.h5p-course-presentation h1,
+.h5p-course-presentation h2,
+.h5p-course-presentation h3,
+.h5p-course-presentation h4,
+.h5p-course-presentation h5,
+.h5p-course-presentation h6,
+.h5p-course-presentation p {
+  line-height: 150%;
+  padding: 0.5em;
+}
+
+.h5p-course-presentation {
+  font-family: H5PDroidSans, sans-serif;
+  color: #323232;
+  line-height: 1.25;
+}
+
+.h5p-course-presentation h2 {
+  font-size: 1.667em;
+  font-weight: bold;
+  line-height: 1.5em;
+  padding: 0;
+  margin: 0 0 0.5em;
+}
+.h5p-course-presentation h3 {
+  font-size: 1.333em;
+  font-weight: bold;
+  line-height: 1.5em;
+  padding: 0;
+  margin: 0 0 0.5em;
+}
+.h5p-course-presentation p {
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1.25em;
+  padding: 0;
+  margin: 0 0 1em;
+}
+.h5p-course-presentation p:last-child {
+  margin-bottom: 0;
+}
+
+.h5p-course-presentation a:focus {
+  box-shadow: none;
+}
+.h5p-course-presentation .h5p-wrapper {
+  margin: 0 auto;
+  position: relative;
+  width: 640px;
+  height: 440px;
+  text-align: center;
+  font-size: 16px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.h5p-course-presentation .h5p-wrapper:focus {
+  outline: none;
+}
+.h5p-course-presentation .h5p-box-wrapper {
+  width: 100%;
+  height: 90%;
+  overflow: hidden;
+  background: #666666;
+  box-shadow: 0 0 0.5em 0 rgba(105, 105, 105, 0.4);
+}
+.h5p-course-presentation.h5p-fullscreen .h5p-box-wrapper {
+  margin: 0.1em 0;
+}
+
+/* Disable fullscreen buttons inside Course Presentation when it is in full screen */
+.h5p-course-presentation.h5p-fullscreen video .controlBar > .fullscreenButton,
+.h5p-course-presentation.h5p-fullscreen video::-webkit-media-controls-fullscreen-button {
+  display: none;
+}
+
+.h5p-course-presentation .h5p-presentation-wrapper {
+  z-index: 1;
+  text-align: left;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #e8e6e7;
+  background-image: -webkit-linear-gradient(top, #f0f0f0, #e8e6e7);
+  background-image: -moz-linear-gradient(top, #f0f0f0, #e8e6e7);
+  background-image: linear-gradient(to bottom, #f0f0f0, #e8e6e7);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#e8e6e7', GradientType=0);
+}
+
+.h5p-course-presentation .h5p-keywords-wrapper {
+  font-weight: bold;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  right: 84.375%;
+  width: 31.25%;
+  height: 100%;
+  background: #fbfbfb;
+  background: rgba(251,251,251,0.9);
+  box-shadow: 0 0 0.15em 0 #d1d1d1;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0s linear 0.1s, opacity 0.1s linear, right 0.1s linear;
+  -moz-transition: visibility 0s linear 0.1s, opacity 0.1s linear, right 0.1s linear;
+  transition: visibility 0s linear 0.1s, opacity 0.1s linear, right 0.1s linear;
+}
+.h5p-course-presentation .h5p-keywords-wrapper.h5p-open {
+  opacity: 1;
+  right: 68.75%;
+  visibility: visible;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.h5p-course-presentation .h5p-keywords-ol {
+  margin: 0;
+  padding: 0;
+}
+.h5p-course-presentation .h5p-keywords-li {
+  margin: 0.1667em 0 0.1667em 0;
+  padding: 0 0 0.3em 0;
+  line-height: 125%;
+  list-style: none;
+}
+.h5p-course-presentation .h5p-sub-keyword {
+  margin-left: 1.25em;
+  margin-top: 0.5em;
+  line-height: 105%;
+  padding: 0;
+  font-size: 0.875em;
+}
+.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol {
+  width: 97%;
+  height: 96%;
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0.5em 0;
+}
+.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol::-webkit-scrollbar,
+.h5p-course-presentation .h5p-element .h5p-element-outer::-webkit-scrollbar,
+.h5p-course-presentation .h5p-element .h5p-element-outer .h5p-element-inner::-webkit-scrollbar {
+  width: 0.4em;
+}
+.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol::-webkit-scrollbar-thumb,
+.h5p-course-presentation .h5p-element .h5p-element-outer::-webkit-scrollbar-thumb,
+.h5p-course-presentation .h5p-element .h5p-element-outer .h5p-element-inner::-webkit-scrollbar-thumb {
+  border-radius: 0.2em;
+  background: rgb(0, 151, 253);
+  box-shadow: inset 0 0 0.3em rgba(0,0,0,0.5);
+}
+.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol::-webkit-scrollbar-thumb:hover,
+.h5p-course-presentation .h5p-element .h5p-element-outer::-webkit-scrollbar-thumb:hover,
+.h5p-course-presentation .h5p-element .h5p-element-outer .h5p-element-inner::-webkit-scrollbar-thumb:hover {
+  background: rgb(34, 161, 249);
+}
+
+.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li {
+  padding: 0 0.833em;
+  margin: 0;
+  cursor: pointer;
+  opacity: 0.45;
+  filter: alpha(opacity = 45);
+}
+.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li.h5p-current {
+  cursor: default;
+  opacity: 1;
+  filter: alpha(opacity = 100);
+}
+.h5p-course-presentation .h5p-slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: none;
+  -webkit-transform: translateX(100%) translate3d(100%, 0, 0);
+  -moz-transform: translateX(100%) translate3d(100%, 0, 0);
+  -ms-transform: translateX(100%) translate3d(100%, 0, 0);
+  transform: translateX(100%) translate3d(100%, 0, 0);
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.h5p-course-presentation .h5p-slide.h5p-animate {
+  display: block;
+  -webkit-transition: -webkit-transform 0.25s ease-in-out;
+  -moz-transition: -moz-transform 0.25s ease-in-out;
+  -ms-transition: -ms-transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
+}
+.h5p-course-presentation .h5p-slide.h5p-touch-move {
+  display: block;
+}
+.h5p-course-presentation .h5p-current {
+  display: block;
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+  z-index: 2;
+}
+.h5p-course-presentation .h5p-previous {
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+
+.h5p-course-presentation .h5p-action-foo {
+  position: absolute;
+  left: 0.5em;
+}
+.h5p-course-presentation .h5p-action-bar {
+  position: absolute;
+  right: 0.5em;
+}
+.h5p-course-presentation .h5p-action-bar a,
+.h5p-course-presentation .h5p-action-foo a {
+  text-decoration: none;
+}
+
+.h5p-course-presentation .h5p-copyinfo-header {
+  font-size: 1.2em;
+  color: #555;
+  font-weight: bold;
+  margin-bottom: 0.4em;
+}
+
+.h5p-course-presentation .h5p-cp-show-solutions:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f06e";
+  margin-right: 0.5em;
+}
+
+.h5p-course-presentation .h5p-cp-show-solutions {
+  display: inline-block;
+}
+
+.h5p-course-presentation .h5p-slide-button {
+  display: inline-block;
+  padding: 0;
+  margin: 0 0.2em;
+}
+.h5p-course-presentation .h5p-slide-button a {
+  color: #323232;
+  padding: 0.3em;
+}
+.h5p-course-presentation .h5p-slide-button.h5p-current a {
+  color: #ffffff;
+  background: #0097fd;
+  background-image: -webkit-linear-gradient(top, #0097fd, #096bcb);
+  background-image: -moz-linear-gradient(top, #0097fd, #096bcb);
+  background-image: linear-gradient(to bottom, #0097fd, #096bcb);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0097fd', endColorstr='#096bcb', GradientType=0);
+}
+.h5p-course-presentation .h5p-slide-button a:hover {
+  color: #525252;
+}
+.h5p-course-presentation .h5p-slide-button.h5p-current a:hover {
+  color: #ffffff;
+}
+
+.h5p-course-presentation .h5p-has-solutions a, .h5p-course-presentation .h5p-has-solutions a:hover {
+  text-decoration: underline;
+}
+
+.h5p-course-presentation .h5p-element {
+  position: absolute;
+  overflow: hidden;
+  overflow-y: auto;
+  font-size: 0.75em;
+}
+.h5p-course-presentation .h5p-element.h5p-element-button-wrapper {
+  border: 0;
+  background-color: transparent !important;
+  width: 1.5em !important;
+  height: 1.5em !important;
+  overflow: visible !important;
+  z-index: 2;
+}
+.h5p-course-presentation .h5p-element.h5p-blanks,
+.h5p-course-presentation .h5p-element.h5p-twitter-user-feed {
+  overflow: auto;
+}
+
+.h5p-course-presentation .h5p-element.h5p-summary {
+  overflow-x: visible;
+}
+
+.h5p-course-presentation .h5p-go-to-slide {
+  z-index: 2;
+}
+.h5p-course-presentation .h5p-press-to-go {
+  cursor: default;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+.h5p-course-presentation .h5p-press-to-go.h5p-visible {
+  cursor: pointer;
+}
+.h5p-course-presentation .h5p-press-to-go.h5p-visible:hover {
+  background: #0580e2;
+  opacity: 0.2;
+}
+.h5p-course-presentation .h5p-press-to-go.h5p-visible:active {
+  background: #0580e2;
+  opacity: 0.4;
+}
+
+.h5p-course-presentation .h5p-popup-overlay,
+.h5p-course-presentation .h5p-popup-overlay.h5p-video {
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 200;
+  margin: -10px 0 0 -10px;
+  padding: 10px;
+}
+
+.h5p-course-presentation .h5p-popup-container {
+  background-color: #fff;
+  border: 0.083em solid #bebebe;
+  box-shadow: 0 0 0.25em #bebebe;
+  left: 15%;
+  position: absolute;
+  top: 10%;
+  width: 70%;
+  min-height: 65%;
+  max-height: 80%;
+
+  overflow: auto;
+  font-size: 0.75em;
+}
+
+.h5p-course-presentation .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper {
+  box-sizing: border-box;
+  max-height: 100%;
+  overflow: hidden;
+  text-align: left;
+}
+
+.h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field {
+  font-size: 0.75em;
+}
+
+.h5p-course-presentation .h5p-popup-overlay .h5p-advanced-text {
+  font-size: 1em;
+  margin-right: 1.5em;
+  padding: 0.5em;
+}
+
+.h5p-course-presentation .h5p-popup-overlay.h5p-advanced-text .h5p-popup-container,
+.h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container {
+  padding: 2em 0;
+}
+
+.h5p-course-presentation .h5p-popup-overlay.h5p-advanced-text .h5p-popup-container .h5p-popup-wrapper,
+.h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container .h5p-popup-wrapper {
+  position: absolute;
+  box-sizing: border-box;
+  max-height: calc(100% - 4em);
+  padding: 0 2em;
+  overflow: auto;
+  text-align: left;
+}
+
+.h5p-popup-overlay.h5p-singlechoiceset .h5p-popup-container {
+  overflow: hidden;
+}
+.h5p-popup-overlay.h5p-singlechoiceset .h5p-sc-sound-control {
+  right: 1.2em;
+}
+.h5p-button-element.h5p-sc-set-wrapper {
+  overflow: hidden;
+}
+.h5p-course-presentation .h5p-popup-container tfoot {
+  font-weight: bold;
+}
+
+/* Popup style */
+.h5p-course-presentation .h5p-popup-container table {
+border-collapse: collapse;
+}
+
+.h5p-course-presentation .h5p-element-solution {
+  background-repeat: no-repeat;
+  background-image: url(data:image/png;base64,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);
+  background-size: 1.25em 1.25em;
+  display: block;
+  position: absolute;
+  right: 0.1em;
+  bottom: 0.1em;
+  width: 1.27em;
+  height: 1.25em;
+  background-image: none \0/;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='data:image/png;base64,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', sizingMethod='scale');
+}
+
+.h5p-course-presentation .h5p-element-button {
+  text-decoration: none;
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  background: #00f;
+  color: #fff;
+  font-size: 1em;
+  border-radius: 50%;
+  line-height: 1.5em;
+  box-shadow: 0.15em 0.25em 0.25em 0 #191919;
+  text-shadow: 0 0 0.3em #191919;
+  text-align: center;
+  text-decoration: none;
+  border: 0;
+  background: #1d5cff;
+  background-image: -webkit-linear-gradient(bottom, #1d5cff 50%, #5ba7ff 50%, #1d5cff 100%);
+  background: -moz-linear-gradient(bottom, #1d5cff 50%, #5ba7ff 50%, #1d5cff 100%);
+  background: -ms-linear-gradient(bottom, #1d5cff 50%, #5ba7ff 50%, #1d5cff 100%);
+  background: linear-gradient(to top, #1d5cff 50%, #5ba7ff 50%, #1d5cff 100%);
+
+  -webkit-transition: -webkit-transform 0.2s;
+  -moz-transition: -moz-transform 0.2s;
+  -ms-transition: -ms-transform 0.2s;
+  -o-transition: -o-transform 0.2s;
+  transition: transform 0.2s;
+
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.h5p-course-presentation .h5p-exportabletextarea-button,
+.h5p-course-presentation .h5p-blanks-button,
+.h5p-course-presentation .h5p-multichoice-button,
+.h5p-course-presentation .h5p-singlechoiceset-button,
+.h5p-course-presentation .h5p-dragtext-button,
+.h5p-course-presentation .h5p-markthewords-button,
+.h5p-course-presentation .h5p-dragquestion-button,
+.h5p-course-presentation .h5p-summary-button,
+.h5p-course-presentation .h5p-interactivevideo-button {
+  background: #981d99;
+  background-image: -webkit-linear-gradient(bottom, #981d99 50%, #ce6cd8 50%, #981d99 100%);
+  background: -moz-linear-gradient(bottom, #981d99 50%, #ce6cd8 50%, #981d99 100%);
+  background: -ms-linear-gradient(bottom, #981d99 50%, #ce6cd8 50%, #981d99 100%);
+  background: linear-gradient(to top, #981d99 50%, #ce6cd8 50%, #981d99 100%);
+}
+
+.h5p-course-presentation .h5p-element-button:before {
+  text-decoration: none;
+  font-family: 'H5PFontAwesome4';
+  content: "\f119";
+  font-size: 0.875em;
+}
+
+.h5p-course-presentation .h5p-element-button:hover {
+  text-decoration: none;
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+}
+
+.h5p-course-presentation .h5p-exportabletextarea-button:before,
+.h5p-course-presentation .h5p-blanks-button:before,
+.h5p-course-presentation .h5p-multichoice-button:before,
+.h5p-course-presentation .h5p-dragquestion-button:before,
+.h5p-course-presentation .h5p-summary-button:before,
+.h5p-course-presentation .h5p-singlechoiceset-button:before,
+.h5p-course-presentation .h5p-dragtext-button:before,
+.h5p-course-presentation .h5p-markthewords-button:before {
+  font-family: 'H5PCoursePresentation';
+}
+
+.h5p-course-presentation .h5p-advancedtext-button:before {
+  content: "\f05a";
+}
+
+.h5p-course-presentation .h5p-exportabletextarea-button:before {
+  content: "\e995";
+}
+
+.h5p-course-presentation .h5p-table-button:before {
+  content: "\f0ce";
+}
+
+.h5p-course-presentation .h5p-link-button:before {
+  content: "\f0c1";
+}
+
+.h5p-course-presentation .h5p-image-button:before {
+  content: "\f03e";
+}
+
+.h5p-course-presentation .h5p-video-button:before {
+  content: "\f008";
+}
+
+.h5p-course-presentation .h5p-audio-button:before {
+  content: "\f028";
+}
+
+.h5p-course-presentation .h5p-blanks-button:before {
+  content: "\e994";
+}
+
+.h5p-course-presentation .h5p-multichoice-button:before {
+  content: "\e993";
+}
+
+.h5p-course-presentation .h5p-dragquestion-button:before {
+  content: "\e991";
+}
+
+.h5p-course-presentation .h5p-summary-button:before {
+  content: "\e992";
+}
+
+.h5p-course-presentation .h5p-interactivevideo-button:before {
+  content: "\f03d";
+}
+.h5p-course-presentation .h5p-singlechoiceset-button:before {
+  content: "\e603";
+}
+.h5p-course-presentation .h5p-dragtext-button:before {
+  content: "\e600";
+}
+.h5p-course-presentation .h5p-markthewords-button:before {
+  content: "\e601";
+}
+.h5p-course-presentation .h5p-no-solution {
+  color: #888888;
+}
+
+.h5p-course-presentation .h5p-close-popup {
+  text-decoration: none;
+  float: right;
+  cursor: pointer;
+}
+
+.h5p-course-presentation .h5p-close-popup:before {
+  position: absolute;
+  right: 0.2em;
+  top: 0.2em;
+  font-family: 'H5PFontAwesome4';
+  content: "\f00d";
+  font-size: 2em;
+}
+
+.h5p-course-presentation .h5p-close-popup:hover:before {
+  color: #555;
+}
+
+.h5p-course-presentation .h5p-video, .h5p-course-presentation .h5p-audio {
+  background-color: #000;
+  width: 100%;
+}
+
+.h5p-course-presentation .h5p-button-element.h5p-audio-wrapper .h5p-audio {
+  min-height: 30px;
+}
+.h5p-course-presentation .h5p-button-element {
+  margin: 0 auto;
+}
+
+.h5p-course-presentation .h5p-popup-container dl {
+  text-align: left;
+  border-top: 1px solid #efefef;
+}
+
+.h5p-course-presentation .h5p-popup-container dl:first-child {
+  border: none;
+}
+
+.h5p-course-presentation .h5p-popup-container dt {
+  float: left;
+  padding-right: 0.2em;
+}
+
+.h5p-course-presentation .h5p-element .h5p-element-outer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.h5p-course-presentation .h5p-element .h5p-element-outer.h5p-advancedtext-outer-element {
+  overflow-y: hidden;
+}
+
+.h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-link):not(.h5p-advanced-text) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-interactive-video) {
+  overflow: hidden;
+  overflow-y: auto;
+  background: transparent;
+}
+
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-ct,
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-video {
+  overflow-y: hidden;
+}
+
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-advanced-text,
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-link {
+  padding: 0.375em 0.5em;
+}
+
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-ct > .ct {
+  padding: 0.375em 0.5em;
+}
+
+.h5p-course-presentation .h5p-element.h5p-transparent .h5p-element-inner.h5p-advanced-text,
+.h5p-course-presentation .h5p-element.h5p-transparent .h5p-element-inner.h5p-link {
+  padding: 0;
+}
+
+.h5p-course-presentation .h5p-element.h5p-transparent .h5p-element-inner.h5p-ct > .ct {
+  padding: 0;
+}
+
+.h5p-course-presentation .h5p-advanced-text p span {
+  line-height: 1.25em;
+}
+
+.h5p-course-presentation .dragndrop .h5p-text {
+  font-size: 1em;
+}
+
+.h5p-course-presentation .h5p-table {
+  border-collapse: collapse;
+}
+
+.h5p-course-presentation .h5p-table th {
+  border-bottom: 0.167em solid #494949;
+}
+
+.h5p-course-presentation .h5p-table td {
+  border-bottom: 0.083em solid #494949;
+}
+
+.h5p-course-presentation .h5p-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.h5p-course-presentation .cke_editable .h5p-table, .h5p-course-presentation .cke_editable .h5p-table th, .h5p-course-presentation .cke_editable .h5p-table td {
+  border: 0.083em dashed #999;
+}
+
+.h5p-course-presentation .h5p-ct > .ct {
+  font-size: 100%;
+  line-height: 165%;
+}
+
+.h5p-course-presentation .ct > *:last-child {
+  margin: 0;
+}
+
+.h5p-course-presentation .h5p-copyinfo {
+  margin: 0 0 1em;
+  padding-top: 1em;
+  font-size: 0.75em;
+  line-height: 1.25em;
+}
+
+.h5p-course-presentation .h5p-copyinfo > dt {
+  float: left;
+  margin: 0 0.75em 0 0;
+}
+
+.h5p-course-presentation .h5p-copyinfo > dt:after {
+  content: ":";
+}
+
+.h5p-course-presentation .h5p-copyinfo > dd {
+  margin: 0;
+}
+
+/* Hides full screen button like in IV, uses own full screen button */
+.h5p-course-presentation .h5p-content-controls {
+  visibility:hidden;
+  position: absolute;
+  top:0;
+}
+
+.h5p-course-presentation .h5p-presentation-wrapper .h5p-touch-popup {
+  display: block;
+  position: absolute;
+  z-index: 2;
+
+  padding: 0.5em;
+  border-radius: 0.5em;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  background: #000;
+  color: #FFF;
+}

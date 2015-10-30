@@ -1,0 +1,203 @@
+{
+  "semantics": [
+    {
+      "label": "Editor Video Interattivo",
+      "fields": [
+        {
+          "label": "Carica video",
+          "fields": [
+            {
+              "label": "File Video",
+              "description": "Selezionare i file video che si desidera utilizzare nel video interattivo. Per garantire la massima compatibilit� dei browser � consigliato utilizzare i formati video WebM o MP4."
+            },
+            {
+              "label": "Poster"
+            },
+            {
+              "label": "The title of this interactive video",
+              "default": "Interactive Video",
+              "description": "Used in summaries, statistics etc."
+            },
+            {
+              "label": "Video start screen options",
+              "fields": [
+                {
+                  "label": "Hide title on video start screen"
+                },
+                {
+                  "label": "Short description (Optional)",
+                  "description": "Optional. Display a short description text on the video start screen."
+                }
+              ]
+            },
+            {
+              "label": "Informazioni Copyright Video",
+              "description": "Informazioni riguardanti i copyright del video e degli elementi utilizzati nel video."
+            }
+          ]
+        },
+        {
+          "label": "Aggiungi interazioni",
+          "fields": [
+            {
+              "field": {
+                "fields": [
+                  {
+                    "label": "Visualizza tempo",
+                    "fields": [
+                      {},
+                      {}
+                    ]
+                  },
+                  {
+                    "label": "Pausa"
+                  },
+                  {
+                    "label": "Display as",
+                    "description": "<b>Button</b> is a collapsed interaction the user must press to open. <b>Poster</b> is an expanded interaction displayed directly on top of the video",
+                    "options": [
+                      {
+                        "label": "Button"
+                      },
+                      {
+                        "label": "Poster"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Etchetta",
+                    "description": "Etichetta visualizzata accanto all'icona interazione."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Adattabilit�",
+                    "fields": [
+                      {
+                        "label": "Azione su Tutto corretto",
+                        "fields": [
+                          {
+                            "label": "Vai a",
+                            "description": "Inserisci il timecode in formato M:SS"
+                          },
+                          {
+                            "label": "Consentire all'utente di uscire e continuare"
+                          },
+                          {
+                            "label": "Messaggio"
+                          },
+                          {
+                            "label": "Etichetta per pulsante Vai a"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "Azione su Errato",
+                        "fields": [
+                          {
+                            "label": "Vai a",
+                            "description": "Inserisci il timecode in formato M:SS"
+                          },
+                          {
+                            "label": "Consentire all'utente di uscire e continuare"
+                          },
+                          {
+                            "label": "Messaggio"
+                          },
+                          {
+                            "label": "Etichetta per pulsante Vai a"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "field": {
+                "fields": [
+                  {},
+                  {}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Riepilogo attivit�",
+          "fields": [
+            {
+              "default": {
+                "params": {}
+              }
+            },
+            {
+              "label": "Visualizza a",
+              "description": "Numero di secondi prima della fine del video."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Impostazioni per i pulsanti \"Mostra soluzione\" e \"Riprova\".",
+      "description": "Queste opzioni consentono di ignorare quando visualizzare i pulsanti \"Mostra soluzione\" e \"Riprova\" nel contenuto H5P integrato.",
+      "fields": [
+        {
+          "label": "Abilita ignora impostazioni per \"Mostra soluzione\" e \"Riprova\".",
+          "description": "Se questa opzione � abilitata le proprie impostazioni per le domande saranno ignorate e verranno utilizzate le impostazioni seguenti."
+        },
+        {
+          "label": "Abilita pulsanti \"Mostra soluzione\".",
+          "description": "L'attivazione di questa opzione far� in modo che le domande mostrino il tasto \"Mostra soluzione\"."
+        },
+        {
+          "label": "Abilita \"Riprova\".",
+          "description": "L'attivazione di questa opzione far� in modo che per l'utente sia abilitata l'opzione \"Riprova\"."
+        }
+      ]
+    },
+    {
+      "label": "Localize",
+      "fields": [
+        {
+          "label": "Titolo Interazione"
+        },
+        {
+          "label": "Titolo Play"
+        },
+        {
+          "label": "Titolo Pausa"
+        },
+        {
+          "label": "Titolo modalit� muto"
+        },
+        {
+          "label": "Titolo disattiva modalit� muto"
+        },
+        {
+          "label": "Titolo qualit� Video"
+        },
+        {
+          "label": "Titolo Schermo intero"
+        },
+        {
+          "label": "Titolo Esci da Schermo intero"
+        },
+        {
+          "label": "Titolo Riepilogo"
+        },
+        {
+          "label": "Titolo Segnalibri"
+        },
+        {
+          "label": "Etichetta predefinita per adattabilit� pulsante Vai a"
+        }
+      ]
+    }
+  ]
+}

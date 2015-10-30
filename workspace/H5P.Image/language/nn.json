@@ -1,0 +1,73 @@
+{
+  "semantics": [
+    {
+      "label": "Biletefil"
+    },
+    {
+      "label": "Alternativ tekst",
+      "description": "Viss biletet ikkje kan lastas visast denne teksten i istadenfor. Denne blir og nytta ved talesyntese."
+    },
+    {
+      "label": "Sveve-tekst",
+      "description": "Denne teksten visast når brukaren held peikeeininga over bilete. Kan til dømes brukast til å informere om opphav."
+    },
+    {
+      "label": "Informasjon om opphavsrett",
+      "fields": [
+        {
+          "label": "Tittel"
+        },
+        {
+          "label": "Opphavsmann"
+        },
+        {
+          "label": "Kjelde"
+        },
+        {
+          "label": "Lisens",
+          "options": [
+            {
+              "label": "Ukjent"
+            },
+            {
+              "label": "Namngjeving"
+            },
+            {
+              "label": "Namngjeving - Del på same vilkår"
+            },
+            {
+              "label": "Namngjeving - Inga bearbeiding"
+            },
+            {
+              "label": "Namngjeving - Ikkje kommersiell"
+            },
+            {
+              "label": "Namngjeving - Ikkje kommersiell - Del på same vilkår"
+            },
+            {
+              "label": "Namngjeving - Ikkje kommersiell - Inga bearbeiding"
+            },
+            {
+              "label": "Generell offentleg lisens"
+            },
+            {
+              "label": "Offentleg eigedom"
+            },
+            {
+              "label": "Offentleg eigedom engasjement og lisens"
+            },
+            {
+              "label": "Offentleg eigedom merke"
+            },
+            {
+              "label": "Opphavsrett"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Innhaldsnamn for bilete"
+    }
+  ]
+}

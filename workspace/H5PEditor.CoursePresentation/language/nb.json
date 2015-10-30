@@ -1,0 +1,23 @@
+{
+  "libraryStrings": {
+    "confirmDeleteSlide": "Er du sikker på at du vil slette denne sliden?",
+    "sortSlide": "Sorter slide - :dir",
+    "removeSlide": "Fjern slide",
+    "cloneSlide": "Klon slide",
+    "newSlide": "Legg til ny slide",
+    "insertElement": "Klikk og dra for å plassere :type",
+    "newKeyword": "Nytt nøkkelord",
+    "deleteKeyword": "Fjern dette nøkkelordet",
+    "removeKeywords": "Er du sikker på at du vil fjerne dette nøkkelordet? Denne handlingen kan ikke omgjøres.",
+    "disableKeywords": "Fjern nøkkelordene",
+    "removeElement": "Slett dette elementet",
+    "confirmRemoveElement": "Er du sikker på at du vil slette dette elementet?",
+    "cancel": "Avbryt",
+    "done": "Ferdig",
+    "remove": "Fjern",
+    "keywordsTip": "Dra inn nøkkelord",
+    "popupTitle": "Rediger :type",
+    "loading": "Laster...",
+    "element": "Element"
+  }
+}

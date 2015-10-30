@@ -1,0 +1,39 @@
+[
+  {
+    "name": "label",
+    "type": "text",
+    "widget": "html",
+    "label": "Label",
+    "description": "Label/heading for answer when user exports all answers",
+    "enterMode": "p",
+    "tags": [
+      "strong",
+      "em",
+      "a",
+      "ul",
+      "ol",
+      "h2",
+      "h3",
+      "hr"
+    ]
+  },
+  {
+    "name": "index",
+    "type": "number",
+    "widget": "none"
+  },
+  {
+    "name": "exportNotSupported",
+    "type": "text",
+    "label": "Export not supported label",
+    "default": "Export not supported on your device",
+    "common": true
+  },
+  {
+    "name": "exportComments",
+    "type": "boolean",
+    "label": "Include comments in the exported document",
+    "optional": true,
+    "default": false
+  }
+]

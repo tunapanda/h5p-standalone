@@ -1,0 +1,45 @@
+{
+  "semantics": [
+    {
+      "label": "Oppgave beskriving",
+      "description": "Forklar hvordan brukeren skal løyse oppgåva."
+    },
+    {
+      "label": "Tekstliner",
+      "placeholder": "Oslo er hovudstaden i *Noreg*",
+      "description": "Opne felt må merkast med ei stjerne * foran og bak det korrekte ordet/uttrykket. Tips får et kolon (:) foran seg: H5P innhald kan lages i ein *nettlesar:noko du bruker til å navigere internett med*."
+    },
+    {
+      "label": "Tekst for \"Sjekk svar\" knapp",
+      "default": "Sjekk"
+    },
+    {
+      "label": "Tekst for \"Prøv igjen\" knapp",
+      "default": "Prøv igjen"
+    },
+    {
+      "label": "Tekst for \"Vis svar\" knapp",
+      "default": "Vis svar"
+    },
+    {
+      "label": "Tilbakemelding",
+      "default": "Du fikk @score av @total felt rett.",
+      "description": "Tekstleg tilbakemelding, tilgjengelige variabler: @score og @total. Eksempel: 'Du fikk @score av @total felt rett.'"
+    },
+    {
+      "label": "Innstillinger for oppgåve-åtferd",
+      "description": "Disse instillingene lar deg bestemme hvordan oppgavetypen skal oppføre seg.",
+      "fields": [
+        {
+          "label": "Aktiver \"Prøv igjen\""
+        },
+        {
+          "label": "Aktiver \"Vis svar\" knapp"
+        },
+        {
+          "label": "Krev inndata fra brukeren før fasit gis."
+        }
+      ]
+    }
+  ]
+}

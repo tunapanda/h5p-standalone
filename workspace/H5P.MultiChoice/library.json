@@ -1,0 +1,47 @@
+{
+  "title": "Multiple Choice",
+  "contentType": "Question",
+  "majorVersion": 1,
+  "minorVersion": 4,
+  "patchVersion": 0,
+  "runnable": 1,
+  "machineName": "H5P.MultiChoice",
+  "author": "Amendor AS",
+  "license": "MIT",
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 6
+  },
+  "preloadedJs": [
+    {
+      "path": "js/multichoice.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "css/multichoice.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 3
+    },
+    {
+      "machineName": "EmbeddedJS",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "H5P.JoubelUI",
+      "majorVersion": 1,
+      "minorVersion": 2
+    },
+    {
+      "machineName": "H5P.Question",
+      "majorVersion": 1,
+      "minorVersion": 1
+    }
+  ]
+}

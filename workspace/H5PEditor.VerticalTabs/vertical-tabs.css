@@ -1,0 +1,176 @@
+
+.h5p-vtab-wrapper {
+  border: 1px solid #ccc;
+  background: #fff;
+  margin: 0.25em 0;
+}
+.h5peditor-widgets > .h5peditor-widget-wrapper > .h5p-vtab-wrapper {
+  border: 0;
+  margin: 0;
+}
+.h5p-vtab-wrapper:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: ' ';
+  clear: both;
+  height: 0;
+}
+.h5p-vtabs {
+  float: left;
+  width: 195px;
+  position: relative;
+  padding-left: 0.5em;
+  padding-top: 0.5em;
+}
+.h5peditor-widgets > .h5peditor-widget-wrapper > .h5p-vtab-wrapper > .h5p-vtabs {
+  padding: 0;
+}
+.h5p-vtab-forms {
+  margin-left: 200px;
+}
+.h5p-vtab-form {
+  position: relative;
+  display: none;
+  margin: 0;
+  border: none;
+  padding: 0.5em;
+}
+.h5peditor-widgets > .h5peditor-widget-wrapper > .h5p-vtab-wrapper > .h5p-vtab-form {
+  padding: 0;
+}
+.h5p-vtab-form.h5p-current {
+  display: block;
+}
+.h5p-vtab-form > .field {
+  margin: 0;
+}
+.h5p-vtabs .h5p-placeholder {
+  margin: 0;
+  padding: 0;
+}
+.h5p-vtab-li {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+.h5p-vtab-li.h5p-current {
+  position: relative;
+}
+.h5p-vtab-li.h5p-current:after, .h5p-vtab-li.h5p-current:before {
+  position: absolute;
+  left: 180px;
+  top: 0;
+  content: " ";
+  width: 0;
+  height: 0;
+}
+.h5p-vtab-li.h5p-current:before {
+  top: -1px;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  border-left: 16px solid #ccc;
+}
+.h5p-vtab-li.h5p-current:after {
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 14px solid #f5f5f5;
+}
+.h5p-vtab-li:first-child:before {
+  top: 0;
+}
+.h5p-vtab-li:first-child:after {
+  top: 1px;
+}
+
+.h5p-vtab-a {
+  line-height: 1.125em;
+  color: #333;
+  margin-right: 14px;
+  display: block;
+  white-space: nowrap;
+  padding: 7px 4px 7px 26px;
+  background: #ddd;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  font-size: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  outline: none;
+}
+.h5p-vtab-li:first-child .h5p-vtab-a {
+  border-top: 1px solid #ccc;
+}
+.h5p-vtab-li.h5p-current .h5p-vtab-a {
+  background: #f5f5f5;
+  border-right: 0;
+  margin-right: 15px;
+}
+.h5p-placeholder > .h5p-vtab-a {
+  background: transparent;
+  border-right: 0;
+  border-left: 0;
+}
+.h5p-placeholder:last-child > .h5p-vtab-a {
+  border-bottom: 1px solid transparent;
+}
+.h5p-vtab-a:hover {
+  text-decoration: none;
+  background: #f5f5f5;
+}
+.h5p-vtabs > button {
+  float: right;
+  margin: 8px 14px 8px 8px;
+}
+.h5p-vtab-wrapper .h5p-remove,
+.h5p-vtab-wrapper .h5p-order {
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+}
+.h5p-vtab-wrapper .h5p-remove:after {
+  font-family: 'H5PFontAwesome4';
+  content: "\f057";
+  color: #666;
+  font-size: 1.2em;
+}
+.h5p-vtab-wrapper .h5p-remove:hover:after {
+  color: #c33f62;
+}
+.h5p-vtab-wrapper .h5p-remove:hover {
+  text-decoration: none;
+}
+.h5p-vtab-form > .h5p-remove {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+.h5p-vtab-wrapper .h5p-order {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+}
+.h5p-vtab-wrapper a.h5p-order:hover {
+  text-decoration: none;
+}
+.h5p-vtab-wrapper .h5p-order:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f0dc";
+  color: #666;
+}
+.h5p-vtab-wrapper .h5p-order:hover:before {
+  color: #027AC6;
+}
+.h5p-vtabs .h5p-moving {
+  position: absolute;
+  z-index: 1;
+}
+.h5p-vtabs .h5p-moving > .h5p-vtab-a {
+  border-top: 1px solid #ccc;
+  margin-top: -1px;
+}
+.h5p-vtabs .h5p-moving:first-child > .h5p-vtab-a {
+  margin-top: 0;
+}

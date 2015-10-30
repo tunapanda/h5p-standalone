@@ -1,0 +1,37 @@
+{
+  "title": "Exportable Text Area",
+  "contentType": "Static content",
+  "description": "Library that displays an area where the user may input text, which is exportable as a doc-file",
+  "majorVersion": 1,
+  "minorVersion": 2,
+  "patchVersion": 2,
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 5
+  },
+  "runnable": 0,
+  "machineName": "H5P.ExportableTextArea",
+  "author": "Amendor AS",
+  "preloadedCss": [
+    {
+      "path": "css/eta.css"
+    }
+  ],
+  "preloadedJs": [
+    {
+      "path": "scripts/eta.js"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "filesaver",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "downloadify",
+      "majorVersion": 1,
+      "minorVersion": 0
+    }
+  ]
+}

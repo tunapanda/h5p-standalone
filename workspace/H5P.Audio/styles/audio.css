@@ -1,0 +1,43 @@
+.h5p-audio-inner {
+  height: 100%;
+  width: 100%
+}
+
+.h5p-course-presentation .h5p-element.h5p-audio-wrapper {
+  overflow: visible !important;
+}
+
+.h5p-audio-inner .h5p-audio-minimal-button {
+  font-family: 'H5PFontAwesome4';
+
+  display: block;
+  padding: 0.3em;
+
+  font-size: 0.8em;
+  border: 0.1em solid #fff;
+  border-radius: 50%;
+
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+
+  background: rgb(100,152,254); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(100,152,254,1) 0%, rgba(4,104,206,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(100,152,254,1)), color-stop(100%,rgba(4,104,206,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6498fe', endColorstr='#0468ce',GradientType=0 ); /* IE6-9 */
+}
+
+.h5p-audio-inner .h5p-audio-minimal-button:hover {
+  cursor: pointer;
+}
+
+.h5p-audio-inner .h5p-audio-minimal-play:before {
+  content: "\f028";
+}
+
+.h5p-audio-inner .h5p-audio-minimal-pause:before {
+  content: "\f04c";
+}

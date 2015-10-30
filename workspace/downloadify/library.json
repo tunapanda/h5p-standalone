@@ -1,0 +1,22 @@
+{
+  "title": "Downloadify",
+  "contentType": "Media",
+  "description": "Provides a library for dealing with client-side file download",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 3,
+  "runnable": 0,
+  "machineName": "downloadify",
+  "preloadedJs": [
+    {
+      "path": "scripts/downloadify.js"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "swfobject",
+      "majorVersion": 1,
+      "minorVersion": 0
+    }
+  ]
+}

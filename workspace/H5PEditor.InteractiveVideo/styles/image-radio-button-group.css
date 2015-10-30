@@ -1,0 +1,51 @@
+.h5p-image-radio-button {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  margin-right: .5em;
+  padding: .5em;
+  background-color: #fff;
+  border: 1px solid #eee;
+  height: 4.9em;
+}
+.h5p-image-radio-button:hover {
+  border-color: #aaa;
+}
+.h5p-image-radio-button label {
+  display: inline-block;
+  cursor: pointer;
+}
+.h5p-image-radio-button label span {
+  position: relative;
+  top: -1.8em;
+  font-size: 14px;
+  line-height: 1;
+}
+.h5p-image-radio-button input {
+  position: relative;
+  top: -1.7em;
+  cursor: pointer;
+}
+.h5p-image-radio-button .image-container {
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 .5em;
+}
+.h5p-image-radio-button .h5p-option-description {
+  display: block;
+  font-size: 10px;
+  color: #888;
+  max-width: 160px;
+  line-height: 1.1;
+  margin-top: 1em;
+  border-top: 1px solid #eee;
+  padding-top: .8em;
+}
+.h5p-image-radio-button-container {
+  margin-bottom: .5em;
+}
+.h5p-image-radio-button-group > .h5peditor-field-description {
+  line-height: 1.1;
+  display: inline-block;
+  margin-bottom: .5em;
+}

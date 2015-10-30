@@ -1,0 +1,368 @@
+/* --------------------------------------- Footer -------------------------------- */
+
+/* Footer */
+.h5p-course-presentation .h5p-footer {
+  display: block;
+  font-size: 0.75em;
+  width: 100%;
+  height: 6.5%;
+  line-height: 1.88em;
+
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+}
+
+/* Footer buttons */
+.h5p-course-presentation .h5p-footer .h5p-footer-button {
+  background: transparent;
+  border: 0px;
+  color: #555;
+  cursor: pointer;
+
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Footer containers */
+.h5p-course-presentation .h5p-footer .h5p-footer-left-adjusted {
+  position: absolute;
+  left: 0.25em;
+  max-width: 40%;
+  height: inherit;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-right-adjusted {
+  position: absolute;
+  text-align: right;
+  right: 0.25em;
+  width: 40%;
+  height: inherit;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-center-adjusted {
+  text-align: center;
+  height: 100%;
+}
+
+/* ---------------------------- Footer slide information buttons ----------------------- */
+
+/* Prev slide */
+.h5p-course-presentation .h5p-footer .h5p-footer-previous-slide {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0em 1em;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-previous-slide:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f0d9";
+}
+
+/* Next slide */
+.h5p-course-presentation .h5p-footer .h5p-footer-next-slide {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0em 1em;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-next-slide:after {
+  font-family: 'H5PFontAwesome4';
+  content: "\f0da";
+}
+
+/* Current slide */
+.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-current {
+  display: inline-block;
+}
+
+/* Slide delimiter */
+.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-delimiter {
+  display: inline-block;
+  padding: 0em 0.5em;
+}
+
+/* Max slides */
+.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-max {
+  display: inline-block;
+}
+
+/* ---------------------------------------------- Solution Mode ---------------------------------- */
+
+/* Footer in solution mode */
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode {
+  background-color: #2b2c30;
+  color: #fbfbfb;
+}
+
+/* Only show exit solultion mode button in solution mode */
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-exit-solution-mode {
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Hide exit solution mode button initially */
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode {
+  display: none;
+}
+
+/* Hide exit solution mode button on summary slide */
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode.summary-slide .h5p-footer-exit-solution-mode {
+  display: none;
+}
+
+/* Footer solution mode text */
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode-text {
+  display: inline-block;
+  padding: 0 0.25em;
+}
+
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-button {
+  color: #fbfbfb;
+}
+
+
+/* --------------------------------------------- Footer elements ---------------------------------------- */
+
+/* Footer keyword button */
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords {
+  display: inline-block;
+  width: 100%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords:before {
+  font-family: 'H5PFontAwesome4';
+  font-size: 1.3em;
+  content: "\f0c9";
+  padding: 0em 0.25em;
+  margin-right: 0.5em;
+}
+
+/* Print button and full screen button (in footer) */
+.h5p-course-presentation .h5p-footer .h5p-footer-print,
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen {
+  display: inline-block;
+  text-align: right;
+}
+.h5p-course-presentation .h5p-footer .h5p-footer-print:before,
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before {
+    font-family: 'H5PFontAwesome4';
+    content: "\f065";
+    font-size: 1.2em;
+    padding: 0 0.25em;
+    margin-left: 0.5em;
+}
+.h5p-course-presentation .h5p-footer .h5p-footer-print:before {
+  content: "\f02f";
+}
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before {
+  content: "\f065";
+}
+
+/* Hide print button on small screens */
+@media screen and (max-device-width: 400px) {
+  .h5p-course-presentation .h5p-footer .h5p-footer-print {
+    display: none;
+  }
+}
+/* Hide print button in fullscreen */
+.h5p-course-presentation.h5p-fullscreen .h5p-footer .h5p-footer-print,
+.h5p-course-presentation.h5p-semi-fullscreen .h5p-footer .h5p-footer-print {
+  display: none;
+}
+
+.h5p-course-presentation.h5p-fullscreen .h5p-footer .h5p-footer-toggle-full-screen:before,
+.h5p-course-presentation.h5p-semi-fullscreen .h5p-footer .h5p-footer-toggle-full-screen:before {
+  content: "\f066";
+}
+
+/* ------------------------------------------ Full Screen scaling ------------------------------------- */
+
+/* Solution mode text changes to footer elements */
+.h5p-course-presentation .h5p-footer.footer-full-screen button.h5p-footer-button {
+  font-size: 1.0em;
+}
+
+/* ----------------------------------------- Progress bar --------------------------------------------- */
+
+.h5p-course-presentation .h5p-progressbar {
+  width: 100%;
+  overflow: visible;
+  height: 3.5%;
+  background: #999;
+
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+
+  box-shadow: 0 0 0.5em 0em rgba(105, 105, 105, 0.4);
+}
+
+.h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide.h5p-progressbar-part-show:before,
+.h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide.h5p-progressbar-part-show:after {
+  color: #FFF;
+}
+
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part {
+  height: 100%;
+  width: 0;
+
+  cursor: pointer;
+
+  -webkit-box-shadow: 0 0 0.05em 0 #fff;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0 0 0.05em 0 #fff;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0 0 0.05em 0 #fff;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  -webkit-justify-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-show {
+  background: #0097fd;
+  background-image: -webkit-linear-gradient(top, #0097fd, #096bcb);
+  background-image: -moz-linear-gradient(top, #0097fd, #096bcb);
+  background-image: linear-gradient(to bottom, #0097fd, #096bcb);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0097fd', endColorstr='#096bcb', GradientType=0);
+
+  -webkit-transition: width 0.25s ease-in-out;
+  -moz-transition: width 0.25s ease-in-out;
+  -ms-transition: width 0.25s ease-in-out;
+  transition: width 0.25s ease-in-out;
+}
+
+/* -------------------------------------- Feedback for progress bar ------------------------------------- */
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task:after {
+  display: inline;
+  position: relative;
+
+  top: -2.3em;
+  left: -0.5em;
+  z-index: 2;
+  padding: 0.1em 0.3em;
+
+  width: 98%;
+  line-height: 1em;
+  border: 0.1em solid;
+
+  cursor: auto;
+  font-family: 'H5PFontAwesome4';
+  font-size: 0.6em;
+}
+
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-is-correct:after {
+  content: "\f00c";
+  color: #6aa81b;
+  background: #d1e2ce;
+}
+
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-is-wrong:after {
+  content: "\f00d";
+  color: #c33f62;
+  background: #e6ced1;
+}
+
+/* --------------------------------------------------------- Progressbar with task ---------------------------- */
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task {
+  display: block;
+  width: 0.45em;
+  height: 0.45em;
+
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+
+  border: 2px solid #D3D3D3;
+  cursor: pointer;
+
+  background: transparent;
+}
+
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-answered {
+  background: #D3D3D3;
+}
+
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.h5p-progressbar-part-show .h5p-progressbar-part-has-task.h5p-answered {
+  background: #D3D3D3;
+}
+
+/* ----------------------- Summary slide svgs --------------------------------- */
+
+.h5p-course-presentation .summary-slide-right-svg {
+  background-image: url(../fonts/summari_right_scale_horisontal.svg);
+  width: calc(100% - 1em);
+  height: 0.5em;
+}
+
+.h5p-course-presentation .summary-slide-left-svg {
+  background-image: url(../fonts/summary_left_constrain.svg);
+  width: 0.6em;
+  background-size: cover;
+  height: 0.5em;
+  margin-right: 0.2em;
+}
+
+/* ----------------------------------------- Progressbar popup ------------------------------------ */
+.h5p-course-presentation .h5p-progressbar-popup {
+  display: block;
+  position: absolute;
+  z-index: 3; /* Must be above feedback, which is 2 */
+
+  font-size: 0.75em;
+  line-height: 1.5em;
+
+  max-width: 50%;
+  padding: 0 0.3em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  background: #000;
+  color: #FFF;
+}
+
+/* -------------------------------------- Footer hover effects ---------------------------------- */
+
+.h5p-course-presentation .h5p-footer .h5p-footer-button:hover {
+  color: #aeaeae;
+}
+
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-button {
+  color: #dbd7d1;
+}
+
+/* ----------------------------------- Old IE <= 9 browser fallback for flexbox ------------------------------------ */
+.h5p-course-presentation.old-ie-browser .h5p-progressbar {
+  display: block;
+  line-height: 0.85em;
+}
+
+.h5p-course-presentation.old-ie-browser .h5p-progressbar .h5p-progressbar-part {
+  display: inline-block;
+}
+
+.h5p-course-presentation.old-ie-browser .h5p-progressbar .progressbar-part-summary-slide:before {
+  top: -0.26em;
+}

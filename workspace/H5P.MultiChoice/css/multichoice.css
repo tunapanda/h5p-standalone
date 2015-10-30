@@ -1,0 +1,330 @@
+/* IcoMoon font licensed under the GNU General Public License: http://www.gnu.org/licenses/gpl.html */
+@font-face {
+  font-family: 'icomoon-multichoice';
+  src:url('../fonts/icomoon.eot');
+  src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.woff') format('woff'),
+    url('../fonts/icomoon.ttf') format('truetype'),
+    url('../fonts/icomoon.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.h5p-multichoice label,
+.h5p-multichoice label.h5p-mc-disabled:hover {
+  position: relative;
+  text-align: left;
+  cursor: pointer;
+  display: block;
+  padding: 0.25em 0.75em 0.25em 0.1em;
+  border-radius: 0.3em;
+  border: 0.1em solid #ddd;
+  font-weight: normal;
+  background: #ddd;
+  -webkit-box-shadow:  0 0.1em 0 rgba(0, 0, 0, 0.3);
+  -moz-box-shadow:  0 0.1em 0 rgba(0, 0, 0, 0.3);
+  box-shadow:  0 0.1em 0 rgba(0, 0, 0, 0.3);
+
+}
+.h5p-multichoice label.h5p-mc-disabled,
+.h5p-multichoice label.h5p-mc-disabled:hover {
+  cursor: default;
+}
+.h5p-multichoice label:hover {
+  filter: none;
+  border: 0.1em solid #edd6e9;
+  background: #edd6e9;
+}
+
+.h5p-multichoice .h5p-selected > label,
+.h5p-multichoice .h5p-selected > label.h5p-mc-disabled:hover {
+  filter: none;
+  border: 0.1em solid #cee0f4;
+  color: #1a4473;
+  background: #cee0f4;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.h5p-multichoice h2 {
+  font-size: 1.5em;
+  font-weight: normal;
+}
+
+.h5p-multichoice .h5p-answers {
+  list-style: none;
+  padding: 0;
+  overflow: visible;
+  margin: 1em 0;
+}
+
+.h5p-multichoice .h5p-answer {
+  list-style: none;
+  margin: 0.5em 0;
+  padding: 0;
+  background: none;
+  position: relative;
+}
+
+.h5p-multichoice .h5p-answer:last-child {
+  margin-bottom: 0;
+}
+
+.h5p-multichoice .h5p-answer > label {
+  line-height: 1.5em;
+}
+.h5p-multichoice .h5p-input {
+  display: block;
+  left: -1000px;
+  position: absolute;
+}
+
+.h5p-multichoice .h5p-answer > label:before {
+  text-decoration: none;
+  font-family: 'H5PFontAwesome4';
+  position: absolute;
+  line-height: 1em;
+  top: 0.5em;
+  right: 0.75em;
+}
+.h5p-multichoice .h5p-should.h5p-answer > label:before,
+.h5p-multichoice .h5p-should-not.h5p-answer > label:before {
+  right: 2.125em;
+}
+.h5p-multichoice .h5p-selected.h5p-wrong > label:before {
+  content: "\f00d";
+  color: #b71c1c;
+  padding: 0 0.125em;
+}
+.h5p-multichoice .h5p-selected.h5p-correct > label:before {
+  content: "\f00c";
+  color: #255c41;
+}
+
+.h5p-multichoice .h5p-answer:after {
+  font-family: icomoon-multichoice;
+  position: absolute;
+  right: 0.75em;
+  line-height: 1em;
+  top: 0.585em;
+}
+.h5p-multichoice .h5p-radio .h5p-answer.h5p-should:after {
+  content: "\e603";
+}
+.h5p-multichoice .h5p-radio .h5p-answer.h5p-should-not:after {
+  content: "\e600";
+}
+.h5p-multichoice .h5p-check .h5p-answer.h5p-should:after {
+  content: "\e601";
+}
+.h5p-multichoice .h5p-check .h5p-answer.h5p-should-not:after {
+  content: "\e602";
+}
+
+.feedback-text {
+  height: 2em;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 1.25em;
+  line-height: 2em;
+  color: #599413;
+}
+
+.feedback-text.h5p-failed {
+  color: #b71c1c;
+}
+.feedback-text.h5p-almost {
+  color: #666;
+}
+.feedback-text.h5p-passed {
+  color: #255c41;
+}
+
+.h5p-span div,
+.h5p-span p {
+  display: inline;
+}
+
+.h5p-clearfix {
+  clear: both;
+}
+
+.h5p-multichoice .h5p-input-container {
+  display: block;
+  float: left;
+  width: 2em;
+}
+
+.h5p-multichoice .h5p-alternative-container {
+  margin: 0 1.5em 0 2em;
+}
+
+.h5p-multichoice .h5p-radio-or-checkbox {
+  border: medium none;
+  display: block;
+  height: 1em;
+  margin: auto;
+  width: 1em;
+  text-decoration: none;
+  font-family: icomoon-multichoice;
+  color: #494949;
+  pointer-events: none;
+}
+
+.h5p-multichoice .h5p-selected .h5p-radio-or-checkbox {
+  color: #235e7c;
+}
+
+.h5p-question p:last-child {
+  margin-bottom: 0;
+}
+
+.h5p-question p:first-child {
+  margin-top: 0;
+}
+
+.h5p-multichoice .h5p-feedback-button {
+  position: absolute;
+  cursor: pointer;
+  right: 2.125em;
+  top: 0.4375em;
+  line-height: 1em;
+  background: #fff;
+}
+.h5p-multichoice .h5p-selected.h5p-should.h5p-correct .h5p-feedback-button,
+.h5p-multichoice .h5p-selected.h5p-should-not.h5p-correct .h5p-feedback-button,
+.h5p-multichoice .h5p-selected.h5p-should.h5p-wrong .h5p-feedback-button,
+.h5p-multichoice .h5p-selected.h5p-should-not.h5p-wrong .h5p-feedback-button {
+  right: 3.5em;
+}
+
+.h5p-multichoice .h5p-feedback-button:focus {
+  outline: none;
+}
+.h5p-multichoice .h5p-feedback-button:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f075";
+  color: #fbfbfb;
+  text-shadow: 0 0 0.25em #2c2c2c;
+}
+.h5p-multichoice .h5p-feedback-button:hover:before {
+  color: #e1e1e1;
+}
+
+/* Feedback dialog*/
+.h5p-multichoice .h5p-feedback-dialog {
+  position: relative;
+  width: calc(100% - 0.5em);
+  left: 0.25em;
+}
+.h5p-multichoice .h5p-answer .h5p-feedback-inner {
+  background: #fbfbfb;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 0.5em 1.25em;
+  text-align: left;
+  position: relative;
+}
+
+.h5p-multichoice .h5p-answer.h5p-selected .h5p-feedback-inner {
+  border-bottom: 1px solid #cee0f4;
+  border-left: 1px solid #cee0f4;
+  border-right: 1px solid #cee0f4;
+}
+
+.h5p-multichoice .h5p-feedback-inner:before {
+  content: "";
+  position: absolute;
+  left: 0.625em;
+  top: -0.3em;
+  width: 0.5em;
+  height: 0.5em;
+  background: #fbfbfb;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  box-shadow: inset 1px 1px 0px 0px #dcdcdc;
+}
+
+
+.h5p-multichoice .h5p-answer.h5p-selected label:hover .h5p-feedback-inner:before {
+  box-shadow: inset 1px 1px 0px 0px #edd6e9;
+}
+
+.h5p-multichoice .h5p-answer.h5p-selected .h5p-feedback-inner:before {
+  box-shadow: inset 1px 1px 0px 0px #cee0f4;
+}
+
+.h5p-multichoice .h5p-feedback-dialog.h5p-has-tip .h5p-feedback-inner:before {
+  left: auto;
+  right: 0.85em;
+}
+
+.h5p-multichoice .h5p-feedback-text {
+  position: relative;
+  z-index: 3;
+  max-height: 6.5em;
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.h5p-multichoice .h5p-answer:last-child .h5p-feedback-text {
+  max-height: 4em;
+}
+
+.h5p-multichoice .h5p-feedback-text::-webkit-scrollbar {
+  width: 0.4em;
+}
+.h5p-multichoice .h5p-feedback-text::-webkit-scrollbar-thumb {
+  border-radius: 0.2em;
+  background: #aaa;
+}
+
+/* Tip icon*/
+.h5p-multichoice .multichoice-tip {
+  position: absolute;
+  right: 0;
+  top: 0px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1.25em;
+  line-height: 1.5;
+  width: 2.15em;
+  height: 100%;
+  color: #777;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.h5p-multichoice .multichoice-tip:hover {
+  color: #333;
+}
+
+.h5p-multichoice .multichoice-tip:before {
+  font-family: "H5PFontAwesome4";
+  content: "\f0e5";
+}
+
+.h5p-multichoice .h5p-correct .multichoice-tip,
+.h5p-multichoice .h5p-wrong .multichoice-tip {
+  right: 2.125em;
+  top: 0.0675em;
+}
+
+.h5p-multichoice .h5p-selected.h5p-should-not.h5p-correct .multichoice-tip,
+.h5p-multichoice .h5p-selected.h5p-should.h5p-correct .multichoice-tip,
+.h5p-multichoice .h5p-selected.h5p-should.h5p-wrong .multichoice-tip,
+.h5p-multichoice .h5p-selected.h5p-should-not.h5p-wrong .multichoice-tip {
+  right: 3.125em;
+}
+
+/* Remove tip icon on check */
+.h5p-multichoice .h5p-mc-disabled .multichoice-tip {
+  display: none;
+}

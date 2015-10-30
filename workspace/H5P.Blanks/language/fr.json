@@ -1,0 +1,59 @@
+{
+  "semantics": [
+    {
+    },
+    {
+      "label": "Consigne",
+      "description": "La consigne indique ce que l'utilisateur doit faire."
+    },
+    {
+      "label": "Blocs de Texte",
+      "entity": "Texte block",
+      "field": {
+        "label": "Line of Texte",
+        "description": "Des trous sont inseres avec une asterisque (*) devant et derriere le mot/la phrase correct. Les reponses possibles sont separees par un slash (/). Vous pouvez ajouter une aide en utilisant les deux points (:) avant cette aide. Exemple: Les exercices H5P peuvent etre crees en utilisant *un navigateur/navigateur internet:Quelque chose que vous utilisez tous les jours*."
+      }
+    },
+    {
+      "label": "Texte de Feedback",
+      "description": "Texte de Feedback, variables possibles: @score et @total. Exemple: 'Vous avez @score sur un total possible de @total points.'"
+    },
+    {
+      "label": "Texte pour le bouton \"Montrer la solution\""
+    },
+    {
+      "label": "Texte pour le bouton \"Reessayer\""
+    },
+    {
+      "label": "Texte pour le bouton \"Verifier\""
+    },
+    {
+      "label": "Texte pour le message \"Tout n'est pas fini\""
+    },
+    {
+      "label": "Options des exercices.",
+      "description": "Ces options permettent de parametrer les variables des exercices.",
+      "fields": [
+        {
+          "label": "Activer le bouton \"Reessayer\""
+        },
+        {
+          "label": "Activer le bouton \"Montrer la solution\""
+        },
+        {
+          "label": "Verifier les reponses automatiquement."
+        },
+        {
+          "label": "Sensible a la casse",
+          "description": "Afin que la reponse soit exactement celle attendue."
+        },
+        {
+          "label": "Tous les champs doivent etre remplis pour demander a voir la solution."
+        },
+        {
+          "label": "Les champs de reponse sont sur des lignes separees."
+        }
+      ]
+    }
+  ]
+}

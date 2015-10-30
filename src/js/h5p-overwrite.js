@@ -22,10 +22,10 @@ H5P.getPath = function (path, contentId) {
     return;
   }
 
-  if (!hasProtocol(prefix)) {
-    // Use absolute urls
-    prefix = window.location.protocol + "//" + window.location.host + prefix;
-  }
+  // if (!hasProtocol(prefix)) {
+  //   // Use absolute urls
+  //   prefix = window.location.protocol + "//" + window.location.host + prefix;
+  // }
 
   return prefix + '/' + path;
 };

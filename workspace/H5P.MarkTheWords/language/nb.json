@@ -1,0 +1,43 @@
+{
+  "semantics":
+  [
+    {
+      "label": "Oppgavebeskrivelse",
+      "description": "Forklar hvordan brukeren skal løse oppgaven."
+    },
+    {
+      "label": "Tekstlinjer",
+      "placeholder": "Oslo er hovedstaden i *Norge*",
+      "description": "Åpne felter merkes med en stjerne * foran og bak det korrekte ordet/uttrykket. Symbolet * lages ved å bruke to etter hverandre, slik ** = *. Eks: Dette er et *svar*, og dette er en asterisk **."
+    },
+    {
+      "label": "Tekst for \"Sjekk svar\" knapp",
+      "default": "Sjekk"
+    },
+    {
+      "label": "Tekst for \"Prøv igjen\" knapp",
+      "default": "Prøv igjen"
+    },
+    {
+      "label": "Tekst for \"Vis svar\" knapp",
+      "default": "Vis svar"
+    },
+    {
+      "label": "Tilbakemelding",
+      "default": "Du fikk @score av @total felt rett.",
+      "description": "Tekstlig tilbakemelding, tilgjengelige variabler: @score og @total. Eksempel: 'Du fikk @score av @total felt rett.'"
+    },
+    {
+      "label": "Innstillinger for oppgave-oppførsel",
+      "description": "Disse instillingene lar deg bestemme hvordan oppgavetypen skal oppføre seg.",
+      "fields": [
+        {
+          "label": "Aktiver \"Prøv igjen\""
+        },
+        {
+          "label": "Aktiver \"Vis svar\" knapp"
+        }
+      ]
+    }
+  ]
+}

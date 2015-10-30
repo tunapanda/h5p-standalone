@@ -1,0 +1,495 @@
+[
+  {
+    "name": "presentation",
+    "type": "group",
+    "widget": "coursepresentation",
+    "fields": [
+      {
+        "name": "slides",
+        "type": "list",
+        "field": {
+          "name": "slide",
+          "type": "group",
+          "fields": [
+            {
+              "name": "elements",
+              "type": "list",
+              "field": {
+                "name": "element",
+                "type": "group",
+                "fields": [
+                  {
+                    "name": "x",
+                    "type": "number",
+                    "widget": "none"
+                  },
+                  {
+                    "name": "y",
+                    "type": "number",
+                    "widget": "none"
+                  },
+                  {
+                    "name": "width",
+                    "type": "number",
+                    "widget": "none",
+                    "optional": true
+                  },
+                  {
+                    "name": "height",
+                    "type": "number",
+                    "widget": "none",
+                    "optional": true
+                  },
+                  {
+                    "name": "action",
+                    "type": "library",
+                    "options": [
+                      "H5P.AdvancedText 1.1",
+                      "H5P.ContinuousText 1.2",
+                      "H5P.Link 1.1",
+                      "H5P.Image 1.0",
+                      "H5P.Video 1.1",
+                      "H5P.Audio 1.2",
+                      "H5P.Blanks 1.4",
+                      "H5P.SingleChoiceSet 1.3",
+                      "H5P.MultiChoice 1.4",
+                      "H5P.DragQuestion 1.5",
+                      "H5P.Summary 1.4",
+                      "H5P.DragText 1.4",
+                      "H5P.MarkTheWords 1.4",
+                      "H5P.ExportableTextArea 1.2",
+                      "H5P.Table 1.1",
+                      "H5P.InteractiveVideo 1.7",
+                      "H5P.TwitterUserFeed 1.0",
+                      "H5P.AppearIn 1.0"
+                    ],
+                    "optional": true
+                  },
+                  {
+                    "name": "solution",
+                    "type": "text",
+                    "widget": "html",
+                    "optional": true,
+                    "label": "Comments",
+                    "description": "The comments are shown when the user displays the suggested answers for all slides.",
+                    "enterMode": "p",
+                    "tags": [
+                      "strong",
+                      "em",
+                      "del",
+                      "a",
+                      "ul",
+                      "ol",
+                      "h2",
+                      "h3",
+                      "hr"
+                    ]
+                  },
+                  {
+                    "name": "alwaysDisplayComments",
+                    "type": "boolean",
+                    "label": "Always display comments",
+                    "optional": true
+                  },
+                  {
+                    "name": "backgroundOpacity",
+                    "type": "number",
+                    "label": "Background Opacity",
+                    "min": 0,
+                    "max": 100,
+                    "step": 5,
+                    "default": 0,
+                    "optional": true
+                  },
+                  {
+                    "name": "displayAsButton",
+                    "type": "boolean",
+                    "label": "Display as button",
+                    "default": false,
+                    "optional": true
+                  },
+                  {
+                    "name": "title",
+                    "type": "text",
+                    "optional": true,
+                    "label": "Title"
+                  },
+                  {
+                    "name": "goToSlide",
+                    "type": "number",
+                    "label": "Go To Slide",
+                    "min": 1,
+                    "optional": true
+                  },
+                  {
+                    "name": "invisible",
+                    "type": "boolean",
+                    "label": "Invisible",
+                    "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element.",
+                    "default": false
+                  },
+                  {
+                    "name": "metadata",
+                    "type": "group",
+                    "label": "Metadata",
+                    "optional": true,
+                    "deprecated": true,
+                    "fields": [
+                      {
+                        "name": "title",
+                        "type": "text",
+                        "optional": true,
+                        "label": "Title"
+                      },
+                      {
+                        "name": "author",
+                        "type": "text",
+                        "optional": true,
+                        "label": "Author"
+                      },
+                      {
+                        "name": "lisence",
+                        "type": "text",
+                        "optional": true,
+                        "label": "Lisence"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "keywords",
+              "type": "list",
+              "optional": true,
+              "field": {
+                "name": "keyword",
+                "type": "group",
+                "optional": true,
+                "fields": [
+                  {
+                    "name": "main",
+                    "type": "text",
+                    "optional": true
+                  },
+                  {
+                    "name": "subs",
+                    "type": "list",
+                    "optional": true,
+                    "field": {
+                      "name": "keyword",
+                      "type": "text"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "ct",
+        "type": "text",
+        "widget": "none",
+        "optional": true,
+        "tags": [
+          "strong",
+          "em",
+          "del",
+          "br",
+          "p",
+          "a",
+          "h2",
+          "h3"
+        ]
+      },
+      {
+        "name": "keywordListEnabled",
+        "type": "boolean",
+        "label": "Keyword list",
+        "default": true
+      },
+      {
+        "name": "keywordListAlwaysShow",
+        "type": "boolean",
+        "label": "Always show",
+        "default": false
+      },
+      {
+        "name": "keywordListAutoHide",
+        "type": "boolean",
+        "label": "Auto hide",
+        "default": false
+      },
+      {
+        "name": "keywordListOpacity",
+        "type": "number",
+        "label": "Opacity",
+        "min": 0,
+        "max": 100,
+        "default": 90
+      }
+    ]
+  },
+  {
+    "name": "l10n",
+    "type": "group",
+    "label": "Localize",
+    "common": true,
+    "fields": [
+      {
+        "name": "slide",
+        "type": "text",
+        "label": "Translation for \"Slide\"",
+        "default": "Slide"
+      },
+      {
+        "name": "yourScore",
+        "type": "text",
+        "label": "Translation for \"Your Score\"",
+        "default": "Your Score"
+      },
+      {
+        "name": "maxScore",
+        "type": "text",
+        "label": "Translation for \"Max Score\"",
+        "default": "Max Score"
+      },
+      {
+        "name": "goodScore",
+        "type": "text",
+        "label": "Greeting given for GOOD score",
+        "default": "Congratulations! You got @percent correct!",
+        "description": "@percent is replaced by the real user score in percent"
+      },
+      {
+        "name": "okScore",
+        "type": "text",
+        "label": "Greeting given for OK score",
+        "default": "Nice effort! You got @percent correct!",
+        "description": "@percent is replaced by the real user score in percent"
+      },
+      {
+        "name": "badScore",
+        "type": "text",
+        "label": "Greeting given for BAD score",
+        "default": "You got @percent correct.",
+        "description": "@percent is replaced by the real user score in percent"
+      },
+      {
+        "name": "Total",
+        "type": "text",
+        "label": "Translation for \"Total\"",
+        "default": "Total"
+      },
+      {
+        "name": "showSolutions",
+        "type": "text",
+        "label": "Title for show solutions button",
+        "default": "Show solutions"
+      },
+      {
+        "name": "retry",
+        "type": "text",
+        "label": "Text for the retry button",
+        "default": "Retry",
+        "optional": true
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "label": "Translation for \"Title\"",
+        "default": "Title"
+      },
+      {
+        "name": "author",
+        "type": "text",
+        "label": "Translation for \"Author/supplier\"",
+        "default": "Author"
+      },
+      {
+        "name": "lisence",
+        "type": "text",
+        "label": "Translation for \"Lisence\"",
+        "default": "Lisence",
+        "deprecated": true,
+        "optional": true
+      },
+      {
+        "name": "license",
+        "type": "text",
+        "label": "Translation for \"License\"",
+        "default": "License"
+      },
+      {
+        "name": "exportAnswers",
+        "type": "text",
+        "label": "Text for the export text button",
+        "default": "Export text"
+      },
+      {
+        "name": "copyright",
+        "type": "text",
+        "label": "Text for the \"Rights of use\" button",
+        "default": "Rights of use"
+      },
+      {
+        "name": "hideKeywords",
+        "type": "text",
+        "label": "Hide keywords list button title",
+        "default": "Hide keywords list"
+      },
+      {
+        "name": "showKeywords",
+        "type": "text",
+        "label": "Show keywords list button title",
+        "default": "Show keywords list"
+      },
+      {
+        "name": "fullscreen",
+        "type": "text",
+        "label": "Fullscreen label",
+        "default": "Fullscreen"
+      },
+      {
+        "name": "exitFullscreen",
+        "type": "text",
+        "label": "Exit fullscreen label",
+        "default": "Exit fullscreen"
+      },
+      {
+        "name": "prevSlide",
+        "type": "text",
+        "label": "Previous slide label",
+        "default": "Previous slide"
+      },
+      {
+        "name": "nextSlide",
+        "type": "text",
+        "label": "Next slide label",
+        "default": "Next slide"
+      },
+      {
+        "name": "currentSlide",
+        "type": "text",
+        "label": "Current slide label",
+        "default": "Current slide"
+      },
+      {
+        "name": "lastSlide",
+        "type": "text",
+        "label": "Last slide label",
+        "default": "Last slide"
+      },
+      {
+        "name": "solutionModeTitle",
+        "type": "text",
+        "label": "Exit solution mode text",
+        "default": "Exit solution mode"
+      },
+      {
+        "name": "solutionModeText",
+        "type": "text",
+        "label": "Solution mode text",
+        "default": "Solution Mode"
+      },
+      {
+        "name": "summaryMultipleTaskText",
+        "type": "text",
+        "label": "Text when multiple tasks on a page",
+        "default": "Multiple tasks"
+      },
+      {
+        "name": "scoreMessage",
+        "type": "text",
+        "label": "Score message text",
+        "default": "You achieved:"
+      },
+      {
+        "name": "shareFacebook",
+        "type": "text",
+        "label": "Share to Facebook text",
+        "default": "Share on Facebook"
+      },
+      {
+        "name": "shareTwitter",
+        "type": "text",
+        "label": "Share to Twitter text",
+        "default": "Share on Twitter"
+      },
+      {
+        "name": "summary",
+        "type": "text",
+        "label": "Title for summary slide",
+        "default": "Summary"
+      },
+      {
+        "name": "solutionsButtonTitle",
+        "type": "text",
+        "label": "Title for the comments icon",
+        "default": "Show comments"
+      },
+      {
+        "name": "printTitle",
+        "type": "text",
+        "label": "Title for print button",
+        "default": "Print"
+      },
+      {
+        "name": "printIngress",
+        "type": "text",
+        "label": "Print dialog ingress",
+        "default": "How would you like to print this presentation?"
+      },
+      {
+        "name": "printAllSlides",
+        "type": "text",
+        "label": "Label for \"Print all slides\" button",
+        "default": "Print all slides"
+      },
+      {
+        "name": "printCurrentSlide",
+        "type": "text",
+        "label": "Label for \"Print current slide\" button",
+        "default": "Print current slide"
+      }
+    ]
+  },
+  {
+    "name": "override",
+    "type": "group",
+    "label": "Behaviour settings.",
+    "description": "These options will let you override behaviour settings.",
+    "optional": true,
+    "fields": [
+      {
+        "name": "overrideButtons",
+        "type": "boolean",
+        "label": "Enable behaviour override.",
+        "description": "If this is enabled the questions own settings will be ignored and the below settings will be used instead.",
+        "default": false
+      },
+      {
+        "name": "overrideShowSolutionButton",
+        "type": "boolean",
+        "label": "Enable \"Show solution\" buttons.",
+        "description": "Enabling this option will make questions show the \"Show solution\" button.",
+        "default": false
+      },
+      {
+        "name": "overrideRetry",
+        "type": "boolean",
+        "label": "Enable \"Retry\".",
+        "description": "Enabling this option will make the user able to \"Retry\" .",
+        "default": false
+      },
+      {
+        "name": "hideSummarySlide",
+        "type": "boolean",
+        "label": "Hide Summary Slide",
+        "description": "Hides the summary slide.",
+        "default": false
+      }
+    ]
+  }
+]

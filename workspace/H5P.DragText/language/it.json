@@ -1,0 +1,40 @@
+{
+  "semantics": [
+    {
+      "label": "Task description",
+      "description": "Describe how the user should solve the task."
+    },
+    {
+      "label": "Textfield",
+      "description": "Gli spazi vuoti sono aggiunti con un asterisco (*) davanti e dietro la parola/frase corretta. Si pu� aggiungere un suggerimento testuale, usando i due punti (:) prima del suggerimento. Esempio: Il contentuto H5P pu� essere editato utilizzando un *browser:Qualcosa che usi tutti i giorni*."
+    },
+    {
+      "label": "Testo per il pulsante \"Verifica\""
+    },
+    {
+      "label": "Testo per il pulsante \"Riprova\""
+    },
+    {
+      "label": "Testo per il pulsante \"Mostra Soluzione\""
+    },
+    {
+      "label": "Testo del Feedback",
+      "description": "Testo del Feedback (Riscontro), variabili consentite: @score @total. Esempio: 'Hai ottenuto il punteggio @score su @total punti possibili.'"
+    },
+    {
+      "label": "Impostazioni esecuzione",
+      "description": "Queste opzioni consentono di controllare l'andamento del compito.",
+      "fields": [
+        {
+          "label": "Abilita \"Riprova\""
+        },
+        {
+          "label": "Abilita il pulsante \"Mostra soluzioni\""
+        },
+        {
+          "label": "Esegui un Feedback (Riscontro) subito"
+        }
+      ]
+    }
+  ]
+}

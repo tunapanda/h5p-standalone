@@ -1,0 +1,22 @@
+{
+  "title": "FileSaver",
+  "contentType": "Media",
+  "description": "Provides a library for dealing with saving files client side",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 3,
+  "runnable": 0,
+  "machineName": "filesaver",
+  "preloadedJs": [
+    {
+      "path": "scripts/FileSaver.js"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "blob",
+      "majorVersion": 1,
+      "minorVersion": 0
+    }
+  ]
+}

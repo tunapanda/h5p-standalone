@@ -1,0 +1,140 @@
+@media print {
+  @page {
+    size: portrait;
+  }
+
+  /* Hide navigationbar - physical sheets does not support touch yet */
+  .h5p-content .h5p-actions,
+  /* Hide progressbar */
+  .h5p-course-presentation .h5p-progressbar,
+  /* Hide footer */
+  .h5p-course-presentation .h5p-footer,
+  /* Hide keywords */
+  .h5p-course-presentation .h5p-keywords-wrapper {
+    display:none;
+  }
+  /* Make a border on bottom */
+  .h5p-content {
+    border: none;
+    background: transparent;
+  }
+  .h5p-course-presentation,
+  .h5p-course-presentation .h5p-box-wrapper,
+  .h5p-course-presentation .h5p-presentation-wrapper {
+    background: transparent;
+  }
+  /* Show slides on print */
+  .h5p-course-presentation .h5p-slides-wrapper {
+    height: 100%;
+    background: transparent;
+  }
+  /* Slide setup - only slides with doprint class is printed */
+  .h5p-course-presentation .h5p-slides-wrapper .h5p-slide {
+    display: none;
+  }
+  .h5p-course-presentation .h5p-slides-wrapper .h5p-slide.doprint {
+    display: block;
+    position: relative;
+    -webkit-transform: none;
+    transform: none;
+
+    /* Adding this border makes it work in FF 39 on Linux. I have no
+       Idea why, but please don't remove it !! */
+    border: 1px solid #ddd;
+    page-break-after: always;
+  }
+  .h5p-course-presentation .h5p-slide .h5p-element {
+    overflow: visible;
+  }
+  .h5p-course-presentation .h5p-slides-wrapper .h5p-slide:last-child {
+    page-break-after: auto;
+  }
+  /******************************************/
+  /* Special handling of elements on slides */
+  /******************************************/
+  /* Hiding buttons */
+  .h5p-course-presentation .h5p-element-button-wrapper {
+    display: none;
+  }
+  /* Drag and drop question */
+  .h5p-course-presentation .h5p-dragquestion > .h5p-inner {
+    width: 100%;
+    height: 100%;
+  }
+  /* Summary slide - showing percents */
+  .h5p-course-presentation .h5p-summary-score-meter:before {
+    content: attr(title);
+    font-size: .6em;
+    text-shadow:
+     -1px -1px 0 #fff,
+      1px -1px 0 #fff,
+      -1px 1px 0 #fff,
+       1px 1px 0 #fff;
+    position: absolute;
+    top: 0;
+  }
+  /* Summary slide - avoiding scrollbars on IE */
+  .h5p-course-presentation .h5p-summary-table-pages {
+    overflow: visible;
+  }
+  /* Hide twitter on summary slide */
+  .h5p-course-presentation .h5p-summary-twitter-message {
+    display: none;
+  }
+  /* Summary content type - avoiding black background */
+  .h5p-course-presentation .summary-container li {
+    background: #fff;
+
+    /* Need to reset transition for Chrome */
+    transition: none;
+  }
+  /* Styling for videos */
+  .h5p-course-presentation .h5p-element.h5p-video {
+    background-color: #fff;
+    text-align: center;
+    min-height: 10em;
+  }
+  .h5p-course-presentation .h5p-element.h5p-video:before {
+    font-family: 'H5PFontAwesome4';
+    font-size: 4em;
+    color: #666;
+    content: '\f03d';
+
+    display: inline-block;
+    position: relative;
+    top: 1.5em;
+  }
+  .h5p-course-presentation .h5p-element.h5p-video * {
+    width: 0;
+  }
+}
+
+/* Print dialog */
+.h5p-print-dialog {
+  text-align: center;
+}
+.h5p-print-dialog .h5p-inner {
+  display: inline-block;
+  text-align: left;
+  height: auto;
+
+  /* Vertical center dialog */
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.h5p-print-dialog .h5p-joubelui-button {
+  display: block;
+  margin: 1em 0 0 0;
+}
+.h5p-print-dialog .h5p-joubelui-button::before {
+  font-family: 'H5PFontAwesome4';
+  margin-right: .5em;
+}
+.h5p-print-dialog .h5p-cp-print-all-slides::before {
+  content: '\f0c5';
+}
+.h5p-print-dialog .h5p-cp-print-current-slide::before {
+  content: '\f016';
+}

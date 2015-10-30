@@ -1,0 +1,117 @@
+[
+  {
+    "name": "file",
+    "type": "image",
+    "label": "Image"
+  },
+  {
+    "name": "alt",
+    "type": "text",
+    "label": "Alternative text",
+    "description": "Required. If the browser can't load the image this text will be displayed instead. Also used by readspeakers."
+  },
+  {
+    "name": "title",
+    "type": "text",
+    "label": "Hover text",
+    "description": "Optional. This text is displayed when the user hovers his pointing device over the image.",
+    "optional": true
+  },
+  {
+    "name": "copyright",
+    "type": "group",
+    "label": "Copyright information",
+    "deprecated": true,
+    "optional": true,
+    "fields": [
+      {
+        "name": "title",
+        "type": "text",
+        "label": "Title",
+        "placeholder": "La Gioconda",
+        "optional": true
+      },
+      {
+        "name": "author",
+        "type": "text",
+        "label": "Author",
+        "placeholder": "Leonardo da Vinci",
+        "optional": true
+      },
+      {
+        "name": "source",
+        "type": "text",
+        "label": "Source",
+        "placeholder": "http://en.wikipedia.org/wiki/Mona_Lisa",
+        "optional": true,
+        "regexp": {
+          "pattern": "^http[s]?://.+",
+          "modifiers": "i"
+        }
+      },
+      {
+        "name": "license",
+        "type": "select",
+        "label": "License",
+        "default": "U",
+        "options": [
+          {
+            "value": "U",
+            "label": "Undisclosed"
+          },
+          {
+            "value": "CC BY",
+            "label": "Attribution"
+          },
+          {
+            "value": "CC BY-SA",
+            "label": "Attribution-ShareAlike"
+          },
+          {
+            "value": "CC BY-ND",
+            "label": "Attribution-NoDerivs"
+          },
+          {
+            "value": "CC BY-NC",
+            "label": "Attribution-NonCommercial"
+          },
+          {
+            "value": "CC BY-NC-SA",
+            "label": "Attribution-NonCommercial-ShareAlike"
+          },
+          {
+            "value": "CC BY-NC-ND",
+            "label": "Attribution-NonCommercial-NoDerivs"
+          },
+          {
+            "value": "GNU GPL",
+            "label": "General Public License"
+          },
+          {
+            "value": "PD",
+            "label": "Public Domain"
+          },
+          {
+            "value": "ODC PDDL",
+            "label": "Public Domain Dedication and Licence"
+          },
+          {
+            "value": "CC PDM",
+            "label": "Public Domain Mark"
+          },
+          {
+            "value": "C",
+            "label": "Copyright"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "contentName",
+    "type": "text",
+    "label": "Image content name",
+    "common": true,
+    "default": "Image"
+  }
+]

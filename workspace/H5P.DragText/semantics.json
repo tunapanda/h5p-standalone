@@ -1,0 +1,87 @@
+[
+  {
+    "label": "Task description",
+    "name": "taskDescription",
+    "type": "text",
+    "widget": "html",
+    "description": "Describe how the user should solve the task.",
+    "default": "Drag the words into the correct boxes",
+    "enterMode": "p",
+    "tags": [
+      "strong",
+      "em",
+      "u",
+      "a",
+      "ul",
+      "ol",
+      "h2",
+      "h3",
+      "hr"
+    ]
+  },
+  {
+    "label": "Textfield",
+    "name": "textField",
+    "type": "text",
+    "widget": "textarea",
+    "placeholder": "Oslo is the capital of *Norway*",
+    "description": "Droppable words are added with an asterisk (*) in front and behind the correct word/phrase. You may add a textual tip, using a colon (:) in front of the tip. Example: H5P content may be edited using a *browser:Something you use every day*."
+  },
+  {
+    "label": "Text for \"Check\" button",
+    "name": "checkAnswer",
+    "type": "text",
+    "default": "Check",
+    "common": true
+  },
+  {
+    "label": "Text for \"Retry\" button",
+    "name": "tryAgain",
+    "type": "text",
+    "default": "Retry",
+    "common": true
+  },
+  {
+    "label": "Text for \"Show Solution\" button",
+    "name": "showSolution",
+    "type": "text",
+    "default": "Show Solution",
+    "common": true
+  },
+  {
+    "label": "Feedback text",
+    "name": "score",
+    "type": "text",
+    "default": "Score : @score of @total.",
+    "description": "Feedback text, variables available: @score @total. Example: 'You got @score of @total possible points'",
+    "common": true
+  },
+  {
+    "name": "behaviour",
+    "type": "group",
+    "label": "Behavioural settings.",
+    "description": "These options will let you control how the task behaves.",
+    "optional": true,
+    "fields": [
+      {
+        "label": "Enable \"Retry\"",
+        "name": "enableRetry",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "label": "Enable \"Show Solution\" button",
+        "name": "enableSolutionsButton",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "label": "Instant feedback",
+        "name": "instantFeedback",
+        "type": "boolean",
+        "default": false,
+        "optional": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,142 @@
+.h5p-question {
+  background: rgba(255, 255, 255, 0.9);
+  position: relative;
+}
+
+.h5p-question-image {
+  text-align: left;
+  margin: 0 0 1em;
+  line-height: 0.8125em;
+}
+.h5p-question-image img {
+  display: block;
+  max-width: 100%;
+  max-height: 10em;
+  border: 0;
+  outline: none;
+  -webkit-transition: max-height 0.3s;
+  -moz-transition: max-height 0.3s;
+  transition: max-height 0.3s;
+}
+.h5p-question-image-wrap {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 1em;
+  -webkit-transform: translate(1em, 1em);
+  transform: translate(1em, 1em);
+  -webkit-transition: -webkit-transform 0.3s, margin 0.3s;
+  -moz-transition: transform 0.3s, margin 0.3s;
+  transition: transform 0.3s, margin 0.3s;
+}
+.h5p-question-image-fill-width .h5p-question-image-wrap,
+.h5p-no-frame > .h5p-question .h5p-question-image-wrap,
+.h5p-transparent .h5p-question .h5p-question-image-wrap {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  margin: 0;
+}
+
+.h5p-question-image-scalable {
+  cursor: pointer;
+}
+.h5p-question-image-scalable:before {
+  position: absolute;
+  font-family: 'H5PFontAwesome4';
+  content: "\f067";
+  right: 7px;
+  top: 7px;
+  color: #fff;
+  font-size: 10px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  width: 18px;
+  height: 18px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.h5p-question-image-large .h5p-question-image-scalable:before {
+  content: "\f068";
+}
+
+.h5p-question-introduction {
+  margin: 1em;
+}
+
+.h5p-question-introduction > p {
+  font-size: 1.125em;
+  line-height: 1.25em;
+  margin: 0;
+}
+
+.h5p-question-content {
+  margin: 1em;
+}
+.h5p-question-feedback {
+  font-weight: bold;
+  color: #1a73d9;
+  margin: 0 1em;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.15s ease, margin 0.15s ease, opacity 0.15s cubic-bezier(0,1,0,1);
+}
+.h5p-question-feedback.h5p-question-visible {
+  margin: 1em;
+  opacity: 1;
+  transition: max-height 0.15s ease, margin 0.15s ease, opacity 0.15s ease-in;
+}
+.h5p-joubelui-score-bar {
+  display: inline-block;
+  margin-right: .5em;
+}
+.h5p-question-feedback-content {
+  display: inline-block;
+  position: relative;
+  top: -1em;
+  margin-top: .8em;
+}
+
+.h5p-question-buttons {
+  overflow: hidden;
+  margin: 0 1em;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.15s ease, margin 0.15s ease, opacity 0.15s cubic-bezier(0,1,0,1);
+}
+.h5p-question-buttons.h5p-question-visible {
+  max-height: none;
+  opacity: 1;
+  transition: max-height 0.15s ease, margin 0.15s ease, opacity 0.15s ease-in;
+}
+
+/* Remove margins when no frame or transparent */
+.h5p-no-frame > .h5p-question > *,
+.h5p-transparent > div > .h5p-question > * {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.h5p-no-frame > .h5p-question > *:first-child,
+.h5p-transparent > div > .h5p-question > *:first-child {
+  margin-top: 0;
+}
+
+.h5p-no-frame > .h5p-question > *:last-child,
+.h5p-transparent > div > .h5p-question > *:last-child {
+  margin-bottom: 0;
+}
+
+/* CP specific styles */
+.h5p-course-presentation .h5p-question-introduction {
+  font-size: 1.125em;
+  line-height: 1.125em;
+}
+
+.h5p-course-presentation .h5p-question-introduction > p {
+  font-size: 1em;
+  line-height: 1em;
+  margin: 0;
+}

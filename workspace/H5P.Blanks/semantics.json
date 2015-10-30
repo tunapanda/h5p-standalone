@@ -1,0 +1,142 @@
+[
+  {
+    "name": "image",
+    "type": "image",
+    "label": "Task image",
+    "optional": true,
+    "description": "An optional image to display above the task."
+  },
+  {
+    "label": "Task description",
+    "name": "text",
+    "type": "text",
+    "widget": "html",
+    "default": "Fill in the missing words",
+    "description": "A guide telling the user how to answer this task.",
+    "enterMode": "p",
+    "tags": [
+      "strong",
+      "em",
+      "u",
+      "a",
+      "ul",
+      "ol",
+      "h2",
+      "h3",
+      "hr"
+    ]
+  },
+  {
+    "name": "questions",
+    "type": "list",
+    "label": "Text blocks",
+    "entity": "text block",
+    "min": 1,
+    "max": 31,
+    "field": {
+      "name": "question",
+      "type": "text",
+      "widget": "html",
+      "label": "Line of text",
+      "placeholder": "Oslo is the capital of *Norway*.",
+      "description": "Blanks are added with an asterix (*) in front and behind the correct word/phrase. Alternative answers are separated with a forward slash (/). You may add a textual tip, using a colon (:) in front of the tip. Example: H5P content may be edited using a *browser/web-browser:Something you use every day*.",
+      "enterMode": "p",
+      "tags": [
+        "strong",
+        "em",
+        "del",
+        "u"
+      ]
+    }
+  },
+  {
+    "label": "Feedback text",
+    "name": "score",
+    "type": "text",
+    "default": "You got @score of @total blanks correct.",
+    "description": "Feedback text, variables available: @score and @total. Example: 'You got @score of @total possible points'",
+    "common": true
+  },
+  {
+    "label": "Text for \"Show solutions\" button",
+    "name": "showSolutions",
+    "type": "text",
+    "default": "Show solutions",
+    "common": true
+  },
+  {
+    "label": "Text for \"Retry\" button",
+    "name": "tryAgain",
+    "type": "text",
+    "default": "Retry",
+    "common": true,
+    "optional": true
+  },
+  {
+    "label": "Text for \"Check\" button",
+    "name": "checkAnswer",
+    "type": "text",
+    "default": "Check",
+    "common": true,
+    "optional": true
+  },
+  {
+    "label": "Text for \"Not filled out\" message",
+    "name": "notFilledOut",
+    "type": "text",
+    "default": "Please fill in all blanks",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "behaviour",
+    "type": "group",
+    "label": "Behavioural settings.",
+    "description": "These options will let you control how the task behaves.",
+    "optional": true,
+    "fields": [
+      {
+        "label": "Enable \"Retry\"",
+        "name": "enableRetry",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "Enable \"Show solutions\" button",
+        "name": "enableSolutionsButton",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "Automatically check answers after input",
+        "name": "autoCheck",
+        "type": "boolean",
+        "default": false,
+        "optional": true
+      },
+      {
+        "name": "caseSensitive",
+        "type": "boolean",
+        "default": true,
+        "label": "Case sensitive",
+        "description": "Makes sure the user input has to be exactly the same as the answer."
+      },
+      {
+        "label": "Require all fields to be answered before the solution can be viewed",
+        "name": "showSolutionsRequiresInput",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "Put input fields on separate lines",
+        "name": "separateLines",
+        "type": "boolean",
+        "default": false,
+        "optional": true
+      }
+    ]
+  }
+]

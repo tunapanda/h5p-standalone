@@ -1,0 +1,68 @@
+{
+  "title": "Course Presentation",
+  "contentType": "Library",
+  "majorVersion": 1,
+  "minorVersion": 6,
+  "patchVersion": 2,
+  "runnable": 1,
+  "fullscreen": 1,
+  "embedTypes": [
+    "iframe"
+  ],
+  "machineName": "H5P.CoursePresentation",
+  "author": "Joubel AS",
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 6
+  },
+  "preloadedJs": [
+    {
+      "path": "scripts/cp.js"
+    },
+    {
+      "path": "scripts/go-to-slide.js"
+    },
+    {
+      "path": "scripts/summary-slide.js"
+    },
+    {
+      "path": "scripts/navigation-line.js"
+    },
+    {
+      "path": "scripts/printer.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "styles/cp.css"
+    },
+    {
+      "path": "styles/summary-slide.css"
+    },
+    {
+      "path": "styles/navigation-line.css"
+    },
+    {
+      "path": "styles/print.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 3
+    },
+    {
+      "machineName": "H5P.JoubelUI",
+      "majorVersion": 1,
+      "minorVersion": 2
+    }
+  ],
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.CoursePresentation",
+      "majorVersion": 1,
+      "minorVersion": 6
+    }
+  ]
+}

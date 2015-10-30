@@ -1,4 +1,4 @@
-workspace/*
-!workspace/H5P_CONTENT_HERE.txt
+#workspace/*
+#!workspace/H5P_CONTENT_HERE.txt
 bower_components
 node_modules

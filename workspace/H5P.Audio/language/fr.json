@@ -1,0 +1,89 @@
+{
+  "semantics": [
+    {
+      "label": "Fichiers sources"
+    },
+    {
+      "label": "Contrôles",
+      "description": "Selectionne la barre des contrôles.",
+      "options": [
+        {
+          "label": "Minimaliste"
+        },
+        {
+          "label": "Plein"
+        }
+      ]
+    },
+    {
+      "label": "Remplir le cadre"
+    },
+    {
+      "label": "Activer les contrôles",
+      "description": "Les contrôles permettent à l'utilisateur de mettre l'audio en pause"
+    },
+    {
+      "label": "Activer l'autoplay",
+      "description": "L'audio démarre directement sans appuyer sur un bouton."
+    },
+    {
+      "label": "Information sur le Copyright",
+      "fields": [
+        {
+          "label": "Titre"
+        },
+        {
+          "label": "Auteur"
+        },
+        {
+          "label": "Source"
+        },
+        {
+          "label": "Licence",
+          "options": [
+            {
+              "label": "Non communiqué"
+            },
+            {
+              "label": "Attribution"
+            },
+            {
+              "label": "Attribution-Partage à l'identique"
+            },
+            {
+              "label": "Attribution-Pas de modification"
+            },
+            {
+              "label": "Attribution-Pas d'utilisation commerciale"
+            },
+            {
+              "label": "Attribution-Pas d'utilisation commerciale-Partage à l'identique"
+            },
+            {
+              "label": "Attribution-Pas d'utilisation commerciale-Pas de modifications"
+            },
+            {
+              "label": "GPL"
+            },
+            {
+              "label": "Domaine public"
+            },
+            {
+              "label": "Domaine public"
+            },
+            {
+              "label": "Domaine public"
+            },
+            {
+              "label": "Copyright"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Nom du contenu audio",
+      "default": "Audio"
+    }
+  ]
+}

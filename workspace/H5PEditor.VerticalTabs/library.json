@@ -1,0 +1,31 @@
+{
+  "machineName": "H5PEditor.VerticalTabs",
+  "title": "H5P Editor Vertical Tabs",
+  "license": "MIT",
+  "author": "Joubel AS (icc)",
+  "majorVersion": 1,
+  "minorVersion": 1,
+  "patchVersion": 2,
+  "runnable": 0,
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 4
+  },
+  "preloadedJs": [
+    {
+      "path": "vertical-tabs.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "vertical-tabs.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 3
+    }
+  ]
+}

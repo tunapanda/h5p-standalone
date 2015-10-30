@@ -11,6 +11,10 @@ var mainFiles = [
   'bower_components/jquery/dist/jquery.js',
   'src/js/h5p-jquery.js',
   'src/js/h5pintegration.js',
+  'bower_components/h5p-php-library/js/h5p-content-type.js',
+  'bower_components/h5p-php-library/js/h5p-event-dispatcher.js',
+  'bower_components/h5p-php-library/js/h5p-x-api-event.js',
+  'bower_components/h5p-php-library/js/h5p-x-api.js',
   'bower_components/h5p-php-library/js/h5p.js',
   'src/js/h5p-overwrite.js'
 ];

@@ -1,0 +1,15 @@
+{
+  "semantics": [
+    {
+      "label": "Exporter les réponses",
+      "description": "Texte/entête pour l'exportation des réponses."
+    },
+    {},
+    {
+      "label": "Texte d'exportation non supportée"
+    },
+    {
+      "label": "Inclure les commentaires dans le document exporté"
+    }
+  ]
+}

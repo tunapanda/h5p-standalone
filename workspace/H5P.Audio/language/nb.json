@@ -1,0 +1,89 @@
+{
+  "semantics": [
+    {
+      "label": "Lydfiler"
+    },
+    {
+      "label": "Avspiller modus",
+      "description": "Velg avspiller modus.",
+      "options": [
+        {
+          "label": "Minimal"
+        },
+        {
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "label": "Tilpass størrelse",
+      "description": "Forstørr og forminsk avhengig av tilgjengelig størrelse"
+    },
+    {
+      "label": "Slå på kontroller",
+      "description": "Kontrollene lar bl.a. brukeren sette lydavspillingen på pause"
+    },
+    {
+      "label": "Slå på automatisk avspilling",
+      "description": "Med automatisk avspilling begynner lyden å spille av seg selv med en gang. Hvis automatisk avspilling er avslått må brukeren trykke for å starte avspillingen."
+    },
+    {
+      "label": "Informasjon om opphavsrett",
+      "fields": [
+        {
+          "label": "Tittel"
+        },
+        {
+          "label": "Opphavsmann"
+        },
+        {
+          "label": "Kilde"
+        },
+        {
+          "label": "Lisens",
+          "options": [
+            {
+              "label": "Ukjent"
+            },
+            {
+              "label": "Navngivelse"
+            },
+            {
+              "label": "Navngivelse - Del på samme vilkår"
+            },
+            {
+              "label": "Navngivelse - Ingen bearbeidelse"
+            },
+            {
+              "label": "Navngivelse - Ikke kommersiell"
+            },
+            {
+              "label": "Navngivelse - Ikke kommersiell - Del på samme vilkår"
+            },
+            {
+              "label": "Navngivelse - Ikke kommersiell - Ingen bearbeidelse"
+            },
+            {
+              "label": "Generell offentlig lisens"
+            },
+            {
+              "label": "Offentlig eiendom"
+            },
+            {
+              "label": "Offentlig eiendom engasjement og lisens"
+            },
+            {
+              "label": "Offentlig eiendom merke"
+            },
+            {
+              "label": "Opphavsrett"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Innholdsnavn for lyd"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+/* H5P SHARED STYLING: */
+
+/* IcoMoon font licensed under the GNU General Public License: http://www.gnu.org/licenses/gpl.html */
+@font-face {
+  font-family: 'icomoon-word';
+  src:url('fonts/icomoon.eot');
+  src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+  url('fonts/icomoon.woff') format('woff'),
+  url('fonts/icomoon.ttf') format('truetype'),
+  url('fonts/icomoon.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* The main containers for the module, specific to this module. */
+.h5p-mark-the-words {
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#e6FFFFFF,endColorstr=#e6FFFFFF);
+  overflow: hidden;
+}
+.h5p-mark-the-words .h5p-word-inner {
+  overflow: hidden;
+}
+
+/* Actual text paragraphs */
+.h5p-mark-the-words .h5p-word-inner p {
+  font-size: 1em;
+  font-weight: normal;
+  padding: 0;
+  margin: 0 0 1em;
+}
+
+.h5p-mark-the-words button.h5p-button:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f06e";
+  padding-right: 0.5em;
+}
+/* Selectable words container */
+.h5p-mark-the-words .h5p-word-selectable-words {
+  line-height: 1.75em;
+}
+/* Selectable words*/
+.h5p-mark-the-words .h5p-word-selectable {
+  white-space: nowrap;
+  padding: 0.15em;
+  border-radius: 0.25em;
+  cursor: pointer;
+}
+
+.h5p-mark-the-words .h5p-word-selectable.h5p-word-disabled {
+  cursor: default;
+}
+
+/* Colors and styling for word selections */
+.h5p-mark-the-words .h5p-word-selected {
+  background: #cee0f4;
+}
+/* Missed word*/
+.h5p-mark-the-words .h5p-word-missed {
+  border: 0.1em #2c76c0 dashed;
+}
+/* Correctly answered marking */
+.h5p-mark-the-words .h5p-word-correct{
+  background: #9dd8bb;
+  color: #255c41;
+}
+/* Wrongly answered marking */
+.h5p-mark-the-words .h5p-word-wrong {
+  background-color: #f7d0d0;
+  color: #b71c1c;
+  text-decoration: line-through;
+}
+/* Feedback icons */
+.h5p-mark-the-words .h5p-word-correct:after {
+  position: relative;
+  right: 0.1em;
+  text-decoration: none;
+  content: "\f00c";
+  font-family: 'H5PFontAwesome4';
+  color: #255c41;
+  padding-left: 0.75em;
+}
+.h5p-mark-the-words .h5p-word-wrong:after {
+  position: relative;
+  right: 0.1em;
+  display: inline-block;
+  font-family: 'H5PFontAwesome4';
+  text-decoration: none;
+  content: "\f00d";
+  color: #b71c1c;
+  padding-left: 0.75em;
+}
+/* SPECIFIC CSS CLASSES FOR MARK THE WORDS MODULE: */
+/* Start state for button: */
+.h5p-mark-the-words button.h5p-button.h5p-check-button:before {
+  content: "\f058";
+}
+.h5p-mark-the-words button.h5p-button.h5p-retry-button:before {
+  content: "\f021";
+}
+.h5p-mark-the-words button.h5p-button.h5p-check-button {
+  display: inline-block;
+}
+button.h5p-retry-button.h5p-retry-button {
+  display: none;
+}

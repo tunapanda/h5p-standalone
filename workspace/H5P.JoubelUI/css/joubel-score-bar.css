@@ -1,0 +1,177 @@
+.h5p-joubelui-score-bar * {
+  box-sizing: border-box;
+}
+.h5p-joubelui-score-bar {
+  display: inline-block;
+  position: relative;
+  height: 1.8em;
+  width: 7.6em;
+  line-height: 2em;
+  font-size: 1.5em;
+}
+.h5p-joubelui-score-bar-progress-wrapper {
+  display: inline-block;
+  position: absolute;
+  top: .4em;
+  left: 0;
+  z-index: 1;
+  width: 6em;
+  height: 1em;
+  border-top-left-radius: .5em;
+  border-bottom-left-radius: .5em;
+  border: 2px solid #ddd;
+  border-right: none;
+  background: #fff;
+}
+.h5p-joubelui-score-bar-progress {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  bottom: -2px;
+  width: 0;
+  border-top-left-radius: .5em;
+  border-bottom-left-radius: .5em;
+  background: #47b47d;
+}
+.h5p-joubelui-score-bar-progress.animate {
+  -webkit-transition: width .4s ease-in-out;
+  -moz-transition: width .4s ease-in-out;
+  -o-transition: width .4s ease-in-out;
+  transition: width .4s ease-in-out;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+}
+.h5p-joubelui-score-bar-end {
+  display: inline-block;
+  height: 1.8em;
+  width: 1.8em;
+  position: absolute;
+  left: 5.8em;
+  top: 0;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  background: #fff;
+  font-family: 'H5PFontAwesome4';
+  text-align: center;
+  -webkit-transition: transform .4s ease-in-out;
+  -moz-transition: transform .4s ease-in-out;
+  -o-transition: transform .4s ease-in-out;
+  transition: transform .4s ease-in-out;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+}
+.h5p-joubelui-score-bar-default-star,
+.h5p-joubelui-score-bar-full-score-star {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.h5p-joubelui-score-bar-full-score-star {
+  background: #47b47d;
+  -webkit-transition: transform .3s ease-in-out;
+  -moz-transition: transform .3s ease-in-out;
+  -o-transition: transform .3s ease-in-out;
+  transition: transform .3s ease-in-out;
+  -webkit-transform: scale(0.01);
+  transform: scale(0.01);
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+}
+.full-score .h5p-joubelui-score-bar-full-score-star.animate-background {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.full-score .h5p-joubelui-score-bar-default-star {
+  display:none;
+}
+.h5p-joubelui-score-bar-default-star::before {
+  content: '\f005';
+  color: #ddd;
+}
+/* Full score - full star */
+.h5p-joubelui-score-bar-full-score-star::before {
+  display:none;
+  content: '\f005';
+  color: #ffc400;
+  text-shadow: 0px 2px rgba(31, 81, 56, 0.35);
+  -webkit-transition: transform .4s ease-in-out;
+  -moz-transition: transform .4s ease-in-out;
+  -o-transition: transform .4s ease-in-out;
+  transition: transform .4s ease-in-out;
+  -webkit-transform-style: preserve-3d;
+}
+.h5p-joubelui-score-bar-full-score-star.show-star::before {
+  display: inline-block;
+}
+.h5p-joubelui-score-bar-full-score-star.animate-star::before {
+  animation: pound .8s 1;
+  -webkit-animation: pound .8s 1;
+}
+@keyframes pound {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  20% {
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
+  }
+  60% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+  80% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes pound {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  20% {
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
+  }
+  60% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+  80% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+/* Full score - half star */
+.h5p-joubelui-score-bar-full-score-star::after {
+  content: '\f089';
+  color: transparent;
+  -webkit-transition: color .8s ease-in-out;
+  -moz-transition: color .8s ease-in-out;
+  -o-transition: color .8s ease-in-out;
+  transition: color .8s ease-in-out;
+  -webkit-transform-style: preserve-3d;
+}
+.h5p-joubelui-score-bar-full-score-star.animate-star-blink::after {
+  color: #ffd600;
+}
+.h5p-joubelui-score-bar-default-star::before,
+.h5p-joubelui-score-bar-full-score-star::before,
+.h5p-joubelui-score-bar-full-score-star::after {
+  position: absolute;
+  top: -0.05em;
+  left: 0.4em;
+}

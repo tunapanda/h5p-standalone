@@ -1,0 +1,89 @@
+{
+  "semantics": [
+    {
+      "label": "File sorgenti"
+    },
+    {
+      "label": "Modalit� player",
+      "description": "Seleziona il layout del player.",
+      "options": [
+        {
+          "label": "Minimalista"
+        },
+        {
+          "label": "Intero"
+        }
+      ]
+    },
+    {
+      "label": "Adatta al contenitore"
+    },
+    {
+      "label": "Abilita controlli",
+      "description": "I controlli consentono all'utente di mettere in pausa, per esempio l'audio."
+    },
+    {
+      "label": "Abilita autoplay",
+      "description": "Con l'autoplay l'audio si avvia immediatamente. Se l�autoplay � disattivato l'utente premer� il pulsante play per avviare l'audio."
+    },
+    {
+      "label": "Informazioni Copyright",
+      "fields": [
+        {
+          "label": "Titolo"
+        },
+        {
+          "label": "Autore"
+        },
+        {
+          "label": "Sorgente",
+          "regexp": {}
+        },
+        {
+          "label": "Licenza",
+          "options": [
+            {
+              "label": "Anonimo"
+            },
+            {
+              "label": "Distribuzione"
+            },
+            {
+              "label": "Distribuzione-ShareAlike"
+            },
+            {
+              "label": "Distribuzione-NoDerivs"
+            },
+            {
+              "label": "Distribuzione-NonCommercial"
+            },
+            {
+              "label": "Distribuzione-NonCommercial-ShareAlike"
+            },
+            {
+              "label": "Distribuzione-NonCommercial-NoDerivs"
+            },
+            {
+              "label": "General Public License"
+            },
+            {
+              "label": "Public Domain"
+            },
+            {
+              "label": "Public Domain Dedication and Licence"
+            },
+            {
+              "label": "Public Domain Mark"
+            },
+            {
+              "label": "Copyright"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Nome contenuto audio"
+    }
+  ]
+}

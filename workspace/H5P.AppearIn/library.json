@@ -1,0 +1,16 @@
+{
+  "title": "appear.in for chat and talk",
+  "description": "To create a room to chat and talk together",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 2,
+  "runnable": 1,
+  "author": "Griffen",
+  "license": "MIT",
+  "machineName": "H5P.AppearIn",
+  "preloadedJs": [
+    {
+      "path": "h5p-appear-in.js"
+    }
+  ]
+}

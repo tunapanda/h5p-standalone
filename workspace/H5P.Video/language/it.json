@@ -1,0 +1,72 @@
+{
+  "semantics": [
+    {
+      "label": "Sorgenti Video",
+      "description": "Per assicurarsi che il video sia riproducibile in tutti i browser si dovrebbe aggiungere sia WebM sia MP4 come sorgenti di formattazione."
+    },
+    {
+      "label": "Poster"
+    },
+    {
+      "label": "Adatta il video player per utilizzare tutto lo spazio disponibile",
+      "description": "Se non è impostato il lettore video avrà le stesse proporzioni del video."
+    },
+    {
+      "label": "Mostra controlli del video player",
+      "description": "Aggiungi controlli al video player. Questo consente agli utenti di premere play, pausa, etc."
+    },
+    {
+      "label": "Auto-play video",
+      "description": "Avvia la riproduzione video automaticamente. Potrebbe non funzionare sui dispositivi mobili."
+    },
+    {
+      "label": "Loop video",
+      "description": "Riavvia il video automaticamente dopo la fine."
+    },
+    {
+      "label": "Localizzazione Video",
+      "fields": [
+        {
+          "label": "Nome",
+          "description": "Consente di identificare il tipo di contenuto."
+        },
+        {
+          "label": "Caricamento"
+        },
+        {
+          "label": "Nessun player trovato"
+        },
+        {
+          "label": "Nessun sorgente"
+        },
+        {
+          "label": "Bloccato"
+        },
+        {
+          "label": "Errore di rete"
+        },
+        {
+          "label": "Impossibile decodificare il sorgente video"
+        },
+        {
+          "label": "Formato non supportato"
+        },
+        {
+          "label": "Supporto cifrato"
+        },
+        {
+          "label": "Errore sconosciuto"
+        },
+        {
+          "label": "ID YouTube non valido"
+        },
+        {
+          "label": "ID YouTube sconosciuto"
+        },
+        {
+          "label": "Video YouTube riproduzione riservata"
+        }
+      ]
+    }
+  ]
+}

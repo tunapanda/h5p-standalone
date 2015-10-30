@@ -1,0 +1,72 @@
+{
+  "semantics": [
+    {
+      "label": "Sources vidéo",
+      "description": "Selectionnez les fichiers vidéo que vous souhaitez utiliser dans votre vidéo interactive. Pour assurer une compatibilité maximum avec les navigateurs, merci d'utiliser des vidéos au format mp4 ou webm."
+    },
+    {
+      "label": "Affiche"
+    },
+    {
+      "label": "Le lecteur vidéo utilise toute la place disponible",
+      "description": "Si non précisé, le lecteur aura la même taille que la vidéo."
+    },
+    {
+      "label": "Montrer les boutons de contrôle de la vidéo",
+      "description": "Montre les boutons de contrôle de la vidéo: lecture, pause..."
+    },
+    {
+      "label": "Démarrage automatique",
+      "description": "La vidéo démarre automatiquement. Peut ne pas fonctionner sur certains appareils mobiles."
+    },
+    {
+      "label": "Rejouer la vidéo",
+      "description": "La vidéo est rejouée quand elle est terminée."
+    },
+    {
+      "label": "Localisation de la vidéo",
+      "fields": [
+        {
+          "label": "Nom",
+          "description": "Aide à idntifier le type de contenu."
+        },
+        {
+          "label": "Chargement"
+        },
+        {
+          "label": "Aucun lecteur vidéo trouvé"
+        },
+        {
+          "label": "Aucune source vidéo"
+        },
+        {
+          "label": "Abandonné"
+        },
+        {
+          "label": "Erreur de réseau"
+        },
+        {
+          "label": "Impossible de décoder la vidéo"
+        },
+        {
+          "label": "Format vidéo non supporté"
+        },
+        {
+          "label": "Vidéo cryptée"
+        },
+        {
+          "label": "Erreur inconnue"
+        },
+        {
+          "label": "ID YouTube invalide"
+        },
+        {
+          "label": "ID YouTube inconnue"
+        },
+        {
+          "label": "Vidéo YouTube à accès restreint"
+        }
+      ]
+    }
+  ]
+}

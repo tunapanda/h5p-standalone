@@ -1,0 +1,89 @@
+{
+  "semantics": [
+    {
+      "label": "Lydfiler"
+    },
+    {
+      "label": "Avspiller modus",
+      "description": "Velg avspiller modus.",
+      "options": [
+        {
+          "label": "Minimal"
+        },
+        {
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "label": "Tilpass størrelse",
+      "description": "Forstørr og forminsk avhengig av tilgjengelig størrelse"
+    },
+    {
+      "label": "Slå på kontrollar",
+      "description": "Kontrollane lar mellom anna brukaren setje lydavspelinga på pause"
+    },
+    {
+      "label": "Slå på automatisk avspeling",
+      "description": "Med automatisk avspeling begynner lyden å spele av seg sjølv med ein gang. Viss automatisk avspeling er slått av må brukaren trykkje for å starte avspelinga."
+    },
+    {
+      "label": "Informasjon om opphavsrett",
+      "fields": [
+        {
+          "label": "Tittel"
+        },
+        {
+          "label": "Opphavsmann"
+        },
+        {
+          "label": "Kjelde"
+        },
+        {
+          "label": "Lisens",
+          "options": [
+            {
+              "label": "Ukjent"
+            },
+            {
+              "label": "Namngjeving"
+            },
+            {
+              "label": "Namngjeving - Del på same vilkår"
+            },
+            {
+              "label": "Namngjeving - Inga bearbeiding"
+            },
+            {
+              "label": "Namngjeving - Ikkje kommersiell"
+            },
+            {
+              "label": "Namngjeving - Ikkje kommersiell - Del på same vilkår"
+            },
+            {
+              "label": "Namngjeving - Ikkje kommersiell - Inga bearbeiding"
+            },
+            {
+              "label": "Generell offentleg lisens"
+            },
+            {
+              "label": "Offentleg eigedom"
+            },
+            {
+              "label": "Offentleg eigedom engasjement og lisens"
+            },
+            {
+              "label": "Offentleg eigedom merke"
+            },
+            {
+              "label": "Opphavsrett"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Innhaldsnamn for lyd"
+    }
+  ]
+}

@@ -1,0 +1,426 @@
+[
+  {
+    "name": "interactiveVideo",
+    "type": "group",
+    "widget": "wizard",
+    "label": "Interactive Video Editor",
+    "fields": [
+      {
+        "name": "video",
+        "type": "group",
+        "label": "Upload/embed video",
+        "fields": [
+          {
+            "name": "files",
+            "type": "video",
+            "label": "Video files",
+            "description": "Select the video files you wish to use in your interactive video. To ensure maximum support in browsers at least add a version of the video in webm and mp4 formats."
+          },
+          {
+            "name": "poster",
+            "type": "image",
+            "label": "Poster image"
+          },
+          {
+            "name": "title",
+            "type": "text",
+            "label": "The title of this interactive video",
+            "maxLength": 60,
+            "default": "Interactive Video",
+            "description": "Used in summaries, statistics etc."
+          },
+          {
+            "name": "startScreenOptions",
+            "type": "group",
+            "label": "Video start screen options",
+            "optional": true,
+            "fields": [
+              {
+                "name": "hideStartTitle",
+                "type": "boolean",
+                "label": "Hide title on video start screen",
+                "optional": true,
+                "default": false
+              },
+              {
+                "name": "shortStartDescription",
+                "type": "text",
+                "label": "Short description (Optional)",
+                "optional": true,
+                "maxLength": 120,
+                "description": "Optional. Display a short description text on the video start screen."
+              }
+            ]
+          },
+          {
+            "name": "copyright",
+            "type": "text",
+            "widget": "html",
+            "enterMode": "p",
+            "label": "Video copyright information",
+            "optional": true,
+            "description": "Information regarding copyright of the video and elements used in the video.",
+            "tags": [
+              "strong",
+              "em",
+              "del",
+              "a"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "assets",
+        "type": "group",
+        "label": "Add interactions",
+        "widget": "interactiveVideo",
+        "video": "video/files",
+        "poster": "video/poster",
+        "fields": [
+          {
+            "name": "interactions",
+            "type": "list",
+            "field": {
+              "name": "interaction",
+              "type": "group",
+              "fields": [
+                {
+                  "name": "duration",
+                  "type": "group",
+                  "widget": "duration",
+                  "label": "Display time",
+                  "fields": [
+                    {
+                      "name": "from",
+                      "type": "number"
+                    },
+                    {
+                      "name": "to",
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "name": "pause",
+                  "label": "Pause video",
+                  "type": "boolean"
+                },
+                {
+                  "name": "displayType",
+                  "label": "Display as",
+                  "description": "<b>Button</b> is a collapsed interaction the user must press to open. <b>Poster</b> is an expanded interaction displayed directly on top of the video",
+                  "type": "select",
+                  "widget": "imageRadioButtonGroup",
+                  "options": [
+                    {
+                      "value": "button",
+                      "label": "Button"
+                    },
+                    {
+                      "value": "poster",
+                      "label": "Poster"
+                    }
+                  ],
+                  "default": "button"
+                },
+                {
+                  "name": "label",
+                  "type": "text",
+                  "widget": "html",
+                  "label": "Label",
+                  "description": "Label displayed next to interaction icon.",
+                  "optional": true,
+                  "enterMode": "p",
+                  "tags": [
+                    "p"
+                  ]
+                },
+                {
+                  "name": "x",
+                  "type": "number",
+                  "widget": "none"
+                },
+                {
+                  "name": "y",
+                  "type": "number",
+                  "widget": "none"
+                },
+                {
+                  "name": "width",
+                  "type": "number",
+                  "widget": "none",
+                  "optional": true
+                },
+                {
+                  "name": "height",
+                  "type": "number",
+                  "widget": "none",
+                  "optional": true
+                },
+                {
+                  "name": "action",
+                  "type": "library",
+                  "options": [
+                    "H5P.Nil 1.0",
+                    "H5P.Text 1.1",
+                    "H5P.Table 1.1",
+                    "H5P.Link 1.1",
+                    "H5P.Image 1.0",
+                    "H5P.Summary 1.4",
+                    "H5P.SingleChoiceSet 1.3",
+                    "H5P.MultiChoice 1.4",
+                    "H5P.Blanks 1.4",
+                    "H5P.DragQuestion 1.5",
+                    "H5P.MarkTheWords 1.4",
+                    "H5P.DragText 1.4"
+                  ]
+                },
+                {
+                  "name": "adaptivity",
+                  "type": "group",
+                  "label": "Adaptivity",
+                  "optional": true,
+                  "fields": [
+                    {
+                      "name": "correct",
+                      "type": "group",
+                      "label": "Action on all correct",
+                      "fields": [
+                        {
+                          "name": "seekTo",
+                          "type": "number",
+                          "widget": "timecode",
+                          "label": "Seek to",
+                          "description": "Enter timecode in the format M:SS"
+                        },
+                        {
+                          "name": "allowOptOut",
+                          "type": "boolean",
+                          "label": "Allow the user to opt out and continue"
+                        },
+                        {
+                          "name": "message",
+                          "type": "text",
+                          "widget": "html",
+                          "enterMode": "p",
+                          "tags": [
+                            "strong",
+                            "em",
+                            "del",
+                            "a"
+                          ],
+                          "label": "Message"
+                        },
+                        {
+                          "name": "seekLabel",
+                          "type": "text",
+                          "label": "Label for seek button"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "wrong",
+                      "type": "group",
+                      "label": "Action on wrong",
+                      "fields": [
+                        {
+                          "name": "seekTo",
+                          "type": "number",
+                          "widget": "timecode",
+                          "label": "Seek to",
+                          "description": "Enter timecode in the format M:SS"
+                        },
+                        {
+                          "name": "allowOptOut",
+                          "type": "boolean",
+                          "label": "Allow the user to opt out and continue"
+                        },
+                        {
+                          "name": "message",
+                          "type": "text",
+                          "widget": "html",
+                          "enterMode": "p",
+                          "tags": [
+                            "strong",
+                            "em",
+                            "del",
+                            "a"
+                          ],
+                          "label": "Message"
+                        },
+                        {
+                          "name": "seekLabel",
+                          "type": "text",
+                          "label": "Label for seek button"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "name": "bookmarks",
+            "type": "list",
+            "field": {
+              "name": "bookmark",
+              "type": "group",
+              "fields": [
+                {
+                  "name": "time",
+                  "type": "number"
+                },
+                {
+                  "name": "label",
+                  "type": "text"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "summary",
+        "type": "group",
+        "label": "Summary task",
+        "fields": [
+          {
+            "name": "task",
+            "type": "library",
+            "options": [
+              "H5P.Summary 1.4"
+            ],
+            "default": {
+              "library": "H5P.Summary 1.4",
+              "params": {}
+            }
+          },
+          {
+            "name": "displayAt",
+            "type": "number",
+            "label": "Display at",
+            "description": "Number of seconds before the video ends.",
+            "default": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "override",
+    "type": "group",
+    "label": "Settings for \"Show solution\" button and \"Retry\".",
+    "description": "These options will let you override when to display \"Show solution\" button and \"Retry\" in integrated h5p content.",
+    "optional": true,
+    "fields": [
+      {
+        "name": "overrideButtons",
+        "type": "boolean",
+        "label": "Enable override for \"Show solution\" and \"Retry\" settings.",
+        "description": "If this is enabled the questions own settings will be ignored and the below settings will be used instead.",
+        "default": false
+      },
+      {
+        "name": "overrideShowSolutionButton",
+        "type": "boolean",
+        "label": "Enable \"Show solution\" buttons.",
+        "description": "Enabling this option will make questions show the \"Show solution\" button.",
+        "default": false
+      },
+      {
+        "name": "overrideRetry",
+        "type": "boolean",
+        "label": "Enable \"Retry\".",
+        "description": "Enabling this option will make the user able to \"Retry\" .",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "l10n",
+    "type": "group",
+    "label": "Localize",
+    "common": true,
+    "optional": true,
+    "fields": [
+      {
+        "name": "interaction",
+        "type": "text",
+        "label": "Interaction title",
+        "default": "Interaction",
+        "optional": true
+      },
+      {
+        "name": "play",
+        "type": "text",
+        "label": "Play title",
+        "default": "Play",
+        "optional": true
+      },
+      {
+        "name": "pause",
+        "type": "text",
+        "label": "Pause title",
+        "default": "Pause",
+        "optional": true
+      },
+      {
+        "name": "mute",
+        "type": "text",
+        "label": "Mute title",
+        "default": "Mute",
+        "optional": true
+      },
+      {
+        "name": "unmute",
+        "type": "text",
+        "label": "Unmute title",
+        "default": "Unmute",
+        "optional": true
+      },
+      {
+        "name": "quality",
+        "type": "text",
+        "label": "Video quality title",
+        "default": "Video Quality",
+        "optional": true
+      },
+      {
+        "name": "fullscreen",
+        "type": "text",
+        "label": "Fullscreen title",
+        "default": "Fullscreen",
+        "optional": true
+      },
+      {
+        "name": "exitFullscreen",
+        "type": "text",
+        "label": "Exit fullscreen title",
+        "default": "Exit Fullscreen",
+        "optional": true
+      },
+      {
+        "name": "summary",
+        "type": "text",
+        "label": "Summary title",
+        "default": "Summary",
+        "optional": true
+      },
+      {
+        "name": "bookmarks",
+        "type": "text",
+        "label": "Bookmarks title",
+        "default": "Bookmarks",
+        "optional": true
+      },
+      {
+        "name": "defaultAdaptivitySeekLabel",
+        "type": "text",
+        "label": "Default label for adaptivity seek button",
+        "default": "Continue",
+        "optional": true
+      }
+    ]
+  }
+]

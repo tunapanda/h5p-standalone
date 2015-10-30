@@ -1,0 +1,42 @@
+{
+  "title": "Mark the Words",
+  "description": "Test your users by making them select the correct words from a text.",
+  "majorVersion": 1,
+  "minorVersion": 4,
+  "patchVersion": 0,
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 6
+  },
+  "runnable": 1,
+  "author": "Joubel AS",
+  "license": "MIT",
+  "machineName": "H5P.MarkTheWords",
+  "preloadedCss": [
+    {
+      "path": "mark-the-words.css"
+    }
+  ],
+  "preloadedJs": [
+    {
+      "path": "mark-the-words.js"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 3
+    },
+    {
+      "machineName": "H5P.JoubelUI",
+      "majorVersion": 1,
+      "minorVersion": 2
+    },
+    {
+      "machineName": "H5P.Question",
+      "majorVersion": 1,
+      "minorVersion": 1
+    }
+  ]
+}

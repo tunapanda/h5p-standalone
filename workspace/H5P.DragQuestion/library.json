@@ -1,0 +1,59 @@
+{
+  "title": "Drag and Drop",
+  "description": "Drag and drop the elements into the correct drop zones.",
+  "contentType": "Question",
+  "majorVersion": 1,
+  "minorVersion": 5,
+  "patchVersion": 0,
+  "embedTypes": [
+    "iframe"
+  ],
+  "runnable": 1,
+  "fullscreen": 1,
+  "author": "Joubel AS",
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 6
+  },
+  "license": "cc-by-sa",
+  "machineName": "H5P.DragQuestion",
+  "preloadedCss": [
+    {
+      "path": "css/dragquestion.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 3
+    },
+    {
+      "machineName": "jQuery.ui",
+      "majorVersion": 1,
+      "minorVersion": 10
+    },
+    {
+      "machineName": "H5P.JoubelUI",
+      "majorVersion": 1,
+      "minorVersion": 2
+    },
+    {
+      "machineName": "H5P.Question",
+      "majorVersion": 1,
+      "minorVersion": 1
+    }
+  ],
+  "preloadedJs": [
+    {
+      "path": "js/dragquestion.js"
+    }
+  ],
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.DragQuestion",
+      "majorVersion": 1,
+      "minorVersion": 4
+    }
+  ]
+}

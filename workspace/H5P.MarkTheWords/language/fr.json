@@ -1,0 +1,37 @@
+{
+  "semantics": [
+    {
+      "label": "Consigne",
+      "description": "La consigne indique ce que l'utilisateur doit faire."
+    },
+    {
+      "label": "Champ de texte",
+      "description": "Les mots marqués sont précédés et suivis d'une astérisque (*). Pour un caractère, deux astérisques se suivent, soit ** = *. Exemple: Les mots corrects sont écrits ainsi: *correctword*, et un caractère comme cela: **."
+    },
+    {
+      "label": "Texte pour le bouton \"Vérifier\""
+    },
+    {
+      "label": "Texte pour le bouton \"Réessayer\""
+    },
+    {
+      "label": "Texte pour le bouton \"Montrer la solution\""
+    },
+    {
+      "label": "Texte de feedback",
+      "description": "Texte de feedback, variables possibles: @score @total @correct @wrong @missed. Exemple: 'Score : @score sur @total, correct: @correct, faux: @wrong, passé: @missed.'"
+    },
+    {
+      "label": "Options générales.",
+      "description": "Ces options permettent de contrôler le déroulement de l'activité.",
+      "fields": [
+        {
+          "label": "Activer le bouton \"Réessayer\""
+        },
+        {
+          "label": "Activer le bouton \"Solution\""
+        }
+      ]
+    }
+  ]
+}

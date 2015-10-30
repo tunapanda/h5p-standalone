@@ -1,0 +1,221 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                      "label": "Commenti",
+                      "description": "I commenti vengono mostrati quando l'utente visualizza le risposte suggerite per tutte le diapositive."
+                    },
+                    {
+                      "label": "Visualizza i commenti sempre"
+                    },
+                    {
+                      "label": "Opacit� Sfondo"
+                    },
+                    {
+                      "label": "Visualizza come pulsante"
+                    },
+                    {
+                      "label": "Titolo"
+                    },
+                    {
+                      "label": "Vai alla Diapositiva"
+                    },
+                    {
+                      "label": "Invisibile",
+                      "description": "Cursore predefinito, nessun titolo e nessun indice scheda. Attenzione: gli utenti con disabilit� o che utilizzano solo la tastiera utenti avranno problemi con questo elemento."
+                    },
+                    {
+                      "label": "Metadata",
+                      "fields": [
+                        {
+                          "label": "Titolo"
+                        },
+                        {
+                          "label": "Autore"
+                        },
+                        {
+                          "label": "Licenza"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+              }
+            ]
+          }
+        },
+        {},
+        {
+          "label": "Elenco di parole chiave"
+        },
+        {
+          "label": "Mostra sempre"
+        },
+        {
+          "label": "Nascondi automaticamente"
+        },
+        {
+          "label": "Opacit�"
+        }
+      ]
+    },
+    {
+      "label": "Localizzazione",
+      "fields": [
+        {
+          "label": "Traduzione per \"Diapositiva\""
+        },
+        {
+          "label": "Traduzione per il \"Tuo Punteggio\""
+        },
+        {
+          "label": "Traduzione per il \"Punteggio Massimo\""
+        },
+        {
+          "label": "Messaggio dato per un punteggio OTTIMO",
+          "description": "@percent � sostituito dal reale punteggio dell'utente in percentuale"
+        },
+        {
+          "label": "Messaggio dato per un punteggio BUONO",
+          "description": "@percent � sostituito dal reale punteggio dell'utente in percentuale"
+        },
+        {
+          "label": "Messaggio dato per un punteggio BASSO",
+          "description": "@percent � sostituito dal reale punteggio dell'utente in percentuale"
+        },
+        {
+          "label": "Traduzione per \"Totale\""
+        },
+        {
+          "label": "Testo per il pulsante Mostra soluzioni"
+        },
+        {
+          "label": "Testo per il pulsante Riprova"
+        },
+        {
+          "label": "Traduzione per \"Titolo\""
+        },
+        {
+          "label": "Traduzione per \"Autore/fornitore\""
+        },
+        {
+          "label": "Traduzione per \"Licenza\""
+        },
+        {
+          "label": "Traduzione per \"Licenza\""
+        },
+        {
+          "label": "Testo per il pulsante Esporta testo"
+        },
+        {
+          "label": "Testo per il pulsante \"Diritti di utilizzo\""
+        },
+        {
+          "label": "Nascondi il titolo del pulsante Parole chiave"
+        },
+        {
+          "label": "Mostra il titolo del pulsante Parole chiave"
+        },
+        {
+          "label": "Etichetta Schermo intero"
+        },
+        {
+          "label": "Esci da Schermo intero"
+        },
+        {
+          "label": "Etichetta scheda precedente"
+        },
+        {
+          "label": "Etichetta scheda successiva"
+        },
+        {
+          "label": "Etichetta scheda corrente"
+        },
+        {
+          "label": "Etichetta ultima scheda"
+        },
+        {
+          "label": "Esci dal testo modalit� soluzione"
+        },
+        {
+          "label": "Testo modalit� soluzione"
+        },
+        {
+          "label": "Testo modalit� soluzione sottolineato"
+        },
+        {
+          "label": "Testo attivit� multiple in una pagina"
+        },
+        {
+          "label": "Testo del messaggio del punteggio"
+        },
+        {
+          "label": "Testo condividi su Facebook"
+        },
+        {
+          "label": "Testo condividi su Twitter"
+        },
+        {
+          "label": "Title for summary slide",
+          "default": "Summary"
+        },
+        {
+          "label": "Title for the comments icon",
+          "default": "Show comments"
+        },
+        {
+          "label": "Title for print button",
+          "default": "Print"
+        },
+        {
+          "label": "Print dialog ingress",
+          "default": "How would you like to print this presentation?"
+        },
+        {
+          "label": "Label for \"Print all slides\" button",
+          "default": "Print all slides"
+        },
+        {
+          "label": "Label for \"Print current slide\" button",
+          "default": "Print current slide"
+        }
+      ]
+    },
+    {
+      "label": "Impostazioni.",
+      "description": "Queste opzioni ti consente di ignorare le impostazioni.",
+      "fields": [
+        {
+          "label": "Attiva il comportamento di esclusione.",
+          "description": "Se questa opzione � abilitata le proprie impostazioni per le domande saranno ignorate e verranno utilizzate le impostazioni seguenti."
+        },
+        {
+          "label": "Abilita pulsanti \"Mostra soluzione\".",
+          "description": "L'attivazione di questa opzione far� in modo che le domande mostrino il tasto \"Mostra soluzione\"."
+        },
+        {
+          "label": "Abilita \"Riprova\".",
+          "description": "L'attivazione di questa opzione far� in modo che per l'utente sia abilitata l'opzione \"Riprova\"."
+        },
+        {
+          "label": "Comportamento",
+          "description": "Nasconde la diapositiva sommario"
+        }
+      ]
+    }
+  ]
+}

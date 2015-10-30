@@ -1,0 +1,247 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                      "label": "Kommentarar",
+                      "description": "Kommentarane visast når brukaren ser på fasit."
+                    },
+                    {
+                      "label": "Alltid vis kommentarer"
+                    },
+                    {
+                      "label": "Opasitet for bakgrunn"
+                    },
+                    {
+                      "label": "Vis som knapp"
+                    },
+                    {
+                      "label": "Tittel"
+                    },
+                    {
+                      "label": "Gå til lysbilete"
+                    },
+                    {
+                      "label": "Usynlig",
+                      "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukarar med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
+                    },
+                    {
+                      "label": "Metadata",
+                      "fields": [
+                        {
+                          "label": "Tittel"
+                        },
+                        {
+                          "label": "Forfattar"
+                        },
+                        {
+                          "label": "Lisens"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+              }
+            ]
+          }
+        },
+        {},
+        {
+          "label": "Nøkkelordsliste"
+        },
+        {
+          "label": "Vis alltid"
+        },
+        {
+          "label": "Auto skjul"
+        },
+        {
+          "label": "Opasitet"
+        }
+      ]
+    },
+    {
+      "label": "Leietekstar",
+      "fields": [
+        {
+          "label": "Oversetting for \"Lysbilete\"",
+          "default": "Lysbilete"
+        },
+        {
+          "label": "Oversetting for \"Din poengsum\"",
+          "default": "Din poengsum"
+        },
+        {
+          "label": "Oversetting for \"Topp poengsum\"",
+          "default": "Topp poengsum"
+        },
+        {
+          "label": "Respons på høg poengsum",
+          "default": "Gratulerer! Du fikk @percent rett!",
+          "description": "@percent blir erstatta med brukaren sitt faktiske resultat i prosent"
+        },
+        {
+          "label": "Respons på ok poengsum",
+          "default": " Du fikk @percent rett!",
+          "description": "@percent blir erstatta med brukaren sitt faktiske resultat i prosent"
+        },
+        {
+          "label": "Respons på låg poengsum",
+          "default": "Du fikk @percent rett.",
+          "description": "@percent blir erstatta med brukaren sitt faktiske resultat i prosent"
+        },
+        {
+          "label": "Oversetting for \"Total\"",
+          "default": "Total"
+        },
+        {
+          "label": "Tittel på \"Vis fasit\" knappen",
+          "default": "Vis fasit"
+        },
+        {
+          "label": "Tekst til \"Prøv igjen\" knappen",
+          "default": "Prøv igjen"
+        },
+        {
+          "label": "Oversetting for \"Tittel\"",
+          "default": "Tittel"
+        },
+        {
+          "label": "Oversetting for \"Forfattar/leverandør\"",
+          "default": "Forfattar/leverandør"
+        },
+        {
+          "label": "Oversetting for \"Lisens\"",
+          "default": "Lisens"
+        },
+        {
+          "label": "Oversetting for \"Lisens\"",
+          "default": "Lisens"
+        },
+        {
+          "label": "Oversetting for \"Eksporter tekst\"",
+          "default": "Eksporter tekst"
+        },
+        {
+          "label": "Tekst for bruksrett-knappen",
+          "default": "Bruksrett"
+        },
+        {
+          "label": "Tittel for \"Skjul nøkkelordliste\"-knapp",
+          "default": "Skjul nøkkelordliste"
+        },
+        {
+          "label": "Tittel for \"Vis nøkkelordliste\"-knapp",
+          "default": "Vis nøkkelordliste"
+        },
+        {
+          "label": "Tittel for \"Full skjerm\"-knapp",
+          "default": "Fullskjerm"
+        },
+        {
+          "label": "Tittel for \"Avslutt fullskjerm\"-knapp",
+          "default": "Avslutt fullskjerm"
+        },
+        {
+          "label": "Tittel for \"Forrige side\"-knapp",
+          "default": "Forrige side"
+        },
+        {
+          "label": "Tittel for \"Neste side\"-knapp",
+          "default": "Neste side"
+        },
+        {
+          "label": "Tittel for \"Denne side\"-knapp",
+          "default": "Denne side"
+        },
+        {
+          "label": "Tittel for \"Siste side\"-knapp",
+          "default": "Siste side"
+        },
+        {
+          "label": "Tittel for \"Avslutt fasit modus\"-knapp",
+          "default": "Avslutt fasit modus"
+        },
+        {
+          "label": "Avslutt fasit modus tekst",
+          "default": "Fasitmodus"
+        },
+        {
+          "label": "Tekst ved flere oppgaver på en side",
+          "default": "Flere oppgaver"
+        },
+        {
+          "label": "poengTekst",
+          "default": "Du klarte:"
+        },
+        {
+          "label": "Del på Facebook tekst",
+          "default": "Del på Facebook"
+        },
+        {
+          "label": "Del på Twitter tekst",
+          "default": "Del på Twitter"
+        },
+        {
+          "label": "Tittel for \"Oppsummering\" siden",
+          "default": "Oppsummering"
+        },
+        {
+          "label": "Tittel for kommentarikonet",
+          "default": "Vis kommentarar"
+        },
+        {
+          "label": "Tittel for \"Skriv ut\"-knapp",
+          "default": "Skriv ut"
+        },
+        {
+          "label": "Skriv ut dialog ingress",
+          "default": "Hvordan vil du skrive ut denne presentasjonen?"
+        },
+        {
+          "label": "Tittel for \"Skriv ut alle sider\"-knapp",
+          "default": "Skriv ut alle sider"
+        },
+        {
+          "label": "Tittel for \"Skriv ut nåværende side\"-knapp",
+          "default": "Skriv ut nåværende side"
+        }
+      ]
+    },
+    {
+      "label": "Innstillinger for oppførsel.",
+      "description": "Disse alternativene vil la deg overstyre innstillinger.",
+      "fields": [
+        {
+          "label": "Aktiver overstyring av oppførsel",
+          "description": "Aktivering vil overstyre dei følgjande innstillingene for integrert innhald."
+        },
+        {
+          "label": "Slå på \"Vis svar\" knapp.",
+          "description": "Aktivering vil slå på \"Vis svar\" knappen."
+        },
+        {
+          "label": "Slå på \"Prøv igjen\".",
+          "description": "Aktivering vil slå på \"Prøv igjen\" ."
+        },
+        {
+          "label": "Skjul sammendrag.",
+          "description": "Aktivering vil føre til at sammendrag siden ikke vises."
+        }
+      ]
+    }
+  ]
+}

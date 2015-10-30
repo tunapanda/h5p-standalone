@@ -1,0 +1,37 @@
+{
+  "semantics": [
+    {
+      "label": "Descrizione attivit�",
+      "description": "Descrivere come l'utente deve risolvere il compito."
+    },
+    {
+      "label": "Campo testo",
+      "description": "Le parole contrassegnate sono aggiunte con un asterisco (*). Un asterisco pu� essere sottratto con un altro asterisco, con conseguente ** = *. Esempio: Le parole corrette sono contrassegnate in questo modo: *parolacorretta* , e un carattere asterisco � scritto in questo modo: **."
+    },
+    {
+      "label": "Testo per il pulsante \"Verifica\""
+    },
+    {
+      "label": "Testo per il pulsante \"Riprova\""
+    },
+    {
+      "label": "Testo per il pulsante \"Mostra Soluzione\""
+    },
+    {
+      "label": "Testo del Feedback",
+      "description": "Testo del Feedback (Riscontro), variabili consentite: @score @total @correct @wrong @missed. Esempio: 'Punteggio : @score di @total, corretto: @correct, errato: @wrong, mancante: @missed.'"
+    },
+    {
+      "label": "Impostazioni esecuzione",
+      "description": "Queste opzioni consentono di controllare l'andamento del compito.",
+      "fields": [
+        {
+          "label": "Abilita \"Riprova\""
+        },
+        {
+          "label": "Abilita il pulsante \"Mostra soluzioni\""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "semantics": [
+    {
+      "label": "Immagine"
+    },
+    {
+      "label": "Testo alternativo",
+      "description": "Richiesto. Se il browser non � in grado di caricare l'immagine verr� visualizzato questo testo. Utilizzato anche per il ReadSpeaker (ossia la vocalizzazione del testo)."
+    },
+    {
+      "label": "Testo hover",
+      "description": "Opzionale. Questo testo viene visualizzato quando l'utente passa col puntatore sopra l'immagine."
+    },
+    {
+      "label": "Informazioni Copyright",
+      "fields": [
+        {
+          "label": "Titolo"
+        },
+        {
+          "label": "Autore"
+        },
+        {
+          "label": "Sorgente",
+          "regexp": {}
+        },
+        {
+          "label": "Licenza",
+          "options": [
+            {
+              "label": "Anonimo"
+            },
+            {
+              "label": "Distribuzione"
+            },
+            {
+              "label": "Distribuzione-ShareAlike"
+            },
+            {
+              "label": "Distribuzione-NoDerivs"
+            },
+            {
+              "label": "Distribuzione-NonCommercial"
+            },
+            {
+              "label": "Distribuzione-NonCommercial-ShareAlike"
+            },
+            {
+              "label": "Distribuzione-NonCommercial-NoDerivs"
+            },
+            {
+              "label": "General Public License"
+            },
+            {
+              "label": "Public Domain"
+            },
+            {
+              "label": "Public Domain Dedication and Licence"
+            },
+            {
+              "label": "Public Domain Mark"
+            },
+            {
+              "label": "Copyright"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Nome contenuto immagine"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "title": "SwfObject",
+  "contentType": "Media",
+  "description": "Provides a library for dealing with flash files",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 2,
+  "runnable": 0,
+  "machineName": "swfobject",
+  "preloadedJs": [
+    {
+      "path": "scripts/swfobject.js"
+    }
+  ]
+}

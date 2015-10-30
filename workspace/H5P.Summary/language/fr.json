@@ -1,0 +1,119 @@
+{
+  "semantics": [
+    {
+      "label": "Introduction",
+      "default": "Choisir la bonne affirmation.",
+      "description": "sera affiché au-dessus du résumé."
+    },
+    {
+      "widgets": [
+        {
+          "label": "Defaut"
+        },
+        {
+          "label": "Texture"
+        }
+      ],
+      "label": "résumé",
+      "description": "Liste de résumés",
+      "entity": "Affirmations",
+      "field": {
+        "label": "Affirmations",
+        "fields": [
+          {
+            "label": "Liste des affirmations pour the résumé. La première affirmation est  correcte.",
+            "entity": "affirmation",
+            "field": {
+              "label": "affirmation"
+            }
+          },
+          {
+            "label": "Astuce",
+            "fields": [
+              {
+                "label": "astuce"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Texte affiché avant le nombre d'affirmations réussies dans le résumé.",
+      "default": "Progression:",
+      "description": "sera affiché au-dessus des affirmations. Exemple: 'Progression: 2/5'"
+    },
+    {
+      "label": "sera affiché au-dessus du nombre de mauvaises affirmation sélectionnées dans le résumé.",
+      "default": "Mauvaises réponses:",
+      "description": "Sera affiché au dessus des affirmations. Exemple: 'Mauvaises réponses: 4'"
+    },
+    {
+      "label": "Summary feedback header",
+      "default": "Votre résultat",
+      "description": "Sera affiché au-dessus du summary feedback."
+    },
+    {
+      "label": "Summary feedback",
+      "fields": [
+        {
+          "label": "tout est correct",
+          "fields": [
+            {
+              "label": "Feedback titre",
+              "default": "PERFECT!"
+            },
+            {
+              "label": "Feedback message",
+              "default": "Vous avez tout réussi du premier coup!"
+            }
+          ]
+        },
+        {
+          "label": "70 % - 99 % correct",
+          "fields": [
+            {
+              "label": "Feedback titre",
+              "default": "Excellent!"
+            },
+            {
+              "label": "Feedback message",
+              "default": "Vous avez une majorité de vos affirmations correctes pour votre premier essai."
+            }
+          ]
+        },
+        {
+          "label": "40 % - 69 % correct",
+          "fields": [
+            {
+              "label": "Feedback titre",
+              "default": "Ok"
+            },
+            {
+              "label": "Feedback message",
+              "default": "La plupart de vos affirmations sont correctes pour votre premier essai."
+            }
+          ]
+        },
+        {
+          "label": "0 % - 39 % correct",
+          "fields": [
+            {
+              "label": "Feedback titre",
+              "default": "quelques erreurs."
+            },
+            {
+              "label": "Feedback message",
+              "default": "Essaie encore!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Feedback résumé",
+      "default": "Vous avez @score sur @total affirmations (@percent %) correctes.",
+      "description": "Variables disponibles: @score, @total, @percent. Exemple: vous avez @score sur @total affirmations (@percent %) correctes."
+    }
+  ]
+}
