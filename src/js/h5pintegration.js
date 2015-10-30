@@ -52,7 +52,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
   H5PIntegration.init = function () {
     var pathToContent = arguments.length <= 0 || arguments[0] === undefined ? 'workspace' : arguments[0];
 
-    H5PIntegration.url = "/" + pathToContent;
+    H5PIntegration.url = "" + pathToContent;
 
     var getInfo = getJSONPromise(pathToContent + "/h5p.json");
     var getContent = getJSONPromise(pathToContent + "/content/content.json");
