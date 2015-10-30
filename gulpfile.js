@@ -4,6 +4,7 @@ var concat = require('gulp-concat');
 var babel = require('gulp-babel');
 var webserver = require('gulp-webserver');
 var clean = require('gulp-clean');
+var rename = require('gulp-rename');
 
 var mainFiles = [
   'bower_components/toposort/build/toposort.js',
@@ -22,7 +23,7 @@ var frameFiles = [
   'bower_components/h5p-php-library/js/h5p-x-api-event.js',
   'bower_components/h5p-php-library/js/h5p-x-api.js',
   'bower_components/h5p-php-library/js/h5p.js',
-  'lib/js/h5p-overwrite.js'
+  'src/js/h5p-overwrite.js'
 ];
 
 gulp.task('clean-dist', function () {
@@ -36,28 +37,35 @@ gulp.task('compile-js', ['clean-dist'], function() {
     .pipe(gulp.dest('src/js'));
 });
 
-gulp.task('main-js', ['compile-js'], function() {
+gulp.task('concat-main-js', ['compile-js'], function() {
   return gulp.src(mainFiles)
-            .pipe(concat('h5p-standalone-main.min.js'))
-            .pipe(uglify())
-            .pipe(gulp.dest('dist/js'));
+    .pipe(concat('h5p-standalone-main.js'))
+    .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('frame-js', ['compile-js'], function() {
+gulp.task('concat-frame-js', ['compile-js'], function() {
   return gulp.src(frameFiles)
-            .pipe(concat('h5p-standalone-frame.min.js'))
-            .pipe(uglify())
-            .pipe(gulp.dest('dist/js'));
+    .pipe(concat('h5p-standalone-frame.js'))
+    .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('minify-js', ['concat-main-js', 'concat-frame-js'], function() {
+  return gulp.src('dist/js/*.js')
+    .pipe(uglify())
+    .pipe(rename({
+      extname: '.min.js'
+    }))
+    .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('copy-css', ['clean-dist'], function() {
   return gulp.src('bower_components/h5p-php-library/styles/*.css')
-            .pipe(gulp.dest('dist/styles'));
+    .pipe(gulp.dest('dist/styles'));
 });
 
 gulp.task('copy-fonts', ['clean-dist'], function() {
   return gulp.src('bower_components/h5p-php-library/fonts/*')
-            .pipe(gulp.dest('dist/fonts'));
+    .pipe(gulp.dest('dist/fonts'));
 });
 
 gulp.task('demo', function() {
@@ -67,6 +75,10 @@ gulp.task('demo', function() {
     }));
 });
 
-gulp.task('default', ['main-js', 'frame-js', 'copy-css', 'copy-fonts'], function() {
+gulp.task('default', ['concat-main-js', 'concat-frame-js', 'copy-css', 'copy-fonts'], function() {
+
+});
+
+gulp.task('prod', ['default', 'minify-js'], function() {
 
 });
