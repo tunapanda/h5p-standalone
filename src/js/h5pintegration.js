@@ -49,30 +49,34 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
     }
   };
 
-  H5PIntegration.init = function () {
-    var pathToContent = arguments.length <= 0 || arguments[0] === undefined ? 'workspace' : arguments[0];
+  H5PIntegration.init = function (id) {
+    var pathToContent = arguments.length <= 1 || arguments[1] === undefined ? 'workspace' : arguments[1];
 
     H5PIntegration.url = "" + pathToContent;
 
     var getInfo = getJSONPromise(pathToContent + "/h5p.json");
     var getContent = getJSONPromise(pathToContent + "/content/content.json");
+    var machinePath = undefined;
 
     var getDirectDependencies = getInfo.then(function (h5p) {
       var dependencies = h5p.preloadedDependencies;
       var loadDependencies = dependencies.map(function (dependency) {
-        return getJSONPromise(pathToContent + "/" + dependency.machineName + "/library.json").then(function (library) {
+        machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
+        return getJSONPromise(pathToContent + "/" + machinePath + "/library.json").then(function (library) {
           var styles = [];
           var scripts = [];
           var dependencies2 = [];
+          var libraryPath = library.machineName + "-" + library.majorVersion + "." + library.minorVersion;
+
           if (library.preloadedCss) {
             styles = library.preloadedCss.map(function (style) {
-              return pathToContent + "/" + dependency.machineName + "/" + style.path;
+              return pathToContent + "/" + libraryPath + "/" + style.path;
             });
           }
 
           if (library.preloadedJs) {
             scripts = library.preloadedJs.map(function (script) {
-              return pathToContent + "/" + dependency.machineName + "/" + script.path;
+              return pathToContent + "/" + libraryPath + "/" + script.path;
             });
           }
 
@@ -89,7 +93,9 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
     });
 
     var getLibrary = getInfo.then(function (h5p) {
-      return getJSONPromise(pathToContent + "/" + h5p.mainLibrary + "/library.json");
+      var mainLibrary = h5p.preloadedDependencies.findBy('machineName', h5p.mainLibrary);
+      var mainLibraryPath = h5p.mainLibrary + "-" + mainLibrary.majorVersion + "." + mainLibrary.minorVersion;
+      return getJSONPromise(pathToContent + "/" + mainLibraryPath + "/library.json");
     });
 
     Promise.all([getInfo, getContent, getLibrary, getDirectDependencies]).then(function (data) {
@@ -100,12 +106,13 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
       var library = _data[2];
       var dependencies = _data[3];
 
+      var libraryPath = library.machineName + "-" + library.majorVersion + "." + library.minorVersion;
       var styles = library.preloadedCss.map(function (style) {
-        return pathToContent + "/" + h5p.mainLibrary + "/" + style.path;
+        return pathToContent + "/" + libraryPath + "/" + style.path;
       });
 
       var scripts = library.preloadedJs.map(function (script) {
-        return pathToContent + "/" + h5p.mainLibrary + "/" + script.path;
+        return pathToContent + "/" + libraryPath + "/" + script.path;
       });
 
       var dependencySorter = new Toposort();
@@ -122,13 +129,13 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
         Array.prototype.push.apply(scripts, dependency.scripts);
       });
 
-      H5PIntegration.contents = {
-        'cid-1': {
-          library: library.machineName + " " + library.majorVersion + "." + library.minorVersion,
-          jsonContent: JSON.stringify(content),
-          styles: styles,
-          scripts: scripts
-        }
+      H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
+
+      H5PIntegration.contents["cid-" + id] = {
+        library: library.machineName + " " + library.majorVersion + "." + library.minorVersion,
+        jsonContent: JSON.stringify(content),
+        styles: styles,
+        scripts: scripts
       };
 
       H5P.init();
@@ -137,7 +144,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
   $.fn.h5p = function (options) {
 
-    this.append("<div class=\"h5p-iframe-wrapper\" style=\"background-color:#DDD;\">\n      <iframe id=\"h5p-iframe-1\" class=\"h5p-iframe\" data-content-id=\"1\" style=\"width: 100%; height: 100%; border: none; display: block;\" src=\"about:blank\" frameBorder=\"0\"></iframe>\n    </div>");
+    this.append("<div class=\"h5p-iframe-wrapper\" style=\"background-color:#DDD;\">\n      <iframe id=\"h5p-iframe-" + options.id + "\" class=\"h5p-iframe\" data-content-id=\"" + options.id + "\" style=\"width: 100%; height: 100%; border: none; display: block;\" src=\"about:blank\" frameBorder=\"0\"></iframe>\n    </div>");
 
     options.frameJs = options.frameJs || 'dist/h5p-standalone-frame.min.js';
     options.frameCss = options.frameCss || 'dist/css/h5p.css';
@@ -157,6 +164,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
       ]
     };
 
-    H5PIntegration.init(options.h5pContent);
+    H5PIntegration.init(options.id, options.h5pContent);
   };
 })(H5P.jQuery);
