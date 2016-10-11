@@ -9589,7 +9589,9 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
     });
 
     var getLibrary = getInfo.then(function (h5p) {
-      var mainLibrary = h5p.preloadedDependencies.findBy('machineName', h5p.mainLibrary);
+      var mainLibrary = h5p.preloadedDependencies.find(function (dep) {
+        return dep.machineName === h5p.mainLibrary;
+      });
       var mainLibraryPath = h5p.mainLibrary + "-" + mainLibrary.majorVersion + "." + mainLibrary.minorVersion;
       return getJSONPromise(pathToContent + "/" + mainLibraryPath + "/library.json");
     });

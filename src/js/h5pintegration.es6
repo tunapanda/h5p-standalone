@@ -82,7 +82,7 @@
   });
 
   let getLibrary = getInfo.then(function (h5p) {
-    let mainLibrary = h5p.preloadedDependencies.findBy('machineName', h5p.mainLibrary);
+    let mainLibrary = h5p.preloadedDependencies.find(dep => dep.machineName ===  h5p.mainLibrary);
     let mainLibraryPath = h5p.mainLibrary + "-" + mainLibrary.majorVersion + "." + mainLibrary.minorVersion;
     return getJSONPromise(`${pathToContent}/${mainLibraryPath}/library.json`);
   });
