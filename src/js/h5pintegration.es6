@@ -2,8 +2,8 @@
 (function ($) {
   'use strict';
   function getJSONPromise(url) {
-    return new Promise(resolve => {
-      H5P.jQuery.getJSON(url, resolve);
+    return new Promise((resolve, reject) => {
+      H5P.jQuery.getJSON(url, resolve).fail(reject);
     });
   }
 
@@ -52,16 +52,34 @@
     let getInfo = getJSONPromise(`${pathToContent}/h5p.json`);
     let getContent = getJSONPromise(`${pathToContent}/content/content.json`);
     let machinePath;
+    let pathIncludesVersion = true;
 
-    let getDirectDependencies = getInfo.then(h5p => {
+    let checklibraryPath = getInfo.then(function(h5p) {
+      let dependency = h5p.preloadedDependencies[0];
+      machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
+
+      return new Promise((resolve) => {
+        getJSONPromise(`${pathToContent}/${machinePath}/library.json`).then(library => {
+          h5p.pathIncludesVersion = true;
+          machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
+          resolve(h5p);
+        }, (e) => {
+          h5p.pathIncludesVersion = false;
+          machinePath = dependency.machineName;
+          resolve(h5p);
+        });
+      });
+    });
+
+    let getDirectDependencies = checklibraryPath.then(h5p => {
       let dependencies = h5p.preloadedDependencies;
       let loadDependencies = dependencies.map(dependency => {
-        machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
+        machinePath = dependency.machineName + (h5p.pathIncludesVersion ? "-" + dependency.majorVersion + "." + dependency.minorVersion : '');
         return getJSONPromise(`${pathToContent}/${machinePath}/library.json`).then(library => {
           let styles = [];
           let scripts = [];
           let dependencies2 = [];
-          let libraryPath = library.machineName + "-" + library.majorVersion + "." + library.minorVersion;
+          let libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
 
           if (library.preloadedCss) {
             styles = library.preloadedCss.map(style => `${pathToContent}/${libraryPath}/${style.path}`);
@@ -81,15 +99,15 @@
     return Promise.all(loadDependencies);
   });
 
-  let getLibrary = getInfo.then(function (h5p) {
+  let getLibrary = checklibraryPath.then(function (h5p) {
     let mainLibrary = h5p.preloadedDependencies.find(dep => dep.machineName ===  h5p.mainLibrary);
-    let mainLibraryPath = h5p.mainLibrary + "-" + mainLibrary.majorVersion + "." + mainLibrary.minorVersion;
+    let mainLibraryPath = h5p.mainLibrary + (h5p.pathIncludesVersion ? "-" + mainLibrary.majorVersion + "." + mainLibrary.minorVersion : '');
     return getJSONPromise(`${pathToContent}/${mainLibraryPath}/library.json`);
   });
 
   Promise.all([getInfo, getContent, getLibrary, getDirectDependencies]).then(data => {
     let [h5p, content, library, dependencies] = data;
-    let libraryPath = library.machineName + "-" + library.majorVersion + "." + library.minorVersion;
+    let libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
     let styles = library.preloadedCss.map(style => `${pathToContent}/${libraryPath}/${style.path}`);
 
     let scripts = library.preloadedJs.map(script => `${pathToContent}/${libraryPath}/${script.path}`);

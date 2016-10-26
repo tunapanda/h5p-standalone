@@ -9502,8 +9502,8 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 (function ($) {
   'use strict';
   function getJSONPromise(url) {
-    return new Promise(function (resolve) {
-      H5P.jQuery.getJSON(url, resolve);
+    return new Promise(function (resolve, reject) {
+      H5P.jQuery.getJSON(url, resolve).fail(reject);
     });
   }
 
@@ -9553,16 +9553,34 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
     var getInfo = getJSONPromise(pathToContent + "/h5p.json");
     var getContent = getJSONPromise(pathToContent + "/content/content.json");
     var machinePath = undefined;
+    var pathIncludesVersion = true;
 
-    var getDirectDependencies = getInfo.then(function (h5p) {
+    var checklibraryPath = getInfo.then(function (h5p) {
+      var dependency = h5p.preloadedDependencies[0];
+      machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
+
+      return new Promise(function (resolve) {
+        getJSONPromise(pathToContent + "/" + machinePath + "/library.json").then(function (library) {
+          h5p.pathIncludesVersion = true;
+          machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
+          resolve(h5p);
+        }, function (e) {
+          h5p.pathIncludesVersion = false;
+          machinePath = dependency.machineName;
+          resolve(h5p);
+        });
+      });
+    });
+
+    var getDirectDependencies = checklibraryPath.then(function (h5p) {
       var dependencies = h5p.preloadedDependencies;
       var loadDependencies = dependencies.map(function (dependency) {
-        machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
+        machinePath = dependency.machineName + (h5p.pathIncludesVersion ? "-" + dependency.majorVersion + "." + dependency.minorVersion : '');
         return getJSONPromise(pathToContent + "/" + machinePath + "/library.json").then(function (library) {
           var styles = [];
           var scripts = [];
           var dependencies2 = [];
-          var libraryPath = library.machineName + "-" + library.majorVersion + "." + library.minorVersion;
+          var libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
 
           if (library.preloadedCss) {
             styles = library.preloadedCss.map(function (style) {
@@ -9588,11 +9606,11 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
       return Promise.all(loadDependencies);
     });
 
-    var getLibrary = getInfo.then(function (h5p) {
+    var getLibrary = checklibraryPath.then(function (h5p) {
       var mainLibrary = h5p.preloadedDependencies.find(function (dep) {
         return dep.machineName === h5p.mainLibrary;
       });
-      var mainLibraryPath = h5p.mainLibrary + "-" + mainLibrary.majorVersion + "." + mainLibrary.minorVersion;
+      var mainLibraryPath = h5p.mainLibrary + (h5p.pathIncludesVersion ? "-" + mainLibrary.majorVersion + "." + mainLibrary.minorVersion : '');
       return getJSONPromise(pathToContent + "/" + mainLibraryPath + "/library.json");
     });
 
@@ -9604,7 +9622,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
       var library = _data[2];
       var dependencies = _data[3];
 
-      var libraryPath = library.machineName + "-" + library.majorVersion + "." + library.minorVersion;
+      var libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
       var styles = library.preloadedCss.map(function (style) {
         return pathToContent + "/" + libraryPath + "/" + style.path;
       });
