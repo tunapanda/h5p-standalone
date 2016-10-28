@@ -2,3 +2,4 @@ workspace/*
 !workspace/H5P_CONTENT_HERE.txt
 bower_components
 node_modules
+.DS_Store

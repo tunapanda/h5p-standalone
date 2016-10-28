@@ -1,9 +1,9 @@
 /*jshint esnext: true */
-(function($) {
+(function ($) {
   'use strict';
   function getJSONPromise(url) {
-    return new Promise(resolve => {
-      H5P.jQuery.getJSON(url, resolve);
+    return new Promise((resolve, reject) => {
+      H5P.jQuery.getJSON(url, resolve).fail(reject);
     });
   }
 
@@ -45,99 +45,124 @@
     }
   };
 
-  H5PIntegration.init = function(pathToContent = 'workspace') {
+  H5PIntegration.init = function (id, pathToContent = 'workspace') {
 
     H5PIntegration.url = `${pathToContent}`;
 
     let getInfo = getJSONPromise(`${pathToContent}/h5p.json`);
     let getContent = getJSONPromise(`${pathToContent}/content/content.json`);
+    let machinePath;
+    let pathIncludesVersion = true;
 
-    let getDirectDependencies = getInfo.then(h5p => {
-      let dependencies = h5p.preloadedDependencies;
-      let loadDependencies = dependencies.map(dependency => getJSONPromise(`${pathToContent}/${dependency.machineName}/library.json`).then(library => {
-        let styles = [];
-        let scripts = [];
-        let dependencies2 = [];
-        if(library.preloadedCss) {
-          styles = library.preloadedCss.map(style => `${pathToContent}/${dependency.machineName}/${style.path}`);
-        }
+    let checklibraryPath = getInfo.then(function(h5p) {
+      let dependency = h5p.preloadedDependencies[0];
+      machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
 
-        if(library.preloadedJs) {
-          scripts = library.preloadedJs.map(script => `${pathToContent}/${dependency.machineName}/${script.path}`);
-        }
-
-        if(library.preloadedDependencies) {
-           dependencies2 = library.preloadedDependencies.map(dependency2 => dependency2.machineName);
-        }
-
-        return Promise.resolve({name: dependency.machineName, styles: styles, scripts: scripts, dependencies: dependencies2});
-      }));
-      return Promise.all(loadDependencies);
-    });
-
-
-    let getLibrary = getInfo.then(function(h5p) {
-      return getJSONPromise(`${pathToContent}/${h5p.mainLibrary}/library.json`);
-    });
-
-    Promise.all([getInfo, getContent, getLibrary, getDirectDependencies]).then(data => {
-      let [h5p, content, library, dependencies] = data;
-
-      let styles = library.preloadedCss.map(style => `${pathToContent}/${h5p.mainLibrary}/${style.path}`);
-
-      let scripts = library.preloadedJs.map(script => `${pathToContent}/${h5p.mainLibrary}/${script.path}`);
-
-
-      let dependencySorter = new Toposort();
-
-      dependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
-
-      dependencySorter.sort().reverse().forEach(function(dependencyName) {
-        let dependency = dependencies.find(function(dept) {
-          return dept.name === dependencyName;
+      return new Promise((resolve) => {
+        getJSONPromise(`${pathToContent}/${machinePath}/library.json`).then(library => {
+          h5p.pathIncludesVersion = true;
+          machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
+          resolve(h5p);
+        }, (e) => {
+          h5p.pathIncludesVersion = false;
+          machinePath = dependency.machineName;
+          resolve(h5p);
         });
-        Array.prototype.push.apply(styles, dependency.styles);
-        Array.prototype.push.apply(scripts, dependency.scripts);
       });
-
-      H5PIntegration.contents = {
-        'cid-1': {
-          library: `${library.machineName} ${library.majorVersion}.${library.minorVersion}`,
-          jsonContent: JSON.stringify(content),
-          styles: styles,
-          scripts: scripts
-        }
-      };
-
-      H5P.init();
     });
-  };
 
-  $.fn.h5p = function(options) {
+    let getDirectDependencies = checklibraryPath.then(h5p => {
+      let dependencies = h5p.preloadedDependencies;
+      let loadDependencies = dependencies.map(dependency => {
+        machinePath = dependency.machineName + (h5p.pathIncludesVersion ? "-" + dependency.majorVersion + "." + dependency.minorVersion : '');
+        return getJSONPromise(`${pathToContent}/${machinePath}/library.json`).then(library => {
+          let styles = [];
+          let scripts = [];
+          let dependencies2 = [];
+          let libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
 
-    this.append(`<div class="h5p-iframe-wrapper" style="background-color:#DDD;">
-      <iframe id="h5p-iframe-1" class="h5p-iframe" data-content-id="1" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
-    </div>`);
+          if (library.preloadedCss) {
+            styles = library.preloadedCss.map(style => `${pathToContent}/${libraryPath}/${style.path}`);
+          }
 
-    options.frameJs = options.frameJs || 'dist/h5p-standalone-frame.min.js';
-    options.frameCss = options.frameCss || 'dist/css/h5p.css';
-    options.h5pContent = options.h5pContent || 'workspace';
+          if (library.preloadedJs) {
+            scripts = library.preloadedJs.map(script => `${pathToContent}/${libraryPath}/${script.path}`);
+          }
 
-    H5PIntegration.core = {
-      styles: [options.frameCss],
-      scripts: [
-        options.frameJs
-        // 'bower_components/jquery/dist/jquery.js',
-        // 'lib/js/h5p-jquery.js',
-        // 'bower_components/h5p-php-library/js/h5p-content-type.js',
-        // 'bower_components/h5p-php-library/js/h5p-event-dispatcher.js',
-        // 'bower_components/h5p-php-library/js/h5p-x-api-event.js',
-        // 'bower_components/h5p-php-library/js/h5p-x-api.js',
-        // 'bower_components/h5p-php-library/js/h5p.js',
-        // 'lib/js/h5p-overwrite.js'
-      ]
+          if (library.preloadedDependencies) {
+            dependencies2 = library.preloadedDependencies.map(dependency2 => dependency2.machineName);
+          }
+
+          return Promise.resolve({ name: dependency.machineName, styles: styles, scripts: scripts, dependencies: dependencies2 });
+        });
+      });
+    return Promise.all(loadDependencies);
+  });
+
+  let getLibrary = checklibraryPath.then(function (h5p) {
+    let mainLibrary = h5p.preloadedDependencies.find(dep => dep.machineName ===  h5p.mainLibrary);
+    let mainLibraryPath = h5p.mainLibrary + (h5p.pathIncludesVersion ? "-" + mainLibrary.majorVersion + "." + mainLibrary.minorVersion : '');
+    return getJSONPromise(`${pathToContent}/${mainLibraryPath}/library.json`);
+  });
+
+  Promise.all([getInfo, getContent, getLibrary, getDirectDependencies]).then(data => {
+    let [h5p, content, library, dependencies] = data;
+    let libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
+    let styles = library.preloadedCss.map(style => `${pathToContent}/${libraryPath}/${style.path}`);
+
+    let scripts = library.preloadedJs.map(script => `${pathToContent}/${libraryPath}/${script.path}`);
+
+
+    let dependencySorter = new Toposort();
+
+    dependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
+
+    dependencySorter.sort().reverse().forEach(function (dependencyName) {
+      let dependency = dependencies.find(function (dept) {
+        return dept.name === dependencyName;
+      });
+      Array.prototype.push.apply(styles, dependency.styles);
+      Array.prototype.push.apply(scripts, dependency.scripts);
+    });
+
+    H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
+
+    H5PIntegration.contents[`cid-${id}`] = {
+      library: `${library.machineName} ${library.majorVersion}.${library.minorVersion}`,
+      jsonContent: JSON.stringify(content),
+      styles: styles,
+      scripts: scripts
     };
 
-    H5PIntegration.init(options.h5pContent);
-  }
+    H5P.init();
+  });
+};
+
+$.fn.h5p = function (options) {
+
+  this.append(`<div class="h5p-iframe-wrapper" style="background-color:#DDD;">
+      <iframe id="h5p-iframe-${options.id}" class="h5p-iframe" data-content-id="${options.id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
+    </div>`);
+
+  options.frameJs = options.frameJs || 'dist/h5p-standalone-frame.min.js';
+  options.frameCss = options.frameCss || 'dist/css/h5p.css';
+  options.h5pContent = options.h5pContent || 'workspace';
+
+  H5PIntegration.core = {
+    styles: [options.frameCss],
+    scripts: [
+      options.frameJs
+      // 'bower_components/jquery/dist/jquery.js',
+      // 'lib/js/h5p-jquery.js',
+      // 'bower_components/h5p-php-library/js/h5p-content-type.js',
+      // 'bower_components/h5p-php-library/js/h5p-event-dispatcher.js',
+      // 'bower_components/h5p-php-library/js/h5p-x-api-event.js',
+      // 'bower_components/h5p-php-library/js/h5p-x-api.js',
+      // 'bower_components/h5p-php-library/js/h5p.js',
+      // 'lib/js/h5p-overwrite.js'
+    ]
+  };
+
+  H5PIntegration.init(options.id, options.h5pContent);
+}
 })(H5P.jQuery);
