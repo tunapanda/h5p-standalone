@@ -90,12 +90,42 @@
           }
 
           if (library.preloadedDependencies) {
-            dependencies2 = library.preloadedDependencies.map(dependency2 => dependency2.machineName);
+            dependencies2 = library.preloadedDependencies.map(dependency2 => dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : ''));
           }
 
-          return Promise.resolve({ name: dependency.machineName, styles: styles, scripts: scripts, dependencies: dependencies2 });
+          return Promise.resolve({ name: libraryPath, styles: styles, scripts: scripts, dependencies: dependencies2 });
         });
       });
+    return Promise.all(loadDependencies);
+  });
+
+  let getOtherDependencies = Promise.all([checklibraryPath, getDirectDependencies]).then(data => {
+    let [h5p, directDependencies] = data;
+    let dependencies = directDependencies.reduce((prev, next) => {
+      return prev.concat(next.dependencies);
+    }, []);
+    let loadDependencies = dependencies.map(dependency => {
+      return getJSONPromise(`${pathToContent}/${dependency}/library.json`).then(library => {
+        let styles = [];
+        let scripts = [];
+        let dependencies2 = [];
+        let libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
+
+        if (library.preloadedCss) {
+          styles = library.preloadedCss.map(style => `${pathToContent}/${libraryPath}/${style.path}`);
+        }
+
+        if (library.preloadedJs) {
+          scripts = library.preloadedJs.map(script => `${pathToContent}/${libraryPath}/${script.path}`);
+        }
+
+        if (library.preloadedDependencies) {
+          dependencies2 = library.preloadedDependencies.map(dependency2 => dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : ''));
+        }
+
+        return Promise.resolve({ name: dependency, styles: styles, scripts: scripts, dependencies: dependencies2});
+      });
+    });
     return Promise.all(loadDependencies);
   });
 
@@ -105,8 +135,10 @@
     return getJSONPromise(`${pathToContent}/${mainLibraryPath}/library.json`);
   });
 
-  Promise.all([getInfo, getContent, getLibrary, getDirectDependencies]).then(data => {
-    let [h5p, content, library, dependencies] = data;
+  Promise.all([getInfo, getContent, getLibrary, getDirectDependencies, getOtherDependencies]).then(data => {
+    let [h5p, content, library, dependencies, otherDependencies] = data;
+
+    console.log(otherDependencies);
     let libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
     let styles = library.preloadedCss.map(style => `${pathToContent}/${libraryPath}/${style.path}`);
 
@@ -116,14 +148,24 @@
     let dependencySorter = new Toposort();
 
     dependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
+    otherDependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
 
     dependencySorter.sort().reverse().forEach(function (dependencyName) {
       let dependency = dependencies.find(function (dept) {
         return dept.name === dependencyName;
+      }) || otherDependencies.find(function (dept) {
+        return dept.name === dependencyName;
       });
+      console.log(dependencyName);
+      if (!dependency) {
+        console.warn(`${dependencyName} could not be found`);
+        return;
+      }
       Array.prototype.push.apply(styles, dependency.styles);
       Array.prototype.push.apply(scripts, dependency.scripts);
     });
+
+    scripts.unshift('../workspace/Tether-1.0/scripts/tether.min.js');
 
     H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
 
