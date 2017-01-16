@@ -121,6 +121,10 @@
       let dependency = dependencies.find(function (dept) {
         return dept.name === dependencyName;
       });
+      if (typeof dependency === "undefined") {
+        console.warn("Skipping unmet dependency " + dependencyName);
+        return;
+      }
       Array.prototype.push.apply(styles, dependency.styles);
       Array.prototype.push.apply(scripts, dependency.scripts);
     });
