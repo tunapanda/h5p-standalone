@@ -71,40 +71,14 @@
       });
     });
 
-    let getDirectDependencies = checklibraryPath.then(h5p => {
-      let dependencies = h5p.preloadedDependencies;
-      let loadDependencies = dependencies.map(dependency => {
-        machinePath = dependency.machineName + (h5p.pathIncludesVersion ? "-" + dependency.majorVersion + "." + dependency.minorVersion : '');
-        return getJSONPromise(`${pathToContent}/${machinePath}/library.json`).then(library => {
-          let styles = [];
-          let scripts = [];
-          let dependencies2 = [];
-          let libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
+  let dependencyCSS = {};
+  let dependencyJS = {};
+  // let dependencyDepth = 0;
 
-          if (library.preloadedCss) {
-            styles = library.preloadedCss.map(style => `${pathToContent}/${libraryPath}/${style.path}`);
-          }
-
-          if (library.preloadedJs) {
-            scripts = library.preloadedJs.map(script => `${pathToContent}/${libraryPath}/${script.path}`);
-          }
-
-          if (library.preloadedDependencies) {
-            dependencies2 = library.preloadedDependencies.map(dependency2 => dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : ''));
-          }
-
-          return Promise.resolve({ name: libraryPath, styles: styles, scripts: scripts, dependencies: dependencies2 });
-        });
-      });
-    return Promise.all(loadDependencies);
-  });
-
-  let getOtherDependencies = Promise.all([checklibraryPath, getDirectDependencies]).then(data => {
-    let [h5p, directDependencies] = data;
-    let dependencies = directDependencies.reduce((prev, next) => {
-      return prev.concat(next.dependencies);
-    }, []);
-    let loadDependencies = dependencies.map(dependency => {
+  let loadDependencies = function(toFind, alreadyFound, h5p) {
+    // console.log(`loading dependency level: ${dependencyDepth}`);
+    // dependencyDepth++;
+    let findDependencies = toFind.map((dependency) => {
       return getJSONPromise(`${pathToContent}/${dependency}/library.json`).then(library => {
         let styles = [];
         let scripts = [];
@@ -112,22 +86,47 @@
         let libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
 
         if (library.preloadedCss) {
-          styles = library.preloadedCss.map(style => `${pathToContent}/${libraryPath}/${style.path}`);
+          dependencyCSS[libraryPath] = dependencyCSS[libraryPath] ? dependencyCSS[libraryPath] : [];
+          styles = library.preloadedCss.forEach(style => {
+            dependencyCSS[libraryPath].push(`${pathToContent}/${libraryPath}/${style.path}`);
+          });
         }
 
         if (library.preloadedJs) {
-          scripts = library.preloadedJs.map(script => `${pathToContent}/${libraryPath}/${script.path}`);
+          dependencyJS[libraryPath] = dependencyJS[libraryPath] ? dependencyJS[libraryPath] : [];
+          scripts = library.preloadedJs.forEach(script => {
+            dependencyJS[libraryPath].push(`${pathToContent}/${libraryPath}/${script.path}`);
+          });
         }
 
         if (library.preloadedDependencies) {
           dependencies2 = library.preloadedDependencies.map(dependency2 => dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : ''));
         }
 
-        return Promise.resolve({ name: dependency, styles: styles, scripts: scripts, dependencies: dependencies2});
+        return Promise.resolve({libraryPath: libraryPath, dependencies: dependencies2});
       });
     });
-    return Promise.all(loadDependencies);
-  });
+
+    let findNext = [];
+    return Promise.all(findDependencies).then((data) => {
+      // loop over newly found libraries
+      data.forEach((library) => {
+        // push into found list
+        alreadyFound.push(library);
+        // check if any dependencies haven't been found yet
+        library.dependencies.forEach((dependency) => {
+          if (!alreadyFound.find((foundLibrary) => foundLibrary.libraryPath === dependency) && !data.find((foundLibrary) => foundLibrary.libraryPath === dependency)) {
+            findNext.push(dependency);
+          }
+        });
+      });
+
+      if(findNext.length > 0) {
+        return loadDependencies(findNext, alreadyFound, h5p);
+      }
+      return Promise.resolve(alreadyFound);
+    });
+  }
 
   let getLibrary = checklibraryPath.then(function (h5p) {
     let mainLibrary = h5p.preloadedDependencies.find(dep => dep.machineName ===  h5p.mainLibrary);
@@ -135,48 +134,69 @@
     return getJSONPromise(`${pathToContent}/${mainLibraryPath}/library.json`);
   });
 
-  Promise.all([getInfo, getContent, getLibrary, getDirectDependencies, getOtherDependencies]).then(data => {
-    let [h5p, content, library, dependencies, otherDependencies] = data;
+  Promise.all([getInfo, getContent, getLibrary]).then(data => {
+    let [h5p, content, library] = data;
 
-    console.log(otherDependencies);
     let libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
     let styles = library.preloadedCss.map(style => `${pathToContent}/${libraryPath}/${style.path}`);
 
     let scripts = library.preloadedJs.map(script => `${pathToContent}/${libraryPath}/${script.path}`);
 
+    let directDependencyNames = h5p.preloadedDependencies.map(dependency2 => dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : ''));
 
-    let dependencySorter = new Toposort();
+    loadDependencies(directDependencyNames, [], h5p).then((results) => {
+      let dependencySorter = new Toposort();
 
-    dependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
-    otherDependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
+      results.forEach(dependency => dependencySorter.add(dependency.libraryPath, dependency.dependencies));
 
-    dependencySorter.sort().reverse().forEach(function (dependencyName) {
-      let dependency = dependencies.find(function (dept) {
-        return dept.name === dependencyName;
-      }) || otherDependencies.find(function (dept) {
-        return dept.name === dependencyName;
+      dependencySorter.sort().reverse().forEach(function (dependencyName) {
+        Array.prototype.push.apply(styles, dependencyCSS[dependencyName]);
+        Array.prototype.push.apply(scripts, dependencyJS[dependencyName]);
       });
-      console.log(dependencyName);
-      if (!dependency) {
-        console.warn(`${dependencyName} could not be found`);
-        return;
-      }
-      Array.prototype.push.apply(styles, dependency.styles);
-      Array.prototype.push.apply(scripts, dependency.scripts);
+
+      H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
+
+      H5PIntegration.contents[`cid-${id}`] = {
+        library: `${library.machineName} ${library.majorVersion}.${library.minorVersion}`,
+        jsonContent: JSON.stringify(content),
+        styles: styles,
+        scripts: scripts
+      };
+
+      H5P.init();
     });
+    // let dependencySorter = new Toposort();
 
-    scripts.unshift('../workspace/Tether-1.0/scripts/tether.min.js');
+    // dependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
+    // otherDependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
 
-    H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
+    // dependencySorter.sort().reverse().forEach(function (dependencyName) {
+    //   let dependency = dependencies.find(function (dept) {
+    //     return dept.name === dependencyName;
+    //   }) || otherDependencies.find(function (dept) {
+    //     return dept.name === dependencyName;
+    //   });
+    //   console.log(dependencyName);
+    //   if (!dependency) {
+    //     console.warn(`${dependencyName} could not be found`);
+    //     return;
+    //   }
+    //   Array.prototype.push.apply(styles, dependency.styles);
+    //   Array.prototype.push.apply(scripts, dependency.scripts);
+    // });
 
-    H5PIntegration.contents[`cid-${id}`] = {
-      library: `${library.machineName} ${library.majorVersion}.${library.minorVersion}`,
-      jsonContent: JSON.stringify(content),
-      styles: styles,
-      scripts: scripts
-    };
+    // scripts.unshift('../workspace/Tether-1.0/scripts/tether.min.js');
 
-    H5P.init();
+    // H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
+
+    // H5PIntegration.contents[`cid-${id}`] = {
+    //   library: `${library.machineName} ${library.majorVersion}.${library.minorVersion}`,
+    //   jsonContent: JSON.stringify(content),
+    //   styles: styles,
+    //   scripts: scripts
+    // };
+
+    // H5P.init();
   });
 };
 
