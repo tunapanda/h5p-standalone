@@ -76,39 +76,68 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
       });
     });
 
-    var getDirectDependencies = checklibraryPath.then(function (h5p) {
-      var dependencies = h5p.preloadedDependencies;
-      var loadDependencies = dependencies.map(function (dependency) {
-        machinePath = dependency.machineName + (h5p.pathIncludesVersion ? "-" + dependency.majorVersion + "." + dependency.minorVersion : '');
-        return getJSONPromise(pathToContent + "/" + machinePath + "/library.json").then(function (library) {
+    var dependencyCSS = {};
+    var dependencyJS = {};
+    // let dependencyDepth = 0;
+
+    var loadDependencies = function loadDependencies(toFind, alreadyFound, h5p) {
+      // console.log(`loading dependency level: ${dependencyDepth}`);
+      // dependencyDepth++;
+      var findDependencies = toFind.map(function (dependency) {
+        return getJSONPromise(pathToContent + "/" + dependency + "/library.json").then(function (library) {
           var styles = [];
           var scripts = [];
           var dependencies2 = [];
           var libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
 
           if (library.preloadedCss) {
-            styles = library.preloadedCss.map(function (style) {
-              return pathToContent + "/" + libraryPath + "/" + style.path;
+            dependencyCSS[libraryPath] = dependencyCSS[libraryPath] ? dependencyCSS[libraryPath] : [];
+            styles = library.preloadedCss.forEach(function (style) {
+              dependencyCSS[libraryPath].push(pathToContent + "/" + libraryPath + "/" + style.path);
             });
           }
 
           if (library.preloadedJs) {
-            scripts = library.preloadedJs.map(function (script) {
-              return pathToContent + "/" + libraryPath + "/" + script.path;
+            dependencyJS[libraryPath] = dependencyJS[libraryPath] ? dependencyJS[libraryPath] : [];
+            scripts = library.preloadedJs.forEach(function (script) {
+              dependencyJS[libraryPath].push(pathToContent + "/" + libraryPath + "/" + script.path);
             });
           }
 
           if (library.preloadedDependencies) {
             dependencies2 = library.preloadedDependencies.map(function (dependency2) {
-              return dependency2.machineName;
+              return dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : '');
             });
           }
 
-          return Promise.resolve({ name: dependency.machineName, styles: styles, scripts: scripts, dependencies: dependencies2 });
+          return Promise.resolve({ libraryPath: libraryPath, dependencies: dependencies2 });
         });
       });
-      return Promise.all(loadDependencies);
-    });
+
+      var findNext = [];
+      return Promise.all(findDependencies).then(function (data) {
+        // loop over newly found libraries
+        data.forEach(function (library) {
+          // push into found list
+          alreadyFound.push(library);
+          // check if any dependencies haven't been found yet
+          library.dependencies.forEach(function (dependency) {
+            if (!alreadyFound.find(function (foundLibrary) {
+              return foundLibrary.libraryPath === dependency;
+            }) && !data.find(function (foundLibrary) {
+              return foundLibrary.libraryPath === dependency;
+            })) {
+              findNext.push(dependency);
+            }
+          });
+        });
+
+        if (findNext.length > 0) {
+          return loadDependencies(findNext, alreadyFound, h5p);
+        }
+        return Promise.resolve(alreadyFound);
+      });
+    };
 
     var getLibrary = checklibraryPath.then(function (h5p) {
       var mainLibrary = h5p.preloadedDependencies.find(function (dep) {
@@ -118,13 +147,12 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
       return getJSONPromise(pathToContent + "/" + mainLibraryPath + "/library.json");
     });
 
-    Promise.all([getInfo, getContent, getLibrary, getDirectDependencies]).then(function (data) {
-      var _data = _slicedToArray(data, 4);
+    Promise.all([getInfo, getContent, getLibrary]).then(function (data) {
+      var _data = _slicedToArray(data, 3);
 
       var h5p = _data[0];
       var content = _data[1];
       var library = _data[2];
-      var dependencies = _data[3];
 
       var libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
       var styles = library.preloadedCss.map(function (style) {
@@ -135,34 +163,65 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
         return pathToContent + "/" + libraryPath + "/" + script.path;
       });
 
-      var dependencySorter = new Toposort();
-
-      dependencies.forEach(function (dependency) {
-        return dependencySorter.add(dependency.name, dependency.dependencies);
+      var directDependencyNames = h5p.preloadedDependencies.map(function (dependency2) {
+        return dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : '');
       });
 
-      dependencySorter.sort().reverse().forEach(function (dependencyName) {
-        var dependency = dependencies.find(function (dept) {
-          return dept.name === dependencyName;
+      loadDependencies(directDependencyNames, [], h5p).then(function (results) {
+        var dependencySorter = new Toposort();
+
+        results.forEach(function (dependency) {
+          return dependencySorter.add(dependency.libraryPath, dependency.dependencies);
         });
-        if (typeof dependency === "undefined") {
-          console.warn("Skipping unmet dependency " + dependencyName);
-          return;
-        }
-        Array.prototype.push.apply(styles, dependency.styles);
-        Array.prototype.push.apply(scripts, dependency.scripts);
+
+        dependencySorter.sort().reverse().forEach(function (dependencyName) {
+          Array.prototype.push.apply(styles, dependencyCSS[dependencyName]);
+          Array.prototype.push.apply(scripts, dependencyJS[dependencyName]);
+        });
+
+        H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
+
+        H5PIntegration.contents["cid-" + id] = {
+          library: library.machineName + " " + library.majorVersion + "." + library.minorVersion,
+          jsonContent: JSON.stringify(content),
+          styles: styles,
+          scripts: scripts
+        };
+
+        H5P.init();
       });
+      // let dependencySorter = new Toposort();
 
-      H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
+      // dependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
+      // otherDependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
 
-      H5PIntegration.contents["cid-" + id] = {
-        library: library.machineName + " " + library.majorVersion + "." + library.minorVersion,
-        jsonContent: JSON.stringify(content),
-        styles: styles,
-        scripts: scripts
-      };
+      // dependencySorter.sort().reverse().forEach(function (dependencyName) {
+      //   let dependency = dependencies.find(function (dept) {
+      //     return dept.name === dependencyName;
+      //   }) || otherDependencies.find(function (dept) {
+      //     return dept.name === dependencyName;
+      //   });
+      //   console.log(dependencyName);
+      //   if (!dependency) {
+      //     console.warn(`${dependencyName} could not be found`);
+      //     return;
+      //   }
+      //   Array.prototype.push.apply(styles, dependency.styles);
+      //   Array.prototype.push.apply(scripts, dependency.scripts);
+      // });
 
-      H5P.init();
+      // scripts.unshift('../workspace/Tether-1.0/scripts/tether.min.js');
+
+      // H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
+
+      // H5PIntegration.contents[`cid-${id}`] = {
+      //   library: `${library.machineName} ${library.majorVersion}.${library.minorVersion}`,
+      //   jsonContent: JSON.stringify(content),
+      //   styles: styles,
+      //   scripts: scripts
+      // };
+
+      // H5P.init();
     });
   };
 

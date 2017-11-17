@@ -9572,39 +9572,68 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
       });
     });
 
-    var getDirectDependencies = checklibraryPath.then(function (h5p) {
-      var dependencies = h5p.preloadedDependencies;
-      var loadDependencies = dependencies.map(function (dependency) {
-        machinePath = dependency.machineName + (h5p.pathIncludesVersion ? "-" + dependency.majorVersion + "." + dependency.minorVersion : '');
-        return getJSONPromise(pathToContent + "/" + machinePath + "/library.json").then(function (library) {
+    var dependencyCSS = {};
+    var dependencyJS = {};
+    // let dependencyDepth = 0;
+
+    var loadDependencies = function loadDependencies(toFind, alreadyFound, h5p) {
+      // console.log(`loading dependency level: ${dependencyDepth}`);
+      // dependencyDepth++;
+      var findDependencies = toFind.map(function (dependency) {
+        return getJSONPromise(pathToContent + "/" + dependency + "/library.json").then(function (library) {
           var styles = [];
           var scripts = [];
           var dependencies2 = [];
           var libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
 
           if (library.preloadedCss) {
-            styles = library.preloadedCss.map(function (style) {
-              return pathToContent + "/" + libraryPath + "/" + style.path;
+            dependencyCSS[libraryPath] = dependencyCSS[libraryPath] ? dependencyCSS[libraryPath] : [];
+            styles = library.preloadedCss.forEach(function (style) {
+              dependencyCSS[libraryPath].push(pathToContent + "/" + libraryPath + "/" + style.path);
             });
           }
 
           if (library.preloadedJs) {
-            scripts = library.preloadedJs.map(function (script) {
-              return pathToContent + "/" + libraryPath + "/" + script.path;
+            dependencyJS[libraryPath] = dependencyJS[libraryPath] ? dependencyJS[libraryPath] : [];
+            scripts = library.preloadedJs.forEach(function (script) {
+              dependencyJS[libraryPath].push(pathToContent + "/" + libraryPath + "/" + script.path);
             });
           }
 
           if (library.preloadedDependencies) {
             dependencies2 = library.preloadedDependencies.map(function (dependency2) {
-              return dependency2.machineName;
+              return dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : '');
             });
           }
 
-          return Promise.resolve({ name: dependency.machineName, styles: styles, scripts: scripts, dependencies: dependencies2 });
+          return Promise.resolve({ libraryPath: libraryPath, dependencies: dependencies2 });
         });
       });
-      return Promise.all(loadDependencies);
-    });
+
+      var findNext = [];
+      return Promise.all(findDependencies).then(function (data) {
+        // loop over newly found libraries
+        data.forEach(function (library) {
+          // push into found list
+          alreadyFound.push(library);
+          // check if any dependencies haven't been found yet
+          library.dependencies.forEach(function (dependency) {
+            if (!alreadyFound.find(function (foundLibrary) {
+              return foundLibrary.libraryPath === dependency;
+            }) && !data.find(function (foundLibrary) {
+              return foundLibrary.libraryPath === dependency;
+            })) {
+              findNext.push(dependency);
+            }
+          });
+        });
+
+        if (findNext.length > 0) {
+          return loadDependencies(findNext, alreadyFound, h5p);
+        }
+        return Promise.resolve(alreadyFound);
+      });
+    };
 
     var getLibrary = checklibraryPath.then(function (h5p) {
       var mainLibrary = h5p.preloadedDependencies.find(function (dep) {
@@ -9614,13 +9643,12 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
       return getJSONPromise(pathToContent + "/" + mainLibraryPath + "/library.json");
     });
 
-    Promise.all([getInfo, getContent, getLibrary, getDirectDependencies]).then(function (data) {
-      var _data = _slicedToArray(data, 4);
+    Promise.all([getInfo, getContent, getLibrary]).then(function (data) {
+      var _data = _slicedToArray(data, 3);
 
       var h5p = _data[0];
       var content = _data[1];
       var library = _data[2];
-      var dependencies = _data[3];
 
       var libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
       var styles = library.preloadedCss.map(function (style) {
@@ -9631,34 +9659,65 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
         return pathToContent + "/" + libraryPath + "/" + script.path;
       });
 
-      var dependencySorter = new Toposort();
-
-      dependencies.forEach(function (dependency) {
-        return dependencySorter.add(dependency.name, dependency.dependencies);
+      var directDependencyNames = h5p.preloadedDependencies.map(function (dependency2) {
+        return dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : '');
       });
 
-      dependencySorter.sort().reverse().forEach(function (dependencyName) {
-        var dependency = dependencies.find(function (dept) {
-          return dept.name === dependencyName;
+      loadDependencies(directDependencyNames, [], h5p).then(function (results) {
+        var dependencySorter = new Toposort();
+
+        results.forEach(function (dependency) {
+          return dependencySorter.add(dependency.libraryPath, dependency.dependencies);
         });
-        if (typeof dependency === "undefined") {
-          console.warn("Skipping unmet dependency " + dependencyName);
-          return;
-        }
-        Array.prototype.push.apply(styles, dependency.styles);
-        Array.prototype.push.apply(scripts, dependency.scripts);
+
+        dependencySorter.sort().reverse().forEach(function (dependencyName) {
+          Array.prototype.push.apply(styles, dependencyCSS[dependencyName]);
+          Array.prototype.push.apply(scripts, dependencyJS[dependencyName]);
+        });
+
+        H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
+
+        H5PIntegration.contents["cid-" + id] = {
+          library: library.machineName + " " + library.majorVersion + "." + library.minorVersion,
+          jsonContent: JSON.stringify(content),
+          styles: styles,
+          scripts: scripts
+        };
+
+        H5P.init();
       });
+      // let dependencySorter = new Toposort();
 
-      H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
+      // dependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
+      // otherDependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
 
-      H5PIntegration.contents["cid-" + id] = {
-        library: library.machineName + " " + library.majorVersion + "." + library.minorVersion,
-        jsonContent: JSON.stringify(content),
-        styles: styles,
-        scripts: scripts
-      };
+      // dependencySorter.sort().reverse().forEach(function (dependencyName) {
+      //   let dependency = dependencies.find(function (dept) {
+      //     return dept.name === dependencyName;
+      //   }) || otherDependencies.find(function (dept) {
+      //     return dept.name === dependencyName;
+      //   });
+      //   console.log(dependencyName);
+      //   if (!dependency) {
+      //     console.warn(`${dependencyName} could not be found`);
+      //     return;
+      //   }
+      //   Array.prototype.push.apply(styles, dependency.styles);
+      //   Array.prototype.push.apply(scripts, dependency.scripts);
+      // });
 
-      H5P.init();
+      // scripts.unshift('../workspace/Tether-1.0/scripts/tether.min.js');
+
+      // H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
+
+      // H5PIntegration.contents[`cid-${id}`] = {
+      //   library: `${library.machineName} ${library.majorVersion}.${library.minorVersion}`,
+      //   jsonContent: JSON.stringify(content),
+      //   styles: styles,
+      //   scripts: scripts
+      // };
+
+      // H5P.init();
     });
   };
 
@@ -9825,7 +9884,7 @@ H5P.EventDispatcher = (function () {
      *   Event type
      * @param {H5P.EventCallback} listener
      *   Event listener
-     * @param {Object} thisArg
+     * @param {Object} [thisArg]
      *   Optionally specify the this value when calling listener.
      */
     this.on = function (type, listener, thisArg) {
@@ -9865,8 +9924,8 @@ H5P.EventDispatcher = (function () {
       }
 
       var once = function (event) {
-        self.off(event, once);
-        listener.apply(this, event);
+        self.off(event.type, once);
+        listener.call(this, event);
       };
 
       self.on(type, once, thisArg);
@@ -10003,22 +10062,44 @@ H5P.XAPIEvent.prototype.constructor = H5P.XAPIEvent;
  *
  * @param {number} score
  * @param {number} maxScore
+ * @param {object} instance
+ * @param {boolean} completion
+ * @param {boolean} success
  */
-H5P.XAPIEvent.prototype.setScoredResult = function (score, maxScore, instance) {
-  this.data.statement.result = {
-    'score': {
-      'min': 0,
-      'max': maxScore,
-      'raw': score
+H5P.XAPIEvent.prototype.setScoredResult = function (score, maxScore, instance, completion, success) {
+  this.data.statement.result = {};
+
+  if (typeof score !== 'undefined') {
+    if (typeof maxScore === 'undefined') {
+      this.data.statement.result.score = {'raw': score};
     }
-  };
-  if (maxScore > 0) {
-    this.data.statement.result.score.scaled = Math.round(score / maxScore * 10000) / 10000;
+    else {
+      this.data.statement.result.score = {
+        'min': 0,
+        'max': maxScore,
+        'raw': score
+      };
+      if (maxScore > 0) {
+        this.data.statement.result.score.scaled = Math.round(score / maxScore * 10000) / 10000;
+      }
+    }
   }
+
+  if (typeof completion === 'undefined') {
+    this.data.statement.result.completion = (this.getVerb() === 'completed' || this.getVerb() === 'answered');
+  }
+  else {
+    this.data.statement.result.completion = completion;
+  }
+
+  if (typeof success !== 'undefined') {
+    this.data.statement.result.success = success;
+  }
+
   if (instance && instance.activityStartTime) {
     var duration = Math.round((Date.now() - instance.activityStartTime ) / 10) / 100;
     // xAPI spec allows a precision of 0.01 seconds
-    
+
     this.data.statement.result.duration = 'PT' + duration + 'S';
   }
 };
@@ -10151,12 +10232,18 @@ H5P.XAPIEvent.prototype.setActor = function () {
   }
   else {
     var uuid;
-    if (localStorage.H5PUserUUID) {
-      uuid = localStorage.H5PUserUUID;
+    try {
+      if (localStorage.H5PUserUUID) {
+        uuid = localStorage.H5PUserUUID;
+      }
+      else {
+        uuid = H5P.createUUID();
+        localStorage.H5PUserUUID = uuid;
+      }
     }
-    else {
-      uuid = H5P.createUUID();
-      localStorage.H5PUserUUID = uuid;
+    catch (err) {
+      // LocalStorage and Cookies are probably disabled. Do not track the user.
+      uuid = 'not-trackable-' + H5P.createUUID();
     }
     this.data.statement.actor = {
       'account': {
@@ -10325,9 +10412,11 @@ H5P.EventDispatcher.prototype.createXAPIEventTemplate = function (verb, extra) {
  *   Will be set as the 'raw' value of the score object
  * @param {number} maxScore
  *   will be set as the "max" value of the score object
+ * @param {boolean} success
+ *   will be set as the "success" value of the result object
  */
-H5P.EventDispatcher.prototype.triggerXAPICompleted = function (score, maxScore) {
-  this.triggerXAPIScored(score, maxScore, 'completed');
+H5P.EventDispatcher.prototype.triggerXAPICompleted = function (score, maxScore, success) {
+  this.triggerXAPIScored(score, maxScore, 'completed', true, success);
 };
 
 /**
@@ -10339,15 +10428,27 @@ H5P.EventDispatcher.prototype.triggerXAPICompleted = function (score, maxScore) 
  *   Will be set as the "max" value of the score object
  * @param {string} verb
  *   Short form of adl verb
+ * @param {boolean} completion
+ *   Is this a statement from a completed activity?
+ * @param {boolean} success
+ *   Is this a statement from an activity that was done successfully?
  */
-H5P.EventDispatcher.prototype.triggerXAPIScored = function (score, maxScore, verb) {
+H5P.EventDispatcher.prototype.triggerXAPIScored = function (score, maxScore, verb, completion, success) {
   var event = this.createXAPIEventTemplate(verb);
-  event.setScoredResult(score, maxScore, this);
+  event.setScoredResult(score, maxScore, this, completion, success);
   this.trigger(event);
 };
 
 H5P.EventDispatcher.prototype.setActivityStarted = function() {
-  this.activityStartTime = Date.now();
+  if (this.activityStartTime === undefined) {
+    // Don't trigger xAPI events in the editor
+    if (this.contentId !== undefined &&
+        H5PIntegration.contents !== undefined &&
+        H5PIntegration.contents['cid-' + this.contentId] !== undefined) {
+      this.triggerXAPI('attempted');
+    }
+    this.activityStartTime = Date.now();
+  }
 };
 
 /**
@@ -10356,7 +10457,7 @@ H5P.EventDispatcher.prototype.setActivityStarted = function() {
  * @param {H5P.XAPIEvent} event
  */
 H5P.xAPICompletedListener = function (event) {
-  if (event.getVerb() === 'completed' && !event.getVerifiedStatementValue(['context', 'contextActivities', 'parent'])) {
+  if ((event.getVerb() === 'completed' || event.getVerb() === 'answered') && !event.getVerifiedStatementValue(['context', 'contextActivities', 'parent'])) {
     var score = event.getScore();
     var maxScore = event.getMaxScore();
     var contentId = event.getVerifiedStatementValue(['object', 'definition', 'extensions', 'http://h5p.org/x-api/h5p-local-content-id']);
@@ -10488,16 +10589,19 @@ H5P.init = function (target) {
         delete contentData.contentUserData;
         var dialog = new H5P.Dialog('content-user-data-reset', 'Data Reset', '<p>' + H5P.t('contentChanged') + '</p><p>' + H5P.t('startingOver') + '</p><div class="h5p-dialog-ok-button" tabIndex="0" role="button">OK</div>', $container);
         H5P.jQuery(dialog).on('dialog-opened', function (event, $dialog) {
-          $dialog.find('.h5p-dialog-ok-button').click(function () {
-            dialog.close();
-          }).keypress(function (event) {
-            if (event.which === 32) {
+
+          var closeDialog = function (event) {
+            if (event.type === 'click' || event.which === 32) {
               dialog.close();
+              H5P.deleteUserData(contentId, 'state', 0);
             }
-          });
+          };
+
+          $dialog.find('.h5p-dialog-ok-button').click(closeDialog).keypress(closeDialog);
         });
         dialog.open();
       }
+      // If previousState is false we don't have a previous state
     });
 
     // Create new instance.
@@ -10505,25 +10609,56 @@ H5P.init = function (target) {
 
     // Check if we should add and display a fullscreen button for this H5P.
     if (contentData.fullScreen == 1 && H5P.canHasFullScreen) {
-      H5P.jQuery('<div class="h5p-content-controls"><div role="button" tabindex="1" class="h5p-enable-fullscreen" title="' + H5P.t('fullscreen') + '"></div></div>').prependTo($container).children().click(function () {
+      H5P.jQuery('<div class="h5p-content-controls"><div role="button" tabindex="0" class="h5p-enable-fullscreen" title="' + H5P.t('fullscreen') + '"></div></div>').prependTo($container).children().click(function () {
         H5P.fullScreen($container, instance);
       });
     }
 
     // Create action bar
     var $actions = H5P.jQuery('<ul class="h5p-actions"></ul>');
+
+    /**
+     * Helper for creating action bar buttons.
+     *
+     * @private
+     * @param {string} type
+     * @param {function} handler
+     * @param {string} customClass Instead of type class
+     */
+    var addActionButton = function (type, handler, customClass) {
+      H5P.jQuery('<li/>', {
+        'class': 'h5p-button h5p-' + (customClass ? customClass : type),
+        role: 'button',
+        tabindex: 0,
+        title: H5P.t(type + 'Description'),
+        html: H5P.t(type),
+        on: {
+          click: handler,
+          keypress: function (e) {
+            if (e.which === 32) {
+              handler();
+              e.preventDefault(); // (since return false will block other inputs)
+            }
+          }
+        },
+        appendTo: $actions
+      });
+    };
+
+    // Register action bar buttons
     if (!(contentData.disable & H5P.DISABLE_DOWNLOAD)) {
       // Add export button
-      H5P.jQuery('<li class="h5p-button h5p-export" role="button" tabindex="1" title="' + H5P.t('downloadDescription') + '">' + H5P.t('download') + '</li>').appendTo($actions).click(function () {
+      addActionButton('download', function () {
+        // Use button for download to avoid people linking directly to the .h5p
         window.location.href = contentData.exportUrl;
-      });
+      }, 'export');
     }
     if (!(contentData.disable & H5P.DISABLE_COPYRIGHT)) {
       var copyright = H5P.getCopyrights(instance, library.params, contentId);
 
       if (copyright) {
         // Add copyright dialog button
-        H5P.jQuery('<li class="h5p-button h5p-copyrights" role="button" tabindex="1" title="' + H5P.t('copyrightsDescription') + '">' + H5P.t('copyrights') + '</li>').appendTo($actions).click(function () {
+        addActionButton('copyrights', function () {
           // Open dialog with copyright information
           var dialog = new H5P.Dialog('copyrights', H5P.t('copyrightInformation'), copyright, $container);
           dialog.open();
@@ -10532,7 +10667,8 @@ H5P.init = function (target) {
     }
     if (!(contentData.disable & H5P.DISABLE_EMBED)) {
       // Add embed button
-      H5P.jQuery('<li class="h5p-button h5p-embed" role="button" tabindex="1" title="' + H5P.t('embedDescription') + '">' + H5P.t('embed') + '</li>').appendTo($actions).click(function () {
+      addActionButton('embed', function () {
+        // Open dialog with embed information
         H5P.openEmbedDialog($actions, contentData.embedCode, contentData.resizeCode, {
           width: $element.width(),
           height: $element.height()
@@ -10645,6 +10781,9 @@ H5P.init = function (target) {
           // Initial setup/handshake is done
           parentIsFriendly = true;
 
+          // Make iframe responsive
+          document.body.style.height = 'auto';
+
           // Hide scrollbars for correct size
           document.body.style.overflow = 'hidden';
 
@@ -10655,7 +10794,7 @@ H5P.init = function (target) {
         // When resize has been prepared tell parent window to resize
         H5P.communicator.on('resizePrepared', function (data) {
           H5P.communicator.send('resize', {
-            height: document.body.scrollHeight
+            scrollHeight: document.body.scrollHeight
           });
         });
 
@@ -10673,7 +10812,10 @@ H5P.init = function (target) {
           resizeDelay = setTimeout(function () {
             // Only resize if the iframe can be resized
             if (parentIsFriendly) {
-              H5P.communicator.send('prepareResize');
+              H5P.communicator.send('prepareResize', {
+                scrollHeight: document.body.scrollHeight,
+                clientHeight: document.body.clientHeight
+              });
             }
             else {
               H5P.communicator.send('hello');
@@ -10735,7 +10877,8 @@ H5P.getHeadTags = function (contentId) {
     return tags;
   };
 
-  return createStyleTags(H5PIntegration.core.styles) +
+  return '<base target="_parent">' +
+         createStyleTags(H5PIntegration.core.styles) +
          createStyleTags(H5PIntegration.contents['cid-' + contentId].styles) +
          createScriptTags(H5PIntegration.core.scripts) +
          createScriptTags(H5PIntegration.contents['cid-' + contentId].scripts) +
@@ -10802,21 +10945,35 @@ H5P.communicator = (function () {
 })();
 
 /**
+ * Enter semi fullscreen for the given H5P instance
+ *
+ * @method semiFullScreen
+ * @param {H5P.jQuery} $element Content container.
+ * @param {Object} instance
+ * @param {function} exitCallback Callback function called when user exits fullscreen.
+ * @param {H5P.jQuery} $body For internal use. Gives the body of the iframe.
+ */
+H5P.semiFullScreen = function ($element, instance, exitCallback, body) {
+  H5P.fullScreen($element, instance, exitCallback, body, true);
+};
+
+/**
  * Enter fullscreen for the given H5P instance.
  *
  * @param {H5P.jQuery} $element Content container.
  * @param {Object} instance
  * @param {function} exitCallback Callback function called when user exits fullscreen.
  * @param {H5P.jQuery} $body For internal use. Gives the body of the iframe.
+ * @param {Boolean} forceSemiFullScreen 
  */
-H5P.fullScreen = function ($element, instance, exitCallback, body) {
+H5P.fullScreen = function ($element, instance, exitCallback, body, forceSemiFullScreen) {
   if (H5P.exitFullScreen !== undefined) {
     return; // Cannot enter new fullscreen until previous is over
   }
 
   if (H5P.isFramed && H5P.externalEmbed === false) {
     // Trigger resize on wrapper in parent window.
-    window.parent.H5P.fullScreen($element, instance, exitCallback, H5P.$body.get());
+    window.parent.H5P.fullScreen($element, instance, exitCallback, H5P.$body.get(), forceSemiFullScreen);
     H5P.isFullscreen = true;
     H5P.exitFullScreen = function () {
       window.parent.H5P.exitFullScreen();
@@ -10896,7 +11053,7 @@ H5P.fullScreen = function ($element, instance, exitCallback, body) {
   };
 
   H5P.isFullscreen = true;
-  if (H5P.fullScreenBrowserPrefix === undefined) {
+  if (H5P.fullScreenBrowserPrefix === undefined || forceSemiFullScreen === true) {
     // Create semi fullscreen.
 
     if (H5P.isFramed) {
@@ -10904,13 +11061,15 @@ H5P.fullScreen = function ($element, instance, exitCallback, body) {
     }
 
     before('h5p-semi-fullscreen');
-    var $disable = H5P.jQuery('<div role="button" tabindex="1" class="h5p-disable-fullscreen" title="' + H5P.t('disableFullscreen') + '"></div>').appendTo($container.find('.h5p-content-controls'));
+    var $disable = H5P.jQuery('<div role="button" tabindex="0" class="h5p-disable-fullscreen" title="' + H5P.t('disableFullscreen') + '"></div>').appendTo($container.find('.h5p-content-controls'));
     var keyup, disableSemiFullscreen = H5P.exitFullScreen = function () {
-      if (lastViewport) {
-        metaTags[i].content = lastViewport;
+      if (prevViewportContent) {
+        // Use content from the previous viewport tag
+        h5pViewport.content = prevViewportContent;
       }
       else {
-        head.removeChild(metaTag);
+        // Remove viewport tag
+        head.removeChild(h5pViewport);
       }
       $disable.remove();
       $body.unbind('keyup', keyup);
@@ -10925,23 +11084,26 @@ H5P.fullScreen = function ($element, instance, exitCallback, body) {
     $body.keyup(keyup);
 
     // Disable zoom
-    var lastViewport;
+    var prevViewportContent, h5pViewport;
     var metaTags = document.getElementsByTagName('meta');
     for (var i = 0; i < metaTags.length; i++) {
       if (metaTags[i].name === 'viewport') {
-        lastViewport = metaTags[i].content;
+        // Use the existing viewport tag
+        h5pViewport = metaTags[i];
+        prevViewportContent = h5pViewport.content;
         break;
       }
     }
-    if (!lastViewport) {
-      // Create tag
-      metaTags[i] = document.createElement('meta');
-      metaTags[i].name = 'viewport';
+    if (!prevViewportContent) {
+      // Create a new viewport tag
+      h5pViewport = document.createElement('meta');
+      h5pViewport.name = 'viewport';
     }
-    metaTags[i].content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0';
-    if (!lastViewport) {
+    h5pViewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0';
+    if (!prevViewportContent) {
+      // Insert the new viewport tag
       var head = document.getElementsByTagName('head')[0];
-      head.appendChild(metaTag);
+      head.appendChild(h5pViewport);
     }
 
     entered();
@@ -11190,9 +11352,9 @@ H5P.error = function (err) {
  *
  * @param {string} key
  *   Translation identifier, may only contain a-zA-Z0-9. No spaces or special chars.
- * @param {Object} vars
+ * @param {Object} [vars]
  *   Data for placeholders.
- * @param {string} ns
+ * @param {string} [ns]
  *   Translation namespace. Defaults to H5P.
  * @returns {string}
  *   Translated text
@@ -11241,7 +11403,7 @@ H5P.Dialog = function (name, title, content, $element) {
                               <div class="h5p-inner">\
                                 <h2>' + title + '</h2>\
                                 <div class="h5p-scroll-content">' + content + '</div>\
-                                <div class="h5p-close" role="button" tabindex="1" title="' + H5P.t('close') + '">\
+                                <div class="h5p-close" role="button" tabindex="0" title="' + H5P.t('close') + '">\
                               </div>\
                             </div>')
     .insertAfter($element)
@@ -11257,7 +11419,12 @@ H5P.Dialog = function (name, title, content, $element) {
           self.close();
         })
         .end()
-      .end();
+      .find('a')
+        .click(function (e) {
+          e.stopPropagation();
+        })
+      .end()
+    .end();
 
   this.open = function () {
     setTimeout(function () {
@@ -11647,15 +11814,15 @@ H5P.MediaCopyright = function (copyright, labels, order, extraFields) {
  */
 H5P.copyrightLicenses = {
   'U': 'Undisclosed',
-  'CC BY': 'Attribution',
-  'CC BY-SA': 'Attribution-ShareAlike',
-  'CC BY-ND': 'Attribution-NoDerivs',
-  'CC BY-NC': 'Attribution-NonCommercial',
-  'CC BY-NC-SA': 'Attribution-NonCommercial-ShareAlike',
-  'CC BY-NC-ND': 'Attribution-NonCommercial-NoDerivs',
-  'GNU GPL': 'General Public License',
+  'CC BY': '<a href="http://creativecommons.org/licenses/by/4.0/legalcode" target="_blank">Attribution 4.0</a>',
+  'CC BY-SA': '<a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode" target="_blank">Attribution-ShareAlike 4.0</a>',
+  'CC BY-ND': '<a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode" target="_blank">Attribution-NoDerivs 4.0</a>',
+  'CC BY-NC': '<a href="https://creativecommons.org/licenses/by-nc/4.0/legalcode" target="_blank">Attribution-NonCommercial 4.0</a>',
+  'CC BY-NC-SA': '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode" target="_blank">Attribution-NonCommercial-ShareAlike 4.0</a>',
+  'CC BY-NC-ND': '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode" target="_blank">Attribution-NonCommercial-NoDerivs 4.0</a>',
+  'GNU GPL': '<a href="http://www.gnu.org/licenses/gpl-3.0-standalone.html" target="_blank">General Public License v3</a>',
   'PD': 'Public Domain',
-  'ODC PDDL': 'Public Domain Dedication and Licence',
+  'ODC PDDL': '<a href="http://opendatacommons.org/licenses/pddl/1.0/" target="_blank">Public Domain Dedication and Licence</a>',
   'CC PDM': 'Public Domain Mark',
   'C': 'Copyright'
 };
@@ -11820,7 +11987,7 @@ H5P.Coords = function (x, y, w, h) {
  *   return false if the library parameter is invalid
  */
 H5P.libraryFromString = function (library) {
-  var regExp = /(.+)\s(\d)+\.(\d)$/g;
+  var regExp = /(.+)\s(\d+)\.(\d+)$/g;
   var res = regExp.exec(library);
   if (res !== null) {
     return {
@@ -11843,7 +12010,7 @@ H5P.libraryFromString = function (library) {
  *   The full path to the library.
  */
 H5P.getLibraryPath = function (library) {
-  return H5PIntegration.url + '/libraries/' + library;
+  return (H5PIntegration.libraryUrl !== undefined ? H5PIntegration.libraryUrl + '/' : H5PIntegration.url + '/libraries/') + library;
 };
 
 /**
@@ -11951,7 +12118,7 @@ H5P.shuffleArray = function (array) {
  *   Reported time consumption/usage
  */
 H5P.setFinished = function (contentId, score, maxScore, time) {
-  if (H5PIntegration.postUserStatistics === true) {
+  if (typeof score === 'number' && H5PIntegration.postUserStatistics === true) {
     /**
      * Return unix timestamp for the given JS Date.
      *
@@ -11964,14 +12131,14 @@ H5P.setFinished = function (contentId, score, maxScore, time) {
     };
 
     // Post the results
-    // TODO: Should we use a variable with the complete path?
-    H5P.jQuery.post(H5PIntegration.ajaxPath + 'setFinished', {
+    H5P.jQuery.post(H5PIntegration.ajax.setFinished, {
       contentId: contentId,
       score: score,
       maxScore: maxScore,
       opened: toUnix(H5P.opened[contentId]),
       finished: toUnix(new Date()),
-      time: time
+      time: time,
+      token: H5PIntegration.tokens.result
     });
   }
 };
@@ -12115,7 +12282,8 @@ H5P.createTitle = function (rawTitle, maxLength) {
       options.data = {
         data: (data === null ? 0 : data),
         preload: (preload ? 1 : 0),
-        invalidate: (invalidate ? 1 : 0)
+        invalidate: (invalidate ? 1 : 0),
+        token: H5PIntegration.tokens.contentUserData
       };
     }
     else {
@@ -12127,7 +12295,7 @@ H5P.createTitle = function (rawTitle, maxLength) {
       };
       options.success = function (response) {
         if (!response.success) {
-          done(response.error);
+          done(response.message);
           return;
         }
 
@@ -12160,9 +12328,10 @@ H5P.createTitle = function (rawTitle, maxLength) {
       subContentId = 0; // Default
     }
 
-    var content = H5PIntegration.contents['cid-' + contentId];
+    H5PIntegration.contents = H5PIntegration.contents || {};
+    var content = H5PIntegration.contents['cid-' + contentId] || {};
     var preloadedData = content.contentUserData;
-    if (preloadedData && preloadedData[subContentId] && preloadedData[subContentId][dataId]) {
+    if (preloadedData && preloadedData[subContentId] && preloadedData[subContentId][dataId] !== undefined) {
       if (preloadedData[subContentId][dataId] === 'RESET') {
         done(undefined, null);
         return;
@@ -12248,6 +12417,9 @@ H5P.createTitle = function (rawTitle, maxLength) {
     }
 
     var content = H5PIntegration.contents['cid-' + contentId];
+    if (content === undefined) {
+      content = H5PIntegration.contents['cid-' + contentId] = {};
+    }
     if (!content.contentUserData) {
       content.contentUserData = {};
     }
@@ -12304,20 +12476,35 @@ H5P.createTitle = function (rawTitle, maxLength) {
     }
 
     if (H5PIntegration.saveFreq !== false) {
+      // When was the last state stored
+      var lastStoredOn = 0;
       // Store the current state of the H5P when leaving the page.
-      H5P.$window.on('beforeunload', function () {
-        for (var i = 0; i < H5P.instances.length; i++) {
-          var instance = H5P.instances[i];
-          if (instance.getCurrentState instanceof Function ||
-              typeof instance.getCurrentState === 'function') {
-            var state = instance.getCurrentState();
-            if (state !== undefined) {
-              // Async is not used to prevent the request from being cancelled.
-              H5P.setUserData(instance.contentId, 'state', state, {deleteOnChange: true, async: false});
+      var storeCurrentState = function () {
+        // Make sure at least 250 ms has passed since last save
+        var currentTime = new Date().getTime();
+        if (currentTime - lastStoredOn > 250) {
+          lastStoredOn = currentTime;
+          for (var i = 0; i < H5P.instances.length; i++) {
+            var instance = H5P.instances[i];
+            if (instance.getCurrentState instanceof Function ||
+                typeof instance.getCurrentState === 'function') {
+              var state = instance.getCurrentState();
+              if (state !== undefined) {
+                // Async is not used to prevent the request from being cancelled.
+                H5P.setUserData(instance.contentId, 'state', state, {deleteOnChange: true, async: false});
+              }
             }
           }
         }
+      };
+      // iPad does not support beforeunload, therefore using unload
+      H5P.$window.one('beforeunload unload', function () {
+        // Only want to do this once
+        H5P.$window.off('pagehide beforeunload unload');
+        storeCurrentState();
       });
+      // pagehide is used on iPad when tabs are switched
+      H5P.$window.on('pagehide', storeCurrentState);
     }
 
     /**
