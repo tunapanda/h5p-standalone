@@ -13,7 +13,7 @@ H5P.getPath = function (path, contentId) {
 
   var prefix;
   if (contentId !== undefined) {
-    prefix = H5PIntegration.url + '/content/';
+    prefix = H5PIntegration.url + '/content';
   }
   else if (window.H5PEditor !== undefined) {
     prefix = H5PEditor.filesPath;
