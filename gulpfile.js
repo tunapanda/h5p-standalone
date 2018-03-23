@@ -39,7 +39,9 @@ gulp.task('clean-dist', function () {
 
 gulp.task('compile-js', ['clean-dist'], function() {
   return gulp.src('src/js/h5pintegration.es6')
-    .pipe(babel())
+    .pipe(babel({
+      'presets': ['es2015']
+    }))
     .pipe(gulp.dest('src/js'));
 });
 

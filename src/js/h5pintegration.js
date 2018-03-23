@@ -1,10 +1,11 @@
-/*jshint esnext: true */
 "use strict";
 
-var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; })();
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
+/*jshint esnext: true */
 (function ($) {
   'use strict';
+
   function getJSONPromise(url) {
     return new Promise(function (resolve, reject) {
       H5P.jQuery.getJSON(url, resolve).fail(reject);
@@ -50,13 +51,15 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
   };
 
   H5PIntegration.init = function (id) {
-    var pathToContent = arguments.length <= 1 || arguments[1] === undefined ? 'workspace' : arguments[1];
+    var pathToContent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'workspace';
+    var displayOptions = arguments[2];
+
 
     H5PIntegration.url = "" + pathToContent;
 
     var getInfo = getJSONPromise(pathToContent + "/h5p.json");
     var getContent = getJSONPromise(pathToContent + "/content/content.json");
-    var machinePath = undefined;
+    var machinePath = void 0;
     var pathIncludesVersion = true;
 
     var checklibraryPath = getInfo.then(function (h5p) {
@@ -148,11 +151,10 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
     });
 
     Promise.all([getInfo, getContent, getLibrary]).then(function (data) {
-      var _data = _slicedToArray(data, 3);
-
-      var h5p = _data[0];
-      var content = _data[1];
-      var library = _data[2];
+      var _data = _slicedToArray(data, 3),
+          h5p = _data[0],
+          content = _data[1],
+          library = _data[2];
 
       var libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
       var styles = [];
@@ -189,7 +191,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
           jsonContent: JSON.stringify(content),
           styles: styles,
           scripts: scripts,
-          displayOptions: {}
+          displayOptions: displayOptions
         };
 
         H5P.init();
@@ -207,6 +209,14 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
     options.frameCss = options.frameCss || 'dist/css/h5p.css';
     options.h5pContent = options.h5pContent || 'workspace';
 
+    var displayOptions = options.displayOptions || {};
+
+    displayOptions.export = displayOptions.export || true;
+    displayOptions.frame = displayOptions.frame || true;
+    displayOptions.copyright = displayOptions.copyright || true;
+    displayOptions.embed = displayOptions.embed || true;
+    displayOptions.icon = displayOptions.icon || true;
+
     H5PIntegration.core = {
       styles: [options.frameCss],
       scripts: [options.frameJs
@@ -221,6 +231,6 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
       ]
     };
 
-    H5PIntegration.init(options.id, options.h5pContent);
+    H5PIntegration.init(options.id, options.h5pContent, displayOptions);
   };
 })(H5P.jQuery);

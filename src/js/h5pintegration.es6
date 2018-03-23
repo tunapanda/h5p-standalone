@@ -45,7 +45,7 @@
     }
   };
 
-  H5PIntegration.init = function (id, pathToContent = 'workspace') {
+  H5PIntegration.init = function (id, pathToContent = 'workspace', displayOptions) {
 
     H5PIntegration.url = `${pathToContent}`;
 
@@ -164,7 +164,7 @@
         jsonContent: JSON.stringify(content),
         styles: styles,
         scripts: scripts,
-        displayOptions: {}
+        displayOptions
       };
 
       H5P.init();
@@ -184,6 +184,14 @@ $.fn.h5p = function (options) {
   options.frameCss = options.frameCss || 'dist/css/h5p.css';
   options.h5pContent = options.h5pContent || 'workspace';
 
+  let displayOptions = options.displayOptions || {};
+
+  displayOptions.export = displayOptions.export || true;
+  displayOptions.frame = displayOptions.frame || true;
+  displayOptions.copyright = displayOptions.copyright || true;
+  displayOptions.embed = displayOptions.embed || true;
+  displayOptions.icon = displayOptions.icon || true;
+
   H5PIntegration.core = {
     styles: [options.frameCss],
     scripts: [
@@ -199,6 +207,6 @@ $.fn.h5p = function (options) {
     ]
   };
 
-  H5PIntegration.init(options.id, options.h5pContent);
+  H5PIntegration.init(options.id, options.h5pContent, displayOptions);
 }
 })(H5P.jQuery);
