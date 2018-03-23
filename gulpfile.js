@@ -32,49 +32,50 @@ var frameFiles = [
   'src/js/h5p-overwrite.js'
 ];
 
-gulp.task('clean-dist', function () {
+function clean_dist () {
   return gulp.src('dist/*', {read: false})
     .pipe(clean());
-});
+};
 
-gulp.task('compile-js', ['clean-dist'], function() {
+
+function compile_js() {
   return gulp.src('src/js/h5pintegration.es6')
     .pipe(babel({
       'presets': ['es2015']
     }))
     .pipe(gulp.dest('src/js'));
-});
+};
 
-gulp.task('concat-main-js', ['compile-js'], function() {
+function concat_main_js() {
   return gulp.src(mainFiles)
     .pipe(concat('h5p-standalone-main.js'))
     .pipe(gulp.dest('dist/js'));
-});
+};
 
-gulp.task('concat-frame-js', ['compile-js'], function() {
+function concat_frame_js() {
   return gulp.src(frameFiles)
     .pipe(concat('h5p-standalone-frame.js'))
     .pipe(gulp.dest('dist/js'));
-});
+};
 
-gulp.task('minify-js', ['concat-main-js', 'concat-frame-js'], function() {
+function minify_js() {
   return gulp.src('dist/js/*.js')
     .pipe(uglify())
     .pipe(rename({
       extname: '.min.js'
     }))
     .pipe(gulp.dest('dist/js'));
-});
+};
 
-gulp.task('copy-css', ['clean-dist'], function() {
+function copy_css() {
   return gulp.src('bower_components/h5p-php-library/styles/*.css')
     .pipe(gulp.dest('dist/styles'));
-});
+};
 
-gulp.task('copy-fonts', ['clean-dist'], function() {
+function copy_fonts() {
   return gulp.src('bower_components/h5p-php-library/fonts/*')
     .pipe(gulp.dest('dist/fonts'));
-});
+};
 
 gulp.task('demo', function() {
   gulp.src('./')
@@ -83,10 +84,4 @@ gulp.task('demo', function() {
     }));
 });
 
-gulp.task('default', ['concat-main-js', 'concat-frame-js', 'copy-css', 'copy-fonts'], function() {
-
-});
-
-gulp.task('prod', ['default', 'minify-js'], function() {
-
-});
+gulp.task('default', gulp.series(clean_dist, gulp.parallel(gulp.series([compile_js, gulp.parallel(concat_main_js, concat_frame_js), minify_js]), copy_css, copy_fonts)));
