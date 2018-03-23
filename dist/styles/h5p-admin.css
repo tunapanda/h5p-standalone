@@ -9,6 +9,7 @@
 .h5p-admin-table,
 .h5p-admin-table > tbody {
   border: none;
+  width: 100%;
 }
 
 .h5p-admin-table tr:nth-child(odd),
@@ -203,7 +204,7 @@ button.h5p-admin.disabled:hover {
   line-height: 130%;
   border: none;
   background: none;
-  font-family: 'H5P'; /* TODO: Find content */
+  font-family: 'H5P';
   font-size: 1.4em;
 }
 .h5p-content-pager > button:focus {
@@ -231,7 +232,8 @@ button.h5p-admin.disabled:hover {
 .h5p-admin-header {
   margin-top: 1.5em;
 }
-#h5p-library-upload-form.h5p-admin-upload-libraries-form {
+#h5p-library-upload-form.h5p-admin-upload-libraries-form,
+#h5p-content-type-cache-update-form.h5p-admin-upload-libraries-form {
   position: relative;
   margin: 0;
 
@@ -257,6 +259,8 @@ button.h5p-admin.disabled:hover {
 }
 .h5p-data-view input[type="text"] {
   margin-bottom: 0.5em;
+  margin-right: 0.5em;
+  float: left;
 }
 .h5p-data-view input[type="text"]::-ms-clear {
   display: none;
@@ -282,4 +286,56 @@ button.h5p-admin.disabled:hover {
 .h5p-data-view th[role="button"].h5p-sort.h5p-reverse:hover:after,
 .h5p-data-view th[role="button"].h5p-sort:hover:after {
   color: #999;
+}
+.h5p-data-view .h5p-facet {
+  cursor: pointer;
+  color: #0073aa;
+  outline: none;
+}
+.h5p-data-view .h5p-facet:hover,
+.h5p-data-view .h5p-facet:active {
+  color: #00a0d2;
+}
+.h5p-data-view .h5p-facet:focus {
+  color: #124964;
+  box-shadow: 0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);
+}
+.h5p-data-view .h5p-facet-wrapper {
+  line-height: 23px;
+}
+.h5p-data-view .h5p-facet-tag {
+  margin: 2px 0 0 0.5em;
+  font-size: 12px;
+  background: #e8e8e8;
+  border: 1px solid #cbcbcc;
+  border-radius: 5px;
+  color: #5d5d5d;
+  padding: 0 24px 0 10px;
+  display: inline-block;
+  position: relative;
+}
+.h5p-data-view .h5p-facet-tag > span {
+  position: absolute;
+  right: 0;
+  top: auto;
+  bottom: auto;
+  font-size: 18px;
+  color: #a2a2a2;
+  outline: none;
+  width: 21px;
+  text-indent: 4px;
+  letter-spacing: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.h5p-data-view .h5p-facet-tag > span:before {
+  content: "×";
+  font-weight: bold;
+}
+.h5p-data-view .h5p-facet-tag > span:hover,
+.h5p-data-view .h5p-facet-tag > span:focus {
+  color: #a20000;
+}
+.h5p-data-view .h5p-facet-tag > span:active {
+  color: #d20000;
 }

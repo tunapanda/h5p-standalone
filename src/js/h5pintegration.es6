@@ -160,7 +160,8 @@
         library: `${library.machineName} ${library.majorVersion}.${library.minorVersion}`,
         jsonContent: JSON.stringify(content),
         styles: styles,
-        scripts: scripts
+        scripts: scripts,
+        displayOptions: {}
       };
 
       H5P.init();
