@@ -10366,48 +10366,6 @@ return jQuery;
 H5P = window.H5P || {};
 H5P.jQuery = jQuery.noConflict(true);
 
-/**
- * H5P.ContentType is a base class for all content types. Used by newRunnable()
- *
- * Functions here may be overridable by the libraries. In special cases,
- * it is also possible to override H5P.ContentType on a global level.
- *
- * NOTE that this doesn't actually 'extend' the event dispatcher but instead
- * it creates a single instance which all content types shares as their base
- * prototype. (in some cases this may be the root of strange event behavior)
- *
- * @class
- * @augments H5P.EventDispatcher
- */
-H5P.ContentType = function (isRootLibrary, library) {
-
-  function ContentType() {}
-
-  // Inherit from EventDispatcher.
-  ContentType.prototype = new H5P.EventDispatcher();
-
-  /**
-   * Is library standalone or not? Not beeing standalone, means it is
-   * included in another library
-   *
-   * @return {Boolean}
-   */
-  ContentType.prototype.isRoot = function () {
-    return isRootLibrary;
-  };
-
-  /**
-   * Returns the file path of a file in the current library
-   * @param  {string} filePath The path to the file relative to the library folder
-   * @return {string} The full path to the file
-   */
-  ContentType.prototype.getLibraryFilePath = function (filePath) {
-    return H5P.getLibraryPath(this.libraryInfo.versionedNameNoSpaces) + '/' + filePath;
-  };
-
-  return ContentType;
-};
-
 var H5P = H5P || {};
 
 /**
@@ -10666,6 +10624,149 @@ H5P.EventDispatcher = (function () {
 
   return EventDispatcher;
 })();
+
+/**
+ * @class
+ * @augments H5P.EventDispatcher
+ * @param {Object} displayOptions
+ * @param {boolean} displayOptions.export Triggers the display of the 'Download' button
+ * @param {boolean} displayOptions.copyright Triggers the display of the 'Copyright' button
+ * @param {boolean} displayOptions.embed Triggers the display of the 'Embed' button
+ * @param {boolean} displayOptions.icon Triggers the display of the 'H5P icon' link
+ */
+H5P.ActionBar = (function ($, EventDispatcher) {
+  "use strict";
+
+  function ActionBar(displayOptions) {
+    EventDispatcher.call(this);
+
+    /** @alias H5P.ActionBar# */
+    var self = this;
+
+    var hasActions = false;
+
+    // Create action bar
+    var $actions = H5P.jQuery('<ul class="h5p-actions"></ul>');
+
+    /**
+     * Helper for creating action bar buttons.
+     *
+     * @private
+     * @param {string} type
+     * @param {string} customClass Instead of type class
+     */
+    var addActionButton = function (type, customClass) {
+      /**
+       * Handles selection of action
+       */
+      var handler = function () {
+        self.trigger(type);
+      };
+      H5P.jQuery('<li/>', {
+        'class': 'h5p-button h5p-noselect h5p-' + (customClass ? customClass : type),
+        role: 'button',
+        tabindex: 0,
+        title: H5P.t(type + 'Description'),
+        html: H5P.t(type),
+        on: {
+          click: handler,
+          keypress: function (e) {
+            if (e.which === 32) {
+              handler();
+              e.preventDefault(); // (since return false will block other inputs)
+            }
+          }
+        },
+        appendTo: $actions
+      });
+
+      hasActions = true;
+    };
+
+    // Register action bar buttons
+    if (displayOptions.export) {
+      // Add export button
+      addActionButton('download', 'export');
+    }
+    if (displayOptions.copyright) {
+      addActionButton('copyrights');
+    }
+    if (displayOptions.embed) {
+      addActionButton('embed');
+    }
+    if (displayOptions.icon) {
+      // Add about H5P button icon
+      H5P.jQuery('<li><a class="h5p-link" href="http://h5p.org" target="_blank" title="' + H5P.t('h5pDescription') + '"></a></li>').appendTo($actions);
+      hasActions = true;
+    }
+
+    /**
+     * Returns a reference to the dom element
+     *
+     * @return {H5P.jQuery}
+     */
+    self.getDOMElement = function () {
+      return $actions;
+    };
+
+    /**
+     * Does the actionbar contain actions?
+     *
+     * @return {Boolean}
+     */
+    self.hasActions = function () {
+      return hasActions;
+    };
+  }
+
+  ActionBar.prototype = Object.create(EventDispatcher.prototype);
+  ActionBar.prototype.constructor = ActionBar;
+
+  return ActionBar;
+
+})(H5P.jQuery, H5P.EventDispatcher);
+
+/**
+ * H5P.ContentType is a base class for all content types. Used by newRunnable()
+ *
+ * Functions here may be overridable by the libraries. In special cases,
+ * it is also possible to override H5P.ContentType on a global level.
+ *
+ * NOTE that this doesn't actually 'extend' the event dispatcher but instead
+ * it creates a single instance which all content types shares as their base
+ * prototype. (in some cases this may be the root of strange event behavior)
+ *
+ * @class
+ * @augments H5P.EventDispatcher
+ */
+H5P.ContentType = function (isRootLibrary, library) {
+
+  function ContentType() {}
+
+  // Inherit from EventDispatcher.
+  ContentType.prototype = new H5P.EventDispatcher();
+
+  /**
+   * Is library standalone or not? Not beeing standalone, means it is
+   * included in another library
+   *
+   * @return {Boolean}
+   */
+  ContentType.prototype.isRoot = function () {
+    return isRootLibrary;
+  };
+
+  /**
+   * Returns the file path of a file in the current library
+   * @param  {string} filePath The path to the file relative to the library folder
+   * @return {string} The full path to the file
+   */
+  ContentType.prototype.getLibraryFilePath = function (filePath) {
+    return H5P.getLibraryPath(this.libraryInfo.versionedNameNoSpaces) + '/' + filePath;
+  };
+
+  return ContentType;
+};
 
 var H5P = H5P || {};
 

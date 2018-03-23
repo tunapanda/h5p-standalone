@@ -1,6 +1,6 @@
 {
   "name": "h5p-standalone",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Display H5P content as standalone frontend code, no server needed.",
   "main": "dist/js/h5p-standalone-main.min.js",
   "dependencies": {},

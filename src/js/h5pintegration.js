@@ -155,13 +155,9 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
       var library = _data[2];
 
       var libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
-      var styles = library.preloadedCss.map(function (style) {
-        return pathToContent + "/" + libraryPath + "/" + style.path;
-      });
+      var styles = [];
 
-      var scripts = library.preloadedJs.map(function (script) {
-        return pathToContent + "/" + libraryPath + "/" + script.path;
-      });
+      var scripts = [];
 
       var directDependencyNames = h5p.preloadedDependencies.map(function (dependency2) {
         return dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : '');
@@ -179,6 +175,13 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
           Array.prototype.push.apply(scripts, dependencyJS[dependencyName]);
         });
 
+        Array.prototype.push.apply(styles, library.preloadedCss.map(function (style) {
+          return pathToContent + "/" + libraryPath + "/" + style.path;
+        }));
+        Array.prototype.push.apply(scripts, library.preloadedJs.map(function (script) {
+          return pathToContent + "/" + libraryPath + "/" + script.path;
+        }));
+
         H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
 
         H5PIntegration.contents["cid-" + id] = {
@@ -191,42 +194,12 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
         H5P.init();
       });
-      // let dependencySorter = new Toposort();
-
-      // dependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
-      // otherDependencies.forEach(dependency => dependencySorter.add(dependency.name, dependency.dependencies));
-
-      // dependencySorter.sort().reverse().forEach(function (dependencyName) {
-      //   let dependency = dependencies.find(function (dept) {
-      //     return dept.name === dependencyName;
-      //   }) || otherDependencies.find(function (dept) {
-      //     return dept.name === dependencyName;
-      //   });
-      //   console.log(dependencyName);
-      //   if (!dependency) {
-      //     console.warn(`${dependencyName} could not be found`);
-      //     return;
-      //   }
-      //   Array.prototype.push.apply(styles, dependency.styles);
-      //   Array.prototype.push.apply(scripts, dependency.scripts);
-      // });
-
-      // scripts.unshift('../workspace/Tether-1.0/scripts/tether.min.js');
-
-      // H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
-
-      // H5PIntegration.contents[`cid-${id}`] = {
-      //   library: `${library.machineName} ${library.majorVersion}.${library.minorVersion}`,
-      //   jsonContent: JSON.stringify(content),
-      //   styles: styles,
-      //   scripts: scripts
-      // };
-
-      // H5P.init();
     });
   };
 
   $.fn.h5p = function (options) {
+
+    options.id = options.id || 1;
 
     this.append("<div class=\"h5p-iframe-wrapper\" style=\"background-color:#DDD;\">\n      <iframe id=\"h5p-iframe-" + options.id + "\" class=\"h5p-iframe\" data-content-id=\"" + options.id + "\" style=\"width: 100%; height: 100%; border: none; display: block;\" src=\"about:blank\" frameBorder=\"0\"></iframe>\n    </div>");
 

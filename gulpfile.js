@@ -22,6 +22,8 @@ var mainFiles = [
 var frameFiles = [
   'bower_components/jquery/dist/jquery.js',
   'src/js/h5p-jquery.js',
+  'bower_components/h5p-php-library/js/h5p-event-dispatcher.js',
+  'bower_components/h5p-php-library/js/h5p-action-bar.js',
   'bower_components/h5p-php-library/js/h5p-content-type.js',
   'bower_components/h5p-php-library/js/h5p-event-dispatcher.js',
   'bower_components/h5p-php-library/js/h5p-x-api-event.js',
