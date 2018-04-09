@@ -1,6 +1,6 @@
 {
   "name": "h5p-standalone",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "homepage": "https://github.com/tunapanda/h5p-standalone",
   "authors": [
     "Jake Lee Kennedy <jake@tunapanda.org>"
@@ -26,7 +26,7 @@
   ],
   "dependencies": {
     "h5p-php-library": "https://github.com/h5p/h5p-php-library.git",
-    "jquery": "~3.3.1",
+    "jquery": "~1.9.1",
     "toposort": "~1.0.1"
   }
 }

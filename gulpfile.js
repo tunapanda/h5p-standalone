@@ -8,7 +8,7 @@ var rename = require('gulp-rename');
 
 var mainFiles = [
   'bower_components/toposort/build/toposort.js',
-  'bower_components/jquery/dist/jquery.js',
+  'bower_components/jquery/jquery.js',
   'src/js/h5p-jquery.js',
   'src/js/h5pintegration.js',
   'bower_components/h5p-php-library/js/h5p-content-type.js',
@@ -20,7 +20,7 @@ var mainFiles = [
 ];
 
 var frameFiles = [
-  'bower_components/jquery/dist/jquery.js',
+  'bower_components/jquery/jquery.js',
   'src/js/h5p-jquery.js',
   'bower_components/h5p-php-library/js/h5p-event-dispatcher.js',
   'bower_components/h5p-php-library/js/h5p-action-bar.js',
