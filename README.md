@@ -1,4 +1,4 @@
-# h5p-standalone
+# h5p-standalone 1.3.3
 Display H5P content with plain old HTML
 
 ## Usage
@@ -14,7 +14,8 @@ $('.h5p-container').h5p({
     copyright: true,
     embed: false,
     download: false,
-    icon: true
+    icon: true,
+    export: false
   }
 });
 ```

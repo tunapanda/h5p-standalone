@@ -172,41 +172,36 @@
   });
 };
 
-$.fn.h5p = function (options) {
+  $.fn.h5p = function ({ 
+    id = 1,
+    frameJs = 'dist/h5p-standalone-frame.min.js',
+    frameCss = 'dist/css/h5p.css',
+    h5pContent = 'workspace',
+    displayOptions = {}
+  } = {}) {
 
-  options.id = options.id || 1;
+    ({
+      frame: displayOptions.frame = true,
+      copyright: displayOptions.copyright = true,
+      embed: displayOptions.embed = true,
+      download: displayOptions.download = true,
+      icon: displayOptions.icon = true,
+      export: displayOptions.export = true
+    } = displayOptions);
 
   this.append(`<div class="h5p-iframe-wrapper" style="background-color:#DDD;">
-      <iframe id="h5p-iframe-${options.id}" class="h5p-iframe" data-content-id="${options.id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
+      <iframe id="h5p-iframe-${id}" class="h5p-iframe" data-content-id="${id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
     </div>`);
 
-  options.frameJs = options.frameJs || 'dist/h5p-standalone-frame.min.js';
-  options.frameCss = options.frameCss || 'dist/css/h5p.css';
-  options.h5pContent = options.h5pContent || 'workspace';
-
-  let displayOptions = options.displayOptions || {};
-
-  displayOptions.export = displayOptions.export || true;
-  displayOptions.frame = displayOptions.frame || true;
-  displayOptions.copyright = displayOptions.copyright || true;
-  displayOptions.embed = displayOptions.embed || true;
-  displayOptions.icon = displayOptions.icon || true;
+  // options.frameJs = options.frameJs || 'dist/h5p-standalone-frame.min.js';
+  // options.frameCss = options.frameCss || 'dist/css/h5p.css';
+  // options.h5pContent = options.h5pContent || 'workspace';
 
   H5PIntegration.core = {
-    styles: [options.frameCss],
-    scripts: [
-      options.frameJs
-      // 'bower_components/jquery/dist/jquery.js',
-      // 'lib/js/h5p-jquery.js',
-      // 'bower_components/h5p-php-library/js/h5p-content-type.js',
-      // 'bower_components/h5p-php-library/js/h5p-event-dispatcher.js',
-      // 'bower_components/h5p-php-library/js/h5p-x-api-event.js',
-      // 'bower_components/h5p-php-library/js/h5p-x-api.js',
-      // 'bower_components/h5p-php-library/js/h5p.js',
-      // 'lib/js/h5p-overwrite.js'
-    ]
+    styles: [frameCss],
+    scripts: [frameJs]
   };
 
-  H5PIntegration.init(options.id, options.h5pContent, displayOptions);
+  H5PIntegration.init(id, h5pContent, displayOptions);
 }
 })(H5P.jQuery);

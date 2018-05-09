@@ -10081,27 +10081,42 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
     });
   };
 
-  $.fn.h5p = function (options) {
+  $.fn.h5p = function () {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref$id = _ref.id,
+        id = _ref$id === undefined ? 1 : _ref$id,
+        _ref$frameJs = _ref.frameJs,
+        frameJs = _ref$frameJs === undefined ? 'dist/h5p-standalone-frame.min.js' : _ref$frameJs,
+        _ref$frameCss = _ref.frameCss,
+        frameCss = _ref$frameCss === undefined ? 'dist/css/h5p.css' : _ref$frameCss,
+        _ref$h5pContent = _ref.h5pContent,
+        h5pContent = _ref$h5pContent === undefined ? 'workspace' : _ref$h5pContent,
+        _ref$displayOptions = _ref.displayOptions,
+        displayOptions = _ref$displayOptions === undefined ? {} : _ref$displayOptions;
 
-    options.id = options.id || 1;
+    var _displayOptions$frame = displayOptions.frame;
+    displayOptions.frame = _displayOptions$frame === undefined ? true : _displayOptions$frame;
+    var _displayOptions$copyr = displayOptions.copyright;
+    displayOptions.copyright = _displayOptions$copyr === undefined ? true : _displayOptions$copyr;
+    var _displayOptions$embed = displayOptions.embed;
+    displayOptions.embed = _displayOptions$embed === undefined ? true : _displayOptions$embed;
+    var _displayOptions$downl = displayOptions.download;
+    displayOptions.download = _displayOptions$downl === undefined ? true : _displayOptions$downl;
+    var _displayOptions$icon = displayOptions.icon;
+    displayOptions.icon = _displayOptions$icon === undefined ? true : _displayOptions$icon;
+    var _displayOptions$expor = displayOptions.export;
+    displayOptions.export = _displayOptions$expor === undefined ? true : _displayOptions$expor;
 
-    this.append("<div class=\"h5p-iframe-wrapper\" style=\"background-color:#DDD;\">\n      <iframe id=\"h5p-iframe-" + options.id + "\" class=\"h5p-iframe\" data-content-id=\"" + options.id + "\" style=\"width: 100%; height: 100%; border: none; display: block;\" src=\"about:blank\" frameBorder=\"0\"></iframe>\n    </div>");
 
-    options.frameJs = options.frameJs || 'dist/h5p-standalone-frame.min.js';
-    options.frameCss = options.frameCss || 'dist/css/h5p.css';
-    options.h5pContent = options.h5pContent || 'workspace';
+    this.append("<div class=\"h5p-iframe-wrapper\" style=\"background-color:#DDD;\">\n      <iframe id=\"h5p-iframe-" + id + "\" class=\"h5p-iframe\" data-content-id=\"" + id + "\" style=\"width: 100%; height: 100%; border: none; display: block;\" src=\"about:blank\" frameBorder=\"0\"></iframe>\n    </div>");
 
-    var displayOptions = options.displayOptions || {};
-
-    displayOptions.export = displayOptions.export || true;
-    displayOptions.frame = displayOptions.frame || true;
-    displayOptions.copyright = displayOptions.copyright || true;
-    displayOptions.embed = displayOptions.embed || true;
-    displayOptions.icon = displayOptions.icon || true;
+    // options.frameJs = options.frameJs || 'dist/h5p-standalone-frame.min.js';
+    // options.frameCss = options.frameCss || 'dist/css/h5p.css';
+    // options.h5pContent = options.h5pContent || 'workspace';
 
     H5PIntegration.core = {
-      styles: [options.frameCss],
-      scripts: [options.frameJs
+      styles: [frameCss],
+      scripts: [frameJs
       // 'bower_components/jquery/dist/jquery.js',
       // 'lib/js/h5p-jquery.js',
       // 'bower_components/h5p-php-library/js/h5p-content-type.js',
@@ -10113,7 +10128,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
       ]
     };
 
-    H5PIntegration.init(options.id, options.h5pContent, displayOptions);
+    H5PIntegration.init(id, h5pContent, displayOptions);
   };
 })(H5P.jQuery);
 /**
