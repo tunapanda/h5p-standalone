@@ -10641,18 +10641,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
               case 5:
                 this.content = _context.sent;
+                _context.next = 8;
+                return regeneratorRuntime.awrap(this.checkIfPathIncludesVersion());
 
-                this.pathIncludesVersion = this.checkIfPathIncludesVersion();
-
-                _context.next = 9;
+              case 8:
+                H5PIntegration.pathIncludesVersion = this.pathIncludesVersion = _context.sent;
+                _context.next = 11;
                 return regeneratorRuntime.awrap(this.findMainLibrary());
 
-              case 9:
+              case 11:
                 this.mainLibrary = _context.sent;
-                _context.next = 12;
+                _context.next = 14;
                 return regeneratorRuntime.awrap(this.findAllDependencies());
 
-              case 12:
+              case 14:
                 dependencies = _context.sent;
                 _sortDependencies = this.sortDependencies(dependencies), styles = _sortDependencies.styles, scripts = _sortDependencies.scripts;
 
@@ -10670,7 +10672,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                 H5P.init();
 
-              case 18:
+              case 20:
               case "end":
                 return _context.stop();
             }
@@ -10696,22 +10698,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 dependency = this.h5p.preloadedDependencies[0];
                 machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
                 pathIncludesVersion = void 0;
+                _context2.prev = 3;
+                _context2.next = 6;
+                return regeneratorRuntime.awrap(getJSONPromise(this.path + "/" + machinePath + "/library.json"));
 
+              case 6:
+                pathIncludesVersion = true;
+                _context2.next = 12;
+                break;
 
-                try {
-                  getJSONPromise(this.path + "/" + machinePath + "/library.json");
-                  pathIncludesVersion = true;
-                } catch (e) {
-                  pathIncludesVersion = false;
-                }
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](3);
+
+                pathIncludesVersion = false;
+
+              case 12:
                 return _context2.abrupt("return", pathIncludesVersion);
 
-              case 5:
+              case 13:
               case "end":
                 return _context2.stop();
             }
           }
-        }, null, this);
+        }, null, this, [[3, 9]]);
       }
 
       /**
@@ -13867,6 +13877,9 @@ H5P.createTitle = function (rawTitle, maxLength) {
 })(H5P.jQuery);
 
 H5P.getLibraryPath = function (library) {
+  if (H5PIntegration.pathIncludesVersion) {
+    return H5PIntegration.url + '/' + library;
+  }
   return H5PIntegration.url + '/' + library.split('-')[0];
 };
 

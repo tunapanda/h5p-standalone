@@ -59,7 +59,7 @@
     async init() {
       this.h5p = await getJSONPromise(`${this.path}/h5p.json`);
       this.content = await getJSONPromise(`${this.path}/content/content.json`);
-      this.pathIncludesVersion = this.checkIfPathIncludesVersion();
+      H5PIntegration.pathIncludesVersion = this.pathIncludesVersion = await this.checkIfPathIncludesVersion();
 
       this.mainLibrary = await this.findMainLibrary();
 
@@ -94,7 +94,7 @@
       let pathIncludesVersion;
 
       try {
-        getJSONPromise(`${this.path}/${machinePath}/library.json`);
+        await getJSONPromise(`${this.path}/${machinePath}/library.json`);
         pathIncludesVersion = true;
       } catch (e) {
         pathIncludesVersion = false;
