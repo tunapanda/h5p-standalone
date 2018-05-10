@@ -129,6 +129,7 @@
   }
 
   let getLibrary = checklibraryPath.then(function (h5p) {
+    H5PIntegration.pathIncludesVersion = h5p.pathIncludesVersion;
     let mainLibrary = h5p.preloadedDependencies.find(dep => dep.machineName ===  h5p.mainLibrary);
     let mainLibraryPath = h5p.mainLibrary + (h5p.pathIncludesVersion ? "-" + mainLibrary.majorVersion + "." + mainLibrary.minorVersion : '');
     return getJSONPromise(`${pathToContent}/${mainLibraryPath}/library.json`);

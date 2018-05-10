@@ -143,6 +143,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
     };
 
     var getLibrary = checklibraryPath.then(function (h5p) {
+      H5PIntegration.pathIncludesVersion = h5p.pathIncludesVersion;
       var mainLibrary = h5p.preloadedDependencies.find(function (dep) {
         return dep.machineName === h5p.mainLibrary;
       });
@@ -234,16 +235,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
     H5PIntegration.core = {
       styles: [frameCss],
-      scripts: [frameJs
-      // 'bower_components/jquery/dist/jquery.js',
-      // 'lib/js/h5p-jquery.js',
-      // 'bower_components/h5p-php-library/js/h5p-content-type.js',
-      // 'bower_components/h5p-php-library/js/h5p-event-dispatcher.js',
-      // 'bower_components/h5p-php-library/js/h5p-x-api-event.js',
-      // 'bower_components/h5p-php-library/js/h5p-x-api.js',
-      // 'bower_components/h5p-php-library/js/h5p.js',
-      // 'lib/js/h5p-overwrite.js'
-      ]
+      scripts: [frameJs]
     };
 
     H5PIntegration.init(id, h5pContent, displayOptions);
