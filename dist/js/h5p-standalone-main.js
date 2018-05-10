@@ -10617,6 +10617,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return this.init();
     }
 
+    /**
+     * Initialize the H5P
+     */
+
+
     _createClass(H5PStandalone, [{
       key: "init",
       value: function init() {
@@ -10672,6 +10677,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }, null, this);
       }
+
+      /**
+       * Check if the library folder include the version or not
+       * This was changed at some point in H5P and we need to be backwards compatible
+       * 
+       * @return {boolean}
+       */
+
     }, {
       key: "checkIfPathIncludesVersion",
       value: function checkIfPathIncludesVersion() {
@@ -10700,11 +10713,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }, null, this);
       }
+
+      /**
+       * return the path to a library
+       * @param {object} library
+       * @return {string}
+       */
+
     }, {
       key: "libraryPath",
       value: function libraryPath(library) {
         return library.machineName + (this.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
       }
+
+      /**
+       * FInd the main library for this H5P
+       * @return {Promise}
+       */
+
     }, {
       key: "findMainLibrary",
       value: function findMainLibrary() {
@@ -10717,6 +10743,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.mainLibraryPath = this.h5p.mainLibrary + (this.pathIncludesVersion ? "-" + mainLibraryInfo.majorVersion + "." + mainLibraryInfo.minorVersion : '');
         return getJSONPromise(this.path + "/" + this.mainLibraryPath + "/library.json");
       }
+
+      /**
+       * find all the libraries used in this H5P
+       * @return {Promise}
+       */
+
     }, {
       key: "findAllDependencies",
       value: function findAllDependencies() {
@@ -10728,6 +10760,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         return this.loadDependencies(directDependencyNames, []);
       }
+
+      /**
+       * searches through all supplied libraries for dependencies, this is recursive and repeats until all deep dependencies have been found
+       * @param {string[]} toFind list of libraries to find the dependencies of
+       * @param {string[]} alreadyFound the dependencies that have already been found
+       */
+
     }, {
       key: "loadDependencies",
       value: function loadDependencies(toFind, alreadyFound) {
@@ -10783,6 +10822,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }, null, this);
       }
+
+      /**
+       * Loads a dependencies library.json and finds the libraries it dependson as well ass the JS and CSS it needs
+       * @param {string} libraryName 
+       */
+
     }, {
       key: "findLibraryDependencies",
       value: function findLibraryDependencies(libraryName) {
@@ -10816,6 +10861,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }, null, this);
       }
+
+      /**
+       * Resolves the library dependency tree and sorts the JS and CSS files into order
+       * @param {object[]} dependencies 
+       * @return {object}
+       */
+
     }, {
       key: "sortDependencies",
       value: function sortDependencies(dependencies) {

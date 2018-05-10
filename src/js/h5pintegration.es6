@@ -53,6 +53,9 @@
       return this.init();
     }
 
+    /**
+     * Initialize the H5P
+     */
     async init() {
       this.h5p = await getJSONPromise(`${this.path}/h5p.json`);
       this.content = await getJSONPromise(`${this.path}/content/content.json`);
@@ -78,6 +81,12 @@
       H5P.init();
     }
 
+    /**
+     * Check if the library folder include the version or not
+     * This was changed at some point in H5P and we need to be backwards compatible
+     * 
+     * @return {boolean}
+     */
     async checkIfPathIncludesVersion() {
       let dependency = this.h5p.preloadedDependencies[0];
       let machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
@@ -93,10 +102,19 @@
       return pathIncludesVersion;
     }
 
+    /**
+     * return the path to a library
+     * @param {object} library
+     * @return {string}
+     */
     libraryPath(library) {
       return library.machineName + (this.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
     }
 
+    /**
+     * FInd the main library for this H5P
+     * @return {Promise}
+     */
     findMainLibrary() {
       const mainLibraryInfo = this.h5p.preloadedDependencies.find(dep => dep.machineName === this.h5p.mainLibrary);
 
@@ -104,12 +122,21 @@
       return getJSONPromise(`${this.path}/${this.mainLibraryPath}/library.json`);
     }
 
+    /**
+     * find all the libraries used in this H5P
+     * @return {Promise}
+     */
     findAllDependencies() {
       const directDependencyNames = this.h5p.preloadedDependencies.map(dependency => this.libraryPath(dependency));
 
       return this.loadDependencies(directDependencyNames, []);
     }
 
+    /**
+     * searches through all supplied libraries for dependencies, this is recursive and repeats until all deep dependencies have been found
+     * @param {string[]} toFind list of libraries to find the dependencies of
+     * @param {string[]} alreadyFound the dependencies that have already been found
+     */
     async loadDependencies(toFind, alreadyFound) {
       // console.log(`loading dependency level: ${dependencyDepth}`);
       // dependencyDepth++;
@@ -133,6 +160,11 @@
       }
       return dependencies;
     }
+
+    /**
+     * Loads a dependencies library.json and finds the libraries it dependson as well ass the JS and CSS it needs
+     * @param {string} libraryName 
+     */
     async findLibraryDependencies(libraryName) {
       const library = await getJSONPromise(`${this.path}/${libraryName}/library.json`);
       const libraryPath = this.libraryPath(library);
@@ -145,6 +177,11 @@
       return { libraryPath, dependencies, preloadedCss: library.preloadedCss, preloadedJs: library.preloadedJs };
     }
 
+    /**
+     * Resolves the library dependency tree and sorts the JS and CSS files into order
+     * @param {object[]} dependencies 
+     * @return {object}
+     */
     sortDependencies(dependencies) {
       const dependencySorter = new Toposort();
       let CSSDependencies = {};
