@@ -5,6 +5,8 @@ var babel = require('gulp-babel');
 var webserver = require('gulp-webserver');
 var clean = require('gulp-clean');
 var rename = require('gulp-rename');
+var regenerator = require('gulp-regenerator');
+
 
 var mainFiles = [
   'bower_components/toposort/build/toposort.js',
@@ -41,8 +43,13 @@ function clean_dist () {
 function compile_js() {
   return gulp.src('src/js/h5pintegration.es6')
     .pipe(babel({
-      'presets': ['es2015']
+      presets: ['es2015'],
+      plugins: [
+        'syntax-async-functions',
+        'transform-regenerator'
+      ]
     }))
+    .pipe(regenerator({includeRuntime: true}))
     .pipe(gulp.dest('src/js'));
 };
 
