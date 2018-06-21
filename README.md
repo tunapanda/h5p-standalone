@@ -24,7 +24,7 @@ $('.h5p-container').h5p({
 
 Install dependencies
 ```
-npm install -g gulp
+npm install -g gulp-cli
 npm install
 ```
 
