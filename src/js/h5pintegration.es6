@@ -1,4 +1,5 @@
 /* global H5P, H5PIntegration, Toposort */
+/*jshint esnext: true */
 (function ($) {
   'use strict';
   function getJSONPromise(url) {
