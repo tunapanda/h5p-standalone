@@ -1,4 +1,4 @@
-# h5p-standalone 1.3.4
+# h5p-standalone 1.3.5
 Display H5P content with plain old HTML
 
 ## Usage
