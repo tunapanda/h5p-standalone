@@ -1,16 +1,12 @@
 "use strict";
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-/* global H5P, H5PIntegration, Toposort */
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 /*jshint esnext: true */
 (function ($) {
@@ -58,357 +54,141 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }
   };
 
-  var H5PStandalone =
-  /*#__PURE__*/
-  function () {
-    function H5PStandalone() {
-      var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      var pathToContent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'workspace';
-      var displayOptions = arguments.length > 2 ? arguments[2] : undefined;
-
-      _classCallCheck(this, H5PStandalone);
-
-      this.id = id;
-      this.path = pathToContent;
-      this.displayOptions = displayOptions;
-      return this.init();
-    }
-    /**
-     * Initialize the H5P
-     */
-
-
-    _createClass(H5PStandalone, [{
-      key: "init",
-      value: function () {
-        var _init = _asyncToGenerator(
-        /*#__PURE__*/
-        regeneratorRuntime.mark(function _callee() {
-          var dependencies, _this$sortDependencie, styles, scripts;
-
-          return regeneratorRuntime.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  _context.next = 2;
-                  return getJSONPromise("".concat(this.path, "/h5p.json"));
-
-                case 2:
-                  this.h5p = _context.sent;
-                  _context.next = 5;
-                  return getJSONPromise("".concat(this.path, "/content/content.json"));
-
-                case 5:
-                  this.content = _context.sent;
-                  _context.next = 8;
-                  return this.checkIfPathIncludesVersion();
-
-                case 8:
-                  H5PIntegration.pathIncludesVersion = this.pathIncludesVersion = _context.sent;
-                  _context.next = 11;
-                  return this.findMainLibrary();
-
-                case 11:
-                  this.mainLibrary = _context.sent;
-                  _context.next = 14;
-                  return this.findAllDependencies();
-
-                case 14:
-                  dependencies = _context.sent;
-                  _this$sortDependencie = this.sortDependencies(dependencies), styles = _this$sortDependencie.styles, scripts = _this$sortDependencie.scripts;
-                  H5PIntegration.url = this.path;
-                  H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
-                  H5PIntegration.contents["cid-".concat(this.id)] = {
-                    library: "".concat(this.mainLibrary.machineName, " ").concat(this.mainLibrary.majorVersion, ".").concat(this.mainLibrary.minorVersion),
-                    jsonContent: JSON.stringify(this.content),
-                    styles: styles,
-                    scripts: scripts,
-                    displayOptions: this.displayOptions
-                  };
-                  H5P.init();
-
-                case 20:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee, this);
-        }));
-
-        function init() {
-          return _init.apply(this, arguments);
-        }
-
-        return init;
-      }()
-      /**
-       * Check if the library folder include the version or not
-       * This was changed at some point in H5P and we need to be backwards compatible
-       * 
-       * @return {boolean}
-       */
-
-    }, {
-      key: "checkIfPathIncludesVersion",
-      value: function () {
-        var _checkIfPathIncludesVersion = _asyncToGenerator(
-        /*#__PURE__*/
-        regeneratorRuntime.mark(function _callee2() {
-          var dependency, machinePath, pathIncludesVersion;
-          return regeneratorRuntime.wrap(function _callee2$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  dependency = this.h5p.preloadedDependencies[0];
-                  machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
-                  _context2.prev = 2;
-                  _context2.next = 5;
-                  return getJSONPromise("".concat(this.path, "/").concat(machinePath, "/library.json"));
-
-                case 5:
-                  pathIncludesVersion = true;
-                  _context2.next = 11;
-                  break;
-
-                case 8:
-                  _context2.prev = 8;
-                  _context2.t0 = _context2["catch"](2);
-                  pathIncludesVersion = false;
-
-                case 11:
-                  return _context2.abrupt("return", pathIncludesVersion);
-
-                case 12:
-                case "end":
-                  return _context2.stop();
-              }
-            }
-          }, _callee2, this, [[2, 8]]);
-        }));
-
-        function checkIfPathIncludesVersion() {
-          return _checkIfPathIncludesVersion.apply(this, arguments);
-        }
-
-        return checkIfPathIncludesVersion;
-      }()
-      /**
-       * return the path to a library
-       * @param {object} library
-       * @return {string}
-       */
-
-    }, {
-      key: "libraryPath",
-      value: function libraryPath(library) {
-        return library.machineName + (this.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
-      }
-      /**
-       * FInd the main library for this H5P
-       * @return {Promise}
-       */
-
-    }, {
-      key: "findMainLibrary",
-      value: function findMainLibrary() {
-        var _this = this;
-
-        var mainLibraryInfo = this.h5p.preloadedDependencies.find(function (dep) {
-          return dep.machineName === _this.h5p.mainLibrary;
+  H5PIntegration.init = function (id) {
+    var pathToContent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'workspace';
+    var displayOptions = arguments.length > 2 ? arguments[2] : undefined;
+    H5PIntegration.url = "".concat(pathToContent);
+    var getInfo = getJSONPromise("".concat(pathToContent, "/h5p.json"));
+    var getContent = getJSONPromise("".concat(pathToContent, "/content/content.json"));
+    var machinePath;
+    var pathIncludesVersion = true;
+    var checklibraryPath = getInfo.then(function (h5p) {
+      var dependency = h5p.preloadedDependencies[0];
+      machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
+      return new Promise(function (resolve) {
+        getJSONPromise("".concat(pathToContent, "/").concat(machinePath, "/library.json")).then(function (library) {
+          h5p.pathIncludesVersion = true;
+          machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
+          resolve(h5p);
+        }, function (e) {
+          h5p.pathIncludesVersion = false;
+          machinePath = dependency.machineName;
+          resolve(h5p);
         });
-        this.mainLibraryPath = this.h5p.mainLibrary + (this.pathIncludesVersion ? "-" + mainLibraryInfo.majorVersion + "." + mainLibraryInfo.minorVersion : '');
-        return getJSONPromise("".concat(this.path, "/").concat(this.mainLibraryPath, "/library.json"));
-      }
-      /**
-       * find all the libraries used in this H5P
-       * @return {Promise}
-       */
+      });
+    });
+    var dependencyCSS = {};
+    var dependencyJS = {}; // let dependencyDepth = 0;
 
-    }, {
-      key: "findAllDependencies",
-      value: function findAllDependencies() {
-        var _this2 = this;
+    var loadDependencies = function loadDependencies(toFind, alreadyFound, h5p) {
+      // console.log(`loading dependency level: ${dependencyDepth}`);
+      // dependencyDepth++;
+      var findDependencies = toFind.map(function (dependency) {
+        return getJSONPromise("".concat(pathToContent, "/").concat(dependency, "/library.json")).then(function (library) {
+          var styles = [];
+          var scripts = [];
+          var dependencies2 = [];
+          var libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
 
-        var directDependencyNames = this.h5p.preloadedDependencies.map(function (dependency) {
-          return _this2.libraryPath(dependency);
+          if (library.preloadedCss) {
+            dependencyCSS[libraryPath] = dependencyCSS[libraryPath] ? dependencyCSS[libraryPath] : [];
+            styles = library.preloadedCss.forEach(function (style) {
+              dependencyCSS[libraryPath].push("".concat(pathToContent, "/").concat(libraryPath, "/").concat(style.path));
+            });
+          }
+
+          if (library.preloadedJs) {
+            dependencyJS[libraryPath] = dependencyJS[libraryPath] ? dependencyJS[libraryPath] : [];
+            scripts = library.preloadedJs.forEach(function (script) {
+              dependencyJS[libraryPath].push("".concat(pathToContent, "/").concat(libraryPath, "/").concat(script.path));
+            });
+          }
+
+          if (library.preloadedDependencies) {
+            dependencies2 = library.preloadedDependencies.map(function (dependency2) {
+              return dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : '');
+            });
+          }
+
+          return Promise.resolve({
+            libraryPath: libraryPath,
+            dependencies: dependencies2
+          });
         });
-        return this.loadDependencies(directDependencyNames, []);
-      }
-      /**
-       * searches through all supplied libraries for dependencies, this is recursive and repeats until all deep dependencies have been found
-       * @param {string[]} toFind list of libraries to find the dependencies of
-       * @param {string[]} alreadyFound the dependencies that have already been found
-       */
+      });
+      var findNext = [];
+      return Promise.all(findDependencies).then(function (data) {
+        // loop over newly found libraries
+        data.forEach(function (library) {
+          // push into found list
+          alreadyFound.push(library); // check if any dependencies haven't been found yet
 
-    }, {
-      key: "loadDependencies",
-      value: function () {
-        var _loadDependencies = _asyncToGenerator(
-        /*#__PURE__*/
-        regeneratorRuntime.mark(function _callee3(toFind, alreadyFound) {
-          var _this3 = this;
-
-          var dependencies, findNext, newDependencies;
-          return regeneratorRuntime.wrap(function _callee3$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  // console.log(`loading dependency level: ${dependencyDepth}`);
-                  // dependencyDepth++;
-                  dependencies = alreadyFound;
-                  findNext = [];
-                  _context3.next = 4;
-                  return Promise.all(toFind.map(function (libraryName) {
-                    return _this3.findLibraryDependencies(libraryName);
-                  }));
-
-                case 4:
-                  newDependencies = _context3.sent;
-                  // loop over newly found libraries
-                  newDependencies.forEach(function (library) {
-                    // push into found list
-                    dependencies.push(library); // check if any dependencies haven't been found yet
-
-                    library.dependencies.forEach(function (dependency) {
-                      if (!dependencies.find(function (foundLibrary) {
-                        return foundLibrary.libraryPath === dependency;
-                      }) && !newDependencies.find(function (foundLibrary) {
-                        return foundLibrary.libraryPath === dependency;
-                      })) {
-                        findNext.push(dependency);
-                      }
-                    });
-                  });
-
-                  if (!(findNext.length > 0)) {
-                    _context3.next = 8;
-                    break;
-                  }
-
-                  return _context3.abrupt("return", this.loadDependencies(findNext, dependencies));
-
-                case 8:
-                  return _context3.abrupt("return", dependencies);
-
-                case 9:
-                case "end":
-                  return _context3.stop();
-              }
+          library.dependencies.forEach(function (dependency) {
+            if (!alreadyFound.find(function (foundLibrary) {
+              return foundLibrary.libraryPath === dependency;
+            }) && !data.find(function (foundLibrary) {
+              return foundLibrary.libraryPath === dependency;
+            })) {
+              findNext.push(dependency);
             }
-          }, _callee3, this);
-        }));
+          });
+        });
 
-        function loadDependencies(_x, _x2) {
-          return _loadDependencies.apply(this, arguments);
+        if (findNext.length > 0) {
+          return loadDependencies(findNext, alreadyFound, h5p);
         }
 
-        return loadDependencies;
-      }()
-      /**
-       * Loads a dependencies library.json and finds the libraries it dependson as well ass the JS and CSS it needs
-       * @param {string} libraryName 
-       */
+        return Promise.resolve(alreadyFound);
+      });
+    };
 
-    }, {
-      key: "findLibraryDependencies",
-      value: function () {
-        var _findLibraryDependencies = _asyncToGenerator(
-        /*#__PURE__*/
-        regeneratorRuntime.mark(function _callee4(libraryName) {
-          var _this4 = this;
+    var getLibrary = checklibraryPath.then(function (h5p) {
+      H5PIntegration.pathIncludesVersion = h5p.pathIncludesVersion;
+      var mainLibrary = h5p.preloadedDependencies.find(function (dep) {
+        return dep.machineName === h5p.mainLibrary;
+      });
+      var mainLibraryPath = h5p.mainLibrary + (h5p.pathIncludesVersion ? "-" + mainLibrary.majorVersion + "." + mainLibrary.minorVersion : '');
+      return getJSONPromise("".concat(pathToContent, "/").concat(mainLibraryPath, "/library.json"));
+    });
+    Promise.all([getInfo, getContent, getLibrary]).then(function (data) {
+      var _data = _slicedToArray(data, 3),
+          h5p = _data[0],
+          content = _data[1],
+          library = _data[2];
 
-          var library, libraryPath, dependencies;
-          return regeneratorRuntime.wrap(function _callee4$(_context4) {
-            while (1) {
-              switch (_context4.prev = _context4.next) {
-                case 0:
-                  _context4.next = 2;
-                  return getJSONPromise("".concat(this.path, "/").concat(libraryName, "/library.json"));
-
-                case 2:
-                  library = _context4.sent;
-                  libraryPath = this.libraryPath(library);
-                  dependencies = [];
-
-                  if (library.preloadedDependencies) {
-                    dependencies = library.preloadedDependencies.map(function (dependency) {
-                      return _this4.libraryPath(dependency);
-                    });
-                  }
-
-                  return _context4.abrupt("return", {
-                    libraryPath: libraryPath,
-                    dependencies: dependencies,
-                    preloadedCss: library.preloadedCss,
-                    preloadedJs: library.preloadedJs
-                  });
-
-                case 7:
-                case "end":
-                  return _context4.stop();
-              }
-            }
-          }, _callee4, this);
-        }));
-
-        function findLibraryDependencies(_x3) {
-          return _findLibraryDependencies.apply(this, arguments);
-        }
-
-        return findLibraryDependencies;
-      }()
-      /**
-       * Resolves the library dependency tree and sorts the JS and CSS files into order
-       * @param {object[]} dependencies 
-       * @return {object}
-       */
-
-    }, {
-      key: "sortDependencies",
-      value: function sortDependencies(dependencies) {
-        var _this5 = this;
-
+      var libraryPath = library.machineName + (h5p.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
+      var styles = [];
+      var scripts = [];
+      var directDependencyNames = h5p.preloadedDependencies.map(function (dependency2) {
+        return dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : '');
+      });
+      loadDependencies(directDependencyNames, [], h5p).then(function (results) {
         var dependencySorter = new Toposort();
-        var CSSDependencies = {};
-        var JSDependencies = {};
-        dependencies.forEach(function (dependency) {
-          dependencySorter.add(dependency.libraryPath, dependency.dependencies);
-
-          if (dependency.preloadedCss) {
-            CSSDependencies[dependency.libraryPath] = CSSDependencies[dependency.libraryPath] ? CSSDependencies[dependency.libraryPath] : [];
-            dependency.preloadedCss.forEach(function (style) {
-              CSSDependencies[dependency.libraryPath].push("".concat(_this5.path, "/").concat(dependency.libraryPath, "/").concat(style.path));
-            });
-          }
-
-          if (dependency.preloadedJs) {
-            JSDependencies[dependency.libraryPath] = JSDependencies[dependency.libraryPath] ? JSDependencies[dependency.libraryPath] : [];
-            dependency.preloadedJs.forEach(function (script) {
-              JSDependencies[dependency.libraryPath].push("".concat(_this5.path, "/").concat(dependency.libraryPath, "/").concat(script.path));
-            });
-          }
+        results.forEach(function (dependency) {
+          return dependencySorter.add(dependency.libraryPath, dependency.dependencies);
         });
-        var styles = [];
-        var scripts = [];
         dependencySorter.sort().reverse().forEach(function (dependencyName) {
-          Array.prototype.push.apply(styles, CSSDependencies[dependencyName]);
-          Array.prototype.push.apply(scripts, JSDependencies[dependencyName]);
+          Array.prototype.push.apply(styles, dependencyCSS[dependencyName]);
+          Array.prototype.push.apply(scripts, dependencyJS[dependencyName]);
         });
-        Array.prototype.push.apply(styles, this.mainLibrary.preloadedCss.map(function (style) {
-          return "".concat(_this5.path, "/").concat(_this5.mainLibraryPath, "/").concat(style.path);
+        Array.prototype.push.apply(styles, library.preloadedCss.map(function (style) {
+          return "".concat(pathToContent, "/").concat(libraryPath, "/").concat(style.path);
         }));
-        Array.prototype.push.apply(scripts, this.mainLibrary.preloadedJs.map(function (script) {
-          return "".concat(_this5.path, "/").concat(_this5.mainLibraryPath, "/").concat(script.path);
+        Array.prototype.push.apply(scripts, library.preloadedJs.map(function (script) {
+          return "".concat(pathToContent, "/").concat(libraryPath, "/").concat(script.path);
         }));
-        return {
+        H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
+        H5PIntegration.contents["cid-".concat(id)] = {
+          library: "".concat(library.machineName, " ").concat(library.majorVersion, ".").concat(library.minorVersion),
+          jsonContent: JSON.stringify(content),
           styles: styles,
-          scripts: scripts
+          scripts: scripts,
+          displayOptions: displayOptions
         };
-      }
-    }]);
-
-    return H5PStandalone;
-  }();
+        H5P.init();
+      });
+    });
+  };
 
   $.fn.h5p = function () {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
@@ -435,11 +215,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     displayOptions.icon = _displayOptions$icon === void 0 ? true : _displayOptions$icon;
     var _displayOptions$expor = displayOptions.export;
     displayOptions.export = _displayOptions$expor === void 0 ? true : _displayOptions$expor;
-    this.append("<div class=\"h5p-iframe-wrapper\" style=\"background-color:#DDD;\">\n      <iframe id=\"h5p-iframe-".concat(id, "\" class=\"h5p-iframe\" data-content-id=\"").concat(id, "\" style=\"width: 100%; height: 100%; border: none; display: block;\" src=\"about:blank\" frameBorder=\"0\"></iframe>\n    </div>"));
+    this.append("<div class=\"h5p-iframe-wrapper\" style=\"background-color:#DDD;\">\n      <iframe id=\"h5p-iframe-".concat(id, "\" class=\"h5p-iframe\" data-content-id=\"").concat(id, "\" style=\"width: 100%; height: 100%; border: none; display: block;\" src=\"about:blank\" frameBorder=\"0\"></iframe>\n    </div>")); // options.frameJs = options.frameJs || 'dist/h5p-standalone-frame.min.js';
+    // options.frameCss = options.frameCss || 'dist/css/h5p.css';
+    // options.h5pContent = options.h5pContent || 'workspace';
+
     H5PIntegration.core = {
       styles: [frameCss],
       scripts: [frameJs]
     };
-    new H5PStandalone(id, h5pContent, displayOptions);
+    H5PIntegration.init(id, h5pContent, displayOptions);
   };
 })(H5P.jQuery);

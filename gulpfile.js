@@ -18,7 +18,7 @@ var files_to_transpile = [
 
 var mainFiles = [
     'node_modules/toposort-class/build/toposort.js',
-    'node_modules/jquery/dist/jquery.js',
+    'node_modules/jquery/jquery.js',
     'src/js/h5p-jquery.js',
     'dist/transpiled/h5pintegration.js',
     'dist/transpiled/h5p-content-type.js',
@@ -30,7 +30,7 @@ var mainFiles = [
 ];
 
 var frameFiles = [
-    'node_modules/jquery/dist/jquery.js',
+    'node_modules/jquery/jquery.js',
     'src/js/h5p-jquery.js',
     'dist/transpiled/h5p-event-dispatcher.js',
     'dist/transpiled/h5p-action-bar.js',
@@ -49,14 +49,14 @@ function clean_dist() {
 
 function concat_frame_js() {
     return gulp.src(frameFiles)
-        //.pipe(babel())
+        .pipe(babel())
         .pipe(concat('h5p-standalone-frame.js'))
         .pipe(gulp.dest('dist/js'));
 };
 
 function concat_main_js() {
     return gulp.src(mainFiles)
-        //.pipe(babel())
+        .pipe(babel())
         .pipe(concat('h5p-standalone-main.js'))
         .pipe(gulp.dest('dist/js'));
 };

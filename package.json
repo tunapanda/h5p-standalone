@@ -5,7 +5,7 @@
   "main": "dist/js/h5p-standalone-main.min.js",
   "dependencies": {
     "h5p-php-library": "https://github.com/h5p/h5p-php-library#stable",
-    "jquery": "^1.12.4",
+    "jquery": "1.9.1",
     "toposort-class": "^1.0.1"
   },
   "devDependencies": {

@@ -28,7 +28,6 @@ yarn (https://yarnpkg.com/lang/en/) is used as package management tool. Install 
 
 To install dependencies:
 ```
-yarn global add gulp-cli
 yarn install
 ```
 
