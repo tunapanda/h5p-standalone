@@ -8,7 +8,14 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+var toposort = require('toposort'); // First, we define our edges.
+
+
+var graph = [['put on your shoes', 'tie your shoes'], ['put on your shirt', 'put on your jacket'], ['put on your shorts', 'put on your jacket'], ['put on your shorts', 'put on your shoes']];
+toposort(graph);
+console.log(graph);
 /*jshint esnext: true */
+
 (function ($) {
   'use strict';
 
@@ -167,6 +174,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         results.forEach(function (dependency) {
           return dependencySorter.add(dependency.libraryPath, dependency.dependencies);
         });
+        console.log(results);
         dependencySorter.sort().reverse().forEach(function (dependencyName) {
           Array.prototype.push.apply(styles, dependencyCSS[dependencyName]);
           Array.prototype.push.apply(scripts, dependencyJS[dependencyName]);

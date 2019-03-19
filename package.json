@@ -6,18 +6,21 @@
   "dependencies": {
     "h5p-php-library": "https://github.com/h5p/h5p-php-library#stable",
     "jquery": "1.9.1",
+    "toposort": "^2.0.2",
     "toposort-class": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "browser-sync": "^2.26.3",
+    "browserify": "^16.2.3",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0-beta.2",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-rename": "^1.4.0",
-    "gulp-uglify": "^3.0.1"
+    "gulp-uglify": "^3.0.1",
+    "vinyl-source-stream": "^2.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

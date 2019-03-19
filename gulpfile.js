@@ -17,16 +17,17 @@ var files_to_transpile = [
 ];
 
 var mainFiles = [
-    'node_modules/toposort-class/build/toposort.js',
+    //'node_modules/toposort-class/build/toposort.js',
     'node_modules/jquery/jquery.js',
     'src/js/h5p-jquery.js',
-    'dist/transpiled/h5pintegration.js',
+    //'dist/transpiled/h5pintegration.js',
+    'src/js/h5pintegrationbundle.js',
     'dist/transpiled/h5p-content-type.js',
     'dist/transpiled/h5p-event-dispatcher.js',
     'dist/transpiled/h5p-x-api-event.js',
     'dist/transpiled/h5p-x-api.js',
     'dist/transpiled/h5p.js',
-    'src/js/h5p-overwrite.js',
+    'src/js/h5p-overwrite.js'
 ];
 
 var frameFiles = [
@@ -45,21 +46,21 @@ var frameFiles = [
 function clean_dist() {
     return gulp.src('dist/*', {read: false})
         .pipe(clean());
-};
+}
 
 function concat_frame_js() {
     return gulp.src(frameFiles)
         .pipe(babel())
         .pipe(concat('h5p-standalone-frame.js'))
         .pipe(gulp.dest('dist/js'));
-};
+}
 
 function concat_main_js() {
     return gulp.src(mainFiles)
         .pipe(babel())
         .pipe(concat('h5p-standalone-main.js'))
         .pipe(gulp.dest('dist/js'));
-};
+}
 
 function transpile() {
     return gulp.src(files_to_transpile)
@@ -79,17 +80,17 @@ function minify_js() {
             extname: '.min.js'
         }))
         .pipe(gulp.dest('dist/js'));
-};
+}
 
 function copy_css() {
     return gulp.src('node_modules/h5p-php-library/styles/*.css')
         .pipe(gulp.dest('dist/styles'));
-};
+}
 
 function copy_fonts() {
     return gulp.src('node_modules/h5p-php-library/fonts/*')
         .pipe(gulp.dest('dist/fonts'));
-};
+}
 
 gulp.task('demo', function () {
     browserSync.init({
@@ -102,3 +103,4 @@ gulp.task('demo', function () {
 
 gulp.task('default', gulp.series(clean_dist, transpile, concat_main_js, concat_frame_js, minify_js, copy_css, copy_fonts));
 gulp.task('clean', gulp.series(clean_dist));
+gulp.task('buildandrun', gulp.series('default', 'demo'));
