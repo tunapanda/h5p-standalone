@@ -8994,14 +8994,9 @@ H5P.jQuery = jQuery.noConflict(true);
       if (Array.isArray(arr)) return arr;
     }
 
-    var toposort = require('toposort'); // First, we define our edges.
-
-
-    var graph = [['put on your shoes', ['tie your shoes', 'eat_gelato']], ['put on your shirt', 'put on your jacket'], ['put on your shorts', 'put on your jacket'], ['put on your shorts', 'put on your shoes']];
-    console.log(graph);
-    graph = toposort(graph);
-    console.log(graph);
+    var toposort = require('toposort');
     /*jshint esnext: true */
+
 
     (function ($) {
       'use strict';
@@ -9157,22 +9152,16 @@ H5P.jQuery = jQuery.noConflict(true);
             return dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : '');
           });
           loadDependencies(directDependencyNames, [], h5p).then(function (results) {
-            /*var dependencySorter = new Toposort();
+            var nodes = [];
+            var edges = [];
             results.forEach(function (dependency) {
-                return dependencySorter.add(dependency.libraryPath, dependency.dependencies);
+              nodes.push(dependency.libraryPath);
+              dependency.dependencies.forEach(function (one_dependency) {
+                return edges.push([dependency.libraryPath, one_dependency]);
+              });
             });
-            */
-            var graph = [];
-            results.forEach(function (dependency) {
-              //console.log(dependency.libraryPath);
-              //console.log(dependency.dependencies);
-              graph.push([dependency.libraryPath, dependency.dependencies]);
-            });
-            console.log(graph);
-            graph = toposort(graph);
-            console.log(graph); //console.log(results);
-
-            dependencySorter.sort().reverse().forEach(function (dependencyName) {
+            var valid__order = toposort.array(nodes, edges).reverse();
+            valid__order.forEach(function (dependencyName) {
               Array.prototype.push.apply(styles, dependencyCSS[dependencyName]);
               Array.prototype.push.apply(scripts, dependencyJS[dependencyName]);
             });

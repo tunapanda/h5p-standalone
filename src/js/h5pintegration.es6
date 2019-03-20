@@ -1,18 +1,5 @@
 var toposort = require('toposort');
 
-// First, we define our edges.
-var graph = [
-    ['put on your shoes', 'tie your shoes'],
-    ['put on your shirt', 'put on your jacket'],
-    ['put on your shorts', 'put on your jacket'],
-    ['put on your shorts', 'put on your shoes']
-];
-
-toposort(graph);
-
-console.log(graph);
-
-
 /*jshint esnext: true */
 (function ($) {
     'use strict';
@@ -162,13 +149,18 @@ console.log(graph);
             let directDependencyNames = h5p.preloadedDependencies.map(dependency2 => dependency2.machineName + (h5p.pathIncludesVersion ? "-" + dependency2.majorVersion + "." + dependency2.minorVersion : ''));
 
             loadDependencies(directDependencyNames, [], h5p).then((results) => {
-                let dependencySorter = new Toposort();
 
-                results.forEach(dependency => dependencySorter.add(dependency.libraryPath, dependency.dependencies));
+                let nodes = [];
+                let edges = [];
 
-                console.log(results);
+                results.forEach(function (dependency) {
+                    nodes.push(dependency.libraryPath);
+                    dependency.dependencies.forEach(one_dependency => edges.push([dependency.libraryPath, one_dependency]));
+                });
 
-                dependencySorter.sort().reverse().forEach(function (dependencyName) {
+                var valid__order = toposort.array(nodes, edges).reverse();
+
+                valid__order.forEach(function (dependencyName) {
                     Array.prototype.push.apply(styles, dependencyCSS[dependencyName]);
                     Array.prototype.push.apply(scripts, dependencyJS[dependencyName]);
                 });

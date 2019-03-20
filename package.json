@@ -6,8 +6,7 @@
   "dependencies": {
     "h5p-php-library": "https://github.com/h5p/h5p-php-library#stable",
     "jquery": "1.9.1",
-    "toposort": "^2.0.2",
-    "toposort-class": "^1.0.1"
+    "toposort": "^2.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
