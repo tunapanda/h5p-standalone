@@ -20,7 +20,6 @@ var files_to_transpile = [
 ];
 
 var mainFiles = [
-    //'node_modules/toposort-class/build/toposort.js',
     'node_modules/jquery/jquery.js',
     'src/js/h5p-jquery.js',
     'dist/transpiled/h5pintegration_browserified.js',
@@ -45,12 +44,12 @@ var frameFiles = [
     'src/js/h5p-overwrite.js'
 ];
 
-gulp.task('browserify_h5pintegration', () => {
+function browserify_h5pintegration() {
     return browserify('./dist/transpiled/h5pintegration.js')
         .bundle()
         .pipe(source('h5pintegration_browserified.js'))
         .pipe(gulp.dest('dist/transpiled/'));
-});
+}
 
 function clean_dist() {
     return gulp.src('dist/*', {read: false})
@@ -110,7 +109,7 @@ gulp.task('demo', function () {
     });
 });
 
-
-gulp.task('default', gulp.series(clean_dist, transpile, 'browserify_h5pintegration', concat_main_js, concat_frame_js, minify_js, copy_css, copy_fonts));
+gulp.task('default', gulp.series(clean_dist, transpile, browserify_h5pintegration, concat_main_js, concat_frame_js, minify_js, copy_css, copy_fonts));
+gulp.task('build', gulp.series('default'));
 gulp.task('clean', gulp.series(clean_dist));
 gulp.task('buildandrun', gulp.series('default', 'demo'));

@@ -1,4 +1,4 @@
-# h5p-standalone 1.3.4
+# h5p-standalone 1.3.6
 Display H5P content with plain old HTML
 
 ## Usage
@@ -29,6 +29,11 @@ yarn (https://yarnpkg.com/lang/en/) is used as package management tool. Install 
 To install dependencies:
 ```
 yarn install
+```
+
+To build the minified JavaScript library of h5p-standalone
+```
+gulp default
 ```
 
 Unzip `.h5p` file into `workspace` directory
