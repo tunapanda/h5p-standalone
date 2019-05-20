@@ -1,7 +1,7 @@
 H5P.getLibraryPath = function (library) {
   if (H5PIntegration.pathIncludesVersion) {
     return H5PIntegration.url + '/' + library;
-  } 
+  }
   return H5PIntegration.url + '/' + library.split('-')[0];
 };
 
