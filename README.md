@@ -1,4 +1,4 @@
-# h5p-standalone 1.3.4
+# h5p-standalone 1.3.5
 Display H5P content with plain old HTML
 
 ## Usage
@@ -22,10 +22,13 @@ $('.h5p-container').h5p({
 
 ## Run The Demo (Gulp)
 
-Install dependencies
+### Prerequisites
+yarn (https://yarnpkg.com/lang/en/) is used as package management tool. Install yarn before proceeding.
+
+
+To install dependencies:
 ```
-npm install -g gulp
-npm install
+yarn install
 ```
 
 Unzip `.h5p` file into `workspace` directory
