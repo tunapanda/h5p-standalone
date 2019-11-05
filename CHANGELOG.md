@@ -1,3 +1,6 @@
+# 2.0.2
+* Check if main library has dependencies before loading them
+
 # 2.0.1
 * fix paths for h5p assets
 
