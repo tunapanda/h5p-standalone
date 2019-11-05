@@ -1,3 +1,6 @@
+# 2.0.1
+* fix paths for h5p assets
+
 # 2.0.0
 * Switched to Webpack
 * Using module system, can be imported via ES6, CommonJS, AMD or Globals

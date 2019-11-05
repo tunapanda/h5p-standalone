@@ -1,4 +1,4 @@
-# h5p-standalone 2.0.0
+# h5p-standalone 2.0.1
 Display H5P content without using a webserver
 
 
@@ -12,7 +12,8 @@ yarn add h5p-standalone
 ```javascript
 import { H5P } from 'h5p-standalone'; // ES6
 // const { H5P } = require('h5p-standalone'); AMD
-// const { H5P } = 'H5PStandalone'; Global
+// <script src="node_modules/h5p-standalone/dist/main.bundle.js"> // Globals
+// const { H5P } = 'H5PStandalone';
 
 const el = document.getElementById('h5p-container');
 const h5pLocation = './workspace';
