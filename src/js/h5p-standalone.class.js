@@ -4,9 +4,16 @@ import H5P from 'imports-loader?H5PIntegration=>window.H5PIntegration!H5P';
 H5PIntegration = window.H5PIntegration;
 
 export default class H5PStandalone {
-  constructor(el, pathToContent = 'workspace', options = {}, displayOptions = {}) {
+    constructor(el, pathToContent = 'workspace', options = {}, displayOptions = {}, librariesPath = {}) {
     this.id = options.id || Math.random().toString(36).substr(2, 9);
     this.path = pathToContent;
+
+    if (librariesPath == {}) {
+        this.librariesPath = this.path;
+    } else {
+        this.librariesPath = librariesPath;
+    }
+    console.log('This.librariesPath = '+this.librariesPath);
     this.initElement(el);
     return this.initH5P(options.frameCss, options.frameJs, displayOptions, options.preventH5PInit);
   }
@@ -71,7 +78,7 @@ export default class H5PStandalone {
     let pathIncludesVersion;
 
     try {
-      await this.getJSON(`${this.path}/${machinePath}/library.json`);
+      await this.getJSON(`${this.librariesPath}/${machinePath}/library.json`);
       pathIncludesVersion = true;
     } catch (e) {
       pathIncludesVersion = false;
@@ -96,7 +103,7 @@ export default class H5PStandalone {
     const mainLibraryInfo = this.h5p.preloadedDependencies.find(dep => dep.machineName === this.h5p.mainLibrary);
 
     this.mainLibraryPath = this.h5p.mainLibrary + (this.pathIncludesVersion ? "-" + mainLibraryInfo.majorVersion + "." + mainLibraryInfo.minorVersion : '');
-    return this.getJSON(`${this.path}/${this.mainLibraryPath}/library.json`);
+    return this.getJSON(`${this.librariesPath}/${this.mainLibraryPath}/library.json`);
   }
 
   /**
@@ -143,7 +150,7 @@ export default class H5PStandalone {
    * @param {string} libraryName 
    */
   async findLibraryDependencies(libraryName) {
-    const library = await this.getJSON(`${this.path}/${libraryName}/library.json`);
+    const library = await this.getJSON(`${this.librariesPath}/${libraryName}/library.json`);
     const libraryPath = this.libraryPath(library);
 
     let dependencies = [];
@@ -170,14 +177,14 @@ export default class H5PStandalone {
       if (dependency.preloadedCss) {
         CSSDependencies[dependency.libraryPath] = CSSDependencies[dependency.libraryPath] ? CSSDependencies[dependency.libraryPath] : [];
         dependency.preloadedCss.forEach(style => {
-          CSSDependencies[dependency.libraryPath].push(`${this.path}/${dependency.libraryPath}/${style.path}`);
+          CSSDependencies[dependency.libraryPath].push(`${this.librariesPath}/${dependency.libraryPath}/${style.path}`);
         });
       }
 
       if (dependency.preloadedJs) {
         JSDependencies[dependency.libraryPath] = JSDependencies[dependency.libraryPath] ? JSDependencies[dependency.libraryPath] : [];
         dependency.preloadedJs.forEach(script => {
-          JSDependencies[dependency.libraryPath].push(`${this.path}/${dependency.libraryPath}/${script.path}`);
+          JSDependencies[dependency.libraryPath].push(`${this.librariesPath}/${dependency.libraryPath}/${script.path}`);
         });
       }
     });
@@ -191,10 +198,10 @@ export default class H5PStandalone {
     });
 
     if (this.mainLibrary.preloadedCss) {
-      Array.prototype.push.apply(styles, this.mainLibrary.preloadedCss.map(style => `${this.path}/${this.mainLibraryPath}/${style.path}`));
+      Array.prototype.push.apply(styles, this.mainLibrary.preloadedCss.map(style => `${this.librariesPath}/${this.mainLibraryPath}/${style.path}`));
     }
     if (this.mainLibrary.preloadedJs) {
-      Array.prototype.push.apply(scripts, this.mainLibrary.preloadedJs.map(script => `${this.path}/${this.mainLibraryPath}/${script.path}`));
+      Array.prototype.push.apply(scripts, this.mainLibrary.preloadedJs.map(script => `${this.librariesPath}/${this.mainLibraryPath}/${script.path}`));
     }
     return { styles, scripts };
   }
