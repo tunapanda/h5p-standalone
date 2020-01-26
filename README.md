@@ -1,4 +1,4 @@
-# h5p-standalone 2.0.2
+# h5p-standalone 2.1.0
 Display H5P content without using a webserver
 
 
@@ -45,7 +45,8 @@ const displayOptions = { // Customise the look of the H5P
     export: false
   };
 
-cont librariesPath = "/path/to/shared/libaries"; // Optional path to h5p activity libraries outside of content directory
+
+const librariesPath = "/path/to/shared/libaries"; // Optional path to h5p activity libraries outside of content directory
 const h5p = await new H5P(el, h5pLocation, options, displayOptions, librariesPath);
 
 // OR

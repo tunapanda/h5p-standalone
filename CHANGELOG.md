@@ -1,3 +1,6 @@
+# 2.1.0
+* Add optional libraryPath option for serving libraries from another source, thanks @tdxdave
+
 # 2.0.2
 * Check if main library has dependencies before loading them
 
