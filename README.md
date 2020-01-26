@@ -45,7 +45,8 @@ const displayOptions = { // Customise the look of the H5P
     export: false
   };
 
-const h5p = await new H5P(el, h5pLocation, options, displayOptions);
+cont librariesPath = "/path/to/shared/libaries"; // Optional path to h5p activity libraries outside of content directory
+const h5p = await new H5P(el, h5pLocation, options, displayOptions, librariesPath);
 
 // OR
 
