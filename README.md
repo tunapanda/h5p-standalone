@@ -1,4 +1,4 @@
-# h5p-standalone 2.0.2
+# h5p-standalone 2.1.0
 Display H5P content without using a webserver
 
 
