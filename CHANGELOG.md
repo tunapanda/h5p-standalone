@@ -1,3 +1,6 @@
+# 2.1.1
+* Bugfix last version didn't inclde an updated built version
+
 # 2.1.0
 * Add optional libraryPath option for serving libraries from another source, thanks @tdxdave
 
