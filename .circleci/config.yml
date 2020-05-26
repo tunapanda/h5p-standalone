@@ -6,7 +6,6 @@ workflows:
     jobs:
       - cypress/install:
           yarn: true
-          no-workspace: true
           build: yarn build
       - cypress/run:
           yarn: true
