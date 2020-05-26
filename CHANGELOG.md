@@ -1,3 +1,6 @@
+# 2.1.2
+* Strike that, librariesPath update didn't even work? Tests were not run...
+
 # 2.1.1
 * Bugfix last version didn't inclde an updated built version
 
