@@ -4,16 +4,17 @@ import H5P from 'imports-loader?H5PIntegration=>window.H5PIntegration!H5P';
 H5PIntegration = window.H5PIntegration;
 
 export default class H5PStandalone {
-    constructor(el, pathToContent = 'workspace', options = {}, displayOptions = {}, librariesPath = {}) {
+  constructor(el, pathToContent = 'workspace', options = {}, displayOptions = {}, librariesPath) {
     this.id = options.id || Math.random().toString(36).substr(2, 9);
     this.path = pathToContent;
 
-    if (librariesPath == {}) {
-        this.librariesPath = this.path;
+    if (!librariesPath) {
+      this.librariesPath = this.path;
     } else {
-        this.librariesPath = librariesPath;
+      this.librariesPath = librariesPath;
     }
-    console.log('This.librariesPath = '+this.librariesPath);
+
+    console.log(this.librariesPath);
     this.initElement(el);
     return this.initH5P(options.frameCss, options.frameJs, displayOptions, options.preventH5PInit);
   }

@@ -16,12 +16,12 @@
     } = H5PStandalone;
 
     async function setup() {
-      await new H5P(document.getElementById('h5p-container-1'), 'workspace', {
+      await new H5P(document.getElementById('h5p-container-1'), 'full_workspace', {
         frameJs: '/dist/frame.bundle.js',
         frameCss: '/dist/styles/h5p.css'
       });
 
-      await new H5P(document.getElementById('h5p-container-2'), 'workspace', {
+      await new H5P(document.getElementById('h5p-container-2'), 'full_workspace', {
         frameJs: '/dist/frame.bundle.js',
         frameCss: '/dist/styles/h5p.css'
       });
