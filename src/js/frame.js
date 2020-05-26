@@ -9,9 +9,9 @@ import 'H5PActionBar';
 
 H5P.getLibraryPath = function (library) {
   if (H5PIntegration.pathIncludesVersion) {
-    return this.librariesPath + '/' + library;
+    return H5PIntegration.librariesPath + '/' + library;
   }
-  return this.librariesPath + '/' + library.split('-')[0];
+  return H5PIntegration.librariesPath + '/' + library.split('-')[0];
 };
 
 H5P.getPath = function (path, contentId) {

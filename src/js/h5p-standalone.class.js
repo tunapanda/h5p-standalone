@@ -42,6 +42,7 @@ export default class H5PStandalone {
     const { styles, scripts } = this.sortDependencies(dependencies);
 
     H5PIntegration.url = this.path;
+    H5PIntegration.librariesPath = this.librariesPath;
     H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
 
     H5PIntegration.core = {
