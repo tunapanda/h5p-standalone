@@ -3,19 +3,45 @@ import H5P from 'imports-loader?H5PIntegration=>window.H5PIntegration!H5P';
 
 H5PIntegration = window.H5PIntegration;
 
-function urlPath(file) {
-  let prefix = window.location.protocol + "//" + window.location.host;
+interface Options {
+  id?: string
+  frameCss: string
+  frameJs: string
+  preventH5PInit: boolean
+}
 
-  if (window.location.pathname.indexOf('/') > -1) {
-    prefix = prefix + window.location.pathname.split('/').slice(0, -1).join("/");
-  } else {
-    prefix = prefix + window.location.pathname;
-  }
-  return prefix + "/" + file;
+interface Library {
+  machineName: string
+  minorVersion: string
+  majorVersion: string
+  dependencies: LibraryRef[]
+  preloadedCss: string[]
+  preloadedJs: string[]
+}
+
+interface LibraryRef {
+  machineName: string
+  minorVersion: string
+  majorVersion: string
+}
+
+interface H5Pjson {
+  mainLibrary: string
+  preloadedDependencies: LibraryRef[]
 }
 
 export default class H5PStandalone {
-  constructor(el, pathToContent = 'workspace', options = {}, displayOptions = {}, librariesPath) {
+
+  id: string
+  librariesPath: string
+  path: string
+
+  h5p: H5Pjson
+  mainLibrary: Library
+  pathIncludesVersion: boolean
+  mainLibraryPath: string
+
+  constructor(el: HTMLElement, pathToContent = 'workspace', options: Options = {}, displayOptions = {}, librariesPath: string) {
     this.id = options.id || Math.random().toString(36).substr(2, 9);
     this.path = pathToContent;
 
@@ -27,10 +53,11 @@ export default class H5PStandalone {
 
     console.log(this.librariesPath);
     this.initElement(el);
-    return this.initH5P(options.frameCss, options.frameJs, displayOptions, options.preventH5PInit);
+    this.initH5P(options.frameCss, options.frameJs, displayOptions, options.preventH5PInit);
+    return this;
   }
 
-  initElement(el) {
+  initElement(el: HTMLElement) {
     if (!(el instanceof HTMLElement)) {
       throw new Error('createH5P must be passed an element');
     }
@@ -40,8 +67,8 @@ export default class H5PStandalone {
       </div>`;
   }
 
-  async initH5P(frameCss = './styles/h5p.css', frameJs = './frame.bundle.js', displayOptions, preventH5PInit) {
-    this.h5p = await this.getJSON(`${this.path}/h5p.json`);
+  async initH5P(frameCss = './styles/h5p.css', frameJs = './frame.bundle.js', displayOptions, preventH5PInit: boolean) {
+    this.h5p = <H5Pjson>(await this.getJSON(`${this.path}/h5p.json`));
 
     const content = await this.getJSON(`${this.path}/content/content.json`);
     H5PIntegration.pathIncludesVersion = this.pathIncludesVersion = await this.checkIfPathIncludesVersion();
@@ -52,7 +79,7 @@ export default class H5PStandalone {
 
     const { styles, scripts } = this.sortDependencies(dependencies);
 
-    H5PIntegration.urlLibraries = this.path;
+    H5PIntegration.url = this.path;
     H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
 
     H5PIntegration.core = {
@@ -65,8 +92,7 @@ export default class H5PStandalone {
       jsonContent: JSON.stringify(content),
       styles: styles,
       scripts: scripts,
-      displayOptions: displayOptions,
-      contentUrl: urlPath(`${this.path}/content`)
+      displayOptions: displayOptions
     };
 
     // if (!preventH5PInit) {
@@ -74,8 +100,9 @@ export default class H5PStandalone {
     // }
   }
 
-  getJSON(url) {
-    return fetch(url).then(res => res.json());
+  async getJSON(url: string): Promise<any> {
+    const res = await fetch(url);
+    return res.json();
   }
 
   /**
@@ -84,11 +111,11 @@ export default class H5PStandalone {
    * 
    * @return {boolean}
    */
-  async checkIfPathIncludesVersion() {
+  async checkIfPathIncludesVersion(): Promise<boolean> {
     let dependency = this.h5p.preloadedDependencies[0];
     let machinePath = dependency.machineName + "-" + dependency.majorVersion + "." + dependency.minorVersion;
 
-    let pathIncludesVersion;
+    let pathIncludesVersion: boolean;
 
     try {
       await this.getJSON(`${this.librariesPath}/${machinePath}/library.json`);
@@ -104,7 +131,7 @@ export default class H5PStandalone {
    * @param {object} library
    * @return {string}
    */
-  libraryPath(library) {
+  libraryPath(library: LibraryRef): string {
     return library.machineName + (this.pathIncludesVersion ? "-" + library.majorVersion + "." + library.minorVersion : '');
   }
 
@@ -112,7 +139,7 @@ export default class H5PStandalone {
    * FInd the main library for this H5P
    * @return {Promise}
    */
-  findMainLibrary() {
+  async findMainLibrary(): Promise<Library> {
     const mainLibraryInfo = this.h5p.preloadedDependencies.find(dep => dep.machineName === this.h5p.mainLibrary);
 
     this.mainLibraryPath = this.h5p.mainLibrary + (this.pathIncludesVersion ? "-" + mainLibraryInfo.majorVersion + "." + mainLibraryInfo.minorVersion : '');
@@ -123,7 +150,7 @@ export default class H5PStandalone {
    * find all the libraries used in this H5P
    * @return {Promise}
    */
-  findAllDependencies() {
+  async findAllDependencies() {
     const directDependencyNames = this.h5p.preloadedDependencies.map(dependency => this.libraryPath(dependency));
 
     return this.loadDependencies(directDependencyNames, []);
@@ -134,14 +161,14 @@ export default class H5PStandalone {
    * @param {string[]} toFind list of libraries to find the dependencies of
    * @param {string[]} alreadyFound the dependencies that have already been found
    */
-  async loadDependencies(toFind, alreadyFound) {
+  async loadDependencies(toFind: string[], alreadyFound: string[]) {
     // console.log(`loading dependency level: ${dependencyDepth}`);
     // dependencyDepth++;
     let dependencies = alreadyFound;
     let findNext = [];
     let newDependencies = await Promise.all(toFind.map((libraryName) => this.findLibraryDependencies(libraryName)));
     // loop over newly found libraries
-    newDependencies.forEach((library) => {
+    newDependencies.forEach((library: any) => {
       // push into found list
       dependencies.push(library);
       // check if any dependencies haven't been found yet
@@ -162,7 +189,7 @@ export default class H5PStandalone {
    * Loads a dependencies library.json and finds the libraries it dependson as well ass the JS and CSS it needs
    * @param {string} libraryName 
    */
-  async findLibraryDependencies(libraryName) {
+  async findLibraryDependencies(libraryName: string): Promise<any> {
     const library = await this.getJSON(`${this.librariesPath}/${libraryName}/library.json`);
     const libraryPath = this.libraryPath(library);
 
