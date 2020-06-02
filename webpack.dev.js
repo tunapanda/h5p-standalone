@@ -3,9 +3,12 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   devServer: {
-    contentBase: './dist',
+    contentBase: './',
     watchContentBase: true
+  },
+  optimization: {
+    minimize: false
   },
 });
