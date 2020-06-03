@@ -1,4 +1,4 @@
-# h5p-standalone 2.1.2 [![CircleCI](https://circleci.com/gh/tunapanda/h5p-standalone.svg?style=svg)](https://circleci.com/gh/tunapanda/h5p-standalone)
+# h5p-standalone 2.1.3 [![CircleCI](https://circleci.com/gh/tunapanda/h5p-standalone.svg?style=svg)](https://circleci.com/gh/tunapanda/h5p-standalone)
 Display H5P content without using a webserver
 
 

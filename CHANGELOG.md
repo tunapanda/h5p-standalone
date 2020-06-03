@@ -1,3 +1,7 @@
+# 2.1.3
+* Remove H5P overrides, found a better solution
+* Shoud fix #43
+
 # 2.1.2
 * Strike that, librariesPath update didn't even work? Tests were not run...
 
