@@ -213,8 +213,13 @@ export default class H5PStandalone {
     if (this.mainLibrary.preloadedCss) {
       Array.prototype.push.apply(styles, this.mainLibrary.preloadedCss.map(style => `${this.librariesPath}/${this.mainLibraryPath}/${style.path}`));
     }
+    
+    //Make sure there is no duplicated dependencies to avoid babel-polyfill error
     if (this.mainLibrary.preloadedJs) {
-      Array.prototype.push.apply(scripts, this.mainLibrary.preloadedJs.map(script => `${this.librariesPath}/${this.mainLibraryPath}/${script.path}`));
+      $.each(this.mainLibrary.preloadedJs, (i, script) => {
+        const scriptPath = `${this.librariesPath}/${this.mainLibraryPath}/${script.path}`
+        if($.inArray(scriptPath, scripts) === -1) scripts.push(scriptPath);
+      });
     }
     return { styles, scripts };
   }
