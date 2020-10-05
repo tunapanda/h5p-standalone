@@ -66,7 +66,8 @@ export default class H5PStandalone {
       styles: styles,
       scripts: scripts,
       displayOptions: displayOptions,
-      contentUrl: urlPath(`${this.path}/content`)
+      contentUrl: urlPath(`${this.path}/content`),
+      metadata: this.h5p
     };
 
     // if (!preventH5PInit) {
