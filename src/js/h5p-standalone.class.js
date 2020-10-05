@@ -225,7 +225,6 @@ export default class H5PStandalone {
         if($.inArray(scriptPath, scripts) === -1) scripts.push(scriptPath);
       });
     }
-    console.log(scripts)
     return { styles, scripts };
   }
 }
