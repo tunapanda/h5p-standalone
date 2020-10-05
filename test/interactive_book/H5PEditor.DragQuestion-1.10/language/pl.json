@@ -1,0 +1,16 @@
+{
+  "libraryStrings":{
+    "insertElement":"Dodaj :type",
+    "done":"Wykonano",
+    "remove":"Usuń",
+    "image":"Zdjęcie",
+    "text":"Tekst",
+    "noTaskSize":"Najpierw podaj rozmiar obszaru zadania.",
+    "confirmRemoval":"Czy na pewno chcesz usunąć ten element?",
+    "backgroundOpacityOverridden":"Parametr nieprzezroczystości tła jest nadpisany",
+    "advancedtext":"Tekst",
+    "dropzone":"Obszar przeciągania",
+    "selectAll":"Zaznacz wszystko",
+    "deselectAll":"Odznacz wszystko"
+  }
+}

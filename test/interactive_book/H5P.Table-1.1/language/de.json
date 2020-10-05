@@ -1,0 +1,8 @@
+{
+  "semantics": [
+    {
+      "label": "Tabelle",
+      "default": "<table class=\"h5p-table\"><thead><tr><th scope=\"col\">Überschrift Spalte 1</th><th scope=\"col\">Überschrift Spalte 2</th></tr></thead><tbody><tr><td>Zeile 1 Spalte 1</td><td>Zeile 1 Spalte 2</td></tr><tr><td>Zeile 2 Spalte 1</td><td>Zeile 2 Spalte 2</td></tr></tbody></table>"
+    }
+  ]
+}

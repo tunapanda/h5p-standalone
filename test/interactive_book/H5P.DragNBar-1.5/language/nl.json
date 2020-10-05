@@ -1,0 +1,17 @@
+{
+  "libraryStrings":{
+    "transformLabel":"Transformeren",
+    "editLabel":"Wijzig",
+    "removeLabel":"Verwijder",
+    "bringToFrontLabel":"Naar voorgrond",
+    "sendToBackLabel":"Naar achtergrond",
+    "unableToPaste":"Kan dit object niet plakken. Helaas, het object dat je probeert te plakken wordt niet ondersteund door dit inhoudstype of versie.",
+    "sizeLabel":"Maat",
+    "positionLabel":"Positie",
+    "heightLabel":"Hoogte",
+    "widthLabel":"Breedte",
+    "copyLabel": "Kopiëren",
+    "paste": "Plakken",
+    "moreElements": "Meer elementen"
+  }
+}

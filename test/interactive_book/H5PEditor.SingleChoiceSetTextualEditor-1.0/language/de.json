@@ -1,0 +1,6 @@
+{
+  "libraryStrings": {
+    "helpText": "Trenne Fragen mit einer leeren Zeile. Die erste Zeile enthält die Frage und die folgenden Zeilen sind die Antwortmöglichkeiten. Die erste Zeile ist immer die richtige Antwort.",
+    "warning": "Achtung: Wenn die Fragen im Texteditor verändert werden, werden alle Formatierungen (und Zeilenumbrüche) entfernt."
+  }
+}

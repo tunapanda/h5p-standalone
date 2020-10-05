@@ -1,0 +1,154 @@
+.h5p-dialog-title:before {
+  content: " ";
+  font-family: 'H5PFontAwesome4';
+  color: #313131;
+  margin-right: 0.5em;
+  margin-left: 0.1em;
+  vertical-align: middle;
+}
+
+.h5p-dialog.h5p-big {
+  padding: 0;
+}
+
+.h5p-dialog-title {
+  color: #313131;
+  float: left;
+}
+
+/* Remove h5p-nil library border */
+.h5peditor-interactions .h5p-dialog-inner .field.library.h5p-nil-library {
+  display: none;
+}
+
+/* interaction semantics wrapper */
+.h5p-dialog-inner > div > .field:first-child {
+  margin-top: 0;
+}
+.h5p-dialog-inner .h5peditor-interaction-label.hide,
+.h5p-dialog-inner > div > .field.library > select,
+.h5p-dialog-inner > div > .field.library > label {
+  display: none;
+}
+.h5p-dialog-inner input[type="checkbox"] {
+  vertical-align: middle;
+}
+.h5p-dialog-inner div.ckeditor > p {
+  margin: 0.5em;
+}
+.h5p-dialog-inner div.ckeditor > p:first-child {
+  margin-top: 0;
+}
+.h5p-dialog-inner div.ckeditor > p:last-child {
+  margin-bottom: 0;
+}
+
+.h5p-dialog-wrapper {
+  color: #313131;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 51;
+  background: rgba(44, 44, 44, 0.5);
+  -webkit-transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000,endColorstr=#66000000);
+}
+.h5p-dialog-wrapper.h5p-hidden {
+  background: rgba(0,0,0,0);
+}
+.h5p-dialog-wrapper.h5p-hidden .h5p-dialog {
+  -webkit-transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  -o-transform: translateY(100%);
+  transform: translateY(100%);
+}
+.h5p-dialog {
+  position: absolute;
+  width: 24.5em;
+  max-height: 100%;
+  margin: 1.25em;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 0 2.5em 0 #191919;
+  -webkit-transition: -webkit-transform 0.2s;
+  -moz-transition: -moz-transform 0.2s;
+  transition: transform 0.2s;
+}
+.h5p-dialog[data-lib="H5P.SingleChoiceSet"] {
+  overflow: hidden;
+  padding: 0;
+}
+.h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-dialog-inner {
+  overflow: visible;
+  width: 100%;
+}
+.h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-sound-control {
+  right: 1.2em;
+}
+.h5p-dialog.h5p-big {
+  width: auto;
+  height: auto;
+  max-height: none;
+  left: 1.25em;
+  right: 1.25em;
+  top: 1.25em;
+  bottom: 1.25em;
+  margin: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.h5p-dialog-inner {
+  width: 22.9em;
+  height: 100%;
+  overflow: auto;
+}
+.h5p-big > .h5p-dialog-inner {
+  width: 96%;
+  height: auto;
+}
+.h5p-dialog-inner::-webkit-scrollbar {
+  width: 0.5em;
+  background: #fff;
+}
+.h5p-dialog-inner::-webkit-scrollbar-thumb {
+  background: #ddd;
+}
+.h5p-dialog-inner::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+.h5p-dialog-inner::-webkit-scrollbar-thumb:active,
+.h5p-dialog-inner::-webkit-scrollbar-thumb:focus {
+  background: #888;
+}
+
+.h5p-interactive-video .h5p-dialog-hide {
+  color: #191919;
+  font-size: 1.3em;
+  padding: 0.3em;
+  line-height: 0.75em;
+  position: absolute;
+  right: 0.1em;
+  top: 0.1em;
+  height: 1em;
+  z-index: 52;
+  text-shadow: 0 0 0.5em #ffffff;
+  font-family: 'H5PFontAwesome4';
+  text-decoration: none;
+  -webkit-transition: -webkit-transform 0.2s;
+  -moz-transition: -moz-transform 0.2s;
+  transition: transform 0.2s;
+}
+.h5p-interactive-video .h5p-dialog-hide:hover {
+  text-decoration: none;
+  -webkit-transform: scale(1.1,1.1);
+  -moz-transform: scale(1.1,1.1);
+  -ms-transform: scale(1.1,1.1);
+  -o-transform: scale(1.1,1.1);
+  transform: scale(1.1,1.1);
+}

@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "Kysymyslista",
+      "entity": "Kysymys",
+      "widgets": [
+        {
+          "label": "Default"
+        },
+        {
+          "label": "Tekstimuotoinen"
+        }
+      ],
+      "field": {
+        "label": "Kysymys ja vaihtoehdot",
+        "fields": [
+          {
+            "label": "Kysymys"
+          },
+          {
+            "label": "Vaihtoehdot, ensimmäinen vaihtoehto on oikein.",
+            "entity": "Vaihtoehto",
+            "field": {
+              "label": "Vaihtoehto"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Yleinen palaute",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Oletus"
+            }
+          ],
+          "label": "Määritä muokattu palaute pisterajojen mukaan.",
+          "description": "Klikkaa \"Lisää alue\" painiketta lisätäksesi niin monta pisterajaa kuin tarvit. Esimerkiksi: 0-20% Huono tulos, 21-91% Kelpo tulos, 91-100% Mahtava tulos!",
+          "entity": "alue",
+          "field": {
+            "fields": [
+              {
+                "label": "Pisteraja"
+              },
+              {},
+              {
+                "label": "Palaute määritellylle pisterajalle",
+                "placeholder": "Kirjoita palaute"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Yleisasetukset",
+      "fields": [
+        {
+          "label": "Jatka automaattisestiAuto continue",
+          "description": "Jatka automaattisesti seuraavaan kysymykseen kun henkilö on tehnyt valinnan."
+        },
+        {
+          "label": "Tauko oikean vastauksen jälkeen",
+          "description": "Arvo millisekunneissa"
+        },
+        {
+          "label": "Tauko väärän vastauksen jälkeen",
+          "description": "Arvo millisekunneissa"
+        },
+        {
+          "label": "Salli ääniefektit"
+        },
+        {
+          "label": "Salli painike \"Yritä uudelleen\""
+        },
+        {
+          "label": "Salli painike \"Katso vastaukset\""
+        },
+        {
+          "label": "Läpäisyprosentti",
+          "description": "Kuinka monta prosenttia maksimipisteistä vaaditaan tehtävän läpäisyyn."
+        }
+      ]
+    },
+    {
+      "label": "Muokkaa käännöksiä",
+      "fields": [
+        {
+          "label": "Teksti \"Next\" painikkeelle",
+          "default": "Seuraava kysymys"
+        },
+        {
+          "label": "Painikkeen \"Katso vastaus\" nimi",
+          "default": "Katso vastaus"
+        },
+        {
+          "label": "Painikkeen \"Yritä uudelleen\" nimi",
+          "default": "Yritä uudelleen"
+        },
+        {
+          "label": "Sivun \"Oikea vastaus\" otsikko",
+          "default": "Oikea vastaus"
+        },
+        {
+          "label": "Ruudunlukijan palaute oikeasta vastauksesta",
+          "default": "Oikein!"
+        },
+        {
+          "label": "Ruudunlukijan palaute väärästä vastauksesta",
+          "default": "Väärin!"
+        },
+        {
+          "label": "Painikkeen \"Mykistä äänipalaute\" nimi",
+          "default": "Mykistä äänipalaute"
+        },
+        {
+          "label": "Painikkeen \"Sulje\" nimi",
+          "default": "Sulje"
+        },
+        {
+          "label": "Sivun numero",
+          "description": "Näyttää sivunumeron ja sivujen kokonaismäärän, käyttävissä olevat muuttujat ovat :num ja :total",
+          "default": "Sivu :num/:total"
+        },
+        {
+          "label": "Tekstimuotoinen esitys yhteenvedon pisteistä niille jotka käyttävät ruudunlukijasovellusta",
+          "default": "Sait :num pistettä :total pisteestä"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
+        }
+      ]
+    }
+  ]
+}

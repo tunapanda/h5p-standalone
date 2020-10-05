@@ -1,0 +1,17 @@
+{
+  "libraryStrings": {
+    "transformLabel": "Transformar",
+    "editLabel": "Editar",
+    "removeLabel": "Remover",
+    "bringToFrontLabel": "Trazer para a frente",
+    "sendToBackLabel": "Mandar para o fundo",
+    "unableToPaste": "Não é possível colar este objeto. Infelizmente, o objeto que você está tentando colar não é suportado para este tipo ou versão do conteúdo.",
+    "sizeLabel": "Tamanho",
+    "positionLabel": "Posição",
+    "heightLabel": "Altura",
+    "widthLabel": "Largura",
+    "copyLabel": "Copiar",
+    "paste": "Colar",
+    "moreElements": "Mais elementos"
+  }
+}

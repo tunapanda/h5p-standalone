@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "Bouton \"Vérifier\"",
+      "default": "Vérifier"
+    },
+    {
+      "label": "Bouton \"Recommencer\"",
+      "default": "Recommencer"
+    },
+    {
+      "label": "Texte d'explication du score",
+      "default": "Les réponses correctes donnent droit à +1 point. Les réponses incorrectes à -1 point. Le score le plus bas possible est 0."
+    },
+    {
+      "fields": [
+        {
+          "label": "Réglages",
+          "fields": [
+            {
+              "label": "Image d'arrière-plan",
+              "description": "Sélectionnez une image d'arrière-plan pour votre activité (facultatif)."
+            },
+            {
+              "label": "Taille de la zone de l'activité",
+              "description": "Spécifiez la hauteur et la largeur (en pixels) de la zone de l'activité."
+            }
+          ]
+        },
+        {
+          "label": "Éléments de l'activité",
+          "description": "Commencez par créer vos zones de dépôt.<br/>Ensuite, créez les étiquettes à glisser en cochant la/les zone(s) où elles pourront être glissées.<br/>Enfin, éditez de nouveau vos zones de dépôt et cochez les étiquettes qui devront y être correctement placées.",
+          "fields": [
+            {
+              "label": "Eléments",
+              "entity": "élément",
+              "field": {
+                "label": "Elément",
+                "fields": [
+                  {
+                    "description": "Sélectionnez le type de contenu que vous souhaitez ajouter."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Sélectionnez les zones de dépôt"
+                  },
+                  {
+                    "label": "Opacité"
+                  },
+                  {
+                    "label": "Nombre illimité d'instances pour cet élément",
+                    "description": "Cloner cet élément de sorte qu'il puisse être déposé dans plusieurs zones."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Zones de dépôt",
+              "entity": "Zone de dépôt",
+              "field": {
+                "label": "Zone de dépôt",
+                "fields": [
+                  {
+                    "label": "Etiquette"
+                  },
+                  {
+                    "label": "Afficher l'étiquette"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Sélectionnez les éléments qui devront être correctement placés dans cette zone"
+                  },
+                  {
+                    "label": "Opacité"
+                  },
+                  {
+                    "label": "Aides et commentaires",
+                    "fields": [
+                      {
+                        "label": "Indice"
+                      },
+                      {
+                        "label": "Message qui apparaît si l'association des éléments est correcte",
+                        "description": "Ce message apparaîtra au-dessous de \"vérifier\" si l'élément est placé correctement."
+                      },
+                      {
+                        "label": "Message qui apparaît si l'association des éléments est incorrecte",
+                        "description": "Ce message apparaîtra au-dessous de \"vérifier\" si l'élément est placé incorrectement."
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Cette zone de dépôt ne peut contenir qu'un seul élément",
+                    "description": "Assurez-vous qu'il n'existe qu'une seule bonne réponse pour cette zone"
+                  },
+                  {
+                    "label": "Activer l'alignement automatique des éléments déplacés",
+                    "description": "Les éléments déposés dans cette zone seront automatiquement alignés si cette option est cochée."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Opacité des étiquettes",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Par défaut"
+            }
+          ],
+          "label": "Définissez le feedback pour chaque intervalle de scores",
+          "description": "Cliquez sur le bouton \"Ajouter Intervalle\" pour ajouter autant d'intervalles de score que vous le souhaitez. Exemple: 0-20% Mauvais score, 21-91% Score moyen, 91-100% Score excellent !",
+          "entity": "intervalle",
+          "field": {
+            "fields": [
+              {
+                "label": "Intervalle des scores"
+              },
+              {},
+              {
+                "label": "Feedback pour un intervalle de scores défini",
+                "placeholder": "Remplissez le feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Options générales.",
+      "description": "Ces options vous permettent de contrôler le déroulement de vos activités.",
+      "fields": [
+        {
+          "label": "Activer le bouton \"Recommencer\""
+        },
+        {
+          "label": "Activer le bouton \"Vérifier\""
+        },
+        {
+          "label": "Obliger l'utilisateur à saisir une réponse avant de pouvoir afficher la correction."
+        },
+        {
+          "label": "Donner un point pour la question dans sa globalité",
+          "description": "Désactivez cette option pour donner un point pour chaque étiquette correctement placée."
+        },
+        {
+          "label": "Appliquer des pénalités",
+          "description": "Appliquez des pénalités pour les éléments déposés dans les mauvaises zones de dépôt. Cela doit être activé lorsque un ou plusieurs éléments peuvent être déposés dans plusieurs zones de dépôt, ou s'il n'y a qu'une seule zone de dépôt. Si ce n'est pas activé, les apprenants peuvent faire correspondre tous les éléments à toutes les zones de dépôt et toujours recevoir un score complet."
+        },
+        {
+          "label": "Activer les explications du score",
+          "description": "Montrer l'explication du score aux utilisateurs en vérifiant leurs réponses (si l'option 'Appliquer les pénalités' a été séléctionné)."
+        },
+        {
+          "label": "Opacité des étiquettes",
+          "description": "Si vous remplissez ce champ, la valeur d'opacité choisie enlevera la valeur de l'opacité paramétrée avant pour toutes les étiquettes. Cette valeur doit être un nombre compris entre 0 and 100, où 0 correspond à une transparence absolue and 100 à une opacité complète."
+        },
+        {
+          "label": "Mise en évidence de la zone de dépôt",
+          "description": "Choisissez quand mettre en évidence la zone de dépôt.",
+          "options": [
+            {
+              "label": "Lors du glisser-déposer"
+            },
+            {
+              "label": "Toujours"
+            },
+            {
+              "label": "Jamais"
+            }
+          ]
+        },
+        {
+          "label": "Marge pour l'alignement automatique (en pixels)"
+        },
+        {
+          "label": "Activer le bouton Plein écran",
+          "description": "Cochez cette option pour autoriser le mode Plein écran."
+        },
+        {
+          "label": "Montrer les points de votre score",
+          "description": "Afficher les points obtenus pour chaque réponse. Indisponible quand l'option 'Donner un point pour la question dans sa globalité' est activée."
+        },
+        {
+          "label": "Show Title",
+          "description": "Uncheck this option if you do not want this title to be displayed. The title will only be displayed in summaries, statistics etc."
+        }        
+      ]
+    },
+    {
+      "label": "Traduction de l'interface",
+      "fields": [
+        {
+          "label": "Texte pour ouvrir en plein écran",
+          "default": "Plein écran"
+        },
+        {
+          "label": "Texte pour quitter le plein écran",
+          "default": "Sortir du plein écran"
+        }
+      ]
+    },
+    {
+      "label": "Grabbable prefix",
+      "default": "Eléments déplaçables {num} de {total}."
+    },
+    {
+      "label": "Grabbable suffix",
+      "default": "Placed in dropzone {num}."
+    },
+    {
+      "label": "Préfix de la zone de Dépôt",
+      "default": "Dropzone {num} of {total}."
+    },
+    {
+      "label": "Pas d'étiquette pour la séléction de la zone de dépôt",
+      "default": "Pas de zone de dépôt."
+    },
+    {
+      "label": "Etiquette pour montrer le bouton d'indice",
+      "default": "Montrer l'indice."
+    },
+    {
+      "label": "Etiquette pour l'indice disponible",
+      "default": "Indice disponible"
+    },
+    {
+      "label": "Etiquette pour une bonne réponse",
+      "default": "Bonne réponse"
+    },
+    {
+      "label": "Etiquette pour une mauvaise réponse",
+      "default": "Réponse incorrecte"
+    },
+    {
+      "label": "Intitulé de l'espace contenant des feedbacks pour des réponses correctes/incorrectes",
+      "default": "Commentaire de retour"
+    },
+    {
+      "label": "Représentation textuelle du panneau du score pour les utilisateurs des outils de la vocalisation (comme ReadSpeaker)",
+      "default": "Vous avez :num out de :points au total"
+    },
+    {
+      "label": "Représentation textuelle du bouton de l'explication de votre score",
+      "default": "Montrer l'explication de votre score"
+    }
+  ]
+}

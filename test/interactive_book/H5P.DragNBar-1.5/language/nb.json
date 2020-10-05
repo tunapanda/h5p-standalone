@@ -1,0 +1,17 @@
+{
+  "libraryStrings": {
+    "transformLabel": "Transformer",
+    "editLabel": "Rediger",
+    "removeLabel": "Fjern",
+    "bringToFrontLabel": "Bring to Front",
+    "sendToBackLabel": "Send to Back",
+    "unableToPaste": "Cannot paste this object. Unfortunately, the object you are trying to paste is not supported by this content type or version.",
+    "sizeLabel": "Size",
+    "positionLabel": "Position",
+    "heightLabel": "Height",
+    "widthLabel": "Width",
+    "copyLabel": "Copy",
+    "paste": "Paste",
+    "moreElements": "More elements"
+  }
+}

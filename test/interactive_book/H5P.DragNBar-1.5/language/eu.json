@@ -1,0 +1,17 @@
+{
+  "libraryStrings": {
+    "transformLabel": "Eraldatu",
+    "editLabel": "Editatu",
+    "removeLabel": "Kendu",
+    "bringToFrontLabel": "Ekarri aurrera",
+    "sendToBackLabel": "Bidali atzera",
+    "unableToPaste": "Ezin da itsatsi objektu hau. Tamalez, itsatsi nahi duzun objektua ez da onartzen eduki mota edo bertsio honetan.",
+    "sizeLabel": "Tamaina",
+    "positionLabel": "Kokapena",
+    "heightLabel": "Altuera",
+    "widthLabel": "Zabalera",
+    "copyLabel": "Kopiatu",
+    "paste": "Itsatsi",
+    "moreElements": "Elementu gehiago"
+  }
+}

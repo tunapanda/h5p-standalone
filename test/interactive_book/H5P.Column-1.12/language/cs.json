@@ -1,0 +1,29 @@
+{
+  "semantics":[
+    {
+      "label":"Seznam obsahu sloupců",
+      "entity":"obsah",
+      "field":{
+        "fields":[
+          {
+            "label":"Obsah"
+          },
+          {
+            "label":"Oddělit obsah vodorovným pravítkem",
+            "options":[
+              {
+                "label":"Automaticky (výchozí)"
+              },
+              {
+                "label":"Nikdy nepoužívat pravítko výše"
+              },
+              {
+                "label":"Vždy používat pravítko výše"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

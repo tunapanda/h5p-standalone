@@ -1,0 +1,8 @@
+{
+  "semantics": [
+    {
+      "label": "Taula",
+      "default": "<table class=\"h5p-table\"><thead><tr><th scope=\"col\">Goialdeko 1. zutabea</th><th scope=\"col\">Goialdeko 2. zutabea</th></tr></thead><tbody><tr><td>1. errenkada 1. zutabea</td><td>1. errenkada 2. zutabea</td></tr><tr><td>2. Errenkada 1. zutabea</td><td>2. errenkada 2. zutabea</td></tr></tbody></table>"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "semantics": [
+    {
+      "label": "Table",
+      "default": "<table class=\"h5p-table\"><thead><tr><th scope=\"col\">ក្បាលជួរឈរទី 1</th><th scope=\"col\">ក្បាលជួរឈរទី 2</th></tr></thead><tbody><tr><td>ជួរដេកទី 1 ជួរឈរទី 1</td><td>ជួរដេកទី 1 ជួរឈរទី 2</td></tr><tr><td>ជួរដេកទី 2 ជួរឈរទី 1</td><td>ជួរដេកទី 2 ជួរឈរទី 2</td></tr></tbody></table>"
+    }
+  ]
+}

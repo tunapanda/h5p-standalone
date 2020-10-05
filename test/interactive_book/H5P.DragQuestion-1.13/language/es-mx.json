@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "Botón Revisar respuesta",
+      "default": "Revisar"
+    },
+    {
+      "label": "Botón Reintentar",
+      "default": "Reintentar"
+    },
+    {
+      "label": "Texto explicación puntaje",
+      "default": "Las respuestas correctas dan +1 punto. Respuestas incorrectas dan -1 punto. El puntaje más bajo posible es 0."
+    },
+    {
+      "fields": [
+        {
+          "label": "Ajustes",
+          "fields": [
+            {
+              "label": "Imagen del fondo",
+              "description": "Opcional. Seleccione una imagen para usar como fondo para su trabajo de arrastrar y soltar."
+            },
+            {
+              "label": "Tamaño del trabajo",
+              "description": "Especifique que tan grande (en px) debería ser el área de juego."
+            }
+          ]
+        },
+        {
+          "label": "Trabajo",
+          "description": "Comience clocando sus zonas de caída.<br/>Después, ponga sus elementos soltables y revise las zonas de caída apropiadas.<br/>Finalmente, edite nuevamente su zona de caída y revise las respuestas correctas.",
+          "fields": [
+            {
+              "label": "Elementos",
+              "entity": "elemento",
+              "field": {
+                "label": "Elemento",
+                "fields": [
+                  {
+                    "description": "Elija el tipo de contenido que le gustaría añadir."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Seleccione zonas de caída"
+                  },
+                  {
+                    "label": "Opacidad del fondo"
+                  },
+                  {
+                    "label": "Número infinito de instancias de elementos",
+                    "description": "Clona este elemento para que pueda ser arrastrado a múltiples zonas de caída."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Zonas de Caída",
+              "entity": "Zona de Caída",
+              "field": {
+                "label": "Zona de Caída",
+                "fields": [
+                  {
+                    "label": "Etiqueta"
+                  },
+                  {
+                    "label": "Mostrar etiqueta"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Seleccionar elementos correctos"
+                  },
+                  {
+                    "label": "Opacidad del fondo"
+                  },
+                  {
+                    "label": "Pistas y realimentación",
+                    "fields": [
+                      {
+                        "label": "Texto de pista"
+                      },
+                      {
+                        "label": "Mensaje mostrado en coincidencia correcta",
+                        "description": "El mensaje aparecerá debajo del trabajo en \"revisar\" si el soltable correcto es coincidencia."
+                      },
+                      {
+                        "label": "Mensaje mostrado en coincidencia incorrecta",
+                        "description": "El mensaje aparecerá debajo del trabajo en \"revisar\" si la coincidencia es incorrecta."
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Esta zona de caída solamente puede contener un elemento",
+                    "description": "Asegúrese de que solo haya una respuesta correcta para esta zona de caída"
+                  },
+                  {
+                    "label": "Habilitar Auto-Alinear",
+                    "description": "Auto-alineará todos los arrastrables caídos en esta zona."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Retroalimentación general",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Predeterminado"
+            }
+          ],
+          "label": "Definir retroalimentación personalizada para cualquier rango de puntaje",
+          "description": "Haga clic en el botón \"Añadir rango\" para añadir cuantos rangos necesite. Ejemplo: 0-20% Mal puntaje, 21-91% Puntaje Promedio, 91-100% ¡Magnífico Puntaje!",
+          "entity": "rango",
+          "field": {
+            "fields": [
+              {
+                "label": "Rango de Puntaje"
+              },
+              {},
+              {
+                "label": "Retroalimentación para rango definido de puntaje",
+                "placeholder": "LLene la retroalimentación"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Ajustes de comportamiento",
+      "description": "Estas opciones le permitirán controlar como se comporta el trabajo.",
+      "fields": [
+        {
+          "label": "Habilitar \"Reintentar\""
+        },
+        {
+          "label": "Habilitar botón \"Revisar\" "
+        },
+        {
+          "label": "Requerir entrada del usuario antes de que pueda verse la solución"
+        },
+        {
+          "label": "Dar un punto por todo el trabajo",
+          "description": "Deshabilitar dar un punto por cada arrastrable que es colocado correctamente."
+        },
+        {
+          "label": "Aplicar penalización",
+          "description": "Aplicar penalizaciones por elementos caídos en las zonas de caída incorrectas. Esto debe ser habilitado cuando los mismos elementos pueden ser soltados en múltiples zonas de caída, o si solamente hay una zona de caída. Si esto no está habilitado, los estudiantes podrían hacer coincidir todos los ítems a todas las zonas de caída y siempre recibirían un puntaje completo."
+        },
+        {
+          "label": "Habilitar explicación del puntaje",
+          "description": "Mostrar una explicación del puntaje al usuario al revisar sus respuestas (si la opción para 'Aplicar penalizaciones' ha sido seleccionada)."
+        },
+        {
+          "label": "Opacidad del fondo para arrastrables",
+          "description": "Si este campo está activado, anulará la opacidad configurada en todos los elementos arrastrables. Esto debería ser un número entre 0 y 100, donde 0 significa transparencia completa y 100 significa sin transparencia"
+        },
+        {
+          "label": "Resaltado de Zona de Caída",
+          "description": "Elegir cuando resaltar las zonas de caída.",
+          "options": [
+            {
+              "label": "Al arrastrar"
+            },
+            {
+              "label": "Siempre"
+            },
+            {
+              "label": "Nunca"
+            }
+          ]
+        },
+        {
+          "label": "Espaciado para Auto-Alinear (en px)"
+        },
+        {
+          "label": "Habilitar pantallaCompleta",
+          "description": "Activar esta opción para habilitar el botón para pantalla completa."
+        },
+        {
+          "label": "Mostrar puntos delpuntaje",
+          "description": "Mostrar puntos ganados por cada respuesta. No disponible cuando está habilitada la opción para 'Dar un punto para todo el trabajo' ."
+        },
+        {
+          "label": "Mostrar Título",
+          "description": "Desactivar esta opción si no desea mostrar este título. el título solamente será mostrado en resúmenes, estadísticas, etc."
+        }
+      ]
+    },
+    {
+      "label": "Localizar",
+      "fields": [
+        {
+          "label": "Etiqueta de mostrar en pantalla completa",
+          "default": "Pantalla completa"
+        },
+        {
+          "label": "Etiqueta de salir de pantalla completa",
+          "default": "Salir de Pantalla completa"
+        }
+      ]
+    },
+    {
+      "label": "Prefijo Arrastrable",
+      "default": "Arrastrable {num} de {total}."
+    },
+    {
+      "label": "Sufijo Arrastyrable",
+      "default": "Colocado en zona de caída {num}."
+    },
+    {
+      "label": "Prefijo zona de caída",
+      "default": "Zona de caída {num} de {total}."
+    },
+    {
+      "label": "Etiqueta selección no es zona de caída",
+      "default": "No es zona de caída."
+    },
+    {
+      "label": "Etiqueta para botón para mostrar pista",
+      "default": "Mostrar pista."
+    },
+    {
+      "label": "Etiqueta para pista disponible",
+      "default": "Pista disponible"
+    },
+    {
+      "label": "Etiqueta para Respuesta correcta",
+      "default": "Respuesta correcta"
+    },
+    {
+      "label": "Etiqueta para Respuesta incorrecta",
+      "default": "Respuesta incorrecta"
+    },
+    {
+      "label": "Encabezado para panel que contiene retroalimentación para respuestas correctas/incorrectas",
+      "default": "Retroalimentación"
+    },
+    {
+      "label": "Representación textual de la barra de puntaje para aquellos que usan un Lector de voz",
+      "default": "Usted obtuvo :num de un total de :total puntos"
+    },
+    {
+      "label": "Representación textual del botón para explicación del puntaje",
+      "default": "Mostrar explicación del puntaje"
+    }
+  ]
+}

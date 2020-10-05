@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "Galderen zerrenda",
+      "entity": "galdera",
+      "widgets": [
+        {
+          "label": "Lehenetsia"
+        },
+        {
+          "label": "Testuala"
+        }
+      ],
+      "field": {
+        "label": "Galdera eta aukerak",
+        "fields": [
+          {
+            "label": "Galdera"
+          },
+          {
+            "label": "Aukerak – lehen aukera da egokia.",
+            "entity": "erantzuna",
+            "field": {
+              "label": "Aukera"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Feedback Orokorra",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Lehenetsia"
+            }
+          ],
+          "label": "Definitu feedback pertsonalizatua edozein puntuazio tarterako",
+          "description": "Klikatu \"Gehitu tartea\" botoia gehitzeko behar haina tarte. Adibidez: 0-%20 Puntuazio txarra, &21-%90 Tarteko puntuazioa, %91-%100 Puntuazio bikaina!",
+          "entity": "tartea",
+          "field": {
+            "fields": [
+              {
+                "label": "Puntuazio tartea"
+              },
+              {},
+              {
+                "label": "Definitutako puntuazio tarterako feedbacka",
+                "placeholder": "Bete feedbacka"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Portaera-ezarpenak",
+      "fields": [
+        {
+          "label": "Jarraitu automatikoki",
+          "description": "Joan automatikoki hurrengo galderara aukera bat hautatzen denean"
+        },
+        {
+          "label": "Erantzun zuzenen debora-muga",
+          "description": "Balioa milisegundotan"
+        },
+        {
+          "label": "Erantzun okerren debora-muga",
+          "description": "Balioa milisegundotan"
+        },
+        {
+          "label": "Gaitu soinu efektuak"
+        },
+        {
+          "label": "Gaitu berriz saiatzeko botoia"
+        },
+        {
+          "label": "Gaitu erantzuna erakusteko botoia"
+        },
+        {
+          "label": "Gainditzeko ehunekoa",
+          "description": "Galdetegia gainditzeko beharrezkoa den puntuazio totalaren ehunekoa."
+        }
+      ]
+    },
+    {
+      "label": "Lokalizatu aukera bakarreko multzoa",
+      "fields": [
+        {
+          "label": "\"Next\" botoiarentzako etiketa",
+          "default": "Hurrengo galdera"
+        },
+        {
+          "label": "\"Show solution\" botoiarentzako etiketa",
+          "default": "Erakutsi erantzuna"
+        },
+        {
+          "label": "\"Retry\" botoiarentzako etiketa",
+          "default": "Berriz saiatu"
+        },
+        {
+          "label": "Erantzuna erakusteko ikuspegiaren izenburua",
+          "default": "Soluzioen zerrenda"
+        },
+        {
+          "label": "Erantzun zuzenetarako irakurgailuaren testua",
+          "default": "Zuzena!"
+        },
+        {
+          "label": "Erantzun okerretarako irakurgailuaren testua",
+          "default": "Erantzun okerra!"
+        },
+        {
+          "label": "\"mute\" botoiaren etiketa, feedback-etako soinua desgaitzeko",
+          "default": "Mututu feedback-etako soinua"
+        },
+        {
+          "label": "\"Close\" botoiaren etiketa",
+          "default": "Itxi"
+        },
+        {
+          "label": "Diapositiba zenbakiaren testua",
+          "description": "Oraingo diapositiba eta diapositiba kopuru osoaren berri ematen du, aldagaiak dira :num and :total",
+          "default": "Diapositiba :num / :total"
+        },
+        {
+          "label": "Puntuazio barraren testu adierazpena irakurgailua erabiltzen dutenentzat",
+          "default": ":total puntutik :num lortu dituzu"
+        },
+        {
+          "label": "Galdera zenbakiaren testua erantzunen zerrendan",
+          "description": "Oraingo galderaren erantzunen zerrendako indizea erakusten du, aldagaiak :num dira",
+          "default": ":num. galdera"
+        }
+      ]
+    }
+  ]
+}

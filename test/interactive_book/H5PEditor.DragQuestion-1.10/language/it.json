@@ -1,0 +1,16 @@
+{
+  "libraryStrings": {
+    "insertElement": "Aggiungi :tipo",
+    "done": "Fatto",
+    "remove": "Rimuovi",
+    "image": "Immagine",
+    "text": "Testo",
+    "noTaskSize": "Specifica anzitutto la dimensione dell'attività",
+    "confirmRemoval": "Sei sicuro di voler rimuovere questo elemento?",
+    "backgroundOpacityOverridden": "L'opacità di sfondo viene ignorata",
+    "advancedtext": "Testo",
+    "dropzone": "Zona di rilascio",
+    "selectAll": "Seleziona tutto",
+    "deselectAll": "Deseleziona tutto"
+  }
+}

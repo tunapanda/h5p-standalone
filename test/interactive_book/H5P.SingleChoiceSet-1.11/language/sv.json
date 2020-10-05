@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "Frågelista",
+      "entity": "fråga",
+      "widgets": [
+        {
+          "label": "Standard"
+        },
+        {
+          "label": "Textformat"
+        }
+      ],
+      "field": {
+        "label": "Fråga och svarsalternativ",
+        "fields": [
+          {
+            "label": "Fråga"
+          },
+          {
+            "label": "Svarsalternativ - första ska vara det rätta svaret.",
+            "entity": "svar",
+            "field": {
+              "label": "Svar"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Standard"
+            }
+          ],
+          "label": "Ge feedback utifrån poängresultat",
+          "description": "Klicka på \"Nytt intervall\"-knappen för att lägga till ett nytt poängintervall där du vill ge speciell feedback. Exempel: 0-20% Underkänt, 21-91% Godkänt, 91-100% Mycket väl godkänt.",
+          "entity": "intervall",
+          "field": {
+            "fields": [
+              {
+                "label": "Poängintervall"
+              },
+              {},
+              {
+                "label": "Feedback för detta intervall",
+                "placeholder": "Skriv in feedback här"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Allmänna inställningar",
+      "fields": [
+        {
+          "label": "Fortsätt automatiskt",
+          "description": "Gå till nästa fråga automatiskt när ett svarsalternativ är valt"
+        },
+        {
+          "label": "Paus efter rätt svar",
+          "description": "Värde i millisekunder. (1000 millisekunder = 1 sekund)."
+        },
+        {
+          "label": "Paus efter fel svar",
+          "description": "Värde i millisekunder. (1000 millisekunder = 1 sekund)."
+        },
+        {
+          "label": "Ljudeffekter"
+        },
+        {
+          "label": "\"Försök igen\"-knapp"
+        },
+        {
+          "label": "\"Visa rätt svar\"-knapp"
+        },
+        {
+          "label": "Krav för godkänt",
+          "description": "Procent av total poäng som krävs för att få godkänt på testet."
+        }
+      ]
+    },
+    {
+      "label": "Ändra texter",
+      "fields": [
+        {
+          "label": "Etikett för \"Nästa\"-knappen",
+          "default": "Nästa fråga"
+        },
+        {
+          "label": "Etikett för \"Visa rätt svar\"-knappen",
+          "default": "Visa rätt svar"
+        },
+        {
+          "label": "Etikett för \"Försök igen\"-knappen",
+          "default": "Försök igen"
+        },
+        {
+          "label": "Titel för sidan Visa rätt svar",
+          "default": "Visa rätt svar"
+        },
+        {
+          "label": "Skärmläsartext för rätt svar",
+          "default": "Rätt svar!"
+        },
+        {
+          "label": "Skärmläsartext för fel svar",
+          "default": "Fel svar!"
+        },
+        {
+          "label": "Beskrivning av \"stäng av ljudet\"-knappen",
+          "default": "Stäng av ljudet"
+        },
+        {
+          "label": "Beskrivning av \"Stäng\"-knappen",
+          "default": "Stäng"
+        },
+        {
+          "label": "Sidnummer text",
+          "description": "Visar sidnummer för aktuell sida och totala antalet sidor. Variabler är :num och :total",
+          "default": "Sida :num av :total"
+        },
+        {
+          "label": "Texten som läses upp när poängen presenteras för användare med skärmläsare",
+          "default": "Du fick :num av :total poäng"
+        },
+        {
+          "label": "Etikett för frågans nummer i lösningslistan",
+          "description": "Visar aktuell index över fråga i lösningsligtan, variabler är :num",
+          "default": "Fråga :num"
+        }
+      ]
+    }
+  ]
+}

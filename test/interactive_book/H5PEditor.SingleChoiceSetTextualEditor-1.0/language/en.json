@@ -1,0 +1,6 @@
+{
+  "libraryStrings": {
+    "helpText": "Create blocks of question and answers, where each block is separated by an empty line. In each block the first line is the question, the other lines contains the answers. The first answer is the correct one",
+    "warning": "Warning! If you change the tasks in the textual editor all rich text formatting(incl. line breaks) will be removed."
+  }
+}

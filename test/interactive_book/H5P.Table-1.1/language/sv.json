@@ -1,0 +1,8 @@
+{
+  "semantics": [
+    {
+      "label": "Tabell",
+      "default": "<table class=\"h5p-table\"><thead><tr><th scope=\"col\">Rubrik kolumn 1</th><th scope=\"col\">Rubrik kolumn 2</th></tr></thead><tbody><tr><td>Rad 1 kolumn 1</td><td>Rad 1 kolumn 2</td></tr><tr><td>Rad 2 kolumn 1</td><td>Rad 2 kolumn 2</td></tr></tbody></table>"
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "答えをチェックするボタン",
+      "default": "チェック"
+    },
+    {
+      "label": "リトライボタン",
+      "default": "リトライ"
+    },
+    {
+      "label": "得点説明用テキスト",
+      "default": "正解の場合 +1 点を与えます。不正解では -1 点となります。最低得点は 0 点です。"
+    },
+    {
+      "fields": [
+        {
+          "label": "設定",
+          "fields": [
+            {
+              "label": "背景画像",
+              "description": "オプションです。ドラッグ & ドロップするときの背景として使う画像を選んで下さい。"
+            },
+            {
+              "label": "タスクのサイズ",
+              "description": "再生領域をサイズ (px) で指定します。"
+            }
+          ]
+        },
+        {
+          "label": "タスク",
+          "description": "ドロップゾーンを配置して開始します。 <br/> 次に、ドロップ可能な要素を配置し、対応するドロップゾーンにチェックマークをつけます。 <br/> 最後に、ドロップゾーンを再度編集して正解にチェックマークをつけます。",
+          "fields": [
+            {
+              "label": "要素",
+              "entity": "要素",
+              "field": {
+                "label": "要素",
+                "fields": [
+                  {
+                    "description": "追加するコンテンツのタイプを選択します。"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "ドロップゾーンを選択"
+                  },
+                  {
+                    "label": "背景の不透明度"
+                  },
+                  {
+                    "label": "要素数無制限",
+                    "description": "この要素を複製して、複数のドロップゾーンにドラッグできるようにします。"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "ドロップゾーン",
+              "entity": "ドロップゾーン",
+              "field": {
+                "label": "ドロップゾーン",
+                "fields": [
+                  {
+                    "label": "ラベル"
+                  },
+                  {
+                    "label": "ラベルを表示"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "正解の要素を選択"
+                  },
+                  {
+                    "label": "背景の不透明度"
+                  },
+                  {
+                    "label": "ヒントとフィードバック",
+                    "fields": [
+                      {
+                        "label": "ヒントのテキスト"
+                      },
+                      {
+                        "label": "正解に一致した時に表示されるメッセージ",
+                        "description": "正解のドロップに一致した場合、 「チェック」 したタスクの下に、メッセージが表示されます。"
+                      },
+                      {
+                        "label": "不正解に一致した時に表示されるメッセージ",
+                        "description": "一致が不正解の場合、 「チェック」 したタスクの下に、メッセージが表示されます。"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "このドロップゾーンには一つの要素のみ含めることができます。",
+                    "description": "このドロップゾーンに一つだけの正解があることを確認してください。"
+                  },
+                  {
+                    "label": "自動整列を有効化",
+                    "description": "すべてのドロップするものをこのゾーンで自動整列します。"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "全体のフィードバック",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "デフォルト"
+            }
+          ],
+          "label": "ある得点範囲に対して、カスタムフィードバックを定義します。",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "範囲",
+          "field": {
+            "fields": [
+              {
+                "label": "得点範囲"
+              },
+              {},
+              {
+                "label": "定義した得点範囲に対するフィードバック",
+                "placeholder": "フィードバックを記入"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "動作設定",
+      "description": "これらのオプションでタスクがどのように動作するかを制御できます。",
+      "fields": [
+        {
+          "label": "「リトライ」を有効化"
+        },
+        {
+          "label": "Enable \"Check\" button"
+        },
+        {
+          "label": "解を表示する前にユーザーの入力が必要"
+        },
+        {
+          "label": "タスク全体に1点を与える",
+          "description": "正しく置かれた各ドロップ要素に1点を与えるのを無効にします。"
+        },
+        {
+          "label": "ペナルティを適用",
+          "description": "まちがったドロップゾーンに要素がドロップされた場合ペナルティを適用します。同じ要素が複数のドロップゾーンにドロップできるようにするとき、もしくは1つだけのドロップゾーンがあるときにこれを有効にします。これが有効でない場合、学習者はすべてのアイテムをすべてのドロップゾーンにマッチさせれてしまい、満点となってしまいます。"
+        },
+        {
+          "label": "得点説明を有効化",
+          "description": "（「ペナルティを適用する」オプションが選択されている 場合）答えをチェックするとき、得点の説明をユーザーに表示します。"
+        },
+        {
+          "label": "ドラッグするものの背景の不透明度",
+          "description": "このフィールドを設定すると、すべてのドラッグ要素に設定された不透明度を上書きします。これは 0と100 の間の数値をとり、0は完全な透明、100は透明度がないことを意味します。"
+        },
+        {
+          "label": "ドロップゾーンをハイライト",
+          "description": "いつドロップゾーンをハイライトするかを選択してください。",
+          "options": [
+            {
+              "label": "ドラッグ中"
+            },
+            {
+              "label": "常時"
+            },
+            {
+              "label": "しない"
+            }
+          ]
+        },
+        {
+          "label": "自動整列の間隔 (px)"
+        },
+        {
+          "label": "全画面表示を有効化",
+          "description": "フルスクリーンボタンを有効にするにはこのオプションをオンにしてください。"
+        },
+        {
+          "label": "得点ポイントを表示",
+          "description": "Show points earned for each answer. Not available when the 'Give one point for the whole task' option is enabled."
+        },
+        {
+          "label": "タイトルを表示",
+          "description": "このタイトルを表示したくない場合は、このオプションをオフにします。タイトルは概要、統計などでのみ表示されます。"
+        }
+      ]
+    },
+    {
+      "label": "ローカライズ",
+      "fields": [
+        {
+          "label": "フルスクリーンラベル",
+          "default": "フルスクリーン"
+        },
+        {
+          "label": "Exit fullscreen label",
+          "default": "Exit fullscreen"
+        }
+      ]
+    },
+    {
+      "label": "Grabbable prefix",
+      "default": "Grabbable {num} of {total}."
+    },
+    {
+      "label": "Grabbable suffix",
+      "default": "Placed in dropzone {num}."
+    },
+    {
+      "label": "Dropzone prefix",
+      "default": "Dropzone {num} of {total}."
+    },
+    {
+      "label": "No dropzone selection label",
+      "default": "No dropzone."
+    },
+    {
+      "label": "ヒント表示ボタンのラベル",
+      "default": "ヒントを表示"
+    },
+    {
+      "label": "利用可能なヒントのラベル",
+      "default": "ヒント利用可能"
+    },
+    {
+      "label": "正解のラベル",
+      "default": "正解 !"
+    },
+    {
+      "label": "不正解のラベル",
+      "default": "まちがえた答え:"
+    },
+    {
+      "label": "正解/不正解のフィードバックを含むパネルのヘッダー",
+      "default": "フィードバック"
+    },
+    {
+      "label": "Textual representation of the score bar for those using a readspeaker",
+      "default": "You got :num out of :total points"
+    },
+    {
+      "label": "Textual representation of the score explanation button",
+      "default": "Show score explanation"
+    }
+  ]
+}

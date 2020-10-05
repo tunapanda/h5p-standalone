@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "Kontrolli vastust nupp",
+      "default": "Kontrolli"
+    },
+    {
+      "label": "Proovi uuesti nupp",
+      "default": "Proovi uuesti"
+    },
+    {
+      "label": "Punktisummat seletav tekst",
+      "default": "Õiged vastused annavad +1 punkti. Valed vastused annavad -1 punkti. Madalaim võimalik tulemus on 0 punkti."
+    },
+    {
+      "fields": [
+        {
+          "label": "Seaded",
+          "fields": [
+            {
+              "label": "Taustapilt",
+              "description": "Mittekohustuslik. Vali lohistamisülesande taustaks pilt."
+            },
+            {
+              "label": "Ülesande suurus",
+              "description": "Määra mänguala suurus pikslites (px)."
+            }
+          ]
+        },
+        {
+          "label": "Ülesanne",
+          "description": "Alusta sihtkohtade määramisega.<br/>Järgmisena paiguta lohistatavad elemendid ja märgi sobilikud sihtkohad.<br/>Lõpuks märgi sihtkohtade õiged vastused.",
+          "fields": [
+            {
+              "label": "Elemendid",
+              "entity": "element",
+              "field": {
+                "label": "Element",
+                "fields": [
+                  {
+                    "description": "Vali lisatava sisu tüüp."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Määra sihtkohad"
+                  },
+                  {
+                    "label": "Tausta läbipaistvus"
+                  },
+                  {
+                    "label": "Lõpmatu arv elemendi kloone",
+                    "description": "Paljundab elementi, et seda saaks lohistada mitmetesse sihtkohtadesse."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Sihtkohad",
+              "entity": "Sihtkoht",
+              "field": {
+                "label": "Sihtkoht",
+                "fields": [
+                  {
+                    "label": "Silt"
+                  },
+                  {
+                    "label": "Näita silti"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Vali õiged elemendid"
+                  },
+                  {
+                    "label": "Tausta läbipaistvus"
+                  },
+                  {
+                    "label": "Vihje ja tagasiside",
+                    "fields": [
+                      {
+                        "label": "Vihje tekst"
+                      },
+                      {
+                        "label": "Õige vaste sõnum",
+                        "description": "Sõnumit näidatakse ülesande all \"kontrollimisel\", kui element sobib sihtkohaga."
+                      },
+                      {
+                        "label": "Mittesobiva vaste sõnum",
+                        "description": "Sõnumit näidatakse ülesande all \"kontrollimisel\", kui element ei sobi sihtkohaga."
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Siia sihtkohta mahub vaid üks element",
+                    "description": "Veendu, et sellel sihtkohal on vaid üks õige vastus"
+                  },
+                  {
+                    "label": "Luba automaatne joondamine",
+                    "description": "Kõik siia sihtkohta lohistatud elemendid joondatakse automaatselt."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Üldine tagasiside",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Vaikimisi"
+            }
+          ],
+          "label": "Määra tagasiside punktisummade vahemikele",
+          "description": "Vahemike lisamiseks kliki \"Lisa vahemik\" nupul nii mitu korda, kui vaja. Näited: 0-20% halb tulemus, 21-91% keskmine tulemus, 91-100% supertulemus!",
+          "entity": "vahemik",
+          "field": {
+            "fields": [
+              {
+                "label": "Punktisummade vahemik"
+              },
+              {},
+              {
+                "label": "Määratud punktisummade vahemiku tagasiside",
+                "placeholder": "Sisesta tagasiside"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Käitumisseaded",
+      "description": "Need valikud võimaldavad sul määrata, kuidas ülesanne käitub.",
+      "fields": [
+        {
+          "label": "Luba \"Proovi uuesti\" nupp"
+        },
+        {
+          "label": "Luba \"Kontrolli\" nupp"
+        },
+        {
+          "label": "Nõua enne lahenduse näitamist kasutaja sisendit."
+        },
+        {
+          "label": "Anna üks punkt kogu ülesande eest",
+          "description": "Keela, kui soovid anda ühe punkti iga õigesti lohistatud elemendi eest."
+        },
+        {
+          "label": "Määra trahvid",
+          "description": "Määra trahvid valedesse sihtkohtadesse lohistatud elementide eest. Peab olema lubatud, kui sama elementi on võimalik lohistada erinevatesse sihtkohtadesse või kui on vaid üks sihtkoht. Kui see ei ole lubatud, siis võivad õppurid sobitada kõik elemendid kõikide sihtkohtadega ja saada alati täispunktid."
+        },
+        {
+          "label": "Luba punktisumma selgitused",
+          "description": "Kuva kasutajale tema vastuste kontrollimisel punktisumma selgitus (kui 'Määra trahvid' valik on märgitud)."
+        },
+        {
+          "label": "Tausta läbipaistvus lohistatavatele elementidele",
+          "description": "Märgitud välja puhul kohaldatakse kõigi lohistatavate elementide taustale. Numbrivahemik on 0 (täiesti läbipaistev) kuni 100 (ei paista läbi)."
+        },
+        {
+          "label": "Sihtkoha esiletoomine",
+          "description": "Märgi, millal sihtkohad esile tuua",
+          "options": [
+            {
+              "label": "Lohistamise ajal"
+            },
+            {
+              "label": "Alati"
+            },
+            {
+              "label": "Mitte kunagi"
+            }
+          ]
+        },
+        {
+          "label": "Automaatse joondamise vahekaugus pikslites (px)"
+        },
+        {
+          "label": "Luba täisekraan",
+          "description": "Märgi see valik täisekraani lubamiseks."
+        },
+        {
+          "label": "Näita punktisummad",
+          "description": "Näita iga vastuse eest teenitud punkte. Ei ole kasutatav, kui märgitud on 'Anna üks punkt kogu ülesande eest' valik."
+        },
+        {
+          "label": "Näita pealkirja",
+          "description": "Ära märgi seda valikut, kui ei taha pealkirja näidata. Pealkirja näidatakse ainult kokkuvõtetes, statistikas, jne."
+        }
+      ]
+    },
+    {
+      "label": "Kohanda",
+      "fields": [
+        {
+          "label": "Täisekraani silt",
+          "default": "Täisekraan"
+        },
+        {
+          "label": "Välju täisekraanilt silt",
+          "default": "Välju täisekraanilt"
+        }
+      ]
+    },
+    {
+      "label": "Haaratava eesliide",
+      "default": "Haaratav {num} / {total}."
+    },
+    {
+      "label": "Haaratava järelliide",
+      "default": "Asetatud sihtkohta {num}."
+    },
+    {
+      "label": "Sihtkoha eesliide",
+      "default": "Sihtkoht {num} / {total}."
+    },
+    {
+      "label": "Mitte-sihtkoha valiku silt",
+      "default": "Ei ole sihtkoht."
+    },
+    {
+      "label": "Vihje näitamise nupu silt",
+      "default": "Näita vihjet."
+    },
+    {
+      "label": "Saadavaloleva vihje silt",
+      "default": "Küsi vihjet"
+    },
+    {
+      "label": "Õige vastuse silt",
+      "default": "Õige vastus"
+    },
+    {
+      "label": "Vale vastuse silt",
+      "default": "Vale vastus"
+    },
+    {
+      "label": "Õigete/valede vastuste tagasiside paneeli pealkiri",
+      "default": "Tagasiside"
+    },
+    {
+      "label": "Punktisumma riba tekstiline esitus neile, kes kasutavad tekstilugerit",
+      "default": "Said :num punkti :total punktist"
+    },
+    {
+      "label": "Punktisumma selgitusnupu tekstiline esitus",
+      "default": "Näita punktisumma selgitust"
+    }
+  ]
+}

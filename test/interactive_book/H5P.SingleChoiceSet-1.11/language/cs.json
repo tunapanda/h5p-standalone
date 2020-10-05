@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "Seznam otázek",
+      "entity": "otázka",
+      "widgets": [
+        {
+          "label": "Výchozí"
+        },
+        {
+          "label": "Textová"
+        }
+      ],
+      "field": {
+        "label": "Otázka & alternativy",
+        "fields": [
+          {
+            "label": "Otázka"
+          },
+          {
+            "label": "Alternativy - první alternativa je správná.",
+            "entity": "odpověď",
+            "field": {
+              "label": "Alternativa"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Celková zpětná vazba",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Výchozí"
+            }
+          ],
+          "label": "Definujte vlastní zpětnou vazbu pro libovolný rozsah skóre",
+          "description": "Klepnutím na tlačítko \"Add range\" přidáte libovolný počet rozsahů. Příklad: 0-20% špatné skóre, 21-91% průměrné skóre, 91-100% výborné skóre!",
+          "entity": "rozsah",
+          "field": {
+            "fields": [
+              {
+                "label": "Rozsah skóre"
+              },
+              {},
+              {
+                "label": "Zpětná vazba pro definovaný rozsah skóre",
+                "placeholder": "Vyplňte zpětnou vazbu"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Nastavení chování",
+      "fields": [
+        {
+          "label": "Automaticky pokračovat",
+          "description": "Když je vybrána alternativa, automaticky přejde na další otázku "
+        },
+        {
+          "label": "Časový limit pro správné odpovědi",
+          "description": "Hodnota v milisekundách"
+        },
+        {
+          "label": "Časový limit pro špatné odpovědi",
+          "description": "Hodnota v milisekundách"
+        },
+        {
+          "label": "Povolit zvukové efekty"
+        },
+        {
+          "label": "Povolit tlačítko opakování"
+        },
+        {
+          "label": "Povolit tlačítko ukázat řešení"
+        },
+        {
+          "label": "Procento úspěšnosti",
+          "description": "Procento z celkového skóre požadovaného pro absolvování testu."
+        }
+      ]
+    },
+    {
+      "label": "Lokalizujte otázku s jedním výběrem",
+      "fields": [
+        {
+          "label": "Popisek tlačítka \"Next\" ",
+          "default": "Další otázka"
+        },
+        {
+          "label": "Popisek tlačítka \"Show solution\" ",
+          "default": "Zobrazit řešení"
+        },
+        {
+          "label": "Popisek tlačítka \"Retry\" ",
+          "default": "Opakovat"
+        },
+        {
+          "label": "Název pro zobrazení řešení",
+          "default": "Seznam řešení"
+        },
+        {
+          "label": "Text čtecího zařízení pro správnou odpověď",
+          "default": "Správně!"
+        },
+        {
+          "label": "Text čtecího zařízení pro chybnou odpověď",
+          "default": "Chyba!"
+        },
+        {
+          "label": "Popisek tlačítka \"mute\"  vypnutí zvuku zpětné vazby",
+          "default": "Ztlumit zvuk zpětné vazby"
+        },
+        {
+          "label": "Popisek tlačítka \"Close\" ",
+          "default": "Zavřít"
+        },
+        {
+          "label": "Text čísla snímku",
+          "description": "Oznamuje aktuální snímek a celkový počet snímků, proměnné jsou :num a :total",
+          "default": "Snímek :num z :total"
+        },
+        {
+          "label": "Textové znázornění výsledkové lišty pro ty, kteří používají čtecí zařízení",
+          "default": "Máte :num z celkem :total bodů"
+        },
+        {
+          "label": "Popisek čísla otázky v seznamu řešení",
+          "description": "Oznamuje aktuální index otázek v seznamu řešení, proměnné jsou :num",
+          "default": "Otázka :num"
+        }
+      ]
+    }
+  ]
+}

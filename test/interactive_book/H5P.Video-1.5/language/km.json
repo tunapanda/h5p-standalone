@@ -1,0 +1,136 @@
+{
+  "semantics": [
+    {
+      "label": "Video sources",
+      "description": "To ensure that the video works in all browsers you should add both WebM and MP4 formatted sources."
+    },
+    {
+      "label": "Visuals",
+      "fields": [
+        {
+          "label": "Poster image"
+        },
+        {
+          "label": "Fit video player to use all available space",
+          "description": "If not set the video player will have the same aspect ratio as the video."
+        },
+        {
+          "label": "Show video player controls",
+          "description": "Add controls to the video player. This allows users to play, pause, etc."
+        }
+      ]
+    },
+    {
+      "label": "Playback",
+      "fields": [
+        {
+          "label": "Auto-play video",
+          "description": "Start playing the video automatically. May not work on mobile devices."
+        },
+        {
+          "label": "Loop video",
+          "description": "Automatically start the video over again when it ends."
+        }
+      ]
+    },
+    {
+      "label": "Video localization",
+      "fields": [
+        {
+          "label": "Name",
+          "default": "វីដេអូ",
+          "description": "Helps identify content of this type."
+        },
+        {
+          "label": "Loading",
+          "default": "កម្មវិធីលេងវីដេអូកំពុងដំណើរការ..."
+        },
+        {
+          "label": "No players found",
+          "default": "រកមិនឃើញកម្មវិធីដែលអាចលេងប្រភេទវីដេអូដែលបានបញ្ចូល។"
+        },
+        {
+          "label": "No sources",
+          "default": "មិនមានឯកសារវីដេអូ"
+        },
+        {
+          "label": "Aborted",
+          "default": "ការលេងមេឌាត្រូវបានបោះបង់។"
+        },
+        {
+          "label": "Network failure",
+          "default": "បណ្តាញបរាជ័យ"
+        },
+        {
+          "label": "Cannot decode video source",
+          "default": "មិនអាចបម្លែងមេឌាបាន"
+        },
+        {
+          "label": "Format not supported",
+          "default": "ប្រភេទវីដេអូមិនត្រូវបានគាំទ្រ"
+        },
+        {
+          "label": "Media encrypted",
+          "default": "មេឌាត្រូវបានអ៊ីនគ្រីប"
+        },
+        {
+          "label": "Unknown error",
+          "default": "មិនដឹងមានបញ្ហាអី"
+        },
+        {
+          "label": "Invalid YouTube ID",
+          "default": "ID យូធូបមិនត្រឹមត្រូវ។"
+        },
+        {
+          "label": "Unknown YouTube ID",
+          "default": "រកមិនឃើញវីដេអូដែលត្រូវ ID ដែលបានបញ្ចូល។"
+        },
+        {
+          "label": "Restricted YouTube video",
+          "default": "ម្ចាស់វីដេអូនេះមិនអនុញ្ញាតឲ្យគេបង្កប់វីដេអូនេះក្នុងវេបសាយក្រៅពី YouTube ទេ។"
+        }
+      ]
+    },
+    {
+      "label": "Accessibility",
+      "fields": [
+        {
+          "label": "Add video track",
+          "entity": "Track",
+          "field": {
+            "label": "Track",
+            "fields": [
+              {
+                "label": "Track label"
+              },
+              {
+                "label": "Type kind, refer to <a target='_blank' href=https://html.spec.whatwg.org/multipage/embedded-content.html#the-track-element>HTML living standard</a>",
+                "options": [
+                  {
+                    "label": "Subtitles"
+                  },
+                  {
+                    "label": "Captions"
+                  },
+                  {
+                    "label": "Descriptions"
+                  },
+                  {
+                    "label": "Chapters"
+                  }
+                ]
+              },
+              {
+                "label": "Source language, must be defined for subtitles",
+                "description": "Must be a valid BCP 47 language tag. If the kind attribute is set to subtitles, then srclang must be defined."
+              },
+              {
+                "label": "Track file (WebVTT)"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

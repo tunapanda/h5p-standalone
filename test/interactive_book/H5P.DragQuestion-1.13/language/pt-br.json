@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "Botão Verificar resposta",
+      "default": "Verificar resposta"
+    },
+    {
+      "label": "Botão Tentar novamente",
+      "default": "Tentar novamente"
+    },
+    {
+      "label": "Texto de explicação da pontuação",
+      "default": "Respostas corretas dão +1 ponto. Respostas incorretas dão -1 ponto. A menor pontuação possível é 0."
+    },
+    {
+      "fields": [
+        {
+          "label": "Configurações",
+          "fields": [
+            {
+              "label": "Imagem de fundo",
+              "description": "Opcional. Selecione uma imagem para ser utilizada como fundo de sua tarefa 'arraste e solte'."
+            },
+            {
+              "label": "Tamanho da tarefa",
+              "description": "Especifique o tamanho (em pixels) que a área da tarefa deve ter."
+            }
+          ]
+        },
+        {
+          "label": "Tarefa",
+          "description": "Comece posicionando suas zonas de largada.<br/>Em seguida, posicione os elementos arrastáveis e marque-os nas zonas de largada apropriadas.<br/>Por último, edite suas zonas de largada novamente e marque as respostas corretas.",
+          "fields": [
+            {
+              "label": "Elementos",
+              "entity": "element",
+              "field": {
+                "label": "Elemento",
+                "fields": [
+                  {
+                    "description": "Escolha o tipo de conteúdo que deseja adicionar."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Selecione as zonas de largada"
+                  },
+                  {
+                    "label": "Opacidade do plano de fundo"
+                  },
+                  {
+                    "label": "Número infinito de instâncias do elemento",
+                    "description": "Clona este elemento para que ele possa ser arrastado para múltiplas zonas de largada."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Zonas de largada",
+              "entity": "Drop Zone",
+              "field": {
+                "label": "Zona de largada",
+                "fields": [
+                  {
+                    "label": "Rótulo"
+                  },
+                  {
+                    "label": "Mostrar rótulo"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Selecione o(s) elemento(s) correto(s)."
+                  },
+                  {
+                    "label": "Opacidade do plano de fundo"
+                  },
+                  {
+                    "label": "Dicas e feedback",
+                    "fields": [
+                      {
+                        "label": "Texto da dica"
+                      },
+                      {
+                        "label": "Mensagem exibida quando a resposta estiver correta",
+                        "description": "Mensagem aparecerá embaixo da tarefa quando \"Verificar resposta\" for pressionado se a resposta estiver correta."
+                      },
+                      {
+                        "label": "Mensagem exibida quando a resposta estiver incorreta",
+                        "description": "Mensagem aparecerá embaixo da tarefa quando \"Verificar resposta\" for pressionado se a resposta estiver incorreta."
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Esta zona de largada pode possuir apenas um elemento",
+                    "description": "Tenha certeza de que há apenas umas resposta correta para esta zona"
+                  },
+                  {
+                    "label": "Habilitar auto-alinhamento",
+                    "description": "Alinhará automaticamento todos os elementos largados nesta zona."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Feedback geral",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Padrão"
+            }
+          ],
+          "label": "Defina feedback customizado para qualquer faixa de pontuação",
+          "description": "Clique no botão \"Adicionar faixa\" para adicionar quantas faixas de pontuação forem necessárias. Exemplo: 0-20% Pontuação ruim, 21-91% Pontuação média, 91-100% Ótima pontuação!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Faixa de pontuação"
+              },
+              {},
+              {
+                "label": "Feedback para uma faixa de pontuação determinada",
+                "placeholder": "Preencha o feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Configurações comportamentais",
+      "description": "Estas opções permitirão que você controle como a tarefa se comporta.",
+      "fields": [
+        {
+          "label": "Habilitar o botão \"Tentar novamente\""
+        },
+        {
+          "label": "Habilitar o botão \"Verificar resposta\""
+        },
+        {
+          "label": "Requer resposta antes da visualização da solução"
+        },
+        {
+          "label": "Dar um ponto para toda a tarefa",
+          "description": "Desabilite para dar um ponto para cada arrastável posicionado corretamente."
+        },
+        {
+          "label": "Aplicar penalidades",
+          "description": "Aplique penalidades para elementos posicionados em zonas de largada incorretas. Isto deve ser habilitado quando o(s) mesmo(s) elemento(s) pode(m) ser largado(s) em múltiplas zonas, ou se existe apenas uma zona de largada. Se não estiver habilitade, alunos podem arrastar todos os itens para todas as zonas e sempre receber a pontuação total."
+        },
+        {
+          "label": "Habilitar explicação da pontuação",
+          "description": "Exibe uma explicação da pontuação para o usuário quando ele marca suas respostas (se a opção 'Aplicar penalidades' tiver sido selecionada)."
+        },
+        {
+          "label": "Opacidade do plano de fundo para arrastáveis",
+          "description": "Se este campo estiver marcado irá sobrepor as configurações de opacidade para todos os elementos arrastáveis. Deve ser um número entre 0 e 100, onde 0 significa transparência total e 100 significa nenhuma transparência."
+        },
+        {
+          "label": "Destacar zonas de largada",
+          "description": "Escolha quando destacar as zonas de largada.",
+          "options": [
+            {
+              "label": "Quando estiver arrastando"
+            },
+            {
+              "label": "Sempre"
+            },
+            {
+              "label": "Nunca"
+            }
+          ]
+        },
+        {
+          "label": "Espaçamento para auto-alinhamento (em pixels)"
+        },
+        {
+          "label": "Habilitar tela cheia",
+          "description": "Marque esta opção se deseja habilitar o botão de tela cheia."
+        },
+        {
+          "label": "Mostrar pontuação",
+          "description": "Mostra pontos ganhos para cada questão. Não disponível quando a opção 'Dar um ponto para toda a tarefa' estiver habilitada."
+        },
+        {
+          "label": "Exibir título",
+          "description": "Desmarque esta opção se você não deseja que o título seja exibido. O título será exibido apenas em resumos, estatísticas, etc."
+        }
+      ]
+    },
+    {
+      "label": "Localizar",
+      "fields": [
+        {
+          "label": "Rótulo de tela cheia",
+          "default": "Tela cheia"
+        },
+        {
+          "label": "Rótulo de sair de tela cheia",
+          "default": "Sair da tela cheia"
+        }
+      ]
+    },
+    {
+      "label": "Prefixo de arrastável",
+      "default": "Arrastável {num} de {total}."
+    },
+    {
+      "label": "Sufixo de arrastável",
+      "default": "Posicionado na zona de largada {num}."
+    },
+    {
+      "label": "Prefixo de zona de largada",
+      "default": "Zona de largada {num} de {total}."
+    },
+    {
+      "label": "Rótulo de zona de largada não selecionada",
+      "default": "Nenhuma zona de largada selecionada."
+    },
+    {
+      "label": "Rótulo para botão de mostrar dica",
+      "default": "Mostrar dica."
+    },
+    {
+      "label": "Rótulo para dica disponível",
+      "default": "Dica disponível"
+    },
+    {
+      "label": "Rótulo para resposta correta",
+      "default": "Resposta correta"
+    },
+    {
+      "label": "Rótulo para resposta incorreta",
+      "default": "Resposta incorreta"
+    },
+    {
+      "label": "Cabeçalho do painel contendo feedback para respostas corretas/incorretas",
+      "default": "Feedback"
+    },
+    {
+      "label": "Representação textual da barra de pontuação para aqueles que usam leitores de telas",
+      "default": "Você marcou :num de :total pontos"
+    },
+    {
+      "label": "Representação textual do botão de explicação de pontuação",
+      "default": "Mostrar explicação da pontuação"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "libraryStrings": {
+    "helpText": "Crear bloques de pregunta y respuestas, donde cada bloque está separado por una línea vacía. En cada bloque la primera línea es la pregunta, las demás líneas contienen las respuestas. La primera respuesta es la correcta",
+    "warning": "¡Advertencia! Si Usted cambia los trabajos en el editor de texto todo el formateo de texto enriquecido(incl. saltos de línea) será eliminado."
+  }
+}

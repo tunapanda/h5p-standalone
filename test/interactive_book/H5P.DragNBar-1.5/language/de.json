@@ -1,0 +1,17 @@
+{
+  "libraryStrings": {
+    "transformLabel": "Verschieben",
+    "editLabel": "Bearbeiten",
+    "removeLabel": "Entfernen",
+    "bringToFrontLabel": "Nach vorne",
+    "sendToBackLabel": "Nach hinten",
+    "unableToPaste": "Dieses Objekt kann nicht eingefügt werden. Es wird leider nicht von diesem Inhaltstyp oder dieser Version unterstützt.",
+    "sizeLabel": "Größe",
+    "positionLabel": "Position",
+    "heightLabel": "Höhe",
+    "widthLabel": "Breite",
+    "copyLabel": "Kopieren",
+    "paste": "Einfügen",
+    "moreElements": "Mehr Elemente"
+  }
+}

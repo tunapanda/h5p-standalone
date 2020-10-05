@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "Provjeri dugme odgovora",
+      "default": "Provjeri"
+    },
+    {
+      "label": "Dugme ponovnog pokušaja",
+      "default": "Ponovi"
+    },
+    {
+      "label": "Tekst opisa rezultata",
+      "default": "Ispravan odgovor daje +1 bod. Pogrešan odgovor daje -1 bod. Najmanji mogući rezultat je 0."
+    },
+    {
+      "fields": [
+        {
+          "label": "Podešavanja",
+          "fields": [
+            {
+              "label": "Slika pozadine",
+              "description": "Opcionalno. Odaberi neku sliku koja će služiti kao pozadina za zadatak 'Uzmi i spusti'."
+            },
+            {
+              "label": "Dimenzije zadatka",
+              "description": "Odredi koliko veliki prostor (u pixelima) treba biti"
+            }
+          ]
+        },
+        {
+          "label": "Zadatak",
+          "description": "Počni sa određivanjem zona za spustanje.<br/>Zatim, postavi elemente za spustanje i provjeri odgovarajuće zone za spustanje.<br/>Na kraju, uredi ponovo zonu i provjeri tačne odgovore.",
+          "fields": [
+            {
+              "label": "Elementi",
+              "entity": "element",
+              "field": {
+                "label": "Element",
+                "fields": [
+                  {
+                    "description": "Odaberi vrstu sadržaja koju želiš dodati."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Označi zone za spustanje"
+                  },
+                  {
+                    "label": "Pozadinska zamućenost"
+                  },
+                  {
+                    "label": "Neograničen broj elemenata",
+                    "description": "Klonira ovaj element kako bi mogao biti spušten na višestruke zone."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Zone za spustanje",
+              "entity": "Zona za spustanje",
+              "field": {
+                "label": "Zona za spustanje",
+                "fields": [
+                  {
+                    "label": "Oznaka"
+                  },
+                  {
+                    "label": "Pokaži oznaku"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Označi ispravne elemente"
+                  },
+                  {
+                    "label": "Pozadinska zamućenost"
+                  },
+                  {
+                    "label": "Savjet",
+                    "fields": [
+                      {
+                        "label": "Tekst savjeta"
+                      },
+                      {
+                        "label": "Poruka koja će se prikazati kod ispravnog spajanja",
+                        "description": "Poruka će se pojaviti ispod zadatka na \"provjeri\" ako je spajanje tačno."
+                      },
+                      {
+                        "label": "Poruka koja će se prikazati kod pogrešnog spajanja",
+                        "description": "Poruka će se pojaviti ispod zadatka na \"provjeri\" ako je spajanje netačno."
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Ova zona za spustanje može sadržavati samo jedan element",
+                    "description": "Budi siguran da ima samo jedan tačan odgovor za ovu zonu za spustanje"
+                  },
+                  {
+                    "label": "Omogući automatsko poravnanje",
+                    "description": "Automatsko poravnanje za sve u ovoj zoni."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Pozadinska zamućenost za elemente za uzimanje",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Standard"
+            }
+          ],
+          "label": "Definiraj standardnu povratnu informaciju za bilo koji raspon rezultata",
+          "description": "Klikni na dugme \"Dodaj raspon\" i dodaj raspona rezultata koliko je potrebno. Primjer: 0-20% Loše, 21-91% Dobro, 91-100% Odlično!",
+          "entity": "raspon",
+          "field": {
+            "fields": [
+              {
+                "label": "Raspon rezultata"
+              },
+              {},
+              {
+                "label": "Povratna informacija za definirani raspon rezultata",
+                "placeholder": "Napiši povratnu informaciju"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Podešavanje interakcije",
+      "description": "Ova opcija kontrolira kako se zadatak ponaša.",
+      "fields": [
+        {
+          "label": "Omogući dugme \"Ponovi\""
+        },
+        {
+          "label": "Omogući dugme \"Provjeri\""
+        },
+        {
+          "label": "Daje jedan bod za cijeli zadatak"
+        },
+        {
+          "label": "Omogući objašnjenje rezultata",
+          "description": "Disable to give one point for each draggable that is placed correctly."
+        },
+        {
+          "label": "Zahtjeva korisničko učešće prije nego rezultat bude vidljiv",
+          "description": "Apply penalties for elements dropped in the wrong drop zones. This must be enabled when the same element(s) are able to be dropped into multiple drop zones, or if there is only one drop-zone. If this is not enabled, learners may match all items to all drop-zones and always receive a full score."
+        },
+        {
+          "label": "Omogući objašnjenje rezultata",
+          "description": "Display a score explanation to user when checking their answers (if the 'Apply penalties' option has been selected)."
+        },
+        {
+          "label": "Pozadinska zamućenost za elemente za uzimanje",
+          "description": "Ako je ovo polje određeno onda će biti poništena sva podešavanja o zamuženosti svih drugih elemenata. Ovo treba biti broj od 0 do 100, gdje 0 znači potpuna transparentnost, a 100 znači bez transparentnosti"
+        },
+        {
+          "label": "Naglašavanje zone za spustanje",
+          "description": "Odaberi kada će se zona za spustanje naglasiti.",
+          "options": [
+            {
+              "label": "Kada se uzima"
+            },
+            {
+              "label": "Uvijek"
+            },
+            {
+              "label": "Nikad"
+            }
+          ]
+        },
+        {
+          "label": "Određivanje prostora za automatsko poravnanje (u pixelima)"
+        },
+        {
+          "label": "Omogući cijeli ekran",
+          "description": "Označi ovu opciju kako bi omogućio dugme za cijeli ekran."
+        },
+        {
+          "label": "Prikaži bodove",
+          "description": "Show points earned for each answer. Not available when the 'Give one point for the whole task' option is enabled."
+        },
+        {
+          "label": "Prikaži naziv",
+          "description": "Isključi ovu opciju ako ne želiš vidjeti naslov.Naslov će biti prikazan samo u sažecima, statistikama, itd."
+        }
+      ]
+    },
+    {
+      "label": "Podešavanje ponašanja",
+      "fields": [
+        {
+          "label": "Omogući \"Ponovi\"",
+          "default": "Cijeli ekran"
+        },
+        {
+          "label": "Daje jedan bod za cijeli zadatak",
+          "default": "Izađi iz cijelog ekrana"
+        }
+      ]
+    },
+    {
+      "label": "Lokaliziraj",
+      "default": "Grabbable {num} of {total}."
+    },
+    {
+      "label": "Grabbable suffix",
+      "default": "Spušteno na zone za spustanje {num}."
+    },
+    {
+      "label": "Dropzone prefix",
+      "default": "Zona za spustanje {num} od {total}."
+    },
+    {
+      "label": "No dropzone selection label",
+      "default": "Nema zone za spustanje."
+    },
+    {
+      "label": "Label for show tip button",
+      "default": "Prikaži savjet."
+    },
+    {
+      "label": "Oznaka da je dostupan savjet",
+      "default": "Savjet dostupan"
+    },
+    {
+      "label": "Label for correct answer",
+      "default": "Ispravan odgovor"
+    },
+    {
+      "label": "Label for incorrect answer",
+      "default": "Pogrešan odgovor"
+    },
+    {
+      "label": "Header for panel containing feedback for correct/incorrect answers",
+      "default": "Povratna informacija"
+    },
+    {
+      "label": "Textual representation of the score bar for those using a readspeaker",
+      "default": "Postigli ste :num od :total bodova"
+    },
+    {
+      "label": "Textual representation of the score explanation button",
+      "default": "Prikaži opis rezultata"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "semantics": [
+    {
+      "label": "Zutabeen edukiaren zerrenda",
+      "entity": "edukia",
+      "field": {
+        "fields": [
+          {
+            "label": "Edukia"
+          },
+          {
+            "label": "Erregla horizontal batez banatutako edukia",
+            "options": [
+              {
+                "label": "Automatikoa (lehenetsia)"
+              },
+              {
+                "label": "Ez erabili inoiz goiko erregela"
+              },
+              {
+                "label": "Erabili beti goiko erregela"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

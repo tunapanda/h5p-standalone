@@ -1,0 +1,16 @@
+{
+  "libraryStrings":{
+    "insertElement":"Dodaj :type",
+    "done":"Završeno",
+    "remove":"Ukloni",
+    "image":"Slika",
+    "text":"Tekst",
+    "noTaskSize":"Molimo da prvo specificirate veličinu zadatka prvo.",
+    "confirmRemoval":"Jeste li sigurni da želite ukloniti ovaj element?",
+    "backgroundOpacityOverridden":"The background opacity is overridden",
+    "advancedtext":"Tekst",
+    "dropzone":"Zona ostavljanja",
+    "selectAll":"Označi sve",
+    "deselectAll":"Poništi označavanje"
+  }
+}

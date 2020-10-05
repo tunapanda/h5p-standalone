@@ -1,0 +1,8 @@
+{
+  "semantics": [
+    {
+      "label": "表格",
+      "default": "<table class=\"h5p-table\"><thead><tr><th scope=\"col\">標題欄1</th><th scope=\"col\">標題欄2</th></tr></thead><tbody><tr><td>欄1列1</td><td>欄2列1</td></tr><tr><td>欄1列2</td><td>欄2列2</td></tr></tbody></table>"
+    }
+  ]
+}

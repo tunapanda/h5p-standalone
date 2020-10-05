@@ -1,0 +1,19 @@
+{
+  "semantics": [
+    {
+      "label": "Biletefil"
+    },
+    {
+      "label": "Alternativ tekst",
+      "description": "Viss biletet ikkje kan lastast, blir denne teksten vist i istadenfor. Denne blir og nytta ved talesyntese."
+    },
+    {
+      "label": "Sveve-tekst",
+      "description": "Denne teksten blir vist når brukaren held peikeeininga over bilete. Kan til dømes brukast til å informere om opphav."
+    },
+    {
+      "label": "Innhaldsnamn for bilete",
+      "default": "Bilete"
+    }
+  ]
+}

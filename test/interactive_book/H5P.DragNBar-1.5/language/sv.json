@@ -1,0 +1,17 @@
+{
+  "libraryStrings": {
+    "transformLabel": "Omforma",
+    "editLabel": "Redigera",
+    "removeLabel": "Ta bort",
+    "bringToFrontLabel": "Placera framför",
+    "sendToBackLabel": "Placera bakom",
+    "unableToPaste": "Kan inte klistra in detta objekt. Tyvärr så stödjer inte denna innehållstyp eller version inklistring av detta objekt.",
+    "sizeLabel": "Storlek",
+    "positionLabel": "Position",
+    "heightLabel": "Höjd",
+    "widthLabel": "Bredd",
+    "copyLabel": "Kopiera",
+    "paste": "Klistra in",
+    "moreElements": "Fler komponenter"
+  }
+}

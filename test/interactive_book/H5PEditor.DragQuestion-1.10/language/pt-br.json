@@ -1,0 +1,16 @@
+{
+  "libraryStrings": {
+    "insertElement": "Adicionar :type",
+    "done": "Concluir",
+    "remove": "Remover",
+    "image": "Imagem",
+    "text": "Texto",
+    "noTaskSize": "Por favor, especifique o tamanho da tarefa primeiro.",
+    "confirmRemoval": "Você tem certeza que deseja remover este elemento?",
+    "backgroundOpacityOverridden": "A opacidade do plano de fundo foi sobreposta",
+    "advancedtext": "Texto",
+    "dropzone": "Zona de largada",
+    "selectAll": "Selecionar todos",
+    "deselectAll": "Desmarcar todos"
+  }
+}

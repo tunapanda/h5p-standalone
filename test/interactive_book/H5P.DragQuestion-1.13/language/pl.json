@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "Przycisk sprawdzenia odpowiedzi",
+      "default": "Sprawdź"
+    },
+    {
+      "label": "Przycisk powtórzenia",
+      "default": "Powtórz"
+    },
+    {
+      "label": "Tekst dodatkowych informacji dotyczących uzyskanego wyniku",
+      "default": "Poprawna odpowiedź to +1 punkt. Niepoprawna odpowiedź to -1 punkt. Najniższy możliwy wynik to 0 punktów."
+    },
+    {
+      "fields": [
+        {
+          "label": "Ustawienia",
+          "fields": [
+            {
+              "label": "Zdjęcie w tle",
+              "description": "Opcjonalne. Wybierz zdjęcie, które zostanie użyte jako tło zadania przeciągnij i upuść."
+            },
+            {
+              "label": "Rozmiar obszaru zadania",
+              "description": "Określ jakiej wielkości (w px) będzie obszar prezentacji zadania."
+            }
+          ]
+        },
+        {
+          "label": "Zadanie",
+          "description": "Rozpocznij od umieszczenie obszarów do których będą przeciągane odpowiedzi (drop zones).<br/>Następnie umieść przeciągalne elementy i oznacz ich docelowe obszary przeciągania.<br/> Na końcu edytuj obszary przeciągania i zaznacz właściwe dla nich odpowiedzi.",
+          "fields": [
+            {
+              "label": "Elementy",
+              "entity": "element",
+              "field": {
+                "label": "Element",
+                "fields": [
+                  {
+                    "description": "Wybierz typ obiektu, który chcesz dodać."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Wybierz obszary przeciągania (drop zones)"
+                  },
+                  {
+                    "label": "Poziom nieprzezroczystości tła(opacity)"
+                  },
+                  {
+                    "label": "Nieskończona liczba instancji elementu",
+                    "description": "Powiela ten element, aby można go było przeciągnąć do wielu obszarów przeciągania."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Obszary przeciągania",
+              "entity": "Obszar przeciągania",
+              "field": {
+                "label": "Obszar przeciągania",
+                "fields": [
+                  {
+                    "label": "Etykieta"
+                  },
+                  {
+                    "label": "Pokaż etykietę"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Wybierz poprawne elementy"
+                  },
+                  {
+                    "label": "Poziom nieprzezroczystości tła (Background Opacity)"
+                  },
+                  {
+                    "label": "Wskazówki oraz podsumowanie wyników",
+                    "fields": [
+                      {
+                        "label": "Treść wskazówki"
+                      },
+                      {
+                        "label": "Komunikat wyświetlany przy poprawnym dopasowaniu",
+                        "description": "Komunikat pojawi się pod zadaniem, po wybraniu \"Sprawdź\", jeżeli przeciągnięty został właściwy element."
+                      },
+                      {
+                        "label": "Komunikat wyświetlany przy niepoprawnym dopasowaniu",
+                        "description": "Komunikat pojawi się pod zadaniem, po wybraniu \"Sprawdź\", jeżeli przeciągnięty został niewłaściwy element."
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Ten obszar może zawierać tylko jeden element",
+                    "description": "Upewnij się, że tylko jeden element jest oznaczony jako poprawny dla tego obszaru przeciągania"
+                  },
+                  {
+                    "label": "Zezwól na automatyczne wyrównywanie",
+                    "description": "Spowoduje automatyczne wyrównywanie elementów w tym obszarze przeciągania."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Podsumowanie końcowych wyników",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Default"
+            }
+          ],
+          "label": "Określ własne kryteria oceny dla wybranych zakresów",
+          "description": "Użyj przycisku \"Dodaj zakres\" aby dodać taką liczbę zakresów, jaka jest potrzebna. Przykład: 0-20% Słaby wynik, 21-91% Przeciętny wynik, 91-100% Bardzo dobry wynik!",
+          "entity": "zakres",
+          "field": {
+            "fields": [
+              {
+                "label": "Zakres wyników"
+              },
+              {},
+              {
+                "label": "Komunikat dla danego zakresu",
+                "placeholder": "Wprowadź komunikat"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Ustawienia zachowania",
+      "description": "Te opcje pozwalają kontrolować zachowanie zadania.",
+      "fields": [
+        {
+          "label": "Pokazuj przycisk \"Powtórz\""
+        },
+        {
+          "label": "Pokazuj przycisk \"Sprawdź\""
+        },
+        {
+          "label": "Wymagaj podania przez użytkownika rozwiązania przed pokazaniem prawidłowego rozwiązania"
+        },
+        {
+          "label": "Przyznaj jeden punkt za całe zadanie",
+          "description": "Zablokuj przyznawanie po jednym punkcie za każdy poprawnie przeciągnięty element."
+        },
+        {
+          "label": "Stosuj karne punkty",
+          "description": "Stosuj karne punkty dla elementów przeciągniętych do niewłaściwych obszarów. Ta opcja musi być zaznaczona, jeżeli ten sam element lub elementy mogą być przeciągnięte do więcej niż jednego obszaru lub jeżeli istnieje tylko jeden obszar przeciągania. Gdy ta opcja nie jest zaznaczona, użytkownicy mogą przeciągnąć wszystkie elementy do wszystkich obszarów i zawsze uzyskać maksymalną liczbę punktów."
+        },
+        {
+          "label": "Aktywuj dodatkowe informacje o uzyskanym wyniku",
+          "description": "Wyświetla użytkownikom dodatkowe informacje o uzyskanym wyniku, podczas sprawdzania odpowiedzi (jeżeli opcja 'Stosuj karne punkty' jest aktywna)."
+        },
+        {
+          "label": "Poziom nieprzezroczystości tła (Background Opacity) przeciąganych elementów",
+          "description": "Jeżeli to pole jest wypełnione, nadpisuje ono parametr nieprzezroczystości obowiązujący dla wszystkich przeciąganych elementów. Wartość powinna być w przedziale od 0 do 100, gdzie 0 oznacza pełną przezroczystość, a 100 oznacza brak przezroczystości"
+        },
+        {
+          "label": "Podświetlanie stref przeciągania",
+          "description": "Wybierz, kiedy strefy przeciągania powinny być podświetlane.",
+          "options": [
+            {
+              "label": "Podczas przeciągania"
+            },
+            {
+              "label": "Zawsze"
+            },
+            {
+              "label": "Nigdy"
+            }
+          ]
+        },
+        {
+          "label": "Marginesy dla opcji automatycznego dopasowania (w px)"
+        },
+        {
+          "label": "Zezwalaj na widok pełnego ekranu",
+          "description": "Zaznaczenie tej opcji spowoduje pojawienie się przycisku Pełny ekran."
+        },
+        {
+          "label": "Pokaż przyznane punkty",
+          "description": "Spowoduje pokazanie punktów przyznanych za każdą z odpowiedzi. Nie jest dostępne gdy opcja 'Przyznaj jeden punkt za całe' jest aktywna."
+        },
+        {
+          "label": "Show Title",
+          "description": "Uncheck this option if you do not want this title to be displayed. The title will only be displayed in summaries, statistics etc."
+        }
+      ]
+    },
+    {
+      "label": "Lokalizacja",
+      "fields": [
+        {
+          "label": "Etykieta pełnego ekranu",
+          "default": "Pełny ekran"
+        },
+        {
+          "label": "Etykieta zamknięcia widoku pełnego ekranu",
+          "default": "Zamknij widok pełnego ekranu"
+        }
+      ]
+    },
+    {
+      "label": "Prefiks elementu przeciąganego",
+      "default": "Element {num} z {total}."
+    },
+    {
+      "label": "Sufiks elementu przeciąganego",
+      "default": "Umieszczono w obszarze {num}."
+    },
+    {
+      "label": "Prefix obszaru przeciągania",
+      "default": "Obszar {num} z {total}."
+    },
+    {
+      "label": "Etykieta braku wybrania obszaru",
+      "default": "Brak wybranego obszaru."
+    },
+    {
+      "label": "Etykieda przycisku pokazującego wskazówki",
+      "default": "Pokaż wskazówki."
+    },
+    {
+      "label": "Etykieta gdy wskazówki są dostępne",
+      "default": "Dostępne są dodatkowe wskazówki"
+    },
+    {
+      "label": "Etykieta dla poprawnej odpowiedzi",
+      "default": "Odpowiedź poprawna"
+    },
+    {
+      "label": "Etykieta dla niepoprawnej odpowiedzi",
+      "default": "Odpowiedź niepoprawna"
+    },
+    {
+      "label": "Nagłówek sekcji zawierającej podsumowanie poprawnych i niepoprawnych odpowiedzi",
+      "default": "Podsumowanie"
+    },
+    {
+      "label": "Tekstowy odpowiednik paska wyniku, w przypadku korzystania z systemów czytających tekst",
+      "default": "Twój wynik to :num out z :total points"
+    },
+    {
+      "label": "Tekstowy odpowiednik przycisku pokazującego przyznane punkty",
+      "default": "Pokaż szczegóły wyniku"
+    }
+  ]
+}

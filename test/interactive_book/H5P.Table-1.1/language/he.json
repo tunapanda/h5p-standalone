@@ -1,0 +1,8 @@
+{
+  "semantics": [
+    {
+      "label": "טבלה",
+      "default": "<table class=\"h5p-table\"><thead><tr><th scope=\"col\">כותרת עמודה 1</th><th scope=\"col\">כותרת עמודה 2</th></tr></thead><tbody><tr><td>שורה 1 עמודה 1</td><td>שורה 1 עמודה 2</td></tr><tr><td>שורה 2 עמודה 1</td><td>שורה 2 עמודה 2</td></tr></tbody></table>"
+    }
+  ]
+}

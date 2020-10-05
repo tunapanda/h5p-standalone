@@ -1,0 +1,29 @@
+{
+  "semantics":[
+    {
+      "label":"Liste des contenus empilés",
+      "entity":"innhold",
+      "field":{
+        "fields":[
+          {
+            "label":"Contenu"
+          },
+          {
+            "label":"Séparer le contenu avec un délimiteur horizontal",
+            "options":[
+              {
+                "label":"Automatique (défaut)"
+              },
+              {
+                "label":"Ne jamais afficher le séparateur au-dessus"
+              },
+              {
+                "label":"Toujours afficher le séparateur au-dessus"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

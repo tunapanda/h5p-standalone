@@ -1,0 +1,6 @@
+{
+  "libraryStrings": {
+    "helpText": "Crea blocchi di domanda e risposte in cui ogni blocco è separato da una riga vuota. In ogni blocco la prima riga è la domanda e le altre righe contengono le risposte. La prima risposta è quella corretta",
+    "warning": "Attenzione! Se modifichi le attività nell'editor di testo, tutte le formattazioni \"rich text\" (incluse le interruzioni di riga) saranno rimosse."
+  }
+}

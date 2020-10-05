@@ -1,0 +1,17 @@
+{
+  "libraryStrings":{
+    "transformLabel":"Διαμόρφωση",
+    "editLabel":"Επεξεργασία",
+    "removeLabel":"Αφαίρεση",
+    "bringToFrontLabel":"Μεταφορά εμπρός",
+    "sendToBackLabel":"Μεταφορά πίσω",
+    "unableToPaste":"Δεν είναι δυνατή η επικόλληση του αντικειμένου. Δυστυχώς το αντικείμενο που προσπαθείτε να επικολλήσετε δεν υποστηρίζεται από τον τύπο περιεχομένου ή τη συγκεκριμένη έκδοση.",
+    "sizeLabel":"Μέγεθος",
+    "positionLabel":"Θέση",
+    "heightLabel":"Ύψος",
+    "widthLabel":"Πλάτος",
+    "copyLabel": "Αντιγραφή",
+    "paste": "Επικόλληση",
+    "moreElements": "Περισσότερα"
+  }
+}

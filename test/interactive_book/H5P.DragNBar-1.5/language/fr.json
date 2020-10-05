@@ -1,0 +1,17 @@
+{
+  "libraryStrings":{
+    "transformLabel":"Transformer",
+    "editLabel":"Éditer",
+    "removeLabel":"Supprimer",
+    "bringToFrontLabel":"Amener au premier plan",
+    "sendToBackLabel":"Envoyer à l'arrière-plan",
+    "unableToPaste":"Impossible de coller cet objet. Malheureusement l'objet que vous essayez de coller n'est pas supporté par ce type de contenu ou la version en cours.",
+    "sizeLabel":"Dimensions",
+    "positionLabel":"Position",
+    "heightLabel":"Hauteur",
+    "widthLabel":"Largeur",
+    "copyLabel": "Copier",
+    "paste": "Coller",
+    "moreElements": "Plus d'éléments"
+  }
+}

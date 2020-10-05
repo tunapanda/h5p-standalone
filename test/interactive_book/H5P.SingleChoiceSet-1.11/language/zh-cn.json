@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "问题列表",
+      "entity": "问题",
+      "widgets": [
+        {
+          "label": "默认"
+        },
+        {
+          "label": "文本"
+        }
+      ],
+      "field": {
+        "label": "问题和选项",
+        "fields": [
+          {
+            "label": "问题"
+          },
+          {
+            "label": "选项 - 第一个为正确选项。",
+            "entity": "答案",
+            "field": {
+              "label": "选项"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "总体反馈",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "默认"
+            }
+          ],
+          "label": "给出任何分数范围的自定义反馈",
+          "description": "点击 \"添加分数范围\" 按钮，添加任意分数范围。例如，0-20% 加油啊, 21-91% 继续努力, 91-100% 你真棒!",
+          "entity": "范围",
+          "field": {
+            "fields": [
+              {
+                "label": "分数范围"
+              },
+              {},
+              {
+                "label": "特定分数范围的反馈",
+                "placeholder": "填写反馈"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "行为设置",
+      "fields": [
+        {
+          "label": "自动继续",
+          "description": "选择选项之后自动转到下一个问题"
+        },
+        {
+          "label": "正确答案超时",
+          "description": "以毫秒为单位的值"
+        },
+        {
+          "label": "错误答案超时",
+          "description": "以毫秒为单位的值"
+        },
+        {
+          "label": "启用音效"
+        },
+        {
+          "label": "启用重试按钮"
+        },
+        {
+          "label": "启用显示答案按钮"
+        },
+        {
+          "label": "及格分数",
+          "description": "考试及格分数。"
+        }
+      ]
+    },
+    {
+      "label": "本地化单选题集",
+      "fields": [
+        {
+          "label": "\"下一个\"按钮的标签",
+          "default": "下一题"
+        },
+        {
+          "label": "\"显示答案\"按钮的标签",
+          "default": "显示答案"
+        },
+        {
+          "label": "\"重做\"按钮的标签",
+          "default": "重做"
+        },
+        {
+          "label": "显示答案视图的标题",
+          "default": "答案列表"
+        },
+        {
+          "label": "答对时的显示文本",
+          "default": "正确！"
+        },
+        {
+          "label": "答错时的显示文本",
+          "default": "错误！"
+        },
+        {
+          "label": "\"静音\"按钮的标签，以关闭反馈声音",
+          "default": "关闭反馈声音"
+        },
+        {
+          "label": "\"关闭\"按钮的标签",
+          "default": "关闭"
+        },
+        {
+          "label": "幻灯片编号文字",
+          "description": "显示当前幻灯片编号和幻灯片总数，变量为 :num和 :total",
+          "default": "幻灯片 :num of :total"
+        },
+        {
+          "label": "得分情况的文本描述",
+          "default": "总分 :total 分，您的得分为:num 分。"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
+        }
+      ]
+    }
+  ]
+}

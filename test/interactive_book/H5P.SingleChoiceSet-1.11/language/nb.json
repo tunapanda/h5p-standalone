@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "Spørsmålsliste",
+      "entity": "spørsmål",
+      "widgets": [
+        {
+          "label": "Standard"
+        },
+        {
+          "label": "Tekstlig"
+        }
+      ],
+      "field": {
+        "label": "Spørsmål & alternativer",
+        "fields": [
+          {
+            "label": "Spørsmål"
+          },
+          {
+            "label": "Alternativer. Det første alternativet er rett.",
+            "entity": "svar",
+            "field": {
+              "label": "Alternativ"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Samlet tilbakemelding",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Standard"
+            }
+          ],
+          "label": "Definer standard tilbakemelding for alle poengsummer",
+          "description": "Klikk på \"Legg til poengområde\" knappen for å legge til de områdene du behøver. Eksempel: 0-20% Lav poengsum, 21-91% Middels poengsum, 91-100% Høy poengsum!",
+          "entity": "område",
+          "field": {
+            "fields": [
+              {
+                "label": "Poengområde"
+              },
+              {},
+              {
+                "label": "Tilbakemelding for definert poengområde",
+                "placeholder": "Fyll inn tilbakemelding"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Innstillinger for oppgaveoppførsel",
+      "fields": [
+        {
+          "label": "Fortsett automatisk",
+          "description": "Hopp automatisk til neste spørsmål når et alternativ er valgt"
+        },
+        {
+          "label": "Pause ved korrekt svar",
+          "description": "Verdien er i millisekunder (1000 millisekunder = 1 sekund)"
+        },
+        {
+          "label": "Pause ved feil svar",
+          "description": "Verdien er i millisekunder (1000 millisekunder = 1 sekund)"
+        },
+        {
+          "label": "Lydeffekter"
+        },
+        {
+          "label": "\"Prøv igjen\"-knapp"
+        },
+        {
+          "label": "\"Vis svar\"-knapp"
+        },
+        {
+          "label": "Krav for å bestå",
+          "description": "Antall prosent riktig som kreves for å bestå spørsmålssettet."
+        }
+      ]
+    },
+    {
+      "label": "Ledetekster",
+      "fields": [
+        {
+          "label": "Etikett for \"Neste\"-knappen",
+          "default": "Neste spørsmål"
+        },
+        {
+          "label": "Etikett på \"Vis svar\"-knappen",
+          "default": "Fasit"
+        },
+        {
+          "label": "Etikett på \"Prøv igjen\"-knappen",
+          "default": "Prøv igjen"
+        },
+        {
+          "label": "Tittelen på svarvisnings-siden",
+          "default": "Svar"
+        },
+        {
+          "label": "Rett svar tekst for hjelpemiddelteknologi",
+          "default": "Riktig"
+        },
+        {
+          "label": "Galt svar tekst for hjelpemiddelteknologi",
+          "default": "Feil"
+        },
+        {
+          "label": "Merkelapp for \"mute\"-knappen",
+          "default": "Skru av tilbakemeldingslyd"
+        },
+        {
+          "label": "Merkelapp for \"Lukk\"-knappen",
+          "default": "Lukk"
+        },
+        {
+          "label": "Sidenummer-tekst",
+          "description": "Viser hvilket nummer gjeldende side har og det totale antall sider. Variablene er :num av :total",
+          "default": "Side :num av :total"
+        },
+        {
+          "label": "Tekstlig gjengivelse av poengsum for hjelpemiddelteknologi",
+          "default": "Du fikk :num av :total poeng"
+        },
+        {
+          "label": "Tekst for spørsmålsindeks i svarvisningslisten",
+          "description": "Annonserer spørsmålsindeksen i svarvisningslisten. Variabler som kan brukes er: :num",
+          "default": "Spørsmål :num"
+        }
+      ]
+    }
+  ]
+}

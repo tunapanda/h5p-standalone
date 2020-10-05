@@ -1,0 +1,8 @@
+{
+  "semantics": [
+    {
+      "label": "Tabulka",
+      "default": "<table class=\"h5p-table\"><thead><tr><th scope=\"col\">Nadpis sloupce 1</th><th scope=\"col\">Nadpis sloupce 2</th></tr></thead><tbody><tr><td>Řádek 1 Sloupec 1</td><td>Řádek 1 Sloupec 2</td></tr><tr><td>Řádek 2 Sloupec 1</td><td>Řádek 2 Sloupec 2</td></tr></tbody></table>"
+    }
+  ]
+}

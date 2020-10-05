@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "כפתור בדיקת תשובה",
+      "default": "בדיקה"
+    },
+    {
+      "label": "כפתור ניסיון חוזר",
+      "default": "ניסיון חוזר"
+    },
+    {
+      "label": "הסבר מילולי לניקוד",
+      "default": "התשובות הנכונות מספקות נקודה אחת (1+). תשובות שגויות מחסירה נקודה (1-). הציון הנמוך ביותר האפשרי הוא 0."
+    },
+    {
+      "fields": [
+        {
+          "label": "הגדרות",
+          "fields": [
+            {
+              "label": "תמונת רקע",
+              "description": "נתון לבחירה. בחרו תמונה שתשמש כרקע למשימת הגרירה."
+            },
+            {
+              "label": "גודל המשימה",
+              "description": "Specify how large (in px) the play area should be."
+            }
+          ]
+        },
+        {
+          "label": "משימה",
+          "description": "Start by placing your drop zones.<br/>Next, place your droppable elements and check off the appropriate drop zones.<br/>Last, edit your drop zone again and check off the correct answers.",
+          "fields": [
+            {
+              "label": "פריטים",
+              "entity": "רכיב",
+              "field": {
+                "label": "רכיב",
+                "fields": [
+                  {
+                    "description": "בחרו את סוג התוכן אותו תרצו להוסיף."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "בחירת אזורי יעד"
+                  },
+                  {
+                    "label": "שקיפות הרקע"
+                  },
+                  {
+                    "label": "Infinite number of element instances",
+                    "description": "Clones this element so that it can be dragged to multiple drop zones."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "אזורי יעד",
+              "entity": "אזורי יעד",
+              "field": {
+                "label": "אזור יעד",
+                "fields": [
+                  {
+                    "label": "תווית"
+                  },
+                  {
+                    "label": "תצוגת תווית"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "בחירת הפריט הנכון"
+                  },
+                  {
+                    "label": "שקיפות הרקע"
+                  },
+                  {
+                    "label": "עצות ומשוב",
+                    "fields": [
+                      {
+                        "label": "עצה"
+                      },
+                      {
+                        "label": "Message displayed on correct match",
+                        "description": "Message will appear below the task on \"check\" if correct droppable is matched."
+                      },
+                      {
+                        "label": "Message displayed on incorrect match",
+                        "description": "Message will appear below the task on \"check\" if the match is incorrect."
+                      }
+                    ]
+                  },
+                  {
+                    "label": "This drop zone can only contain one element",
+                    "description": "Make sure there is only one correct answer for this dropzone"
+                  },
+                  {
+                    "label": "Enable Auto-Align",
+                    "description": "Will auto-align all draggables dropped in this zone."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "משוב כללי",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "ברירת מחדל"
+            }
+          ],
+          "label": "Define custom feedback for any score range",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "טווח",
+          "field": {
+            "fields": [
+              {
+                "label": "טווח ניקוד"
+              },
+              {},
+              {
+                "label": "Feedback for defined score range",
+                "placeholder": "הזנת משוב"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "הגדרות התנהגות",
+      "description": "These options will let you control how the task behaves.",
+      "fields": [
+        {
+          "label": "הפעלת \"ניסיון חוזר\""
+        },
+        {
+          "label": "הפעלת כפתור \"בדיקה\""
+        },
+        {
+          "label": "Require user input before the solution can be viewed"
+        },
+        {
+          "label": "Give one point for the whole task",
+          "description": "Disable to give one point for each draggable that is placed correctly."
+        },
+        {
+          "label": "החלת כנסות",
+          "description": "Apply penalties for elements dropped in the wrong drop zones. This must be enabled when the same element(s) are able to be dropped into multiple drop zones, or if there is only one drop-zone. If this is not enabled, learners may match all items to all drop-zones and always receive a full score."
+        },
+        {
+          "label": "תצוגת הסבר לניקוד",
+          "description": "Display a score explanation to user when checking their answers (if the 'Apply penalties' option has been selected)."
+        },
+        {
+          "label": "שקיפות רקע לפריטים נגררים",
+          "description": "If this field is set, it will override opacity set on all draggable elements. This should be a number between 0 and 100, where 0 means full transparency and 100 means no transparency"
+        },
+        {
+          "label": "הדגשת אזורי יעד",
+          "description": "Choose when to highlight drop zones.",
+          "options": [
+            {
+              "label": "כאשר גוררים"
+            },
+            {
+              "label": "תמיד"
+            },
+            {
+              "label": "אף פעם"
+            }
+          ]
+        },
+        {
+          "label": "Spacing for Auto-Align (in px)"
+        },
+        {
+          "label": "אפשרות למסך־מלא",
+          "description": "Check this option to enable the full screen button."
+        },
+        {
+          "label": "תצוגת ניקוד וציונים",
+          "description": "Show points earned for each answer. Not available when the 'Give one point for the whole task' option is enabled."
+        },
+        {
+          "label": "תצוגת כותרת",
+          "description": "Uncheck this option if you do not want this title to be displayed. The title will only be displayed in summaries, statistics etc."
+        }
+      ]
+    },
+    {
+      "label": "תרגום מותאם",
+      "fields": [
+        {
+          "label": "תווית מסך־מלא",
+          "default": "מסך־מלא"
+        },
+        {
+          "label": "תווית יציאה ממסך־מלא",
+          "default": "יציאה ממסך־מלא"
+        }
+      ]
+    },
+    {
+      "label": "Grabbable prefix",
+      "default": "Grabbable {num} of {total}."
+    },
+    {
+      "label": "Grabbable suffix",
+      "default": "Placed in dropzone {num}."
+    },
+    {
+      "label": "Dropzone prefix",
+      "default": "Dropzone {num} of {total}."
+    },
+    {
+      "label": "No dropzone selection label",
+      "default": "אין אזורי יעד."
+    },
+    {
+      "label": "Label for show tip button",
+      "default": "תצוגת עצה."
+    },
+    {
+      "label": "Label for tip available",
+      "default": "עצה זמינה"
+    },
+    {
+      "label": "Label for correct answer",
+      "default": "תשובה נכונה"
+    },
+    {
+      "label": "Label for incorrect answer",
+      "default": "תשובה שגויה"
+    },
+    {
+      "label": "Header for panel containing feedback for correct/incorrect answers",
+      "default": "משוב"
+    },
+    {
+      "label": "Textual representation of the score bar for those using a readspeaker",
+      "default": "You got :num out of :total points"
+    },
+    {
+      "label": "Textual representation of the score explanation button",
+      "default": "Show score explanation"
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "Erantzuna egiaztatzeko botoia",
+      "default": "Egiaztatu"
+    },
+    {
+      "label": "Saiatu berriro botoia",
+      "default": "Saiatu berriro"
+    },
+    {
+      "label": "Puntuazioaren azalpen testua",
+      "default": "Erantzun zuzenak puntu bat ematen du. Erantzun okerrak puntu bat kentzen du. Puntuaziorik baxuena 0 da."
+    },
+    {
+      "fields": [
+        {
+          "label": "Erarpenak",
+          "fields": [
+            {
+              "label": "Atzeko planoko irudia",
+              "description": "Aukerakoa. Hautatu irudi bat arrastatu eta jaregin zereginaren atzeko plano gisa erabiltzeko."
+            },
+            {
+              "label": "Zereginaren tamaina",
+              "description": "Zehaztu (px-tan) zein den jolasteko arearen tamaina."
+            }
+          ]
+        },
+        {
+          "label": "Zeregina",
+          "description": "Hasi jaregiteko zonak kokatzen.<br/>Ondoren, kokatu elementu arrastagarriak eta markatu jaregiteko zona zuzenak.<br/>Azkenik, edita ezazu berriro jaregiteko zona eta markatu erantzun zuzenak.",
+          "fields": [
+            {
+              "label": "Elementuak",
+              "entity": "elementua",
+              "field": {
+                "label": "Elementua",
+                "fields": [
+                  {
+                    "description": "Hautatu gehitu nahi duzun eduki mota"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Hautatu jaregiteko zonak"
+                  },
+                  {
+                    "label": "Atzeko planoaren opakutasuna"
+                  },
+                  {
+                    "label": "Elementu sekuentzia kopuru infinitua",
+                    "description": "Elementu hau klonatzen du, hartara elementua hainbat jaregiteko zonatara jaregin daiteke."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Jaregiteko zonak",
+              "entity": "Jaregiteko zona",
+              "field": {
+                "label": "Jaregiteko zona",
+                "fields": [
+                  {
+                    "label": "Etiketa"
+                  },
+                  {
+                    "label": "Erakutsi etiketa"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Hautatu elementu zuzenak"
+                  },
+                  {
+                    "label": "Atzeko planoaren opakutasuna"
+                  },
+                  {
+                    "label": "Argibideak eta feedbackak",
+                    "fields": [
+                      {
+                        "label": "Argibidearen testua"
+                      },
+                      {
+                        "label": "Parekatze zuzenaren kasurako mezua",
+                        "description": "Mezua agertuko da \"egiaztatu\" beharreko zereginaren azpian arrastagarri zuzena parekatu bada."
+                      },
+                      {
+                        "label": "Parekatze okerraren kasurako mezua",
+                        "description": "Mezua agertuko da \"egiaztatu\" beharreko zereginaren azpian arrastagarri okerra parekatu bada."
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Jaregiteko zona honek elementu bakarra eduki dezake",
+                    "description": "Aseguratu jaregiteko zona honetarako erantzun zuzen bakarra dagoela"
+                  },
+                  {
+                    "label": "Gaitu auto-lerrokatzea",
+                    "description": "Auto-lerrokatuko ditu zona horretan jaregindako arrastagarri guztiak."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Feedback orokorra",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Lehenetsia"
+            }
+          ],
+          "label": "Definitu feedback pertsonalizatua edozein puntuazio tarterako",
+          "description": "Egin klik \"Gehitu tartea\" botoian behar duzun tarte guztiak gehitzeko. Adibidez: 0-%20 Puntuazio txarra, %21-%91 Tarteko puntuazioa, %91-%100 Puntuazio bikaina!",
+          "entity": "tartea",
+          "field": {
+            "fields": [
+              {
+                "label": "Puntuazio tartea"
+              },
+              {},
+              {
+                "label": "Definitutako puntuazio tartearen feedbacka",
+                "placeholder": "Bete feedbackean"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Jokabideko ezarpenak",
+      "description": "Aukera hauen bidez kontrolatu dezakezu zereginaren jokabidea.",
+      "fields": [
+        {
+          "label": "Gaitu \"Saiatu berriro\" "
+        },
+        {
+          "label": "Gaitu \"Egiaztatu\" botoia"
+        },
+        {
+          "label": "Erabiztzaileak erantzun behar du soluzioa ikusi ahal izateko"
+        },
+        {
+          "label": "Eman puntu bat zeregin osoarentzat",
+          "description": "Desgaitu emateko puntu bana zuzen kokatzen den arrastagarri bakoitzeko."
+        },
+        {
+          "label": "Aplikatu zigorrak",
+          "description": "Aplikatu zigorrak jaregiteko zona okerretan jaregindako elementuengatik. Hau gaitu behar da elementu berdina(k) hainbat jaregiteko zonatan jaregin daitezkeenean, edo jaregiteko zona bakarra dagoenean. Aktibo ez badago, ikasleek parekatu ditzakete elementu guztiak jaregiteko zona guztietan eta jaso puntuazio osoa."
+        },
+        {
+          "label": "Gaitu puntuazioaren azalpena",
+          "description": "Erakutsi puntuazioaren azalpena erabiltzaileak bere erantzunak egiaztatzean (baldin eta \"Aplikatu zigorrak\" opzioa hautatuta badago)."
+        },
+        {
+          "label": "Atzeko planoaren opakutasuna arrastagarrietarako",
+          "description": "Eremu hau ezarrita badago, elementu arrastagarri guztien opakotasuna gainidatziko du. 0 eta 100 bitarteko zenbaki bat izan behar luke, non 0 erabat gardena da eta 100 erabat opakua."
+        },
+        {
+          "label": "Jaregiteko zona nabarmentzen",
+          "description": "Aukeratu noiz nabarmendu jaregiteko zonak.",
+          "options": [
+            {
+              "label": "Arrastatzean"
+            },
+            {
+              "label": "Beti"
+            },
+            {
+              "label": "Inoiz ez"
+            }
+          ]
+        },
+        {
+          "label": "Lerrokatzeko tartea (px-tan)"
+        },
+        {
+          "label": "Gaitu Pantaila osoa",
+          "description": "Markatu opzio hau  pantaila osoaren botoia gaitzeko"
+        },
+        {
+          "label": "Erakutsi puntuazioa",
+          "description": "Erakutsi erantzun bakoitzean irabazitako puntuak. Ez dago aktibo 'Eman puntu bat zeregin osoarentzat' opzioa gaitua dagoenean."
+        },
+        {
+          "label": "Erakutsi titulua",
+          "description": "Desmarka ezazu opzio hau ez baduzu nahi titulua erakustea. Titulua bakarrik erakutsiko da laburpenean, estatistiketan eta abar."
+        }
+      ]
+    },
+    {
+      "label": "Lokalizatu",
+      "fields": [
+        {
+          "label": "Pantaila osoa etiketa",
+          "default": "Pantaila osoa"
+        },
+        {
+          "label": "Irten Pantaila osotik etiketa",
+          "default": "Irten Pantaila osotik"
+        }
+      ]
+    },
+    {
+      "label": "Aurrizki eutsigarria",
+      "default": "{total}  -etik {num} eutsigarri"
+    },
+    {
+      "label": "Atzizki eutsigarria",
+      "default": "Jaregiteko zonan jarrita  {num}."
+    },
+    {
+      "label": "Jaregiteko zonaren aurrizkia",
+      "default": "{total} -etik  {num} . jaregiteko zona ."
+    },
+    {
+      "label": "Jaregiteko zona hautatu gabe etiketa",
+      "default": "Jaregiteko zonarik ez dago"
+    },
+    {
+      "label": "Argibidea erakutsi botoiaren etiketa",
+      "default": "Erakutsi argibidea"
+    },
+    {
+      "label": "Argibide eskuragarria etiketa",
+      "default": "Argibidea   eskuragarri"
+    },
+    {
+      "label": "Erantzu zuzenaren etiketa",
+      "default": "Erantzun zuzena"
+    },
+    {
+      "label": "Erantzun okerraren etiketa",
+      "default": "Erantzun  okerra"
+    },
+    {
+      "label": "Erantzun zuzen eta okerren feedback duen panelaren goiburua",
+      "default": "Feedbacka"
+    },
+    {
+      "label": "Puntuazio barraren testu bidezko adierazpena irakurgailuarentzat",
+      "default": ":total puntutik lortu duzu  :num "
+    },
+    {
+      "label": "Puntuazioaren azalpenaren botoiaren testu bidezko azalpena",
+      "default": "Erakutsi puntuazioaren azalpena"
+    }
+  ]
+}

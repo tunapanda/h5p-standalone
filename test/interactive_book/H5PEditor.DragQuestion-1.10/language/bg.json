@@ -1,0 +1,16 @@
+{
+  "libraryStrings": {
+    "insertElement": "Добавете :type",
+    "done": "Готово",
+    "remove": "Премахване",
+    "image": "Изображение",
+    "text": "Текст",
+    "noTaskSize": "Моля, задайте първо размера на задачата.",
+    "confirmRemoval": "Наистина ли искате да премахнете този елемент?",
+    "backgroundOpacityOverridden": "Непрозрачността на фона е заменена",
+    "advancedtext": "Текст",
+    "dropzone": "Зона за пускане",
+    "selectAll": "Изберете всички",
+    "deselectAll": "Отмаркирайте всички избрани"
+  }
+}

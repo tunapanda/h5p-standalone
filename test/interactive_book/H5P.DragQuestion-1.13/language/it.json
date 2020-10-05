@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "Pulsante di controllo della risposta",
+      "default": "Verifica"
+    },
+    {
+      "label": "Pulsante Riprova",
+      "default": "Riprova"
+    },
+    {
+      "label": "Testo di spiegazione del punteggio",
+      "default": "Le risposte corrette danno 1 punto. Le risposte sbagliate tolgono 1 punto. Il punteggio più basso possibile è 0."
+    },
+    {
+      "fields": [
+        {
+          "label": "Impostazioni",
+          "fields": [
+            {
+              "label": "Immagine di sfondo",
+              "description": "Opzionale. Selezionare un'immagine da utilizzare come sfondo per il vostro compito drag and drop."
+            },
+            {
+              "label": "Dimensione attività",
+              "description": "Specifare quanto larga (in px) l'area di gioco dovrebbe essere."
+            }
+          ]
+        },
+        {
+          "label": "Attività",
+          "description": "Iniziate mettendo le zone di trascinamento.<br/>Successivamente, posizionate gli elementi trascinabili e mettete la spunta sulle relative aree di rilascio.<br/>Infine, modificate nuovamente la zona di rilascio e mettete la spunta sulle risposte corrette.",
+          "fields": [
+            {
+              "label": "Elementi",
+              "entity": "elemento",
+              "field": {
+                "label": "Elemento",
+                "fields": [
+                  {
+                    "description": "Scegliere il tipo di contenuto che si desidera aggiungere"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Selezionare una zona di rilascio"
+                  },
+                  {
+                    "label": "Opacità Sfondo"
+                  },
+                  {
+                    "label": "Numero infinito di istanze di elementi",
+                    "description": "Clonare questo elemento in modo che possa essere trascinato su più zone di trascinamento."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Zone di rilascio",
+              "entity": "Zona di rilascio",
+              "field": {
+                "label": "Zona di rilascio",
+                "fields": [
+                  {
+                    "label": "Etichetta"
+                  },
+                  {
+                    "label": "Mostra etichetta"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Selezionare gli elementi corretti"
+                  },
+                  {
+                    "label": "Opacità Sfondo"
+                  },
+                  {
+                    "label": "Suggerimenti e feedback",
+                    "fields": [
+                      {
+                        "label": "Testo del suggerimento"
+                      },
+                      {
+                        "label": "Messaggio visualizzato su corrispondenza corretta",
+                        "description": "Su \"Verifica\", in caso di rilascio corretto sarà visualizzato un messaggio sotto il compito"
+                      },
+                      {
+                        "label": "Messaggio visualizzato su corrispondenza non corretta",
+                        "description": "Su \"Verifica\", sarà visualizzato un messaggio sotto il compito se la corrispondenza non è corretta"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Questa zona di rilascio può contenere un solo elemento",
+                    "description": "Assicurarsi che ci sia una sola risposta corretta per questa zona di rilascio"
+                  },
+                  {
+                    "label": "Abilita allineamento automatico",
+                    "description": "Allineerà automaticamente tutti gli elementi trascinabili rilasciati in quest'area"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Feedback generale",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Predefinito"
+            }
+          ],
+          "label": "Definisci un feedback personalizzato per ogni intervallo di punteggio",
+          "description": "Clicca sul pulsante \"Aggiungi intervallo\" per agiungere quanti intervalli ti servono. Esempio: 0-20% Cattivo punteggio, 21-91% Punteggio medio, 91-100% Ottimo punteggio!",
+          "entity": "Intervallo",
+          "field": {
+            "fields": [
+              {
+                "label": "Intervallo di punteggio"
+              },
+              {},
+              {
+                "label": "Feedback per un intervallo di punteggio definito",
+                "placeholder": "Compila il feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Impostazioni di esecuzione",
+      "description": "Queste opzioni permettono di controllare l'andamento del compito",
+      "fields": [
+        {
+          "label": "Attiva \"Riprova\""
+        },
+        {
+          "label": "Attiva pulsante \"Verifica\""
+        },
+        {
+          "label": "Richiedere l'immissione dei dati all'utente prima che la soluzione sia visualizzata"
+        },
+        {
+          "label": "Assegna un punto per l'intero compito",
+          "description": "Disabilitare per assegnare un punto per ogni elemento trascinabile che viene inserito correttamente."
+        },
+        {
+          "label": "Applica penalità",
+          "description": "Applica penalità agli elementi rilasciati nelle zone sbagliate."
+        },
+        {
+          "label": "Attiva la spiegazione del punteggio",
+          "description": "Visualizza una spiegazione del punteggio all'utente quando controlla le sue risposte (se è stata selezionata l'opzione 'Applica penalità')."
+        },
+        {
+          "label": "Opacità Sfondo per elementi trascinabili",
+          "description": "Se questo campo è impostato, il parametro di opacità sarà sovrascritto su tutti gli elementi trascinabili. Tale parametro dovrebbe ricevere un numero compreso tra 0 e 100, dove 0 indica la piena trasparenza e 100 equivale a nessuna trasparenza"
+        },
+        {
+          "label": "Evidenziazione della zona di rilascio",
+          "description": "Scegli quando evidenziare le zone di rilascio",
+          "options": [
+            {
+              "label": "Durante il trascinamento"
+            },
+            {
+              "label": "Sempre"
+            },
+            {
+              "label": "Mai"
+            }
+          ]
+        },
+        {
+          "label": "Spaziatura per allineamento automatico (in px)"
+        },
+        {
+          "label": "Attiva schermo intero",
+          "description": "Seleziona questa opzione per attivare il pulsante schermo intero"
+        },
+        {
+          "label": "Visualizza punteggio",
+          "description": "Visualizza i punti guadagnati per ogni risposta. Non disponibile quando è attivata l'opzione 'Assegnare un punto per l'intera attività'."
+        },
+        {
+          "label": "Mostra Titolo",
+          "description": "Deseleziona questa opzione se non vuoi che questo titolo sia visualizzato. Il titolo sarà visualizzato solo in sintesi, statistiche ecc."
+        }
+      ]
+    },
+    {
+      "label": "Localizza",
+      "fields": [
+        {
+          "label": "Etichetta di schermo intero",
+          "default": "Schermo intero"
+        },
+        {
+          "label": "Etichetta di uscita da schermo intero",
+          "default": "Esci da schermo intero"
+        }
+      ]
+    },
+    {
+      "label": "Prefisso per afferrabile",
+      "default": "A disposizione {num} di {total}."
+    },
+    {
+      "label": "Suffisso per afferrabile",
+      "default": "Posizionato nella zona di rilascio {num}."
+    },
+    {
+      "label": "Prefisso della zona di rilascio",
+      "default": "Rilasciabili {num} di {total}."
+    },
+    {
+      "label": "Nessuna etichetta di selezione della zona di rilascio",
+      "default": "Nessuna zona di rilascio"
+    },
+    {
+      "label": "Etichetta per il pulsante \"Mostra suggerimento\"",
+      "default": "Mostra suggerimento"
+    },
+    {
+      "label": "Etichetta per suggerimento disponibile",
+      "default": "Suggerimento disponibile"
+    },
+    {
+      "label": "Etichetta per risposta corretta",
+      "default": "Risposta corretta"
+    },
+    {
+      "label": "Etichetta per risposta errata",
+      "default": "Risposta sbagliata"
+    },
+    {
+      "label": "Intestazione di pannello contenente i feedback per risposte corrette/errate",
+      "default": "Feedback"
+    },
+    {
+      "label": "Rappresentazione testuale sulla barra del punteggio per chi usa un lettore vocale",
+      "default": "Il tuo punteggio è :num out di :total"
+    },
+    {
+      "label": "Rappresentazione testuale del pulsante di spiegazione del punteggio",
+      "default": "Mostra spiegazione del punteggio"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "قائمة الأسئلة",
+      "entity": "السؤال",
+      "widgets": [
+        {
+          "label": "Default"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
+      "field": {
+        "label": "السؤال والبدائل",
+        "fields": [
+          {
+            "label": "السؤال"
+          },
+          {
+            "label": "البدائل - البديل الأول هو البديل الصحيح.",
+            "entity": "answer",
+            "field": {
+              "label": "البديل"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "ردود الفعل الشاملة",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "الافتراضي"
+            }
+          ],
+          "label": "تحديد الملاحظات المخصصة لأي مجال نتيجة",
+          "description": "انقر فوق الزر 'إضافة نطاق ' لإضافة أكبر عدد ممكن من النطاقات. مثال: 0-20٪ نتيجة سيئة ، 21-91٪ نتيجة متوسطة ، 91-100٪ نتيجة رائعة!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "مجال النتيجة"
+              },
+              {},
+              {
+                "label": "الملاحظات لمجال نتيجة محدد",
+                "placeholder": "Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "الاعدادات السلوكية",
+      "fields": [
+        {
+          "label": "المتابعة الاتوماتيكية",
+          "description": "انتقل تلقائيا إلى السؤال التالي عند اختيار البديل"
+        },
+        {
+          "label": "مهلة الاجابات الصحيحة",
+          "description": "القيمة بالميلي ثانية"
+        },
+        {
+          "label": "مهلة الاجابات الخاطئة",
+          "description": "القيمة بالميلي ثانية"
+        },
+        {
+          "label": "تمكين التأثيرات الصوتية"
+        },
+        {
+          "label": "تمكين زر \"اعادة المحاولة \""
+        },
+        {
+          "label": "تمكين زر \" اظهر الحل \""
+        },
+        {
+          "label": "نسبة النجاح",
+          "description": "النسبة المئوية من الدرجة الإجمالية المطلوبة لاجتياز الاختبار."
+        }
+      ]
+    },
+    {
+      "label": "تمركز مجموهة الاختيار الواحد",
+      "fields": [
+        {
+          "label": "لافتة زر \" التالي \"",
+          "default": "Next question"
+        },
+        {
+          "label": "لافتة زر \" اظهر الحل \"",
+          "default": "Show solution"
+        },
+        {
+          "label": "لافتة زر \" اعادة المحاولة\"",
+          "default": "Retry"
+        },
+        {
+          "label": "عنوان عرض مشاهدة الحل",
+          "default": "Solution list"
+        },
+        {
+          "label": "نص الاجابات الصحيحة لتقنية تحويل النص الى كلام",
+          "default": "Correct!"
+        },
+        {
+          "label": "نص الاجابات الخاطئة لتقنية تحويل النص الى كلام",
+          "default": "Incorrect!"
+        },
+        {
+          "label": "لافتة الزر \" كتم \" ، لتعطيل صوت التعليقات",
+          "default": "Mute feedback sound"
+        },
+        {
+          "label": "لافتة زر  \" اغلاق \"",
+          "default": "Close"
+        },
+        {
+          "label": "نص رقم الشريحة",
+          "description": "تخبر عن الشريحة الحالية من العدد الإجمالي للشرائح ، والمتغيرات هي :num و :total",
+          "default": "Slide :num of :total"
+        },
+        {
+          "label": "تمثيل نصي لشريط النتيجة لأولئك الذين يستخدمون تقنية تحويل النص الى كلام ",
+          "default": "You got :num out of :total points"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
+        }
+      ]
+    }
+  ]
+}

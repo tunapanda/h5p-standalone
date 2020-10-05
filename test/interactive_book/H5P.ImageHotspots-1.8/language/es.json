@@ -1,0 +1,94 @@
+{
+  "semantics": [
+    {
+      "label": "Imagen de fondo",
+      "description": "Imagen mostrada en el fondo."
+    },
+    {
+      "label": "Texto alternativo para imagen de fondo",
+      "description": "Si el navegador no puede cargar la imagen, este texto se mostrará en su lugar. También utilizado por las tecnologías de asistencia."
+    },
+    {
+      "label": "Ícono Hotspot",
+      "options": [
+        {
+          "label": "Ícono predefinido"
+        },
+        {
+          "label": "Imagen subida"
+        }
+      ]
+    },
+    {
+      "label": "Ícono predefinido",
+      "description": "Usando un ícono predefinido para el .",
+      "options": [
+        {
+          "label": "Más"
+        },
+        {
+          "label": "Menos"
+        },
+        {
+          "label": "Veces"
+        },
+        {
+          "label": "Revisar"
+        },
+        {
+          "label": "Pregunta"
+        },
+        {
+          "label": "Información"
+        },
+        {
+          "label": "Exclamación"
+        }
+      ]
+    },
+    {
+      "label": "Imagen subida",
+      "description": "Use su propia imagen para el ícono de hotspot icon.<br>75px po 75px es lo recomendado para su imagen."
+    },
+    {
+      "label": "Color del Hotspot",
+      "description": "El color del Hotspot"
+    },
+    {
+      "entity": "hotspot",
+      "label": "Hotspots",
+      "field": {
+        "label": "Hotspot",
+        "fields": [
+          {
+            "label": "Posición del Hotspot",
+            "description": "Haga clic en la imagen en miniatura para colocar el punto de acceso hotspot"
+          },
+          {
+            "label": "Cubrir toda la imagen de fondo",
+            "description": "Cuando el usuario hace clic en el hotspot, la ventana emergente cubrirá toda la imagen de fondo"
+          },
+          {
+            "label": "Encabezado",
+            "description": "Encabezado opcional para la ventana emergente"
+          },
+          {
+            "label": "Contenido emergente",
+            "field": {
+              "label": "Item del contenido"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Etiqueta de hotspot para tecnologías de asistencia",
+      "default": "Hotspot #num",
+      "description": "Ayudará a anunciar a qué elemento de punto de acceso se ha navegado si no hay un encabezado especificado para un punto de acceso público. #num se puede usar para reemplazar el número de punto de acceso."
+    },
+    {
+      "label": "Etiqueta de cierre de botón para tecnologías de asistencia",
+      "default": "Cerrar"
+    }
+  ]
+}

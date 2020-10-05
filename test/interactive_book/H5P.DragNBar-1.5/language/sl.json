@@ -1,0 +1,17 @@
+{
+  "libraryStrings": {
+    "transformLabel": "Spremeni",
+    "editLabel": "Uredi",
+    "removeLabel": "Odstrani",
+    "bringToFrontLabel": "Postavi v ospredje",
+    "sendToBackLabel": "Pošlji v ozadje",
+    "unableToPaste": "Tega predmeta ni mogoče prilepiti, saj ni podprt za izbran tip ali različico aktivnosti.",
+    "sizeLabel": "Velikost",
+    "positionLabel": "Položaj",
+    "heightLabel": "Višina",
+    "widthLabel": "Širina",
+    "copyLabel": "Kopiraj",
+    "paste": "Prilepi",
+    "moreElements": "Več elementov"
+  }
+}

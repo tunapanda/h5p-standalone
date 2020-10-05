@@ -1,0 +1,16 @@
+{
+  "libraryStrings":{
+    "insertElement":"Lisa :type",
+    "done":"Valmis",
+    "remove":"Eemalda",
+    "image":"Pilt",
+    "text":"Tekst",
+    "noTaskSize":"Palun määra esmalt ülesande suurus.",
+    "confirmRemoval":"Kas oled kindel, et soovid selle elemendi eemaldada?",
+    "backgroundOpacityOverridden":"Tausta läbipaistvus on eraldi määratud (override)",
+    "advancedtext":"Tekst",
+    "dropzone":"Sihtkoht",
+    "selectAll":"Vali kõik",
+    "deselectAll":"Tühista kõigi valik"
+  }
+}

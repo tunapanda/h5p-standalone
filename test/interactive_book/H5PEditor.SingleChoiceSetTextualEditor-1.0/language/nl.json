@@ -1,0 +1,6 @@
+{
+  "libraryStrings": {
+    "helpText": "Maak blokken met vragen en antwoorden, waarin de blokken gescheiden worden door een lege regel. In elk blok is de eerste regel de vraag, de overige regels bevatten de antwoorden. Het eerste antwoord is het juiste",
+    "warning": "Waarschuwing! Als je de taak in de tekstuele editor wijzigt, wordt alle rich text opmaak (incl. regeleinden) verwijderd."
+  }
+}

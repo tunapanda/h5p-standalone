@@ -1,0 +1,242 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Optionele media, die boven de vragen worden getoond"
+        },
+        {
+          "label": "Deactiveer zoomen van een afbeelding bij een vraag afbeelding"
+        }
+      ]
+    },
+    {
+      "label": "Vraag"
+    },
+    {
+      "label": "Beschikbare opties",
+      "entity": "optie",
+      "field": {
+        "label": "Optie",
+        "fields": [
+          {
+            "label": "Tekst"
+          },
+          {
+            "label": "Juist"
+          },
+          {
+            "label": "Tips en feedback",
+            "fields": [
+              {
+                "label": "Tekst voor tip",
+                "description": "Hint voor de gebruiker. Deze zal verschijnen voordat de gebruiker zijn antwoord(en) controleert."
+              },
+              {
+                "label": "Weer te geven bericht als het antwoord is geselecteerd",
+                "description": "Bericht zal onder het antwoord verschijnen bij controleren als dit antwoord is geselecteerd."
+              },
+              {
+                "label": "Weer te geven bericht als het antwoord niet is geselecteerd",
+                "description": "Bericht zal onder het antwoord verschijnen bij controleren als dit antwoord niet is geselecteerd."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Algehele Feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Standaard"
+            }
+          ],
+          "label": "Defineer aangepaste feedback voor elke score",
+          "description": "Voorbeeld: 0-20% Slechte score, 21-91% Gemiddelde Score, 91-100% Schitterende Score!",
+          "entity": "reeks",
+          "field": {
+            "fields": [
+              {
+                "label": "Scorebereik"
+              },
+              {},
+              {
+                "label": "Feedback bij gedefinieerd scorebereik",
+                "placeholder": "Formuleer de feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Vertalingen van de gebruikerinterface voor multiple choice",
+      "fields": [
+        {
+          "label": "Controleer antwoord knop label",
+          "default": "Controleer"
+        },
+        {
+          "label": "Toon oplossing  knop label",
+          "default": "Toon oplossing"
+        },
+        {
+          "label": "Probeer opnieuw knop label",
+          "default": "Probeer opnieuw"
+        },
+        {
+          "label": "Tip label",
+          "default": "Toon tip"
+        },
+        {
+          "label": "Textual representation of the score bar for those using a readspeaker",
+          "description": "Available variables are :num and :total",
+          "default": "You got :num out of :total points"
+        },
+        {
+          "label": "Tip aanwezig (niet getoond)",
+          "default": "Tip aanwezig",
+          "description": "Aanwezige tekst voor readspeakers"
+        },
+        {
+          "label": "Feedback aanwezig (niet getoond)",
+          "default": "Feedback aanwezig",
+          "description": "Toegankelijkheidstekst voor readspeakers"
+        },
+        {
+          "label": "Lees feedback (niet getoond)",
+          "default": "Lees feedback",
+          "description": "Toegankelijkheidstekst voor readspeakers"
+        },
+        {
+          "label": "Verkeerd antwoord (niet getoond)",
+          "default": "Verkeerd antwoord",
+          "description": "Toegankelijkheidstekst voor readspeakers"
+        },
+        {
+          "label": "Correct antwoord (niet weergegeven)",
+          "default": "Correct antwoord",
+          "description": "Toegankelijkheidstekst voor readspeakers"
+        },
+        {
+          "label": "Optie zou gemarkeerd moeten zijn",
+          "default": "Zou gemarkeerd moeten zijn"
+        },
+        {
+          "label": "Optie zou niet gemarkeerd moeten zijn",
+          "default": "Zou niet gemarkeerd mogen zijn"
+        },
+        {
+          "label": "Tekst voor \"Antwoord vereist\" bericht",
+          "default": "Gelieve te antwoorden voor je de oplossing bekijkt"
+        }
+      ]
+    },
+    {
+      "label": "Gedragsinstellingen",
+      "description": "Met deze instellingen bepaal je hoe de taak zich gedraagt.",
+      "fields": [
+        {
+          "label": "Schakel \"Opnieuw Proberen\" -knop in"
+        },
+        {
+          "label": "Schakel \"Toon Oplossing\" -knop in"
+        },
+        {
+          "label": "Schakel \"Controleer\" -knop in"
+        },
+        {
+          "label": "Vraagtype",
+          "description": "Selecteer het uiterlijk en het gedrag van de vraag.",
+          "options": [
+            {
+              "label": "Automatisch"
+            },
+            {
+              "label": "Multiple Choice (Checkboxes)"
+            },
+            {
+              "label": "Enkele keuze (Radio knoppen)"
+            }
+          ]
+        },
+        {
+          "label": "Geef een punt voor de hele taak",
+          "description": "Schakel in om een totaal van een punt te geven voor meerdere juiste antwoorden. Dit is geen optie bij \"Single answer\" modus."
+        },
+        {
+          "label": "Randomiseer de antwoorden",
+          "description": "Schakel in om de volgorde van de antwoorden te randomiseren."
+        },
+        {
+          "label": "Eis een antwoord voordat de oplossing kan worden getoond"
+        },
+        {
+          "label": "Toon bevestigingsvenster bij \"Controleer\""
+        },
+        {
+          "label": "Toon bevestigingsvenster on \"Probeer opnieuw\""
+        },
+        {
+          "label": "Controleer antwoorden automatisch",
+          "description": "Deze optie inschakelen zorgt voor moeilijke toegankelijkheid. Zorg ervoor dat je zeker bent van je keuze."
+        },
+        {
+          "label": "Slagingspercentage",
+          "description": "Deze instelling heeft vaak geen effect. Dit is het percentage van de totale score die vereist is om 1 punt te krijgen voor een hele taak wanneer dit is ingeschakeld alsook om een result.success te krijgen in de xAPI statements."
+        },
+        {
+          "label": "Toon scorepunten",
+          "description": "Toon verdiende punten voor elk antwoord."
+        }
+      ]
+    },
+    {
+      "label": "Controleer bevestigingsvenster",
+      "fields": [
+        {
+          "label": "Koptekst",
+          "default": "Klaar?"
+        },
+        {
+          "label": "Bodytekst",
+          "default": "Ben je zeker dat je deze sessie wil beëindigen?"
+        },
+        {
+          "label": "Tekst van de \"Annuleer\"-knop",
+          "default": "Annuleren"
+        },
+        {
+          "label": "Tekst van de \"Bevestig\"-knop",
+          "default": "Beëindigen"
+        }
+      ]
+    },
+    {
+      "label": "Opnieuw proberen bevestigingsvenster",
+      "fields": [
+        {
+          "label": "Hoofding tekst",
+          "default": "Opnieuw proberen?"
+        },
+        {
+          "label": "Body text",
+          "default": "Ben je er zeker van dat je het opnieuw wilt proberen?"
+        },
+        {
+          "label": "Annuleer knop label",
+          "default": "Annuleer"
+        },
+        {
+          "label": "Bevestig knop label",
+          "default": "Bevestig"
+        }
+      ]
+    }
+  ]
+}

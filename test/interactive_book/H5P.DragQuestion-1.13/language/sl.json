@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "Besedilo za gumb \"Preveri\"",
+      "default": "Preveri"
+    },
+    {
+      "label": "Besedilo za gumb \"Poskusi ponovno\"",
+      "default": "Poskusi ponovno"
+    },
+    {
+      "label": "Besedilo za razlago rezultata",
+      "default": "Pravilen odgovor se točkuje s +1 točko, nepravilen pa z -1 točko. Najnižji možen rezultat je 0 točk."
+    },
+    {
+      "fields": [
+        {
+          "label": "Nastavitve",
+          "fields": [
+            {
+              "label": "Slika za ozadje",
+              "description": "Neobvezno. Izberi sliko za ozadje aktivnosti."
+            },
+            {
+              "label": "Velikost naloge",
+              "description": "Določitev velikosti polja naloge (v px)."
+            }
+          ]
+        },
+        {
+          "label": "Naloga",
+          "description": "Najbolje je začeti s postavitvijo spustnih polj.<br/>V nadaljevanju se doda elemente, ki jih je potrebno povezati z ustreznimi spustnimi polji.<br/>Na koncu se zgolj še preveri spustna polja in v njih izbrane elemente potrdi kot pravilne odgovore.",
+          "fields": [
+            {
+              "label": "Elementi",
+              "entity": "element",
+              "field": {
+                "label": "Element",
+                "fields": [
+                  {
+                    "description": "Potrebno je izbrati tip vsebine."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Spustna polja za izbor"
+                  },
+                  {
+                    "label": "Prekrivnost ozadja,"
+                  },
+                  {
+                    "label": "Omogoči neskončno možnost izbire elementa (kloniranje)",
+                    "description": "Klone tega elementa bo možno povleči v več spustnih polj."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Spustna polja",
+              "entity": "Spustno polje",
+              "field": {
+                "label": "Spustno polje",
+                "fields": [
+                  {
+                    "label": "Oznaka"
+                  },
+                  {
+                    "label": "Prikaži oznako"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Označi pravilne odgovore (elemente)"
+                  },
+                  {
+                    "label": "Prekrivnost ozadja"
+                  },
+                  {
+                    "label": "Namig in povratna informacija",
+                    "fields": [
+                      {
+                        "label": "Besedilo namiga"
+                      },
+                      {
+                        "label": "Sporočilo za pravilno povezavo",
+                        "description": "Sporočilo se prikaže pod nalogo, in sicer po potrditvi z gumbom \"Preveri\"."
+                      },
+                      {
+                        "label": "Sporočilo za nepravilno povezavo",
+                        "description": "Sporočilo se prikaže pod nalogo, in sicer po potrditvi z gumbom \"Preveri\"."
+                      }
+                    ]
+                  },
+                  {
+                    "label": "To spustno polje lahko vsebuje le en element",
+                    "description": "Potrebno je poskrbeti, da za spustno polje obstaja resnično zgolj en pravilen odgovor"
+                  },
+                  {
+                    "label": "Omogoči samodejno poravnavo",
+                    "description": "Elementi se bodo v spustnem polju samodejno poravnali."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Splošna povratna informacija",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Privzeto"
+            }
+          ],
+          "label": "Določi ločeno povratno informacijo za vsak razpon rezultatov",
+          "description": "Kliknite gumb \"Dodaj razpon\" za dodajanje dodatnih razponov. Primer: 0-20 % Slab rezultat, 21-91 % Povprečen rezultat, 91-100 % Odličen rezultat!",
+          "entity": "razpon",
+          "field": {
+            "fields": [
+              {
+                "label": "Razpon rezultatov"
+              },
+              {},
+              {
+                "label": "Povratna informacija za definiran razpon rezultatov",
+                "placeholder": "Vnesite povratno informacijo"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Nastavitve interakcije",
+      "description": "Nastavitve omogočajo nadzor nad interakcijo aktivnosti za udeležence.",
+      "fields": [
+        {
+          "label": "Omogoči gumb \"Poskusi ponovno\""
+        },
+        {
+          "label": "Omogoči gumb \"Preveri\""
+        },
+        {
+          "label": "Pred ogledom rešitve zahtevaj odgovor"
+        },
+        {
+          "label": "Nalogo oceni z 1 točko kot celoto",
+          "description": "Če je možnost onemogočena, bo udeleženec prejel za vsak pravilno postavljen element po 1 točko."
+        },
+        {
+          "label": "Omogoči negativne točke",
+          "description": "Spust elementa v napačno polje pomeni odbitek točk. Nastavitev je posebej pomembna v primeru neskončne možnosti izbire posameznega elementa (kloniranja)."
+        },
+        {
+          "label": "Omogoči pojasnilo točkovanja",
+          "description": "Udeleženci lahko po ogledu rezultatov vidijo pojasnilo točkovanja (npr. nepravilen odgovor se točkuje z -1 točko)."
+        },
+        {
+          "label": "Določi prekrivnost ozadja elementov",
+          "description": "Nastavitev prekrivnosti ozadja elementov glede na sliko v ozadju (0 pomeni prosojnost, 100 pa popolno prekrivnosti)."
+        },
+        {
+          "label": "Poudari spustna polja",
+          "description": "Nastavitev poudarka spustnih polj, kamor lahko udeleženci povlečejo posamezne elemente.",
+          "options": [
+            {
+              "label": "Med vlečenjem"
+            },
+            {
+              "label": "Vedno"
+            },
+            {
+              "label": "Nikoli"
+            }
+          ]
+        },
+        {
+          "label": "Določi odmik od roba spustnega polja (v px) za samodejno poravnavo"
+        },
+        {
+          "label": "Omogoči celozaslonski način ogleda",
+          "description": "Udeležencem bo na voljo gumb za celozaslonski ogled vsebine."
+        },
+        {
+          "label": "Prikaži dosežene točke",
+          "description": "Prikaz doseženih točk pri vsakem podanem odgovoru (npr. +1 ali -1 točka). Ni na voljo, ko je omogočena možnost Nalogo oceni z 1 točko kot celoto."
+        },
+        {
+          "label": "Prikaži naslov vsebine",
+          "description": "Naslov vsebine bo skrit."
+        }
+      ]
+    },
+    {
+      "label": "Določi",
+      "fields": [
+        {
+          "label": "Besedilo za celozaslonski način",
+          "default": "Celozaslonski način"
+        },
+        {
+          "label": "Besedilo za zaključek celozaslonskega načina",
+          "default": "Zapusti celozaslonski način"
+        }
+      ]
+    },
+    {
+      "label": "Elementi (prefix)",
+      "default": "Prestavljenih elementov: {num} od {total}."
+    },
+    {
+      "label": "Elementi (suffix)",
+      "default": "Postavljenih v spustna polja: {num}."
+    },
+    {
+      "label": "Spustna polja (prefix)",
+      "default": "Spustno polje {num} od {total}."
+    },
+    {
+      "label": "Besedilo za neizbrano spustno polje",
+      "default": "Ni spustnega polja."
+    },
+    {
+      "label": "Besedilo gumba za prikaz namiga",
+      "default": "Pokaži namig"
+    },
+    {
+      "label": "Besedilo za možnost namiga",
+      "default": "Na voljo je namig"
+    },
+    {
+      "label": "Besedilo za pravilni odgovor",
+      "default": "Pravilni odgovor"
+    },
+    {
+      "label": "Besedilo za nepravilni odgovor",
+      "default": "Nepravilni odgovor"
+    },
+    {
+      "label": "Naslov sporočila povratne informacije o pravilnem/nepravilnem odgovoru",
+      "default": "Povratna informacija"
+    },
+    {
+      "label": "Besedilo, ki ga bralnik zaslona uporabi za izražanje napredka",
+      "default": "Napredek :num od :total"
+    },
+    {
+      "label": "Besedilo gumba za izražanje napredka",
+      "default": "Prikaži razlago točk"
+    }
+  ]
+}

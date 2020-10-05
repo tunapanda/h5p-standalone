@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "Liste der Fragen",
+      "entity": "Frage",
+      "widgets": [
+        {
+          "label": "Eingabemaske"
+        },
+        {
+          "label": "Als Text eingeben"
+        }
+      ],
+      "field": {
+        "label": "Frage & Alternativen",
+        "fields": [
+          {
+            "label": "Frage"
+          },
+          {
+            "label": "Alternativen - die erste Alternative ist die Richtige.",
+            "entity": "Antwort",
+            "field": {
+              "label": "Alternative"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Gesamtrückmeldung",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Voreinstellung"
+            }
+          ],
+          "label": "Lege Rückmeldungen für einzelne Punktebereiche fest",
+          "description": "Klicke auf den \"Bereich hinzufügen\"-Button, um so viele Bereiche hinzuzufügen, wie du brauchst. Beispiel: 0-20% Schlechte Punktzahl, 21-91% Durchschnittliche Punktzahl, 91-100% Großartige Punktzahl!",
+          "entity": "Bereich",
+          "field": {
+            "fields": [
+              {
+                "label": "Punktebereich"
+              },
+              {},
+              {
+                "label": "Rückmeldung für jeweiligen Punktebereich",
+                "placeholder": "Trage die Rückmeldung ein"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Verhaltenseinstellungen",
+      "fields": [
+        {
+          "label": "Automatisch weitergehen",
+          "description": "Automatisch zur nächsten Frage springen, wenn eine Antwort gewählt wurde"
+        },
+        {
+          "label": "Wartezeit bei richtigen Antworten",
+          "description": "Länge in Millisekunden"
+        },
+        {
+          "label": "Wartezeit bei falschen Antworten",
+          "description": "Länge in Millisekunden"
+        },
+        {
+          "label": "Soundeffekte einschalten"
+        },
+        {
+          "label": "\"Wiederholen\"-Button anzeigen"
+        },
+        {
+          "label": "\"Lösung anzeigen\" ermöglichen"
+        },
+        {
+          "label": "Prozentsatz zum Bestehen",
+          "description": "Prozentsatz der Gesamtpunktzahl, der nötig ist, um das Quiz zu bestehen"
+        }
+      ]
+    },
+    {
+      "label": "Sprachanpassungen für Single-Choice-Set",
+      "fields": [
+        {
+          "label": "Beschriftung des \"Weiter\"-Buttons",
+          "default": "Weiter"
+        },
+        {
+          "label": "Beschriftung des \"Lösung anzeigen\"-Buttons",
+          "default": "Lösung anzeigen"
+        },
+        {
+          "label": "Beschriftung des \"Wiederholen\"-Buttons",
+          "default": "Wiederholen"
+        },
+        {
+          "label": "Titel der Lösungsansicht",
+          "default": "Lösung"
+        },
+        {
+          "label": "Text, den ein Vorlesewerkzeug bei einer richtigen Antwort vorliest (Barrierefreiheit)",
+          "default": "Richtig!"
+        },
+        {
+          "label": "Text, den ein Vorlesewerkzeug bei einer falschen Antwort vorliest (Barrierefreiheit)",
+          "default": "Falsch!"
+        },
+        {
+          "label": "Beschriftung des \"Stumm\"-Buttons, um den Ton auszustellen",
+          "default": "Stumm schalten"
+        },
+        {
+          "label": "Beschriftung des \"Schließen\"-Buttons",
+          "default": "Schließen"
+        },
+        {
+          "label": "Text für die Seitennummer",
+          "description": "Gibt die aktuelle Seitenzahl aus und wieviele Seiten es insgesamt gibt. Verwendbare Platzhalter sind :num und :total.",
+          "default": "Seite :num von :total"
+        },
+        {
+          "label": "Text der Punkteleiste für Vorlesewerkzeuge (Barrierefreiheit)",
+          "default": "Du hast :num von :total Punkten erreicht."
+        },
+        {
+          "label": "Beschriftung für die Fragennummer in der Liste der Lösungen",
+          "description": "Liest die aktuelle nummer der Frage in der Liste der Lösungen, :num ist die Variable",
+          "default": "Frage :num"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "libraryStrings":{
+    "insertElement":"Añadir :tipo",
+    "done":"Hecho",
+    "remove":"Quitar",
+    "image":"Imagen",
+    "text":"Texto",
+    "noTaskSize":"Por favor especifique el tamaño del trabajo primeramente.",
+    "confirmRemoval":"¿Está seguro de querer remover este elemento?",
+    "backgroundOpacityOverridden":"La opacidad del fondo está anulada",
+    "advancedtext":"Texto",
+    "dropzone":"Zona de Caída",
+    "selectAll":"Seleccionar todo",
+    "deselectAll":"Des-seleccionar todo"
+  }
+}

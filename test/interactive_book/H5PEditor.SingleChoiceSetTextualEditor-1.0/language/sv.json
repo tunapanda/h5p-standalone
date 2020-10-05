@@ -1,0 +1,6 @@
+{
+  "libraryStrings": {
+    "helpText": "Skapa block med frågor och svar, där varje block separeras med en tom rad. I varje block så är första raden själva frågan, de övriga raderna innehåller svaren. Det första svaret är alltid det korrekta.",
+    "warning": "Varning! Om du gör ändringar i den textuella redigeraren, så kommer all textformatering att försvinna (inklusive radbrytningar)."
+  }
+}

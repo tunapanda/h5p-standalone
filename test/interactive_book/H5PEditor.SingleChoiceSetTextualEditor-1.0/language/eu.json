@@ -1,0 +1,6 @@
+{
+  "libraryStrings": {
+    "helpText": "Sortu galdera eta erantzunen blokeak. Blokeen artean lerro zuri bat egongo da. Bloke bakoitzean, lehenengo lerroan galdera dago eta gainerako lerroetan erantzunak. Lehenengo erantzuna erantzun zuzena da",
+    "warning": "Argi ibili! Jarduera testu editore batez aldatzen baduzu formatu aberastu guztiak galduko dira (lerro jauziak barne)."
+  }
+}

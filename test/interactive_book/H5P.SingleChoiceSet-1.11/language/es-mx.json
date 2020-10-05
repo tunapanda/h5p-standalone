@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "Lista de preguntas",
+      "entity": "pregunta",
+      "widgets": [
+        {
+          "label": "Predeterminado"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
+      "field": {
+        "label": "Pregunta y alternativas",
+        "fields": [
+          {
+            "label": "Pregunta"
+          },
+          {
+            "label": "Alternativas - la primera alternativa es la correcta.",
+            "entity": "respuesta",
+            "field": {
+              "label": "Alternativa"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Retroalimentación Global",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Predeterminado"
+            }
+          ],
+          "label": "Definir retroalimentación personalizada para cualquier rango de puntaje",
+          "description": "Hacer click en el botón \"Añadir rango\" para añadir cuantos rangos necesite. Ejemplo: 0-20% Mal puntaje, 21-91% Puntaje Promedio, 91-100% ¡Magnífico Puntaje!",
+          "entity": "rango",
+          "field": {
+            "fields": [
+              {
+                "label": "Rango de puntaje"
+              },
+              {},
+              {
+                "label": "Retroalimentación para rango deinido de puntaje",
+                "placeholder": "Escriba la retroalimentación"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Ajustes de comportamiento",
+      "fields": [
+        {
+          "label": "Auto continuar",
+          "description": "Automáticamente ir a la pregunta siguiente cuando una alternativa es seleccionada"
+        },
+        {
+          "label": "Timeout en respuestas correctas",
+          "description": "Valor en microsegundos"
+        },
+        {
+          "label": "Timeout en respuestas incorrectas",
+          "description": "Valor en microsegundos"
+        },
+        {
+          "label": "Habilitar efectos sonoros"
+        },
+        {
+          "label": "Habilitar botón Reintentar"
+        },
+        {
+          "label": "Habilitar botón Mostrar solución"
+        },
+        {
+          "label": "Porcentaje aprobatorio",
+          "description": "Percentaje del puntaje total requerido para pasar el examen."
+        }
+      ]
+    },
+    {
+      "label": "Localizar conjunto de opción única",
+      "fields": [
+        {
+          "label": "Etiqueta para el botón \"Siguiente\" ",
+          "default": "Siguiente pregunta"
+        },
+        {
+          "label": "Etiqueta para el botón \"Mostrar solución\" ",
+          "default": "Mostrar solución"
+        },
+        {
+          "label": "Etiqueta para el botón \"Reintentar\" ",
+          "default": "Reintentar"
+        },
+        {
+          "label": "Título para la vista mostrar solución",
+          "default": "Solución"
+        },
+        {
+          "label": "Texto para Lector de voz para respuesta correcta",
+          "default": "¡Correcta!"
+        },
+        {
+          "label": "Texto de Lector de voz para respuesta incorrecta",
+          "default": "¡Incorrecta!"
+        },
+        {
+          "label": "Etiqueta para el botón \"enmudecer\", para deshabilitar sonito de realimentación",
+          "default": "Enmudecer sonido de realimentación"
+        },
+        {
+          "label": "Etiqueta para el botón \"Cerrar\" ",
+          "default": "Cerrar"
+        },
+        {
+          "label": "Texto de imágen número",
+          "description": "Anuncia la imagen actual y el número total de imágenes, las variables son :num y :total",
+          "default": "Imagen :num de :total"
+        },
+        {
+          "label": "Representación textual de la barra de puntaje para aquellos que usan un Lector de voz",
+          "default": "Usted tuvo :num de un total de :total puntos"
+        },
+        {
+          "label": "Etiqueta para el número de pregunta en la lista de solución",
+          "description": "Anuncia el índice de pregunta actual en lista de solución, las variables con :num",
+          "default": "Pregunta :num"
+        }
+      ]
+    }
+  ]
+}

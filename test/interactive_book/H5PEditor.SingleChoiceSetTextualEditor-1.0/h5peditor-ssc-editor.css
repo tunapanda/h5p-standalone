@@ -1,0 +1,9 @@
+.h5p-ssc-editor textarea {
+  padding: 20px;
+  font-family: "Open Sans", sans-serif;
+  line-height: 25px;
+}
+
+.h5p-ssc-editor .h5p-help-text {
+  white-space: pre-wrap;
+}

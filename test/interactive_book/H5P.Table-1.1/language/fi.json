@@ -1,0 +1,8 @@
+{
+  "semantics": [
+    {
+      "label": "Taulukko",
+      "default": "<table class=\"h5p-table\"><thead><tr><th scope=\"col\">Ensimmäisen sarakkeen otsikko</th><th scope=\"col\">Toisen sarakkeen otsikko</th></tr></thead><tbody><tr><td>Rivi 1 Sarake 1</td><td>Rivi 1 Sarake 2</td></tr><tr><td>Rivi 2 Sarake 1</td><td>Rivi 2 Sarake 2</td></tr></tbody></table>"
+    }
+  ]
+}

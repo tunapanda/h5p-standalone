@@ -1,0 +1,325 @@
+/* Custom H5P font to use for icons. */
+@font-face {
+  font-family: 'H5PDragNBar';
+  src:url('../fonts/H5PDragNBar.eot?5yxjqx');
+  src:url('../fonts/H5PDragNBar.eot?#iefix5yxjqx') format('embedded-opentype'),
+    url('data:application/font-woff;base64,d09GRgABAAAAAAS0AAsAAAAABGgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAABCAAAAGAAAABgDxICMmNtYXAAAAFoAAAAVAAAAFQaTsyXZ2FzcAAAAbwAAAAIAAAACAAAABBnbHlmAAABxAAAAHwAAAB8uhYcYGhlYWQAAAJAAAAANgAAADYGieuHaGhlYQAAAngAAAAkAAAAJAcAA8ZobXR4AAACnAAAABQAAAAUCgAAwmxvY2EAAAKwAAAADAAAAAwAKABSbWF4cAAAArwAAAAgAAAAIAAIABJuYW1lAAAC3AAAAbYAAAG2EB9/n3Bvc3QAAASUAAAAIAAAACAAAwAAAAMDAAGQAAUAAAKZAswAAACPApkCzAAAAesAMwEJAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAQAAA5ggDwP/AAEADwABAAAAAAQAAAAAAAAAAAAAAIAAAAAAAAwAAAAMAAAAcAAEAAwAAABwAAwABAAAAHAAEADgAAAAKAAgAAgACAAEAIOYI//3//wAAAAAAIOYI//3//wAB/+MZ/AADAAEAAAAAAAAAAAAAAAEAAf//AA8AAQAAAAAAAAAAAAIAADc5AQAAAAABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAgDCAIIDPgL+AAgADwAAATUhETMVIREjEyE1IREzEQKW/ixnAhWoZv5uASxmApdn/iyoAhX+LWYBLP5uAAAAAAEAAAABAAAnj2iRXw889QALBAAAAAAA0hbTxgAAAADSFtPGAAAAAAM+Av4AAAAIAAIAAAAAAAAAAQAAA8D/wAAABAAAAAAAAz4AAQAAAAAAAAAAAAAAAAAAAAUEAAAAAAAAAAAAAAACAAAABAAAwgAAAAAACgAUAB4APgABAAAABQAQAAIAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAADgCuAAEAAAAAAAEACwAAAAEAAAAAAAIABwCEAAEAAAAAAAMACwBCAAEAAAAAAAQACwCZAAEAAAAAAAUACwAhAAEAAAAAAAYACwBjAAEAAAAAAAoAGgC6AAMAAQQJAAEAFgALAAMAAQQJAAIADgCLAAMAAQQJAAMAFgBNAAMAAQQJAAQAFgCkAAMAAQQJAAUAFgAsAAMAAQQJAAYAFgBuAAMAAQQJAAoANADUSDVQRHJhZ05CYXIASAA1AFAARAByAGEAZwBOAEIAYQByVmVyc2lvbiAxLjAAVgBlAHIAcwBpAG8AbgAgADEALgAwSDVQRHJhZ05CYXIASAA1AFAARAByAGEAZwBOAEIAYQBySDVQRHJhZ05CYXIASAA1AFAARAByAGEAZwBOAEIAYQByUmVndWxhcgBSAGUAZwB1AGwAYQBySDVQRHJhZ05CYXIASAA1AFAARAByAGEAZwBOAEIAYQByRm9udCBnZW5lcmF0ZWQgYnkgSWNvTW9vbi4ARgBvAG4AdAAgAGcAZQBuAGUAcgBhAHQAZQBkACAAYgB5ACAASQBjAG8ATQBvAG8AbgAuAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==') format('woff'),
+    url('../fonts/H5PDragNBar.ttf?5yxjqx') format('truetype'),
+    url('../fonts/H5PDragNBar.svg?5yxjqx#H5PDragNBar') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.h5p-dragnbar-context-menu {
+  display: block;
+  background-color: #c4e3f7;
+  height: 36px;
+  margin-top: -51px;
+  position: absolute;
+  border: 1px solid #0099ff;
+  line-height: 36px;
+  -webkit-filter: drop-shadow(0px 0px 0.25em rgba(44,44,44,0.75));
+  filter: drop-shadow(0px 0px 0.25em rgba(44, 44, 44, 0.5));
+  z-index: 9;
+  font-size: 16px;
+}
+
+.h5p-dragnbar-context-menu.left-aligned:after {
+  position: absolute;
+  display: block;
+  content: "";
+  border-style: solid;
+  border-width: 8px 7px 0 0;
+  border-color: #c4e3f7 transparent transparent transparent;
+  bottom: -7px;
+  right: 0;
+  left: initial;
+  z-index: 1;
+  transform: scaleX(-1);
+}
+
+.h5p-dragnbar-context-menu.left-aligned:before {
+  position: absolute;
+  display: block;
+  content: "";
+  border-style: solid;
+  border-width: 10px 10px 0 0;
+  border-color: #0099ff transparent transparent transparent;
+  bottom: -10px;
+  left: initial;
+  right: -1px;
+  transform: scaleX(-1);
+}
+
+.h5p-dragnbar-context-menu.left-aligned .h5p-context-menu-buttons {
+  float: left;
+}
+
+.h5p-dragnbar-context-menu:before {
+  position: absolute;
+  display: block;
+  content: "";
+  border-style: solid;
+  border-width: 9px 9px 0 0;
+  border-color: #0099ff transparent transparent transparent;
+  bottom: -9px;
+  left: -1px;
+}
+
+.h5p-dragnbar-context-menu:after {
+  position: absolute;
+  display: block;
+  content: "";
+  border-style: solid;
+  border-width: 8px 7px 0 0;
+  border-color: #c4e3f7 transparent transparent transparent;
+  bottom: -7px;
+  left: 0;
+  z-index: 1;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button,
+.h5p-dragnbar-context-menu .h5p-context-menu-buttons,
+.h5p-dragnbar-context-menu .h5p-transform-panel,
+.h5p-dragnbar-context-menu .h5p-dragnbar-dimensions,
+.h5p-dragnbar-context-menu .h5p-dragnbar-coordinates {
+  display: inline-block;
+  position: relative;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-coordinates {
+  padding: 0 0.75em;
+  background-color: #fff;
+  color: #0061a2;
+  border-right: 1px solid #0099ff;
+  border-left: 1px solid #0099ff;
+  line-height: 36px;
+}
+
+.h5p-dragnbar-context-menu.left-aligned .h5p-dragnbar-coordinates {
+  border-left: none;
+  border-right: none;
+}
+
+.h5p-dragnbar-context-menu.left-aligned .h5p-dragnbar-coordinates:last-child {
+  border-right: 1px solid #0099ff;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-coordinates:last-child {
+  border-right: none;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button {
+  width: 32px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+	line-height: 36px;
+	vertical-align: middle;
+	outline: none;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-coordinates .h5p-dragnbar-x-container,
+.h5p-dragnbar-context-menu .h5p-dragnbar-coordinates .h5p-dragnbar-y-container {
+  display: inline-block;
+  position: relative;
+}
+
+/* Button stylings */
+.h5p-dragnbar-context-menu .h5p-dragnbar-coordinates .h5p-dragnbar-x-container:hover:before,
+.h5p-dragnbar-context-menu .h5p-dragnbar-coordinates .h5p-dragnbar-y-container:hover:before,
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button:hover:before,
+.h5p-dragnbar-context-menu .h5p-dragnbar-input:hover:before {
+  background-color: #000;
+  color: #fff;
+  opacity: 0.75;
+  content: attr(aria-label);
+  position: absolute;
+  bottom: 42px;
+  padding: 0 0.5em;
+  transform: translateX(-50%);
+  left: 50%;
+  font-size: 14px;
+  line-height: 2;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button:after {
+  font-family: "H5PFontAwesome4";
+  content: '\f059';
+  color: #0061a2;
+  padding: 3px 5px;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button:hover:after {
+  border: 1px solid #61bfff;
+  border-radius: 2px;
+  color: #003c65;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button.transform:after {
+  content: '\f0b2';
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button.edit:after {
+  content: '\f040';
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button.copy:after {
+  font-family: 'H5P';
+  content: "\e905";
+  font-size: 1.25em;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button.remove:after {
+  content: '\f1f8';
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button.bringtofront:after {
+  font-family: "H5PDragNBar";
+  content: "\e608";
+  padding: 3px;
+  font-size: 1.05em;
+  vertical-align: bottom;
+}
+
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button.sendtoback:after {
+  font-family: "H5PFontIcons";
+  content: "\e90f";
+  padding: 3px;
+  font-size: 1.05em;
+  vertical-align: bottom;
+}
+
+.ui-widget .h5p-dragnbar-coordinates > div > input,
+.h5p-dragnbar-coordinates input {
+  font-size: 13px;
+  background: none repeat scroll 0 0 transparent;
+  border: medium none;
+  width: 2em;
+  text-align: left;
+  color: #0061a2;
+  vertical-align: bottom;
+  margin-bottom: 3px;
+}
+
+.h5p-dragnbar-coordinates input.h5p-dragnbar-x {
+  text-align: right;
+}
+
+.h5p-dragnbar-coordinates .h5p-dragnbar-coordinates-separater {
+  margin: 0 0.25em;
+  vertical-align: bottom;
+  line-height: 24px;
+  color: #555;
+}
+
+.h5p-dragnbar-coordinates input:focus {
+  outline: none;
+}
+
+.left-aligned .h5p-dragnbar-dimensions {
+	border-left: 1px solid #0099ff;
+	border-right: 1px solid #0099ff;
+}
+.h5p-dragnbar-input {
+  display: inline-block;
+  position: relative;
+}
+.h5p-course-presentation.editor .h5p-dragnbar-input > input,
+.h5p-dragnbar-input > input {
+	width: 3.25em;
+	height: 36px;
+	color: #0061a2;
+  padding: 1em 0.5em 0;
+	border: 0;
+	outline: none;
+  box-sizing: border-box;
+  vertical-align: top;
+  font-size: 13px;
+}
+.h5p-course-presentation.editor .h5p-dragnbar-input > input:hover,
+.h5p-course-presentation.editor .h5p-dragnbar-input > input:focus,
+.h5p-dragnbar-input > input:hover,
+.h5p-dragnbar-input > input:focus {
+	color: #044c7c;
+}
+.h5p-course-presentation.editor .ui-widget .h5p-dragnbar-input > input,
+.ui-widget .h5p-dragnbar-input > input {
+  font-size: 13px;
+  font-family: inherit;
+}
+.h5p-course-presentation.editor .h5p-dragnbar-width > input,
+.h5p-dragnbar-width > input {
+	text-align: right;
+	padding-right: 0.25em;
+}
+.h5p-course-presentation.editor .h5p-dragnbar-height > input,
+.h5p-dragnbar-height > input {
+	padding-left: 0.25em;
+}
+.h5p-dragnbar-dimensions-separator {
+  font-size: 14px;
+  height: 29px;
+  padding: 0.5em 0 0;
+	background-color: #fff;
+	display: inline-block;
+	vertical-align: top;
+	color: #555;
+}
+
+.h5p-dragnbar-context-menu .h5p-transform-panel.hide,
+.h5p-dragnbar-context-menu .h5p-context-menu-buttons.hide,
+.h5p-dragnbar-context-menu .h5p-dragnbar-context-menu-button.transform.hide {
+  display: none;
+}
+
+.h5p-dragnbar-context-menu.left-aligned .h5p-transform-panel {
+  float: left;
+}
+
+.h5p-dragnbar-context-menu .h5p-transform-button-wrapper {
+  margin-left: 4px;
+  display: inline-block;
+}
+
+.h5p-dragnbar-context-menu.left-aligned .h5p-transform-button-wrapper {
+  margin-left: 0;
+  margin-right: 4px;
+}
+
+.h5p-dragnbar-context-menu .h5p-transform-button-wrapper.active {
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.h5p-dragnbar-context-menu .h5p-transform-button-wrapper .transform {
+  margin: 0;
+}
+
+.h5p-dragnbar-context-menu .h5p-context-menu-buttons {
+  margin-right: 4px;
+}
+
+.h5p-dragnbar-context-menu.left-aligned .h5p-context-menu-buttons {
+  margin-right: 0;
+  margin-left: 4px;
+}
+
+.h5p-dragnbar-context-menu .h5p-transform-button-wrapper.active .transform:after {
+  border: 1px solid #80c2ee;
+  background: #b2d7ee;
+  box-shadow: inset 0 1px 5px 0 rgba(2,94,156,0.65);
+}
+.h5p-dragnbar-context-menu .h5p-dragnbar-label {
+  position: absolute;
+  left: 0;
+  font-size: 10px;
+  color: #555;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+  padding: 1px 0 0;
+  line-height: 18px;
+}

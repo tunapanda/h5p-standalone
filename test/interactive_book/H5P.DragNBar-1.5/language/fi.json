@@ -1,0 +1,17 @@
+{
+  "libraryStrings": {
+    "transformLabel": "Transformoi",
+    "editLabel": "Editoi",
+    "removeLabel": "Poista",
+    "bringToFrontLabel": "Tuo eteen",
+    "sendToBackLabel": "Lähetä taakse",
+    "unableToPaste": "Objektia ei pystytty liittämään. Valitettavasti objektia jota yrität liittä ei tueta tässä aineistomuodossa tai sen nykyisessä versiossa.",
+    "sizeLabel": "Koko",
+    "positionLabel": "Sijainti",
+    "heightLabel": "Korkeus",
+    "widthLabel": "Leveys",
+    "copyLabel": "Kopioi",
+    "paste": "Liitä",
+    "moreElements": "Lisää elementtejä"
+  }
+}
