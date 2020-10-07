@@ -1,5 +1,7 @@
 import Toposort from 'toposort-class';
 import H5P from 'imports-loader?H5PIntegration=>window.H5PIntegration!H5P';
+import TinCan from 'tincanjs';
+import URL from 'url';
 
 H5PIntegration = window.H5PIntegration;
 
@@ -24,9 +26,8 @@ export default class H5PStandalone {
     } else {
       this.librariesPath = librariesPath;
     }
-
-    console.log(this.librariesPath);
     this.initElement(el);
+    this.setupTinCanFromLaunchParams();
     return this.initH5P(options.frameCss, options.frameJs, displayOptions, options.preventH5PInit);
   }
 
@@ -69,10 +70,32 @@ export default class H5PStandalone {
       contentUrl: urlPath(`${this.path}/content`),
       metadata: this.h5p
     };
-
-    // if (!preventH5PInit) {
     H5P.init();
-    // }
+  }
+
+  async setupTinCanFromLaunchParams(){
+    H5PIntegration.TinCan = TinCan
+    var params = URL.parse(location.href, true).query, _group, _actor;
+    if(Object.keys(params).length > 1){
+      if(params.actor || params.group) {
+        _actor = params.actor ? TinCan.Agent.fromJSON(params.actor): TinCan.Group.fromJSON(params.group);
+        _actor.objectType = params.actor ? "Agent":"Group"
+        H5PIntegration.TinCan['actor'] = _actor
+      }
+  
+      if(params.activity_id) {
+        H5PIntegration.TinCan['activityId'] = params.activity_id
+      }
+  
+      H5PIntegration.TinCan['LRS'] = new TinCan.LRS({
+          "endpoint": params.endpoint,
+          "auth": params.auth,
+          "user": _actor,
+          "allowFail" : false
+      });
+    }else{
+      console.log("No query params found from url")
+    }
   }
 
   getJSON(url) {
