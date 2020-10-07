@@ -230,8 +230,7 @@ H5P.init = function (target) {
           statement = H5PIntegration.TinCan.Statement.fromJSON(JSON.stringify(statement))
           statement['object'] = {...event.data.statement.object,id:id}
           statement.actor["objectType"] = H5PIntegration.TinCan.actor.objectType;
-        //send statement
-        console.log(statement)
+        
         H5PIntegration.TinCan.LRS.saveStatement(statement, {
           callback: function(err,xhr) {
               if(err != null) {
@@ -241,6 +240,8 @@ H5P.init = function (target) {
               }
           }
         });
+      }else{
+        console.log("Can not send statement", event.data.statement)
       }
     });
 
