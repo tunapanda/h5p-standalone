@@ -6,9 +6,7 @@
   "dependencies": {
     "@babel/runtime": "^7.6.3",
     "jquery": "~3.4.1",
-    "tincanjs": "^0.50.0",
-    "toposort-class": "^1.0.1",
-    "url": "^0.11.0"
+    "toposort-class": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
