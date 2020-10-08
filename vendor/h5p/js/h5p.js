@@ -227,16 +227,16 @@ H5P.init = function (target) {
         localIdKey = "http://h5p.org/x-api/h5p-local-content-id",
         id = `${activityId}/${mStatement.object.definition.extensions[localIdKey]}`,
         statement = {...event.data.statement, actor: H5PIntegration.TinCan.actor,
-          target: {id: H5PIntegration.TinCan.activityId}, timestamp: new Date().getTime()};
+        target: {id: H5PIntegration.TinCan.activityId}, timestamp: new Date().getTime()};
 
-          statement = H5PIntegration.TinCan.Statement.fromJSON(JSON.stringify(statement))
-          statement['object'] = {...event.data.statement.object,id:id}
-          statement.actor["objectType"] = H5PIntegration.TinCan.actor.objectType;
-          
-          if(H5PIntegration.TinCan.registration){
-            statement.context['registration'] = H5PIntegration.TinCan.registration;
-          }
+        statement = H5PIntegration.TinCan.Statement.fromJSON(JSON.stringify(statement))
+        statement['object'] = {...event.data.statement.object,id:id}
+        statement.actor["objectType"] = H5PIntegration.TinCan.actor.objectType;
         
+        if(H5PIntegration.TinCan.registration){
+          statement.context['registration'] = H5PIntegration.TinCan.registration;
+        }
+
         H5PIntegration.TinCan.LRS.saveStatement(statement, {
           callback: function(err,xhr) {
               if(err != null) {
@@ -247,7 +247,7 @@ H5P.init = function (target) {
           }
         });
       }else{
-        console.log("Can not send statement", event.data.statement)
+        console.log("Can not send statement" , event.data.statement.verb.display)
       }
     });
 
