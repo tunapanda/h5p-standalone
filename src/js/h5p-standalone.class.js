@@ -77,10 +77,15 @@ export default class H5PStandalone {
     H5PIntegration.TinCan = TinCan
     var params = URL.parse(location.href, true).query, _group, _actor;
     if(Object.keys(params).length > 1){
+      
       if(params.actor || params.group) {
         _actor = params.actor ? TinCan.Agent.fromJSON(params.actor): TinCan.Group.fromJSON(params.group);
         _actor.objectType = params.actor ? "Agent":"Group"
         H5PIntegration.TinCan['actor'] = _actor
+      }
+
+      if(params.registration){
+        H5PIntegration.TinCan['registration'] = params.registration
       }
   
       if(params.activity_id) {

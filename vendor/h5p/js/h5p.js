@@ -221,15 +221,21 @@ H5P.init = function (target) {
 
     //Listen and send xAPI events
     H5P.externalDispatcher.on('xAPI',  (event) => {
-      if(H5PIntegration.TinCan){
+
+      if(H5PIntegration.TinCan && H5PIntegration.TinCan.activityId){
         var  activityId = H5PIntegration.TinCan.activityId, mStatement = event.data.statement,
         localIdKey = "http://h5p.org/x-api/h5p-local-content-id",
         id = `${activityId}/${mStatement.object.definition.extensions[localIdKey]}`,
         statement = {...event.data.statement, actor: H5PIntegration.TinCan.actor,
           target: {id: H5PIntegration.TinCan.activityId}, timestamp: new Date().getTime()};
+
           statement = H5PIntegration.TinCan.Statement.fromJSON(JSON.stringify(statement))
           statement['object'] = {...event.data.statement.object,id:id}
           statement.actor["objectType"] = H5PIntegration.TinCan.actor.objectType;
+          
+          if(H5PIntegration.TinCan.registration){
+            statement.context['registration'] = H5PIntegration.TinCan.registration;
+          }
         
         H5PIntegration.TinCan.LRS.saveStatement(statement, {
           callback: function(err,xhr) {
