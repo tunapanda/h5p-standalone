@@ -18,6 +18,7 @@ export default class H5PStandalone {
   constructor(el, pathToContent = 'workspace', options = {}, displayOptions = {}, librariesPath) {
     this.id = options.id || Math.random().toString(36).substr(2, 9);
     this.path = pathToContent;
+    this.H5P = H5P;
 
     if (!librariesPath) {
       this.librariesPath = this.path;
@@ -70,6 +71,7 @@ export default class H5PStandalone {
     // if (!preventH5PInit) {
     H5P.init();
     // }
+    return this;
   }
 
   getJSON(url) {
