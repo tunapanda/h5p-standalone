@@ -5,13 +5,16 @@ H5PIntegration = window.H5PIntegration;
 
 function urlPath(file) {
   let prefix = window.location.protocol + "//" + window.location.host;
-
-  if (window.location.pathname.indexOf('/') > -1) {
-    prefix = prefix + window.location.pathname.split('/').slice(0, -1).join("/");
+  if ( file.match(/^[a-z0-9]+:\/\//i) ) { // checks if path is a url with protocol
+    return file;
   } else {
-    prefix = prefix + window.location.pathname;
+    if (window.location.pathname.indexOf('/') > -1) {
+      prefix = prefix + window.location.pathname.split('/').slice(0, -1).join("/");
+    } else {
+      prefix = prefix + window.location.pathname;
+    }
+    return prefix + "/" + file;
   }
-  return prefix + "/" + file;
 }
 
 export default class H5PStandalone {
