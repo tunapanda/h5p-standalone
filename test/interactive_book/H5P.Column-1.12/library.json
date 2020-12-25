@@ -1,0 +1,30 @@
+{
+  "machineName": "H5P.Column",
+  "title": "Column",
+  "description": "Content holder displaying content in a column.",
+  "contentType": "instructional",
+  "license": "MIT",
+  "author": "Joubel",
+  "majorVersion": 1,
+  "minorVersion": 12,
+  "patchVersion": 0,
+  "runnable": 1,
+  "fullscreen": 0,
+  "embedTypes": [
+    "iframe"
+  ],
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 19
+  },
+  "preloadedJs": [
+    {
+      "path": "scripts/h5p-column.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "styles/h5p-column.css"
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "semantics": [
+    {
+      "label": "Enable book cover",
+      "description": "A cover that shows info regarding the book before access"
+    },
+    {
+      "label": "Cover Page",
+      "fields": [
+        {
+          "label": "Cover description",
+          "description": "This text will be the description of your book."
+        },
+        {
+          "label": "Cover image",
+          "description": "An optional background image for the introduction."
+        },
+        {
+          "label": "Cover image alternative text",
+          "description": "An alternative text for the cover image"
+        }
+      ]
+    },
+    {
+      "label": "Pages",
+      "entity": "Page",
+      "widgets": [
+        {
+          "label": "Default"
+        }
+      ],
+      "field": {
+        "label": "Item",
+        "fields": [
+          {
+            "label": "Page"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Behavioural settings",
+      "fields": [
+        {
+          "label": "Display table of contents as default",
+          "description": "When enabled the table of contents is showed when opening the book"
+        },
+        {
+          "label": "Display Progress Indicators",
+          "description": "When enabled there will be indicators per page showing the user if he is done with the page or not."
+        },
+        {
+          "label": "Enable automatic progress",
+          "description": "If enabled a page without tasks is considered done when viewed. A page with tasks when all tasks are done. If disabled there will be a button at the bottom of every page for the user to click when done with the page."
+        },
+        {
+          "label": "Display summary",
+          "description": "When enabled the user can see a summary and submit the progress/answers"
+        }
+      ]
+    },
+    {
+      "label": "Translation for \"Read\"",
+      "default": "Les"
+    },
+    {
+      "label": "Translation for \"Display 'Table of contents'\"",
+      "default": "Vis 'Table of contents'"
+    },
+    {
+      "label": "Translation for \"Hide 'Table of contents'\"",
+      "default": "Skjul 'Table of contents'"
+    },
+    {
+      "label": "Translation for \"Next page\"",
+      "default": "Neste side"
+    },
+    {
+      "label": "Translation for \"Previous page\"",
+      "default": "Førre side"
+    },
+    {
+      "label": "Translation for \"Page completed!\"",
+      "default": "Kapittel ferdig!"
+    },
+    {
+      "label": "Translation for \"@pages of @total completed\" (@pages and @total will be replaced by actual values)",
+      "default": "@pages av @total fullført"
+    },
+    {
+      "label": "Translation for \"Incomplete page\"",
+      "default": "Ikkje fullført kapittel"
+    },
+    {
+      "label": "Translation for \"Navigate to the top\"",
+      "default": "Gå til toppen"
+    },
+    {
+      "label": "Translation for \"I have finished this page\"",
+      "default": "Eg er ferdig med sida"
+    },
+    {
+      "label": "Fullscreen button label",
+      "default": "Fullskjerm"
+    },
+    {
+      "label": "Exit fullscreen button label",
+      "default": "Lukk fullskjerm"
+    },
+    {
+      "label": "Page progress in book",
+      "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+      "default": "@count of @total pages"
+    },
+    {
+      "label": "Interaction progress",
+      "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+      "default": "@count of @total interactions"
+    },
+    {
+      "label": "Translation for \"Submit report\"",
+      "default": "Submit Report"
+    },
+    {
+      "label": "Label for \"restart\" button",
+      "default": "Restart"
+    },
+    {
+      "label": "Summary header",
+      "default": "Summary"
+    },
+    {
+      "label": "Translation for \"All interactions\"",
+      "default": "All interactions"
+    },
+    {
+      "label": "Translation for \"Unanswered interactions\"",
+      "default": "Unanswered interactions"
+    },
+    {
+      "label": "Score",
+      "description": "\"@score\" will be replaced with current score, and \"@maxscore\" will be replaced with max achievable score",
+      "default": "@score / @maxscore"
+    },
+    {
+      "label": "Per page interactions completion",
+      "description": "\"@left\" will be replaced with remaining interactions, and \"@max\" will be replaced with total number of interactions on the page",
+      "default": "@left of @max interactions completed"
+    },
+    {
+      "label": "Translation for \"No interactions\"",
+      "default": "No interactions"
+    },
+    {
+      "label": "Translation for \"Score\"",
+      "default": "Score"
+    },
+    {
+      "label": "Label for \"Summary & submit\" button",
+      "default": "Summary & submit"
+    },
+    {
+      "label": "Translation for \"You have not interacted with any pages.\"",
+      "default": "You have not interacted with any pages."
+    },
+    {
+      "label": "Translation for \"You have to interact with at least one page before you can see the summary.\"",
+      "default": "You have to interact with at least one page before you can see the summary."
+    },
+    {
+      "label": "Translation for \"Your answers are submitted for review!\"",
+      "default": "Your answers are submitted for review!"
+    },
+    {
+      "label": "Summary progress label",
+      "default": "Book progress"
+    },
+    {
+      "label": "Interactions progress label",
+      "default": "Interactions progress"
+    },
+    {
+      "label": "Total score label",
+      "default": "Total score"
+    },
+    {
+      "label": "Accessibility texts",
+      "fields": [
+        {
+          "label": "Page progress textual alternative",
+          "description": "An alternative text for the visual page progress. @page and @total variables available.",
+          "default": "Side @page av @total."
+        },
+        {
+          "label": "Label for expanding/collapsing navigation menu",
+          "default": "Slå på navigasjonsmeny"
+        }
+      ]
+    }
+  ]
+}

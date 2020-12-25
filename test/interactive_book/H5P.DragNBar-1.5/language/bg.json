@@ -1,0 +1,17 @@
+{
+  "libraryStrings": {
+    "transformLabel": "Трансформиране",
+    "editLabel": "Редакция",
+    "removeLabel": "Премахване",
+    "bringToFrontLabel": "Преместване най-отгоре",
+    "sendToBackLabel": "Преместване най-отдолу",
+    "unableToPaste": "Обектът не може да се премести. За съжаление обектът, който се опитвате да преместите не е поддържан огт това съдържание, тип или версия.",
+    "sizeLabel": "Размер",
+    "positionLabel": "Позиция",
+    "heightLabel": "Височина",
+    "widthLabel": "Широчина",
+    "copyLabel": "Копирай",
+    "paste": "Премести",
+    "moreElements": "Още елементи"
+  }
+}

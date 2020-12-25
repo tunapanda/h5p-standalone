@@ -1,0 +1,17 @@
+{
+  "libraryStrings": {
+    "transformLabel": "Преобразование",
+    "editLabel": "Изменить",
+    "removeLabel": "Удалить",
+    "bringToFrontLabel": "На передний план",
+    "sendToBackLabel": "Отправить на задний план",
+    "unableToPaste": "Невозможно вставить этот объект. К сожалению, объект, который вы пытаетесь вставить, не поддерживается этим типом контента или версией.",
+    "sizeLabel": "Размер",
+    "positionLabel": "Позиция",
+    "heightLabel": "Высота",
+    "widthLabel": "Ширина",
+    "copyLabel": "Копировать",
+    "paste": "Вставить",
+    "moreElements": "Больше элементов"
+  }
+}

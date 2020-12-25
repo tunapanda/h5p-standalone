@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "Sjekk-knappen",
+      "default": "Sjekk"
+    },
+    {
+      "label": "«Prøv igjen»-knapp",
+      "default": "Prøv igjen"
+    },
+    {
+      "label": "Poengforklaring",
+      "default": "Korrekt svar gir 1 poeng, galt svar gir -1 poeng. Sum av poeng kan ikke bli negativ."
+    },
+    {
+      "fields": [
+        {
+          "label": "Innstillinger",
+          "fields": [
+            {
+              "label": "Bakgrunnsbilde",
+              "description": "Valgfritt. Velg et bakgrunnsbilde for oppgaven."
+            },
+            {
+              "label": "Oppgavens størrelse",
+              "description": "Spesifiser størrelse i piksler som oppgaven vanligvis vil vises i."
+            }
+          ]
+        },
+        {
+          "label": "Oppgave",
+          "description": "Begynn med å plassere målområder.<br/>Plasser så flyttbare elementer, og merk av hvilke målområder de skal kunne dras til.<br/>Til slutt redigeres målområdene igjen for å angi fasit.",
+          "fields": [
+            {
+              "label": "Elementer",
+              "entity": "Element",
+              "field": {
+                "label": "Element",
+                "fields": [
+                  {
+                    "description": "Velg typen innhold du vil legge til."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Velg målområder"
+                  },
+                  {
+                    "label": "Opasitet for bakgrunn"
+                  },
+                  {
+                    "label": "Uendelig antall instanser av elementet",
+                    "description": "Klon dette elementet slik at det kan dras til flere målområder."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Målområder",
+              "entity": "Målområde",
+              "field": {
+                "label": "Målområde",
+                "fields": [
+                  {
+                    "label": "Tittel"
+                  },
+                  {
+                    "label": "Vis tittel"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Velg riktige elementer"
+                  },
+                  {
+                    "label": "Opasitet for bakgrunn"
+                  },
+                  {
+                    "label": "Tips",
+                    "fields": [
+                      {
+                        "label": "Tipstekst"
+                      },
+                      {
+                        "label": "Message displayed on correct match",
+                        "description": "Message will appear below the task on \"check\" if correct droppable is matched."
+                      },
+                      {
+                        "label": "Message displayed on incorrect match",
+                        "description": "Message will appear below the task on \"check\" if the match is incorrect."
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Dette målområdet kan bare inneholde et element",
+                    "description": "Pass på at det bare finnes ett riktig svar for dette målområdet"
+                  },
+                  {
+                    "label": "Automatisk justering",
+                    "description": "Vil automatisk justere alle elementer plassert i denne sonen."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Samlet tilbakemelding",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Standard"
+            }
+          ],
+          "label": "Define custom feedback for any score range",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Score Range"
+              },
+              {},
+              {
+                "label": "Feedback for defined score range",
+                "placeholder": "Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Innstillinger for oppgaveoppførsel",
+      "description": "Disse instillingene lar deg bestemme hvordan oppgavetypen skal oppføre seg.",
+      "fields": [
+        {
+          "label": "Aktiver \"Prøv igjen\"-knapp"
+        },
+        {
+          "label": "Enable \"Check\" button"
+        },
+        {
+          "label": "Krev inndata fra brukeren før fasit gis."
+        },
+        {
+          "label": "Gi ett poeng for hele oppgaven",
+          "description": "Slå av for å gi ett poeng for hvert draobjekt som er plassert korrekt."
+        },
+        {
+          "label": "Apply penalties",
+          "description": "Apply penalties for elements dropped in the wrong drop zones. This must be enabled when the same element(s) are able to be dropped into multiple drop zones, or if there is only one drop-zone. If this is not enabled, learners may match all items to all drop-zones and always receive a full score."
+        },
+        {
+          "label": "Vis poeng-forklaring",
+          "description": "Display a score explanation to user when checking their answers (if the 'Apply penalties' option has been selected)."
+        },
+        {
+          "label": "Bakgrunnsopasitet på flyttbare elementer",
+          "description": "Hvis denne verdien er satt, vil den overstyre instillingene til alle flyttbare elementer. Feltet skal inneholde verdier fra 0 til 100, hvor 0 betyr full gjennsomsiktighet og 100 betyr ingen gjennomsiktighet"
+        },
+        {
+          "label": "Slippsonefremheving",
+          "description": "Velg når slippsoner skal fremheves",
+          "options": [
+            {
+              "label": "Når man drar"
+            },
+            {
+              "label": "Alltid"
+            },
+            {
+              "label": "Aldri"
+            }
+          ]
+        },
+        {
+          "label": "Mellomrom for automatisk justering (i piksler)"
+        },
+        {
+          "label": "Enable FullScreen",
+          "description": "Check this option to enable the full screen button."
+        },
+        {
+          "label": "Show score points",
+          "description": "Show points earned for each answer. Not available when the 'Give one point for the whole task' option is enabled."
+        },
+        {
+          "label": "Show Title",
+          "description": "Huk av dette alternativet, hvis du ikke ønsker å vise tittelen. Tittelen vil bare vises for oppsummeringer, statistikk osv."
+        }
+      ]
+    },
+    {
+      "label": "Lokaliser",
+      "fields": [
+        {
+          "label": "Tittel for \"Full skjerm\"-knapp",
+          "default": "Fullskjerm"
+        },
+        {
+          "label": "Tittel for \"Avslutt fullskjerm\"-knapp",
+          "default": "Forlat fullskjerm"
+        }
+      ]
+    },
+    {
+      "label": "Draobjektprefiks",
+      "default": "Grabbable {num} of {total}."
+    },
+    {
+      "label": "Draobjektprefiks",
+      "default": "Placed in dropzone {num}."
+    },
+    {
+      "label": "Målområdeprefiks",
+      "default": "Dropzone {num} of {total}."
+    },
+    {
+      "label": "Slippsoneprefiks",
+      "default": "No dropzone."
+    },
+    {
+      "label": "Etikett for knappen Vis tips",
+      "default": "Show tip."
+    },
+    {
+      "label": "Merkelapp for vis-tips-knappen",
+      "default": "Tips tilgjengelig"
+    },
+    {
+      "label": "Merkelapp for tips tilgjengelig",
+      "default": "Rett svar"
+    },
+    {
+      "label": "Merkelapp for korrekt svar",
+      "default": "Feil svar"
+    },
+    {
+      "label": "Merkelapp for feil svar",
+      "default": "Tilbakemelding"
+    },
+    {
+      "label": "Textual representation of the score bar for those using a readspeaker",
+      "default": "You got :num out of :total points"
+    },
+    {
+      "label": "Textual representation of the score explanation button",
+      "default": "Show score explanation"
+    }
+  ]
+}

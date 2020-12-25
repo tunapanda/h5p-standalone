@@ -1,0 +1,6 @@
+{
+  "libraryStrings": {
+    "helpText": "Vytvořte bloky otázek a odpovědí, kde je každý blok oddělen prázdným řádkem. V každém bloku je první řádek otázkou, ostatní řádky obsahují odpovědi. První odpověď je správná",
+    "warning": "Varování! Pokud změníte úkoly v textovém editoru, budou odstraněny všechna formátování formátovaného textu (včetně zalomení řádků)."
+  }
+}

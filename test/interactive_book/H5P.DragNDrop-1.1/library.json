@@ -1,0 +1,16 @@
+{
+  "title": "Drag N Drop",
+  "contentType": "API",
+  "description": "Provides a simple api for moving elements around. Could be used for sorting lists and etc.",
+  "majorVersion": 1,
+  "minorVersion": 1,
+  "patchVersion": 5,
+  "runnable": 0,
+  "machineName": "H5P.DragNDrop",
+  "author": "Frode Petterson",
+  "preloadedJs": [
+    {
+      "path": "drag-n-drop.js"
+    }
+  ]
+}

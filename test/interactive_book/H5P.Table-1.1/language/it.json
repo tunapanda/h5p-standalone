@@ -1,0 +1,8 @@
+{
+  "semantics": [
+    {
+      "label": "Tabella",
+      "default": "<table class=\"h5p-table\"><thead><tr><th scope=\"col\">Intestazione Colonna 1</th><th scope=\"col\">Intestazione Colonna 2</th></tr></thead><tbody><tr><td>Riga 1 Colonna 1</td><td>Riga 1 Colonna 2</td></tr><tr><td>Riga 2 Colonna 1</td><td>Riga 2 Colonna 2</td></tr></tbody></table>"
+    }
+  ]
+}

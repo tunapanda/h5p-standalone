@@ -1,0 +1,16 @@
+{
+  "libraryStrings": {
+    "insertElement": "Füge :type hinzu",
+    "done": "Fertig",
+    "remove": "Entfernen",
+    "image": "Bild",
+    "text": "Text",
+    "noTaskSize": "Bitte gib zuerst die Größe des Aufgabenfeldes an.",
+    "confirmRemoval": "Bist du sicher, dass du dieses Element entfernen möchtest?",
+    "backgroundOpacityOverridden": "Die Deckkraft des Hintergrunds ist überschrieben.",
+    "advancedtext": "Text",
+    "dropzone": "Ablagezone",
+    "selectAll": "Alles auswählen",
+    "deselectAll": "Auswahl aufheben"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "semantics":[
+    {
+      "label":"lista sadržaja stupca",
+      "entity":"sadržaj",
+      "field":{
+        "fields":[
+          {
+            "label":"Sadržaj"
+          },
+          {
+            "label":"Razdvoji sadržaje sa linijom",
+            "options":[
+              {
+                "label":"Automatski (default)"
+              },
+              {
+                "label":"Nikad ne koristi razdvajanje gore"
+              },
+              {
+                "label":"Uvijek koristi razdvajanje gore"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

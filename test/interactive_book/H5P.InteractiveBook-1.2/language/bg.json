@@ -1,0 +1,201 @@
+{
+  "semantics": [
+    {
+      "label": "Добавяне на корица на книгата",
+      "description": "Корица, която показва информация за книгата преди да бъде отворена"
+    },
+    {
+      "label": "Корица",
+      "fields": [
+        {
+          "label": "Описание на корицата",
+          "description": "Този текст ще бъде описанието на вашата книга."
+        },
+        {
+          "label": "Изображение на корицата",
+          "description": "Незадължително изображение на корицата за увода."
+        },
+        {
+          "label": "Алтернативен текст за изображението на корицата",
+          "description": "Алтернативен текст за изображението на корицата"
+        }
+      ]
+    },
+    {
+      "label": "Раздели",
+      "entity": "Раздел",
+      "widgets": [
+        {
+          "label": "По подразбиране"
+        }
+      ],
+      "field": {
+        "label": "Елемент",
+        "fields": [
+          {
+            "label": "Раздел"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Настройки на поведение",
+      "fields": [
+        {
+          "label": "Показване съдържанието по подразбиране ",
+          "description": "Когато е активирано, съдържанието се показва при отваряне на книгата"
+        },
+        {
+          "label": "Показване на индикатори за напредъка",
+          "description": "Когато е активирана, ще има индикатори на страница, показващи на потребителя дали е прочел страницата или не."
+        },
+        {
+          "label": "Активиране на автоматичния индикатор за напредък",
+          "description": "Ако е активирано, страница без задачи се счита за извършена, когато е видяна, а страница със задачи, когато всички задачи са изпълнени. Ако е деактивиран, в долната част на всяка страница ще има бутон, който потребителят да щракне, когато приключи със страницата."
+        },
+        {
+          "label": "Display summary",
+          "description": "When enabled the user can see a summary and submit the progress/answers"
+        }
+      ]
+    },
+    {
+      "label": "Превод за \"Чети\"",
+      "default": "Чети"
+    },
+    {
+      "label": "Превод за \"Показване на 'Съдържание'\"",
+      "default": "Покзване на 'Съдържание'"
+    },
+    {
+      "label": "Превод за \"Скриване на 'Съдържание'\"",
+      "default": "Скриване на 'Съдържание'"
+    },
+    {
+      "label": "Превод за \"Следваща страница\"",
+      "default": "Следваща страница"
+    },
+    {
+      "label": "Превод за \"Предишна страница\"",
+      "default": "Предишна страница"
+    },
+    {
+      "label": "Превод за \"Разделът е завършен!\"",
+      "default": "Разделът е завършен!"
+    },
+    {
+      "label": "Превод за \"@pages от @total страници са завършени\" (@pages и @total ще бъдат подменени с действителни стойности)",
+      "default": "@pages от @total страници са завършени"
+    },
+    {
+      "label": "Превод за \"Непълен раздел\"",
+      "default": "Непълен раздел"
+    },
+    {
+      "label": "Превод за \"Връщане в началото\"",
+      "default": "Връщане в началото"
+    },
+    {
+      "label": "Превод за \"Завърших тази страница\"",
+      "default": "Завърших тази страница"
+    },
+    {
+      "label": "Етикет на бутона На цял екран",
+      "default": "На цял екран"
+    },
+    {
+      "label": "Етикет на бутона Изход от цял екран",
+      "default": "Изход от цял екран"
+    },
+    {
+      "label": "Page progress in book",
+      "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+      "default": "@count of @total pages"
+    },
+    {
+      "label": "Interaction progress",
+      "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+      "default": "@count of @total interactions"
+    },
+    {
+      "label": "Translation for \"Submit report\"",
+      "default": "Submit Report"
+    },
+    {
+      "label": "Label for \"restart\" button",
+      "default": "Restart"
+    },
+    {
+      "label": "Summary header",
+      "default": "Summary"
+    },
+    {
+      "label": "Translation for \"All interactions\"",
+      "default": "All interactions"
+    },
+    {
+      "label": "Translation for \"Unanswered interactions\"",
+      "default": "Unanswered interactions"
+    },
+    {
+      "label": "Score",
+      "description": "\"@score\" will be replaced with current score, and \"@maxscore\" will be replaced with max achievable score",
+      "default": "@score / @maxscore"
+    },
+    {
+      "label": "Per page interactions completion",
+      "description": "\"@left\" will be replaced with remaining interactions, and \"@max\" will be replaced with total number of interactions on the page",
+      "default": "@left of @max interactions completed"
+    },
+    {
+      "label": "Translation for \"No interactions\"",
+      "default": "No interactions"
+    },
+    {
+      "label": "Translation for \"Score\"",
+      "default": "Score"
+    },
+    {
+      "label": "Label for \"Summary & submit\" button",
+      "default": "Summary & submit"
+    },
+    {
+      "label": "Translation for \"You have not interacted with any pages.\"",
+      "default": "You have not interacted with any pages."
+    },
+    {
+      "label": "Translation for \"You have to interact with at least one page before you can see the summary.\"",
+      "default": "You have to interact with at least one page before you can see the summary."
+    },
+    {
+      "label": "Translation for \"Your answers are submitted for review!\"",
+      "default": "Your answers are submitted for review!"
+    },
+    {
+      "label": "Summary progress label",
+      "default": "Book progress"
+    },
+    {
+      "label": "Interactions progress label",
+      "default": "Interactions progress"
+    },
+    {
+      "label": "Total score label",
+      "default": "Total score"
+    },
+    {
+      "label": "Текстове за достъпност",
+      "fields": [
+        {
+          "label": "Текстова алтернатива за напредък на страницата",
+          "description": "Алтернативен текст за визуалния напредък на страница. Достъпни са променливите @page и @total.",
+          "default": "Страница @page от @total."
+        },
+        {
+          "label": "Етикет за разпъване/свиване на навигационното меню",
+          "default": "Превключване на менюто за навигация"
+        }
+      ]
+    }
+  ]
+}

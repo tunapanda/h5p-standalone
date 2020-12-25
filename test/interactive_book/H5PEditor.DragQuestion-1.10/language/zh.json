@@ -1,0 +1,16 @@
+{
+  "libraryStrings": {
+    "insertElement": "添加 :type",
+    "done": "完成",
+    "remove": "移除",
+    "image": "圖像",
+    "text": "文字",
+    "noTaskSize": "請先指定任務尺寸。",
+    "confirmRemoval": "確定要移除這個元素？",
+    "backgroundOpacityOverridden": "背景不透明度已被覆寫",
+    "advancedtext": "文字",
+    "dropzone": "拖曳區",
+    "selectAll": "全選",
+    "deselectAll": "取消全選"
+  }
+}

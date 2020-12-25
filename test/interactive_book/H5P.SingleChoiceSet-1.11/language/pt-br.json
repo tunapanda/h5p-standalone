@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "Lista de questões",
+      "entity": "question",
+      "widgets": [
+        {
+          "label": "Padrão"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
+      "field": {
+        "label": "Questão & alternativas",
+        "fields": [
+          {
+            "label": "Questão"
+          },
+          {
+            "label": "Alternativas - a primeira alternativa é a correta.",
+            "entity": "answer",
+            "field": {
+              "label": "Alternativa"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Feedback geral",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Padrão"
+            }
+          ],
+          "label": "Defina feedback customizado para qualquer faixa de pontuação",
+          "description": "Clique no botão \"Adicionar faixa\" para adicionar quantas faixas de pontuação forem necessárias. Exemplo: 0-20% Pontuação ruim, 21-91% Pontuação média, 91-100% Ótima pontuação!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Faixa de pontuação"
+              },
+              {},
+              {
+                "label": "Feedback para uma faixa de pontuação determinada",
+                "placeholder": "Preencha o feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Configurações comportamentais",
+      "fields": [
+        {
+          "label": "Continuar automaticamente",
+          "description": "vai para a próxima questão automaticamente quando uma alternativa é selecionada"
+        },
+        {
+          "label": "Tempo limite em respostas corretas",
+          "description": "Valor em milisegundos"
+        },
+        {
+          "label": "Tempo limite em respostas incorretas",
+          "description": "Valor em milisegundos"
+        },
+        {
+          "label": "Habilitar efeitos sonoros"
+        },
+        {
+          "label": "Habilitar botão Tentar novamente"
+        },
+        {
+          "label": "Habilitar botão Mostrar solução"
+        },
+        {
+          "label": "Porcentagem de aprovação",
+          "description": "Porcentagem da pontuação total requerida para passar no teste."
+        }
+      ]
+    },
+    {
+      "label": "Localização de Perguntas de escolha única",
+      "fields": [
+        {
+          "label": "Rótulo para o botão \"Próxima\"",
+          "default": "Próxima questão"
+        },
+        {
+          "label": "Rótulo para o botão \"Mostrar solução\"",
+          "default": "Mostrar solução"
+        },
+        {
+          "label": "Rótulo para botão \"Tentar novamente\"",
+          "default": "Tentar novamente"
+        },
+        {
+          "label": "Título para a visualização da solução",
+          "default": "Lista de soluções"
+        },
+        {
+          "label": "Texto de resposta correta para leitores de tela",
+          "default": "Correto!"
+        },
+        {
+          "label": "Texto de resposta incorreta para leitores de tela",
+          "default": "Incorreto!"
+        },
+        {
+          "label": "Rótulo para o botão \"Mutar\" , para desativar som do feedback",
+          "default": "Mutar sons do feedback"
+        },
+        {
+          "label": "Rótulo para o botão \"Fechar\"",
+          "default": "Fechar"
+        },
+        {
+          "label": "Texto do número do slide",
+          "description": "Anuncia o número atual do slide e o número total de slides, variáveis são :num e :total",
+          "default": "Slide :num de :total"
+        },
+        {
+          "label": "Representação textual da barra de pontuação para aqueles que usam leitores de tela",
+          "default": "Você marcou :num de :total pontos"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
+        }
+      ]
+    }
+  ]
+}

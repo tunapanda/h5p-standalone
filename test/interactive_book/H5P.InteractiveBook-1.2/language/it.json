@@ -1,0 +1,201 @@
+{
+  "semantics": [
+    {
+      "label": "Attiva la copertina del libro",
+      "description": "Una copertina che mostra informazioni sul libro prima dell'accesso"
+    },
+    {
+      "label": "Copertina",
+      "fields": [
+        {
+          "label": "Descrizione della copertina",
+          "description": "Questo testo descriverà il tuo libro."
+        },
+        {
+          "label": "Immagine di copertina",
+          "description": "Un'immagine di sfondo facoltativa per l'introduzione."
+        },
+        {
+          "label": "Testo alternativo per l'immagine di copertina",
+          "description": "Un testo alternativo per l'immagine di copertina"
+        }
+      ]
+    },
+    {
+      "label": "Capitoli",
+      "entity": "Capitolo",
+      "widgets": [
+        {
+          "label": "Predefinito"
+        }
+      ],
+      "field": {
+        "label": "Item",
+        "fields": [
+          {
+            "label": "Capitolo"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Impostazioni di esecuzione",
+      "fields": [
+        {
+          "label": "Mostra la tavola dei contenuti predefiniti",
+          "description": "Quando attivo, la tavola dei contenuti viene mostrata all'apertura del libro"
+        },
+        {
+          "label": "Mostra gli indicatori di progresso",
+          "description": "Quando attivo, ci saranno degli indicatori in ogni pagina, per mostrare all'utente se ha o non ha finito con quella pagina."
+        },
+        {
+          "label": "Attiva progressione automatica",
+          "description": "Se abilitato, una pagina senza compiti è considerata fatta quando è stata visualizzata; viceversa, una pagina con compiti lo è quando tutti sono stati portati a termine. Se disabilitato, in fondo a ogni pagina ci sarà un pulsante su cui l'utente può cliccare quando ha finito con quella pagina"
+        },
+        {
+          "label": "Display summary",
+          "description": "When enabled the user can see a summary and submit the progress/answers"
+        }
+      ]
+    },
+    {
+      "label": "Traduzione per \"Leggi\"",
+      "default": "Leggi"
+    },
+    {
+      "label": "Traduzione per \"Mostra 'Indice dei contenuti'\"",
+      "default": "Mostra 'Indice dei contenuti'"
+    },
+    {
+      "label": "Traduzione per \"Nascondi 'Indice dei contenuti'\"",
+      "default": "Nascondi 'Indice dei contenuti'"
+    },
+    {
+      "label": "Traduzione per \"Prossima pagina\"",
+      "default": "Prossima pagina"
+    },
+    {
+      "label": "Traduzione per \"Pagina precedente\"",
+      "default": "Pagina precedente"
+    },
+    {
+      "label": "Traduzione per \"Capitolo completato!\"",
+      "default": "Capitolo completato!"
+    },
+    {
+      "label": "Traduzione per \"@pages di @total completate\" (@pages e @total sarà sostituito dai valori attuali)",
+      "default": "@pages di @total completate"
+    },
+    {
+      "label": "Traduzione per \"Capitolo incompleto\"",
+      "default": "Capitolo incompleto"
+    },
+    {
+      "label": "Traduzione per \"Torna in alto\"",
+      "default": "Torna in alto"
+    },
+    {
+      "label": "Traduzione per \"Ho terminato questa pagina\"",
+      "default": "Ho terminato questa pagina"
+    },
+    {
+      "label": "Etichetta del pulsante schermo intero",
+      "default": "Schermo intero"
+    },
+    {
+      "label": "Etichetta del pulsante di uscita da schermo intero",
+      "default": "Esci da schermo intero"
+    },
+    {
+      "label": "Page progress in book",
+      "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+      "default": "@count of @total pages"
+    },
+    {
+      "label": "Interaction progress",
+      "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+      "default": "@count of @total interactions"
+    },
+    {
+      "label": "Translation for \"Submit report\"",
+      "default": "Submit Report"
+    },
+    {
+      "label": "Label for \"restart\" button",
+      "default": "Restart"
+    },
+    {
+      "label": "Summary header",
+      "default": "Summary"
+    },
+    {
+      "label": "Translation for \"All interactions\"",
+      "default": "All interactions"
+    },
+    {
+      "label": "Translation for \"Unanswered interactions\"",
+      "default": "Unanswered interactions"
+    },
+    {
+      "label": "Score",
+      "description": "\"@score\" will be replaced with current score, and \"@maxscore\" will be replaced with max achievable score",
+      "default": "@score / @maxscore"
+    },
+    {
+      "label": "Per page interactions completion",
+      "description": "\"@left\" will be replaced with remaining interactions, and \"@max\" will be replaced with total number of interactions on the page",
+      "default": "@left of @max interactions completed"
+    },
+    {
+      "label": "Translation for \"No interactions\"",
+      "default": "No interactions"
+    },
+    {
+      "label": "Translation for \"Score\"",
+      "default": "Score"
+    },
+    {
+      "label": "Label for \"Summary & submit\" button",
+      "default": "Summary & submit"
+    },
+    {
+      "label": "Translation for \"You have not interacted with any pages.\"",
+      "default": "You have not interacted with any pages."
+    },
+    {
+      "label": "Translation for \"You have to interact with at least one page before you can see the summary.\"",
+      "default": "You have to interact with at least one page before you can see the summary."
+    },
+    {
+      "label": "Translation for \"Your answers are submitted for review!\"",
+      "default": "Your answers are submitted for review!"
+    },
+    {
+      "label": "Summary progress label",
+      "default": "Book progress"
+    },
+    {
+      "label": "Interactions progress label",
+      "default": "Interactions progress"
+    },
+    {
+      "label": "Total score label",
+      "default": "Total score"
+    },
+    {
+      "label": "Testi per l'accessibilità",
+      "fields": [
+        {
+          "label": "Alternativa testuale per la progressione di pagina",
+          "description": "Un testo alternativo alla progressione di pagina visuale. @page e @total variabili disponibili",
+          "default": "Pagine @page di @total"
+        },
+        {
+          "label": "Etichetta per espandere/ridurre il menu di navigazione",
+          "default": "Mostra/Nascondi il menu di navigazione"
+        }
+      ]
+    }
+  ]
+}

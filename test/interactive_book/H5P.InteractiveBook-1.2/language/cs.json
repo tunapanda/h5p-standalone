@@ -1,0 +1,201 @@
+{
+  "semantics": [
+    {
+      "label": "Povolit obálku knihy",
+      "description": "Obálka zobrazuje před přístupem informace týkající se knihy"
+    },
+    {
+      "label": "Obálka",
+      "fields": [
+        {
+          "label": "Popis obálky",
+          "description": "Tento text bude popisem vaší knihy."
+        },
+        {
+          "label": "Obrázek obálky",
+          "description": "Volitelný obrázek na pozadí obálky."
+        },
+        {
+          "label": "Alternativní text obrázku na obálce",
+          "description": "Alternativní text obrázku na obálce"
+        }
+      ]
+    },
+    {
+      "label": "Stránky",
+      "entity": "Stránka",
+      "widgets": [
+        {
+          "label": "Výchozí"
+        }
+      ],
+      "field": {
+        "label": "Položka",
+        "fields": [
+          {
+            "label": "Stránka"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Nastavení chování",
+      "fields": [
+        {
+          "label": "Zobrazit obsah jako výchozí",
+          "description": "Je-li povoleno, zobrazí se obsah při otevření knihy "
+        },
+        {
+          "label": "Zobrazit indikátory průběhu",
+          "description": "Je-li tato možnost povolena, budou na stránce indikátory zobrazující uživatele, pokud je na stránce hotový nebo ne."
+        },
+        {
+          "label": "Povolit automatický průběh",
+          "description": "Pokud je povoleno, stránka bez úkolů se při prohlížení považuje za hotovou. Stránka s úkoly, když jsou všechny úkoly hotové. Pokud je zakázáno, bude ve spodní části každé stránky tlačítko, na které uživatel po dokončení stránky klikne."
+        },
+        {
+          "label": "Zobrazit souhrn",
+          "description": "Je-li tato možnost povolena, uživatel může zobrazit souhrn a odeslat postup / odpovědi"
+        }
+      ]
+    },
+    {
+      "label": "Překlad pro \"Číst\"",
+      "default": "Číst"
+    },
+    {
+      "label": "Překlad pro \"Zobrazit 'Obsah'\"",
+      "default": "Zobrazit 'Obsah'"
+    },
+    {
+      "label": "Překlad pro \"Skrýt 'Obsah'\"",
+      "default": "Skrýt 'Obsah'"
+    },
+    {
+      "label": "Překlad pro \"Další stránka\"",
+      "default": "Další stránka"
+    },
+    {
+      "label": "Překlad pro \"Předchozí stránka\"",
+      "default": "Předchozí stránka"
+    },
+    {
+      "label": "Překlad pro \"Stránka dokončena!\"",
+      "default": "Stránka dokončena!"
+    },
+    {
+      "label": "Překlad pro \"@pages z @total dokončeno\" (@pages a @total budou nahrazeny skutečnými hodnotami)",
+      "default": "@pages z @total dokončeno"
+    },
+    {
+      "label": "Překlad pror \"Nedokončená stránka\"",
+      "default": "Nedokončená stránka"
+    },
+    {
+      "label": "TPřeklad pro \"Přejít nahoru\"",
+      "default": "Přejít nahoru"
+    },
+    {
+      "label": "Překlad pro \"Tuto stránku jsem dokončil\"",
+      "default": "Tuto stránku jsem dokončil"
+    },
+    {
+      "label": "Popisek tlačítka Celá obrazovka",
+      "default": "Celá obrazovka"
+    },
+    {
+      "label": "Popisek tlačítka Ukončit režim celé obrazovky",
+      "default": "Ukončit režim celé obrazovky"
+    },
+    {
+      "label": "Průběh stránek v knize",
+      "description": "\"@count\" bude nahrazen počtem stránek, a \"@total\" celkovým počtem stránek",
+      "default": "@count z @total stránek"
+    },
+    {
+      "label": "Průběh interakce",
+      "description": "\"@count\" bude nahrazen počtem stránek, a \"@total\" celkovým počtem stránek",
+      "default": "@count z @total interakcí"
+    },
+    {
+      "label": "Překlad pro \"Odeslat zprávu\"",
+      "default": "Odeslat zprávu"
+    },
+    {
+      "label": "Štítek pro tlačítko  \"Restart\" ",
+      "default": "Restart"
+    },
+    {
+      "label": "Hlavička souhrnu",
+      "default": "Souhrn"
+    },
+    {
+      "label": "Překlad pro \"Všechny interakce\"",
+      "default": "Všechny interakce"
+    },
+    {
+      "label": "Překlad pro \"Nezodpovězené interakce\"",
+      "default": "Nezodpovězené interakce"
+    },
+    {
+      "label": "Skóre",
+      "description": "\"@score\" bude nahrazeno aktuálním skóre, a \"@maxscore\" bude nahrazeno maximálním dosažitelným skóre",
+      "default": "@score / @maxscore"
+    },
+    {
+      "label": "Dokončených interakcí na stránce",
+      "description": "\"@left\"budou nahrazeny zbývajícími interakcemi, a \"@max\" bude nahrazen celkovým počtem interakcí na stránce",
+      "default": "@left z @max  dokončených interakcí "
+    },
+    {
+      "label": "Překlad pro \"Žádné interakce\"",
+      "default": "Žádné interakce"
+    },
+    {
+      "label": "Překlad pro \"Skóre\"",
+      "default": "Skóre"
+    },
+    {
+      "label": "Štítek pro tlačítko  \"Shrnutí a odeslání\" ",
+      "default": "Shrnutí a odeslání"
+    },
+    {
+      "label": "Překlad pro \"Nekomunikovali jste s žádnými stránkami.\"",
+      "default": "Nekomunikovali jste s žádnými stránkami."
+    },
+    {
+      "label": "Překlad pro \"Než uvidíte souhrn, musíte komunikovat s alespoň jednou stránkou.\"",
+      "default": "Než uvidíte souhrn, musíte komunikovat s alespoň jednou stránkou."
+    },
+    {
+      "label": "Překlad pro \"Vaše odpovědi budou odeslány ke kontrole!\"",
+      "default": "Vaše odpovědi budou odeslány ke kontrole!"
+    },
+    {
+      "label": "Popisek pro Průběh knihy",
+      "default": "Průběh knihy"
+    },
+    {
+      "label": "Popisek pro Průběh interakcí",
+      "default": "Průběh interakcí"
+    },
+    {
+      "label": "Popisek pro Celkové skóre",
+      "default": "Celkové skóre"
+    },
+    {
+      "label": "Texty přístupnosti",
+      "fields": [
+        {
+          "label": "Textová alternativa postupu stránky",
+          "description": "Alternativní text pro průběh vizuální stránky. Dostupné proměnné @page a @total.",
+          "default": "Stránka @page z @total."
+        },
+        {
+          "label": "Popisek pro rozbalení/sbalení navigační nabídky",
+          "default": "Přepnutí navigační nabídky"
+        }
+      ]
+    }
+  ]
+}

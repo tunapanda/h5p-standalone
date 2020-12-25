@@ -1,0 +1,16 @@
+{
+  "libraryStrings":{
+    "insertElement":"Lisää :type",
+    "done":"Valmis",
+    "remove":"Poista",
+    "image":"Kuva",
+    "text":"Teksti",
+    "noTaskSize":"Ole hyvä ja määritä ensin tehtävän koko",
+    "confirmRemoval":"Oletko varma että haluat poistaa tämän elementin?",
+    "backgroundOpacityOverridden":"Taustakuvan läpinäkyvyys ohitetaan",
+    "advancedtext":"Teksti",
+    "dropzone":"Pudotusalue",
+    "selectAll":"Valitse kaikki",
+    "deselectAll":"Poista valinta kaikista"
+  }
+}

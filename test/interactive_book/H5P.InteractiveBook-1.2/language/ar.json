@@ -1,0 +1,201 @@
+{
+  "semantics": [
+    {
+      "label": "تفعيل غلاف الكتاب",
+      "description": "غلاف يعرض المعلومات المتعلقة بالكتاب قبل الدخول"
+    },
+    {
+      "label": "غلاف الصفحة",
+      "fields": [
+        {
+          "label": "وصف الغلاف",
+          "description": "هذا النص سيكون وصف كتابك."
+        },
+        {
+          "label": "صورة الغلاف",
+          "description": "صورة خلفية اختيارية للمقدمة."
+        },
+        {
+          "label": "صورة الغلاف النص البديل",
+          "description": "نص بديل لصورة الغلاف"
+        }
+      ]
+    },
+    {
+      "label": "الفصول",
+      "entity": "الفصل",
+      "widgets": [
+        {
+          "label": "إفتراضي"
+        }
+      ],
+      "field": {
+        "label": "عنصر",
+        "fields": [
+          {
+            "label": "فصل"
+          }
+        ]
+      }
+    },
+    {
+      "label": "الإعدادات السلوكية",
+      "fields": [
+        {
+          "label": "عرض جدول المحتويات كافتراضي",
+          "description": "عند التفعيل ، يتم عرض جدول المحتويات عند فتح الكتاب"
+        },
+        {
+          "label": "عرض مؤشرات التقدم",
+          "description": "عند التمكين ، ستظهر مؤشرات في كل صفحة توضح ما إذا كان المستخدم قد انتهى من الصفحة أم لا."
+        },
+        {
+          "label": "تمكين التقدم التلقائي",
+          "description": "في حالة التمكين ، يتم اعتبار الصفحة بدون مهام عند عرضها. صفحة بها مهام عند الانتهاء من جميع المهام. في حالة التعطيل ، سيكون هناك زر في أسفل كل صفحة لينقر عليها المستخدم عند الانتهاء من الصفحة."
+        },
+        {
+          "label": "Display summary",
+          "description": "When enabled the user can see a summary and submit the progress/answers"
+        }
+      ]
+    },
+    {
+      "label": "ترجمة تتعلق بـ \"القراءاة\"",
+      "default": "القراءاة"
+    },
+    {
+      "label": "ترجمة تتعلق بـ \"عرض 'جدول المحتويات'\"",
+      "default": "عرض 'جدول المحتويات'"
+    },
+    {
+      "label": "ترجمة تتعلق بـ \"إخفاء 'جدول  المحتويات'\"",
+      "default": "إخفاء  'جدول المحتويات'"
+    },
+    {
+      "label": "ترجمة تتعلق بـ \"الصفحة التالية\"",
+      "default": "الصفحة التالية"
+    },
+    {
+      "label": "ترجمة تتعلق بـ \"الصفحة السابقة\"",
+      "default": "الصفحة السابقة"
+    },
+    {
+      "label": "ترجمة تتعلق بـ \"الانتهاء من الفصل!\"",
+      "default": "الانتهاء من الفصل!"
+    },
+    {
+      "label": "ترجمة تتعلق بـ \"@pages من @total منتهي\" (@pages و @total سيتم استبدال القيم الفعلية)",
+      "default": "@pages من @total منتهي"
+    },
+    {
+      "label": "ترجمة تتعلق بـ \"فصل غير منتهي\"",
+      "default": "فصل غير منتهي"
+    },
+    {
+      "label": "ترجمة تتعلق بـ \"الذهاب إلى الأعلى\"",
+      "default": "الذهاب إلى الأعلى"
+    },
+    {
+      "label": "ترجمة تتعلق بـ \"أنهيت هذه الصفحة\"",
+      "default": "أنهيت هذه الصفحة"
+    },
+    {
+      "label": "تسمية زر ملء الشاشة",
+      "default": "ملء الشاشة"
+    },
+    {
+      "label": "تسميةالخروج من  ملىء الشاشة",
+      "default": "الخروج من الشاشة الكاملة"
+    },
+    {
+      "label": "Page progress in book",
+      "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+      "default": "@count of @total pages"
+    },
+    {
+      "label": "Interaction progress",
+      "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+      "default": "@count of @total interactions"
+    },
+    {
+      "label": "Translation for \"Submit report\"",
+      "default": "Submit Report"
+    },
+    {
+      "label": "Label for \"restart\" button",
+      "default": "Restart"
+    },
+    {
+      "label": "Summary header",
+      "default": "Summary"
+    },
+    {
+      "label": "Translation for \"All interactions\"",
+      "default": "All interactions"
+    },
+    {
+      "label": "Translation for \"Unanswered interactions\"",
+      "default": "Unanswered interactions"
+    },
+    {
+      "label": "Score",
+      "description": "\"@score\" will be replaced with current score, and \"@maxscore\" will be replaced with max achievable score",
+      "default": "@score / @maxscore"
+    },
+    {
+      "label": "Per page interactions completion",
+      "description": "\"@left\" will be replaced with remaining interactions, and \"@max\" will be replaced with total number of interactions on the page",
+      "default": "@left of @max interactions completed"
+    },
+    {
+      "label": "Translation for \"No interactions\"",
+      "default": "No interactions"
+    },
+    {
+      "label": "Translation for \"Score\"",
+      "default": "Score"
+    },
+    {
+      "label": "Label for \"Summary & submit\" button",
+      "default": "Summary & submit"
+    },
+    {
+      "label": "Translation for \"You have not interacted with any pages.\"",
+      "default": "You have not interacted with any pages."
+    },
+    {
+      "label": "Translation for \"You have to interact with at least one page before you can see the summary.\"",
+      "default": "You have to interact with at least one page before you can see the summary."
+    },
+    {
+      "label": "Translation for \"Your answers are submitted for review!\"",
+      "default": "Your answers are submitted for review!"
+    },
+    {
+      "label": "Summary progress label",
+      "default": "Book progress"
+    },
+    {
+      "label": "Interactions progress label",
+      "default": "Interactions progress"
+    },
+    {
+      "label": "Total score label",
+      "default": "Total score"
+    },
+    {
+      "label": "إمكانية الوصول للنصوص",
+      "fields": [
+        {
+          "label": "تقدم الصفحة النصية البديلة",
+          "description": "نص بديل للتقدم في الصفحة المرئية. @page و @total ومتغيرات  المتاحة.",
+          "default": "صفحة @page من @total."
+        },
+        {
+          "label": "وضع علامة لتوسيع / طي قائمة التنقل",
+          "default": "تبديل قائمة التنقل"
+        }
+      ]
+    }
+  ]
+}

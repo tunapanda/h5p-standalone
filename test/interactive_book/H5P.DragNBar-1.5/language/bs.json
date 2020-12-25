@@ -1,0 +1,17 @@
+{
+  "libraryStrings":{
+    "transformLabel":"Transformirati",
+    "editLabel":"Uredi",
+    "removeLabel":"Ukloniti",
+    "bringToFrontLabel":"Postavi ispred",
+    "sendToBackLabel":"Postavi iza",
+    "unableToPaste":"Nije moguće prenijeti ovaj objekat. Nažalost, objekat koji pokušavate prenijeti nije podržan u ovom sadržaju ili verziji sadržaja.",
+    "sizeLabel":"Veličina",
+    "positionLabel":"Pozisija",
+    "heightLabel":"Visina",
+    "widthLabel":"Širina",
+    "copyLabel": "Copy",
+    "paste": "Paste",
+    "moreElements": "More elements"
+  }
+}

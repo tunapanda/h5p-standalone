@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "Elenco delle domande",
+      "entity": "domanda",
+      "widgets": [
+        {
+          "label": "Predefinito"
+        },
+        {
+          "label": "Testuale"
+        }
+      ],
+      "field": {
+        "label": "Domande e alternative",
+        "fields": [
+          {
+            "label": "Domanda"
+          },
+          {
+            "label": "Alternative - La prima alternativa è quella giusta",
+            "entity": "risposta",
+            "field": {
+              "label": "Alternativa"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Feedback generale",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Predefinito"
+            }
+          ],
+          "label": "Definisci un feedback personalizzato per ogni intervallo di punteggio",
+          "description": "Clicca sul pulsante \"Aggiungi intervallo\" per aggiungere gli intervalli che ti servono. Per esempio: 0-20%, Punteggio scarso; 21-90%, Punteggio medio; 91-100% Punteggio ottimo!",
+          "entity": "intervallo",
+          "field": {
+            "fields": [
+              {
+                "label": "Intervallo di punteggio"
+              },
+              {},
+              {
+                "label": "Feedback per un intervallo di punteggio definito",
+                "placeholder": "Compila il feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Impostazioni di esecuzione",
+      "fields": [
+        {
+          "label": "Prosecuzione automatica",
+          "description": "Vai automaticamente alla domanda che segue quando è selezionata l'alternativa"
+        },
+        {
+          "label": "Timeout sulle risposte corrette",
+          "description": "Valore in millisecondi"
+        },
+        {
+          "label": "Timeout sulle risposte errate",
+          "description": "Valore in millisecondi"
+        },
+        {
+          "label": "Attiva effetti sonori"
+        },
+        {
+          "label": "Attiva il pulsante Riprova"
+        },
+        {
+          "label": "Attiva il pulsante Mostra soluzione"
+        },
+        {
+          "label": "Percentuale di superamento della prova",
+          "description": "Percentuale del punteggio totale richiesta per superare la prova"
+        }
+      ]
+    },
+    {
+      "label": "Localizza set scelta singola",
+      "fields": [
+        {
+          "label": "Etichetta per il pulsante \"Prossima\"",
+          "default": "Prossima domanda"
+        },
+        {
+          "label": "Etichetta per il pulsante \"Mostra soluzione\"",
+          "default": "Mostra soluzione"
+        },
+        {
+          "label": "Etichetta per il pulsante \"Riprova\"",
+          "default": "Riprova"
+        },
+        {
+          "label": "Titolo della schermata di visualizzazione soluzioni",
+          "default": "Elenco delle soluzioni"
+        },
+        {
+          "label": "Testo del lettore vocale per risposta corretta",
+          "default": "Giusto!"
+        },
+        {
+          "label": "Testo del lettore vocale per risposta sbagliata",
+          "default": "Sbagliato!"
+        },
+        {
+          "label": "Etichetta del pulsante \"Silenzia\", per disattivare il suono di feedback",
+          "default": "Silenzia il suono di feedback"
+        },
+        {
+          "label": "Etichetta pulsante \"Chiudi\"",
+          "default": "Chiudi"
+        },
+        {
+          "label": "Testo del numero della slide",
+          "description": "Mostra il numero della slide corrente in relazione al numero delle slide totali (es. 2/12). Le variabili sono :num e :total",
+          "default": ":num slide di :total"
+        },
+        {
+          "label": "Rappresentazione testuale sulla barra del punteggio per chi usa un lettore vocale",
+          "default": "Il tuo punteggio è :num su :total"
+        },
+        {
+          "label": "Etichetta per il numero della domanda nell'elenco delle soluzioni",
+          "description": "Dichiara il numero della domanda attuale nell'elenco delle soluzioni. Le variabili sono: num",
+          "default": "Domanda :num"
+        }
+      ]
+    }
+  ]
+}

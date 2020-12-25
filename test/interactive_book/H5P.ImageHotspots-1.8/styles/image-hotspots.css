@@ -1,0 +1,274 @@
+@CHARSET "UTF-8";
+
+.h5p-image-hotspots {
+  background-color: #FFF;
+  color: #333;
+}
+.h5p-image-hotspots-container {
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+}
+.h5p-image-hotspots-background {
+  width: 100%;
+}
+.h5p-image-hotspot {
+  position: absolute;
+  height: 1.4em;
+  width: 1.4em;
+  text-align: center;
+  line-height: 1;
+  border-radius: 0.7em;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  background: #fff;
+  padding: 0;
+  border: none;
+  margin: 0;
+  font-size: 1em;
+}
+
+.h5p-image-hotspot.disabled {
+  display: none;
+}
+
+.h5p-image-hotspot.active {
+  z-index: 1;
+  cursor: pointer;
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+  transform: scale(1.5);
+}
+
+.h5p-image-hotspot:focus,
+.not-an-ios-device .h5p-image-hotspot:hover {
+  cursor: pointer;
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+  transform: scale(1.5);
+}
+.h5p-image-hotspot:before {
+  font-family: H5PFontAwesome4;
+  width: 1.2em;
+  height: 1.2em;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  margin: 0 0.1em;
+}
+.h5p-image-hotspot-plus:before {
+  content: '\f055';
+}
+.h5p-image-hotspot-minus:before {
+  content: '\f056';
+}
+.h5p-image-hotspot-times:before {
+  content: '\f057';
+}
+.h5p-image-hotspot-check:before {
+  content: '\f058';
+}
+.h5p-image-hotspot-question:before {
+  content: '\f059';
+}
+.h5p-image-hotspot-info:before {
+  content: '\f05a';
+}
+.h5p-image-hotspot-exclamation:before {
+  content: '\f06a';
+}
+.h5p-image-hotspot-popup {
+  position: absolute;
+  z-index: 3; /* On top of hotspots */
+  top: 0;
+  margin: 0;
+  height: 100%;
+  max-height: 100%;
+  background: white;
+  background: rgba(255,255,255,0.9);
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-transition: left .3s ease-in-out;
+  transition: left .3s ease-in-out;
+}
+
+.h5p-image-hotspot-has-header .h5p-image-hotspot-popup-body {
+  padding-top: 0;
+}
+
+.h5p-image-hotspot-popup-pointer {
+  position: absolute;
+  -webkit-transition: left .3s ease-in-out;
+  transition: left .3s ease-in-out;
+  width: 0;
+  height: 0;
+  border-top: 0.6em solid transparent;
+  border-left: 0.6em solid rgba(255,255,255,0.9);
+  border-bottom: 0.6em solid transparent;
+}
+.h5p-image-hotspot-popup-pointer.to-the-left {
+  right: -0.58em;
+}
+.h5p-image-hotspot-popup-pointer.to-the-right {
+  border-right: 0.6em solid rgba(255,255,255,0.9);
+  border-left: none;
+  left: -0.58em;
+}
+.h5p-image-hotspot-popup-header {
+  /* Header is just a one-liner for now */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  margin: 0;
+  padding: 0.5em 0.5em 0 0.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.5em;
+  height: 1.5em;
+}
+.h5p-image-hotspot-popup-body {
+  padding: 0.5em;
+}
+.h5p-text.h5p-image-hotspot-popup-body {
+  bottom: 0;
+  overflow: auto;
+  word-wrap: break-word;
+  line-height: 1.1;
+}
+.fullscreen-popup .h5p-image-hotspot-popup-body {
+  margin-right: 1.8em;
+}
+.fullscreen-popup .h5p-image-hotspot-popup-content {
+  height: 100%;
+  overflow: auto;
+}
+.h5p-image-hotspot-popup-content {
+  overflow: auto;
+}
+.h5p-image-hotspot-popup-body > * {
+  font-size: 0.7em;
+  line-height: 1.1;
+}
+
+.h5p-image-hotspot-popup:not(.fullscreen-popup) .h5p-image-hotspot-popup-body.h5p-video > div {
+  max-height: 18em;
+  min-height: 16em;
+}
+
+.h5p-image-hotspot-popup-body > p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+.h5p-image-hotspot-close-popup-button {
+  position: absolute;
+  top: 0;
+  right: 1em;
+  border: 0;
+  background: transparent;
+  font-size: 0.7em;
+  padding: 0.3em;
+  cursor: pointer;
+}
+
+.h5p-image-hotspot-close-popup-button.h5p-image-hotspot-close-fullscreen {
+  right: -1.125em;
+  bottom: 0;
+  padding: 0;
+  margin: 0;
+  z-index: 3;
+  font-size: 1.35em;
+  width: 1.125em;
+
+  color: #EEE;
+  background: rgba(0,0,0,0.3);
+  -webkit-transition: right .5s ease-in-out;
+  transition: right .5s ease-in-out;
+  text-align: left;
+}
+
+.h5p-image-hotspot-close-popup-button.h5p-image-hotspot-close-fullscreen:hover,
+.h5p-image-hotspot-close-popup-button.h5p-image-hotspot-close-fullscreen:active {
+  background: rgba(0,0,0,0.5);
+}
+
+.h5p-image-hotspot-close-popup-button.h5p-image-hotspot-close-fullscreen:focus {
+  outline: 1px solid deepskyblue;
+}
+
+.h5p-image-hotspot-close-popup-button:after {
+  font-family: H5PFontAwesome4;
+  content: '\f00d';
+}
+
+.h5p-image-hotspot-close-popup-button.h5p-image-hotspot-close-fullscreen:after {
+  content: '\f112';
+  position: absolute;
+  font-size: 80%;
+  top: 50%;
+  width: 100%;
+  margin-top: -0.5em;
+  text-align: center;
+}
+
+.h5p-image-hotspots-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: background .5s ease-in-out;
+  transition: background .5s ease-in-out;
+  background: transparent;
+  z-index: 1;
+}
+.h5p-image-hotspots-overlay.visible {
+  background: rgba(0,0,0,0.5);
+}
+.background-image-missing {
+  font-size: 1.5em;
+  text-align: center;
+  padding: 2em;
+}
+/* Fullscreen */
+.h5p-image-hotspots.h5p-fullscreen,
+.h5p-image-hotspots.h5p-semi-fullscreen {
+  background-color: #000;
+}
+/* Center vertically on fullscreen */
+.h5p-image-hotspots.h5p-fullscreen .h5p-image-hotspots-container,
+.h5p-image-hotspots.h5p-semi-fullscreen .h5p-image-hotspots-container {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+/* Singlechoice set
+.h5p-image-hotspot-popup.h5p-singlechoiceset {
+  background: rgba(255,255,255,0.95);
+}
+.h5p-image-hotspot-popup.h5p-singlechoiceset .h5p-sc-set {
+  line-height: 1.5;
+}
+.h5p-image-hotspots .h5p-sc-sound-control {
+  right: 2.5em;
+}*/
+/* H5P.Image */
+.h5p-image.h5p-image-hotspot-popup-body img {
+  width: auto;
+  height: auto;
+  max-height: 95%;
+  max-width: 100%;
+}
+/* H5P.Summary
+.h5p-image-hotspot-popup-body.summary-content {
+  padding: 0.2em;
+  overflow: auto;
+}
+.h5p-summary .h5p-image-hotspot-popup-pointer {
+  border-color: rgba(255,255,255,0.95);
+}
+.h5p-image-hotspot-popup.h5p-summary {
+  background: rgba(255,255,255,0.95);
+}
+*/

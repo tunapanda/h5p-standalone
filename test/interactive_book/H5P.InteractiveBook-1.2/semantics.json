@@ -1,0 +1,433 @@
+[
+  {
+    "name": "showCoverPage",
+    "type": "boolean",
+    "label": "Enable book cover",
+    "description": "A cover that shows info regarding the book before access",
+    "importance": "low",
+    "default": false
+  },
+  {
+    "name": "bookCover",
+    "type": "group",
+    "label": "Cover Page",
+    "importance": "medium",
+    "widget": "showWhen",
+    "showWhen": {
+      "rules": [
+        {
+          "field": "showCoverPage",
+          "equals": true
+        }
+      ]
+    },
+    "fields": [
+      {
+        "name": "coverDescription",
+        "type": "text",
+        "widget": "html",
+        "label": "Cover description",
+        "importance": "medium",
+        "optional": true,
+        "description": "This text will be the description of your book.",
+        "enterMode": "p",
+        "tags": [
+          "sub",
+          "sup",
+          "strong",
+          "em",
+          "p",
+          "code"
+        ]
+      },
+      {
+        "name": "coverImage",
+        "type": "image",
+        "label": "Cover image",
+        "importance": "low",
+        "optional": true,
+        "description": "An optional background image for the introduction."
+      },
+      {
+        "name": "coverAltText",
+        "type": "text",
+        "label": "Cover image alternative text",
+        "importance": "low",
+        "optional": true,
+        "description": "An alternative text for the cover image"
+      }
+    ]
+  },
+  {
+    "name": "chapters",
+    "type": "list",
+    "label": "Pages",
+    "entity": "Page",
+    "widgets": [
+      {
+        "name": "VerticalTabs",
+        "label": "Default"
+      }
+    ],
+    "importance": "high",
+    "min": 1,
+    "max": 50,
+    "field": {
+      "name": "item",
+      "type": "group",
+      "label": "Item",
+      "importance": "low",
+      "expanded": true,
+      "fields": [
+        {
+          "label": "Page",
+          "name": "chapter",
+          "type": "library",
+          "options": [
+            "H5P.Column 1.12"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "behaviour",
+    "type": "group",
+    "importance": "low",
+    "label": "Behavioural settings",
+    "fields": [
+      {
+        "name": "defaultTableOfContents",
+        "type": "boolean",
+        "label": "Display table of contents as default",
+        "description": "When enabled the table of contents is showed when opening the book",
+        "default": true
+      },
+      {
+        "name": "progressIndicators",
+        "type": "boolean",
+        "label": "Display Progress Indicators",
+        "description": "When enabled there will be indicators per page showing the user if he is done with the page or not.",
+        "default": true
+      },
+      {
+        "name": "progressAuto",
+        "type": "boolean",
+        "label": "Enable automatic progress",
+        "description": "If enabled a page without tasks is considered done when viewed. A page with tasks when all tasks are done. If disabled there will be a button at the bottom of every page for the user to click when done with the page.",
+        "default": true,
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "progressIndicators",
+              "equals": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "displaySummary",
+        "type": "boolean",
+        "label": "Display summary",
+        "description": "When enabled the user can see a summary and submit the progress/answers",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "read",
+    "type": "text",
+    "label": "Translation for \"Read\"",
+    "importance": "low",
+    "default": "Read",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "displayTOC",
+    "type": "text",
+    "label": "Translation for \"Display 'Table of contents'\"",
+    "importance": "low",
+    "default": "Display 'Table of contents'",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "hideTOC",
+    "type": "text",
+    "label": "Translation for \"Hide 'Table of contents'\"",
+    "importance": "low",
+    "default": "Hide 'Table of contents'",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "nextPage",
+    "type": "text",
+    "label": "Translation for \"Next page\"",
+    "importance": "low",
+    "default": "Next page",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "previousPage",
+    "type": "text",
+    "label": "Translation for \"Previous page\"",
+    "importance": "low",
+    "default": "Previous page",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "chapterCompleted",
+    "type": "text",
+    "label": "Translation for \"Page completed!\"",
+    "importance": "low",
+    "default": "Page completed!",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "partCompleted",
+    "type": "text",
+    "label": "Translation for \"@pages of @total completed\" (@pages and @total will be replaced by actual values)",
+    "importance": "low",
+    "default": "@pages of @total completed",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "incompleteChapter",
+    "type": "text",
+    "label": "Translation for \"Incomplete page\"",
+    "importance": "low",
+    "default": "Incomplete page",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "navigateToTop",
+    "type": "text",
+    "label": "Translation for \"Navigate to the top\"",
+    "importance": "low",
+    "default": "Navigate to the top",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "markAsFinished",
+    "type": "text",
+    "importance": "low",
+    "label": "Translation for \"I have finished this page\"",
+    "default": "I have finished this page",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "fullscreen",
+    "type": "text",
+    "importance": "low",
+    "label": "Fullscreen button label",
+    "default": "Fullscreen",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "exitFullscreen",
+    "type": "text",
+    "importance": "low",
+    "label": "Exit fullscreen button label",
+    "default": "Exit fullscreen",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "bookProgressSubtext",
+    "type": "text",
+    "importance": "low",
+    "label": "Page progress in book",
+    "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+    "default": "@count of @total pages",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "interactionsProgressSubtext",
+    "type": "text",
+    "importance": "low",
+    "label": "Interaction progress",
+    "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+    "default": "@count of @total interactions",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "submitReport",
+    "type": "text",
+    "importance": "low",
+    "label": "Translation for \"Submit report\"",
+    "default": "Submit Report",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "restartLabel",
+    "type": "text",
+    "importance": "low",
+    "label": "Label for \"restart\" button",
+    "default": "Restart",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "summaryHeader",
+    "type": "text",
+    "importance": "low",
+    "label": "Summary header",
+    "default": "Summary",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "allInteractions",
+    "type": "text",
+    "importance": "low",
+    "label": "Translation for \"All interactions\"",
+    "default": "All interactions",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "unansweredInteractions",
+    "type": "text",
+    "importance": "low",
+    "label": "Translation for \"Unanswered interactions\"",
+    "default": "Unanswered interactions",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "scoreText",
+    "type": "text",
+    "importance": "low",
+    "label": "Score",
+    "description": "\"@score\" will be replaced with current score, and \"@maxscore\" will be replaced with max achievable score",
+    "default": "@score / @maxscore",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "leftOutOfTotalCompleted",
+    "type": "text",
+    "importance": "low",
+    "label": "Per page interactions completion",
+    "description": "\"@left\" will be replaced with remaining interactions, and \"@max\" will be replaced with total number of interactions on the page",
+    "default": "@left of @max interactions completed",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "noInteractions",
+    "type": "text",
+    "importance": "low",
+    "label": "Translation for \"No interactions\"",
+    "default": "No interactions",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "score",
+    "type": "text",
+    "importance": "low",
+    "label": "Translation for \"Score\"",
+    "default": "Score",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "summaryAndSubmit",
+    "type": "text",
+    "importance": "low",
+    "label": "Label for \"Summary & submit\" button",
+    "default": "Summary & submit",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "noChapterInteractionBoldText",
+    "type": "text",
+    "importance": "low",
+    "label": "Translation for \"You have not interacted with any pages.\"",
+    "default": "You have not interacted with any pages.",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "noChapterInteractionText",
+    "type": "text",
+    "importance": "low",
+    "label": "Translation for \"You have to interact with at least one page before you can see the summary.\"",
+    "default": "You have to interact with at least one page before you can see the summary.",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "yourAnswersAreSubmittedForReview",
+    "type": "text",
+    "importance": "low",
+    "label": "Translation for \"Your answers are submitted for review!\"",
+    "default": "Your answers are submitted for review!",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "bookProgress",
+    "type": "text",
+    "importance": "low",
+    "label": "Summary progress label",
+    "default": "Book progress",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "interactionsProgress",
+    "type": "text",
+    "importance": "low",
+    "label": "Interactions progress label",
+    "default": "Interactions progress",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "totalScoreLabel",
+    "type": "text",
+    "importance": "low",
+    "label": "Total score label",
+    "default": "Total score",
+    "common": true,
+    "optional": true
+  },
+  {
+    "name": "a11y",
+    "type": "group",
+    "label": "Accessibility texts",
+    "common": true,
+    "fields": [
+      {
+        "name": "progress",
+        "type": "text",
+        "label": "Page progress textual alternative",
+        "description": "An alternative text for the visual page progress. @page and @total variables available.",
+        "default": "Page @page of @total."
+      },
+      {
+        "name": "menu",
+        "type": "text",
+        "label": "Label for expanding/collapsing navigation menu",
+        "default": "Toggle navigation menu"
+      }
+    ]
+  }
+]

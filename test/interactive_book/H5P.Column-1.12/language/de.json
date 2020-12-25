@@ -1,0 +1,29 @@
+{
+  "semantics": [
+    {
+      "label": "Liste der Spalteninhalte",
+      "entity": "Inhalt",
+      "field": {
+        "fields": [
+          {
+            "label": "Inhalt"
+          },
+          {
+            "label": "Trenne Inhalt mit einer horizontalen Linie",
+            "options": [
+              {
+                "label": "Automatisch (Voreinstellung)"
+              },
+              {
+                "label": "Vor diesem Inhalt nie eine Trennlinie anzeigen"
+              },
+              {
+                "label": "Vor diesem Inhalt immer eine Trennlinie anzeigen"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

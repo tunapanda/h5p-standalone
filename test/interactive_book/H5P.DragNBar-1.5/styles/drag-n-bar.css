@@ -1,0 +1,151 @@
+.h5p-moving {
+  cursor: move;
+  opacity: 0.6;
+}
+
+.h5peditor .h5p-dragnbar-element.focused,
+.h5peditor .h5p-dragnbar-element:hover {
+  outline: 1px solid #0099ff;
+}
+
+/* Display outline on label for h5p nil */
+.h5p-dragnbar-element.h5p-nil-interaction.focused,
+.h5p-dragnbar-element.h5p-nil-interaction:hover {
+  outline: none;
+}
+
+.h5peditor .h5p-dragnbar-element.h5p-nil-interaction.focused > .h5p-interaction-label,
+.h5peditor .h5p-dragnbar-element.h5p-nil-interaction:hover > .h5p-interaction-label {
+  outline: 1px solid #0099ff;
+}
+
+.h5peditor .hardware-accelerated {
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.h5peditor .h5peditor-dragnbar .h5p-dragnbar-li .h5p-dragnbar-tooltip {
+  visibility: hidden;
+  position: absolute;
+  padding: 0 0.5em;
+  top: 100%;
+  left: 0;
+  z-index: 2;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.6em;
+  line-height: 2em;
+  content: attr(data-label);
+  white-space: pre;
+}
+
+.h5peditor .h5peditor-dragnbar .h5p-dragnbar-li:hover > .h5p-dragnbar-tooltip {
+  visibility: visible;
+}
+
+.h5p-dragnbar-input > input[disabled] {
+  background-color: #fff;
+  color: #888;
+  pointer-events: none;
+}
+
+/* Paste button */
+.h5p-dragnbar-li.paste-button {
+  cursor: pointer;
+}
+.h5peditor-dragnbar .h5p-dragnbar-ul .h5p-dragnbar-li.paste-button.disabled {
+  opacity: 1;
+}
+.h5peditor-dragnbar .h5p-dragnbar-ul .h5p-dragnbar-li .h5p-dragnbar-paste-button {
+  background: #e6f1fa;
+  background: linear-gradient(0deg, #add1ef 1%, #e6f1fa 100%);
+  border: 2px solid #bccee8;
+  color: #0061a2;
+}
+.h5peditor-dragnbar .h5p-dragnbar-ul .h5p-dragnbar-li:not(.disabled) .h5p-dragnbar-paste-button:hover {
+  background: linear-gradient(0deg, #e6f1fa 3%, #add1ef 100%);
+  border-color: #a2c4f7;
+}
+.h5peditor-dragnbar .h5p-dragnbar-ul .h5p-dragnbar-li:not(.disabled) .h5p-dragnbar-paste-button:active {
+  background: linear-gradient(0deg, #cde2f7 3%, #9cbbe6 100%);
+  border-color: #69a3f8;
+}
+.h5peditor-dragnbar .h5p-dragnbar-ul .h5p-dragnbar-li.paste-button.disabled .h5p-dragnbar-paste-button {
+  background: #fff;
+  border: 0.0625em solid #1a73b4;
+  color: #1a73b4;
+  padding: 0.2375em 0.2375em 0.175em;
+  cursor: not-allowed;
+}
+.h5peditor-dragnbar .h5p-dragnbar-ul .h5p-dragnbar-li .h5p-dragnbar-paste-button:before {
+  font-family: 'H5P';
+  content: "\e910";
+}
+.h5peditor-dragnbar .h5p-dragnbar-ul .h5p-dragnbar-li.paste-button.disabled .h5p-dragnbar-paste-button:before {
+  content: "\e911";
+}
+.h5peditor-dragnbar .h5p-dragnbar-button-group {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 0;
+  border: 0;
+  padding: 0.5em;
+  box-shadow: 0 0 0.5em 0 rgba(105, 105, 105, 0.4);
+  height: auto;
+}
+.h5peditor-dragnbar .h5p-dragnbar-button-group:hover {
+  background: #fff;
+  border-radius: 0;
+  border: 0;
+  padding: 0.5em;
+  box-shadow: 0 0 0.5em 0 rgba(105, 105, 105, 0.4);
+  margin-bottom: 1em;
+}
+
+.h5peditor-dragnbar .h5p-dragnbar-button-group .h5p-dragnbar-button-title {
+  text-align: left;
+  font-weight: bold;
+  font-size: 0.6em;
+  margin-bottom: 1em;
+}
+
+.h5peditor-dragnbar .h5p-dragnbar-button-group .h5p-dragnbar-button-buttons li {
+  float: left;
+  margin: 0;
+  padding: 0;
+  margin-right: 0.25em;
+  background: none;
+  border: none;
+  position: relative;
+  height: auto;
+}
+
+.h5peditor-dragnbar .h5p-dragnbar-button-group .h5p-dragnbar-button-buttons li:last-child {
+  margin-right: 0;
+}
+
+.h5peditor-dragnbar .h5p-dragnbar-button-group .h5p-dragnbar-button-buttons li a {
+  width: 0.75em;
+  line-height: 1.2em;
+  text-align: center;
+  background: linear-gradient(to bottom,#fff 0,#f2f2f2 100%);
+  border: 1px solid #ccc;
+  border-radius: 0.25em;
+  display: block;
+  padding: 0.25em 0.6em 0.25em 0.4em;
+  height: 1.2em;
+}
+
+.h5peditor-dragnbar .h5p-dragnbar-button-group .h5p-dragnbar-button-buttons a {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.h5peditor-dragnbar .h5peditor-dragnbar-gone {
+  display: none;
+}

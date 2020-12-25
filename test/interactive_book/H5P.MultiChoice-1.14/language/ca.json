@@ -1,0 +1,242 @@
+{
+  "semantics": [
+    {
+      "label": "Recurs",
+      "fields": [
+        {
+          "label": "Tipus",
+          "description": "Recursos opcionals per mostrar al damunt de la pregunta."
+        },
+        {
+          "label": "Deshabilita el zoom de les imatges"
+        }
+      ]
+    },
+    {
+      "label": "Pregunta"
+    },
+    {
+      "label": "Opcions disponibles",
+      "entity": "opció",
+      "field": {
+        "label": "Opció",
+        "fields": [
+          {
+            "label": "Text"
+          },
+          {
+            "label": "Correcte"
+          },
+          {
+            "label": "Suggerències i informació de retorn",
+            "fields": [
+              {
+                "label": "Text de la pista",
+                "description": "Pista per a l'usuari. Això apareixerà abans que l'usuari confirmi la seva resposta/Respostes."
+              },
+              {
+                "label": "Aquest missatge es mostra si la resposta està seleccionada",
+                "description": "Missatge que apareixerà sota la resposta seleccionada al validar."
+              },
+              {
+                "label": "Missatge que es mostra si no s'ha seleccionat cap resposta",
+                "description": "Missatge que apareixerà sota la resposta si aquesta resposta no està seleccionada al validar."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Valoració general",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Predeterminat"
+            }
+          ],
+          "label": "Defineix una valoració per cada rang de puntuació",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "rang",
+          "field": {
+            "fields": [
+              {
+                "label": "Rang de puntuació"
+              },
+              {},
+              {
+                "label": "Valoració pel rang de puntuació definit",
+                "placeholder": "Cumplimenteu la valoració"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Traducció de la interfície d'usuari per Opcions Múltiples",
+      "fields": [
+        {
+          "label": "Etiqueta del botó de comprovació de la resposta",
+          "default": "Comprova"
+        },
+        {
+          "label": "Etiqueta del botó de mostrar la sol·lució",
+          "default": "Mostra la sol·lució"
+        },
+        {
+          "label": "Etiqueta del botó de tornar-hi",
+          "default": "Torna-hi"
+        },
+        {
+          "label": "Etiqueta de pista",
+          "default": "Dona'm una pista"
+        },
+        {
+          "label": "Textual representation of the score bar for those using a readspeaker",
+          "description": "Available variables are :num and :total",
+          "default": "Heu fet :num de :total punts"
+        },
+        {
+          "label": "Tip Available (not displayed)",
+          "default": "Tip available",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Feedback Available (not displayed)",
+          "default": "Feedback available",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Read Feedback (not displayed)",
+          "default": "Read feedback",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Wrong Answer (not displayed)",
+          "default": "Wrong answer",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Correct Answer (not displayed)",
+          "default": "Correct answer",
+          "description": "Accessibility text used for readspeakers"
+        },
+        {
+          "label": "Option should have been checked",
+          "default": "Hauria d'haver-se triat"
+        },
+        {
+          "label": "Option should not have been checked",
+          "default": "No s'hauria d'haver triat"
+        },
+        {
+          "label": "Text for \"Requires answer\" message",
+          "default": "Please answer before viewing the solution"
+        }
+      ]
+    },
+    {
+      "label": "Preferències de comportament",
+      "description": "Aquestes opcions us permeten controlar com es comporta la tasca.",
+      "fields": [
+        {
+          "label": "Activa el botó de \"Tornar-hi\" "
+        },
+        {
+          "label": "Activa el botó de \"Mostra la sol·lució\" "
+        },
+        {
+          "label": "Activa el botó de \"Comprova-ho\" "
+        },
+        {
+          "label": "Tipus de pregunta",
+          "description": "Seleccioneu el tipus i aspecte de la pregunta.",
+          "options": [
+            {
+              "label": "Automàtic"
+            },
+            {
+              "label": "Opcions Múltiples (Caselles de comprobació)"
+            },
+            {
+              "label": "Resposta única (Botons rodons)"
+            }
+          ]
+        },
+        {
+          "label": "Dona-li un punt per la tasca sencera",
+          "description": "Enable to give a total of one point for multiple correct answers. This will not be an option in \"Single answer\" mode."
+        },
+        {
+          "label": "Barreja les respostes aleatòriament",
+          "description": "Enable to randomize the order of the answers on display."
+        },
+        {
+          "label": "Demana una resposta abans de mostrar la sol·lució"
+        },
+        {
+          "label": "Show confirmation dialog on \"Check\""
+        },
+        {
+          "label": "Show confirmation dialog on \"Retry\""
+        },
+        {
+          "label": "Automatically check answers",
+          "description": "Enabling this option will make accessibility suffer, make sure you know what you're doing."
+        },
+        {
+          "label": "Pass percentage",
+          "description": "This setting often won't have any effect. It is the percentage of the total score required for getting 1 point when one point for the entire task is enabled, and for getting result.success in xAPI statements."
+        },
+        {
+          "label": "Show score points",
+          "description": "Show points earned for each answer. This will not be an option in 'Single answer' mode or if 'Give one point for the whole task' option is enabled."
+        }
+      ]
+    },
+    {
+      "label": "Diàleg de confirmació de la comprobació",
+      "fields": [
+        {
+          "label": "Títol",
+          "default": "Pleguem?"
+        },
+        {
+          "label": "Cos de text",
+          "default": "Segur que voleu plegar?"
+        },
+        {
+          "label": "Etiqueta del botó \"Cancel·lar\"",
+          "default": "Cancel·lar"
+        },
+        {
+          "label": "Etiqueta del botó \"Confirmar\"",
+          "default": "Enllestit!"
+        }
+      ]
+    },
+    {
+      "label": "Retry confirmation dialog",
+      "fields": [
+        {
+          "label": "Header text",
+          "default": "Hi tornem?"
+        },
+        {
+          "label": "Body text",
+          "default": "Segur que ho voleu tornar a provar?"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel·la"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirma"
+        }
+      ]
+    }
+  ]
+}

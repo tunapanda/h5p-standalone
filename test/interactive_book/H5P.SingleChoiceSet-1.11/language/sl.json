@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "Seznam vprašanj",
+      "entity": "Vprašanje",
+      "widgets": [
+        {
+          "label": "Privzeto"
+        },
+        {
+          "label": "Tekstoven"
+        }
+      ],
+      "field": {
+        "label": "Vprašanje in odgovori",
+        "fields": [
+          {
+            "label": "Vprašanje"
+          },
+          {
+            "label": "Odgovori - na prvem mestu je pravilen.",
+            "entity": "odgovor",
+            "field": {
+              "label": "Odgovor"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Splošna povratna informacija",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Privzeto"
+            }
+          ],
+          "label": "Določi ločeno povratno informacijo za vsak razpon rezultatov",
+          "description": "Kliknite gumb \"Dodaj razpon\" za dodajanje dodatnih razponov. Primer: 0-20 % Slab rezultat, 21-91 % Povprečen rezultat, 91-100 % Odličen rezultat!",
+          "entity": "razpon",
+          "field": {
+            "fields": [
+              {
+                "label": "Razpon rezultatov"
+              },
+              {},
+              {
+                "label": "Povratna informacija za definiran razpon rezultatov",
+                "placeholder": "Vnesite povratno informacijo"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Nastavitve interakcije",
+      "fields": [
+        {
+          "label": "Samodejno prestavi na naslednje vprašanje",
+          "description": "Ob izbiri odgovora na vprašanje se udeleženec samodejno prestavi na naslednjega. V nasprotnem primeru mora izbrati možnost naprej."
+        },
+        {
+          "label": "Premor za pravilnim odgovorom",
+          "description": "Premor v milisekundah do naslednjega vprašanja v primeru pravilnega odgovora"
+        },
+        {
+          "label": "Premor za nepravilnim odgovorom",
+          "description": "presledek v milisekundah do naslednjega vprašanja v primeru napačnega odgovora"
+        },
+        {
+          "label": "Omogoči zvočne efekte"
+        },
+        {
+          "label": "Omogoči gumb \"Poskusi ponovno\""
+        },
+        {
+          "label": "Omogoči gumb \"Prikaži rešitev\""
+        },
+        {
+          "label": "Prag za napredovanje",
+          "description": "Odstotek, ki je potreben za uspešen zaključek naloge."
+        }
+      ]
+    },
+    {
+      "label": "Prevodi aktivnosti",
+      "fields": [
+        {
+          "label": "Besedilo za gumb \"Naslednje vprašanje\"",
+          "default": "Naslednje vprašanje"
+        },
+        {
+          "label": "Besedilo za gumb \"Prikaži rešitev\"",
+          "default": "Prikaži rešitev"
+        },
+        {
+          "label": "Besedilo za gumb \"Poskusi ponovno\"",
+          "default": "Poskusi ponovno"
+        },
+        {
+          "label": "Naslov seznama z rešitvami",
+          "default": "Seznam rešitev"
+        },
+        {
+          "label": "Besedilo za pravilni odgovor za bralnik zaslona",
+          "default": "Pravilno!"
+        },
+        {
+          "label": "Besedilo za napačen odgovor za bralnik zaslona",
+          "default": "Nepravilno!"
+        },
+        {
+          "label": "Besedilo za gumb \"Utišaj\", ki onemogoči zvočne efekte povratnih informacij",
+          "default": "Utišaj"
+        },
+        {
+          "label": "Besedilo za gumb \"Zaključi\"",
+          "default": "Zaključi"
+        },
+        {
+          "label": "Informacija o številki strani",
+          "description": "Uporabnika obvesti o trenutno prikazani strani in številu vseh pripravljenih (:num in :total sta spremenljivki).",
+          "default": "Stran :num od :total"
+        },
+        {
+          "label": "Besedilo, ki ga bralnik zaslona uporabi za izražanje napredka",
+          "default": "Napredek :num od :total"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
+        }
+      ]
+    }
+  ]
+}

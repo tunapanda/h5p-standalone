@@ -218,7 +218,7 @@ H5P.init = function (target) {
 
     // Listen for xAPI events.
     H5P.on(instance, 'xAPI', H5P.xAPICompletedListener);
-
+    
     // Auto save current state if supported
     if (H5PIntegration.saveFreq !== false && (
         instance.getCurrentState instanceof Function ||

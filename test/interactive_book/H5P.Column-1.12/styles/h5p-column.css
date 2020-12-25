@@ -1,0 +1,88 @@
+.h5p-column-content {
+  position: relative;
+}
+.h5p-column-content.h5p-table,
+.h5p-column-content.h5p-advanced-text,
+.h5p-column-content.h5p-link {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.h5p-column-content.h5p-video > video {
+  width: 100%;
+}
+
+.h5p-column-ruler {
+  border-bottom: 2px solid #eee;
+}
+.h5p-column-space-before-n-after {
+  margin: 1em 0;
+}
+.h5p-column-space-before {
+  margin: 1em 0 0;
+}
+.h5p-column-space-after {
+  margin: 0 0 1em;
+}
+
+/* Align question texts when there's no frame */
+.h5p-no-frame > .h5p-column > div > .h5p-question > * {
+  margin-left: 0;
+  margin-right: 0;
+}
+.h5p-no-frame > .h5p-column > div > .h5p-question .h5p-question-image-wrap {
+  -webkit-transform: translate(0, 1em);
+  transform: translate(0, 1em);
+  margin: 0 0 1em 0;
+  max-width: 100%;
+}
+
+/* Special fixes for SCS */
+.h5p-no-frame > .h5p-column > div > .h5p-single-choice-set .h5p-sc-alternatives,
+.h5p-no-frame > .h5p-column > div > .h5p-single-choice-set .h5p-sc-question {
+  margin-left: 0;
+  margin-right: 0;
+}
+.h5p-no-frame > .h5p-column > div > .h5p-single-choice-set .h5p-sc-sound-control {
+  top: 0;
+  right: 0;
+}
+
+/* QS is a bit to eager... */
+.h5p-no-frame > .h5p-column > div > .h5p-column-content > .questionset .h5p-question > *:first-child {
+  margin-top: 1em;
+}
+
+/* Align text content when there's no frame */
+.h5p-no-frame > .h5p-column > div > .h5p-table,
+.h5p-no-frame > .h5p-column > div > .h5p-advanced-text,
+.h5p-no-frame > .h5p-column > div > .h5p-link {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Align accordion texts when there's no frame */
+.h5p-no-frame > .h5p-column > div > .h5p-accordion {
+  border-left: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
+}
+
+/* Memory Game */
+.h5p-no-frame > .h5p-column > div > .h5p-memory-game .h5p-status {
+  padding-left: 0;
+  padding-right: 0;
+}
+.h5p-no-frame > .h5p-column > div > .h5p-memory-game .h5p-feedback {
+  margin: 0;
+}
+.h5p-no-frame > .h5p-column > div > .h5p-memory-game .h5p-memory-card {
+  margin-left: 0;
+  margin-right: 2em;
+}
+
+/* Remove fullscreen for video tags and DQ */
+.h5p-interactive-book video::-webkit-media-controls-fullscreen-button,
+.h5p-interactive-book .h5p-my-fullscreen-button-enter {
+  display: none;
+}

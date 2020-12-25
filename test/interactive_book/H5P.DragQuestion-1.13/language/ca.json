@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "Check answer button",
+      "default": "Verificar"
+    },
+    {
+      "label": "Retry button",
+      "default": "Tornar-ho a provar"
+    },
+    {
+      "label": "Score explanation text",
+      "default": "Correct answers give +1 point. Incorrect answers give -1 point. The lowest possible score is 0."
+    },
+    {
+      "fields": [
+        {
+          "label": "Settings",
+          "fields": [
+            {
+              "label": "Imatge de fons",
+              "description": "Optional. Select an image to use as background for your drag and drop task."
+            },
+            {
+              "label": "Task size",
+              "description": "Specify how large (in px) the play area should be."
+            }
+          ]
+        },
+        {
+          "label": "Task",
+          "description": "Start by placing your drop zones.<br/>Next, place your droppable elements and check off the appropriate drop zones.<br/>Last, edit your drop zone again and check off the correct answers.",
+          "fields": [
+            {
+              "label": "Elements",
+              "entity": "element",
+              "field": {
+                "label": "Element",
+                "fields": [
+                  {
+                    "description": "Choose the type of content you would like to add."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Select drop zones"
+                  },
+                  {
+                    "label": "Background Opacity"
+                  },
+                  {
+                    "label": "Infinite number of element instances",
+                    "description": "Clones this element so that it can be dragged to multiple drop zones."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Drop Zones",
+              "entity": "Drop Zone",
+              "field": {
+                "label": "Drop Zone",
+                "fields": [
+                  {
+                    "label": "Label"
+                  },
+                  {
+                    "label": "Show label"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Select correct elements"
+                  },
+                  {
+                    "label": "Background Opacity"
+                  },
+                  {
+                    "label": "Suggerències i informació de retorn",
+                    "fields": [
+                      {
+                        "label": "Text de la pista"
+                      },
+                      {
+                        "label": "Message displayed on correct match",
+                        "description": "Message will appear below the task on \"check\" if correct droppable is matched."
+                      },
+                      {
+                        "label": "Message displayed on incorrect match",
+                        "description": "Message will appear below the task on \"check\" if the match is incorrect."
+                      }
+                    ]
+                  },
+                  {
+                    "label": "This drop zone can only contain one element",
+                    "description": "Make sure there is only one correct answer for this dropzone"
+                  },
+                  {
+                    "label": "Enable Auto-Align",
+                    "description": "Will auto-align all draggables dropped in this zone."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Overall Feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Per defecte"
+            }
+          ],
+          "label": "Define custom feedback for any score range",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Score Range"
+              },
+              {},
+              {
+                "label": "Feedback for defined score range",
+                "placeholder": "Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Opcions de comportament",
+      "description": "Aquestes opcions et permetran controlar com es comporta la tasca.",
+      "fields": [
+        {
+          "label": "Enable \"Retry\""
+        },
+        {
+          "label": "Enable \"Check\" button"
+        },
+        {
+          "label": "Require user input before the solution can be viewed"
+        },
+        {
+          "label": "Donar un punt per la tasca sencera",
+          "description": "Disable to give one point for each draggable that is placed correctly."
+        },
+        {
+          "label": "Apply penalties",
+          "description": "Apply penalties for elements dropped in the wrong drop zones. This must be enabled when the same element(s) are able to be dropped into multiple drop zones, or if there is only one drop-zone. If this is not enabled, learners may match all items to all drop-zones and always receive a full score."
+        },
+        {
+          "label": "Enable score explanation",
+          "description": "Display a score explanation to user when checking their answers (if the 'Apply penalties' option has been selected)."
+        },
+        {
+          "label": "Background opacity for draggables",
+          "description": "If this field is set, it will override opacity set on all draggable elements. This should be a number between 0 and 100, where 0 means full transparency and 100 means no transparency"
+        },
+        {
+          "label": "Drop Zone Highlighting",
+          "description": "Choose when to highlight drop zones.",
+          "options": [
+            {
+              "label": "When dragging"
+            },
+            {
+              "label": "Always"
+            },
+            {
+              "label": "Never"
+            }
+          ]
+        },
+        {
+          "label": "Spacing for Auto-Align (in px)"
+        },
+        {
+          "label": "Enable FullScreen",
+          "description": "Check this option to enable the full screen button."
+        },
+        {
+          "label": "Show score points",
+          "description": "Show points earned for each answer. Not available when the 'Give one point for the whole task' option is enabled."
+        },
+        {
+          "label": "Show Title",
+          "description": "Uncheck this option if you do not want this title to be displayed. The title will only be displayed in summaries, statistics etc."
+        }
+      ]
+    },
+    {
+      "label": "Localize",
+      "fields": [
+        {
+          "label": "Fullscreen label",
+          "default": "Fullscreen"
+        },
+        {
+          "label": "Exit fullscreen label",
+          "default": "Exit fullscreen"
+        }
+      ]
+    },
+    {
+      "label": "Grabbable prefix",
+      "default": "Grabbable {num} of {total}."
+    },
+    {
+      "label": "Grabbable suffix",
+      "default": "Placed in dropzone {num}."
+    },
+    {
+      "label": "Dropzone prefix",
+      "default": "Dropzone {num} of {total}."
+    },
+    {
+      "label": "No dropzone selection label",
+      "default": "No dropzone."
+    },
+    {
+      "label": "Label for show tip button",
+      "default": "Show tip."
+    },
+    {
+      "label": "Label for tip available",
+      "default": "Pista disponible"
+    },
+    {
+      "label": "Label for correct answer",
+      "default": "Resposta correcta"
+    },
+    {
+      "label": "Label for incorrect answer",
+      "default": "La resposta no és correcta"
+    },
+    {
+      "label": "Header for panel containing feedback for correct/incorrect answers",
+      "default": "Feedback"
+    },
+    {
+      "label": "Textual representation of the score bar for those using a readspeaker",
+      "default": "You got :num out of :total points"
+    },
+    {
+      "label": "Textual representation of the score explanation button",
+      "default": "Show score explanation"
+    }
+  ]
+}

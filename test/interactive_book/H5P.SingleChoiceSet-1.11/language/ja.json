@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "List of questions",
+      "entity": "設問",
+      "widgets": [
+        {
+          "label": "Default"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
+      "field": {
+        "label": "Question & alternatives",
+        "fields": [
+          {
+            "label": "設問"
+          },
+          {
+            "label": "Alternatives - first alternative is the correct one.",
+            "entity": "answer",
+            "field": {
+              "label": "Alternative"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "全体のフィードバック",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "デフォルト"
+            }
+          ],
+          "label": "ある得点範囲に対して、カスタムフィードバックを定義します。",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "範囲",
+          "field": {
+            "fields": [
+              {
+                "label": "得点範囲"
+              },
+              {},
+              {
+                "label": "定義した得点範囲に対するフィードバック",
+                "placeholder": "フィードバックを記入"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "動作設定",
+      "fields": [
+        {
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected"
+        },
+        {
+          "label": "Timeout on correct answers",
+          "description": "Value in milliseconds"
+        },
+        {
+          "label": "Timeout on wrong answers",
+          "description": "Value in milliseconds"
+        },
+        {
+          "label": "Enable sound effects"
+        },
+        {
+          "label": "Enable retry button"
+        },
+        {
+          "label": "Enable show solution button"
+        },
+        {
+          "label": "合格パーセンテージ",
+          "description": "クイズにパスするために必要となる合計点のパーセンテージです。"
+        }
+      ]
+    },
+    {
+      "label": "Localize single choice set",
+      "fields": [
+        {
+          "label": "Label for the \"Next\" button",
+          "default": "Next question"
+        },
+        {
+          "label": "Label for the \"Show solution\" button",
+          "default": "解を表示"
+        },
+        {
+          "label": "Label for the \"Retry\" button",
+          "default": "リトライ"
+        },
+        {
+          "label": "Title for the show solution view",
+          "default": "Solution"
+        },
+        {
+          "label": "正解のためのリードスピーカー用テキスト",
+          "default": "正解 !"
+        },
+        {
+          "label": "不正解ためのリードスピーカー用テキスト",
+          "default": "不正解 !"
+        },
+        {
+          "label": "Label for the \"mute\" button, to disable feedback sound",
+          "default": "Mute feedback sound"
+        },
+        {
+          "label": "Label for the \"Close\" button",
+          "default": "閉じる"
+        },
+        {
+          "label": "Slide number text",
+          "description": "Announces current slide and total number of slides, variables are :num and :total",
+          "default": "Slide :num of :total"
+        },
+        {
+          "label": "Textual representation of the score bar for those using a readspeaker",
+          "default": "You got :num out of :total points"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
+        }
+      ]
+    }
+  ]
+}

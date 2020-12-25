@@ -1,0 +1,16 @@
+{
+  "libraryStrings": {
+    "insertElement": "Dodaj :tip",
+    "done": "Dokončano",
+    "remove": "Odstrani",
+    "image": "Slika",
+    "text": "Besedilo",
+    "noTaskSize": "Najprej je potrebno določiti velikost.",
+    "confirmRemoval": "Resnično izbrišem ta element?",
+    "backgroundOpacityOverridden": "Prekrivnost ozadja je prekoračena",
+    "advancedtext": "Besedilo",
+    "dropzone": "Spustno polje",
+    "selectAll": "Izberi vse",
+    "deselectAll": "Odznači vse"
+  }
+}

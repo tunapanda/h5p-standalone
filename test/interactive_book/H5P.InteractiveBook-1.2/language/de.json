@@ -1,0 +1,201 @@
+{
+  "semantics": [
+    {
+      "label": "Titelseite anzeigen",
+      "description": "Auf der Titelseite werden Informationen über das Buch angezeigt bevor es geöffnet wird"
+    },
+    {
+      "label": "Titelseite",
+      "fields": [
+        {
+          "label": "Untertitel",
+          "description": "Dieser Text wird in kleinerer Schrift unter dem eigentlichen Titel angezeigt."
+        },
+        {
+          "label": "Titelbild",
+          "description": "Dieses Bild wird auf der Titelseite angezeigt (optional)."
+        },
+        {
+          "label": "Alternativtext des Titelbildes",
+          "description": "Dieser Text wird von Vorlesewerkzeugen verwendet (Barrierefreiheit)"
+        }
+      ]
+    },
+    {
+      "label": "Kapitel",
+      "entity": "Kapitel",
+      "widgets": [
+        {
+          "label": "Eingabemaske"
+        }
+      ],
+      "field": {
+        "label": "Eintrag",
+        "fields": [
+          {
+            "label": "Kapitel"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Verhaltenseinstellungen",
+      "fields": [
+        {
+          "label": "standardmäßig Inhaltsverzeichnis anzeigen",
+          "description": "Wenn gewählt, wird das Inhaltsverzeichnis beim Öffnen des Buchs angezeigt"
+        },
+        {
+          "label": "Fortschrittsanzeige anzeigen",
+          "description": "Wenn gewählt, wird bei jedem Kapitel angezeigt, ob die Lernenden es abgeschlossen haben."
+        },
+        {
+          "label": "Fortschritt automatisch erfassen",
+          "description": "Wenn gewählt, werden Kapitel ohne Aufgaben als abgeschlossen markiert, sobald sie angezeigt wurden. Kapitel mit interaktiven Aufgaben gelten als abgeschlossen, wenn alle Aufgaben gelöst wurden. Wenn abgewählt, wird am Ende eines Kapitels ein Button angezeigt, den die Lernenden anklicken müssen, wenn sie das Kapitel abgeschlossen haben."
+        },
+        {
+          "label": "Display summary",
+          "description": "When enabled the user can see a summary and submit the progress/answers"
+        }
+      ]
+    },
+    {
+      "label": "Beschriftung für \"Öffnen\"",
+      "default": "Öffnen"
+    },
+    {
+      "label": "Beschriftung für \"Inhaltsverzeichnis anzeigen\"",
+      "default": "Inhaltsverzeichnis anzeigen"
+    },
+    {
+      "label": "Beschriftung für \"Inhaltsverzeichnis ausblenden\"",
+      "default": "Inhaltsverzeichnis ausblenden"
+    },
+    {
+      "label": "Beschriftung für \"Nächstes Kapitel\"",
+      "default": "Nächstes Kapitel"
+    },
+    {
+      "label": "Beschriftung für \"Vorheriges Kapitel\"",
+      "default": "Vorheriges Kapitel"
+    },
+    {
+      "label": "Beschriftung für \"Kapitel abgeschlossen!\"",
+      "default": "Kapitel abgeschlossen!"
+    },
+    {
+      "label": "Beschriftung für \"... von ... Kapiteln abgeschlossen\" (@pages und @total sind Platzhalter und werden von den echten Werten ersetzt)",
+      "default": "@pages von @total Kapiteln abgeschlossen"
+    },
+    {
+      "label": "Beschriftung für \"Unvollständiges Kapitel\"",
+      "default": "Unvollständiges Kapitel"
+    },
+    {
+      "label": "Beschriftung für \"Nach oben springen\"",
+      "default": "Nach oben springen"
+    },
+    {
+      "label": "Beschriftung für \"Ich habe dieses Kapitel abgeschlossen\"",
+      "default": "Ich habe dieses Kapitel abgeschlossen"
+    },
+    {
+      "label": "Beschriftung des Vollbild-Buttons",
+      "default": "Vollbild"
+    },
+    {
+      "label": "Beschriftung des \"Vollbild beenden\"-Buttons",
+      "default": "Vollbild beenden"
+    },
+    {
+      "label": "Page progress in book",
+      "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+      "default": "@count of @total pages"
+    },
+    {
+      "label": "Interaction progress",
+      "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+      "default": "@count of @total interactions"
+    },
+    {
+      "label": "Translation for \"Submit report\"",
+      "default": "Submit Report"
+    },
+    {
+      "label": "Label for \"restart\" button",
+      "default": "Restart"
+    },
+    {
+      "label": "Summary header",
+      "default": "Summary"
+    },
+    {
+      "label": "Translation for \"All interactions\"",
+      "default": "All interactions"
+    },
+    {
+      "label": "Translation for \"Unanswered interactions\"",
+      "default": "Unanswered interactions"
+    },
+    {
+      "label": "Score",
+      "description": "\"@score\" will be replaced with current score, and \"@maxscore\" will be replaced with max achievable score",
+      "default": "@score / @maxscore"
+    },
+    {
+      "label": "Per page interactions completion",
+      "description": "\"@left\" will be replaced with remaining interactions, and \"@max\" will be replaced with total number of interactions on the page",
+      "default": "@left of @max interactions completed"
+    },
+    {
+      "label": "Translation for \"No interactions\"",
+      "default": "No interactions"
+    },
+    {
+      "label": "Translation for \"Score\"",
+      "default": "Score"
+    },
+    {
+      "label": "Label for \"Summary & submit\" button",
+      "default": "Summary & submit"
+    },
+    {
+      "label": "Translation for \"You have not interacted with any pages.\"",
+      "default": "You have not interacted with any pages."
+    },
+    {
+      "label": "Translation for \"You have to interact with at least one page before you can see the summary.\"",
+      "default": "You have to interact with at least one page before you can see the summary."
+    },
+    {
+      "label": "Translation for \"Your answers are submitted for review!\"",
+      "default": "Your answers are submitted for review!"
+    },
+    {
+      "label": "Summary progress label",
+      "default": "Book progress"
+    },
+    {
+      "label": "Interactions progress label",
+      "default": "Interactions progress"
+    },
+    {
+      "label": "Total score label",
+      "default": "Total score"
+    },
+    {
+      "label": "Texte zur Barrierefreiheit",
+      "fields": [
+        {
+          "label": "Textalternative für die Fortschrittsanzeige",
+          "description": "Dieser Text ersetzt die grafische Fortschrittsanzeige. (Es können die Platzhalter @page und @total verwendet werden.)",
+          "default": "Kapitel @page von @total."
+        },
+        {
+          "label": "Beschriftung des Buttons, um das Inhaltsverzeichnis ein- und auszublenden",
+          "default": "Inhaltsverzeichnis ein- bzw. ausschalten"
+        }
+      ]
+    }
+  ]
+}

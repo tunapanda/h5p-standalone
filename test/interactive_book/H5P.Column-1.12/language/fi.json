@@ -1,0 +1,29 @@
+{
+  "semantics":[
+    {
+      "label":"Osiot",
+      "entity":"osio",
+      "field":{
+        "fields":[
+          {
+            "label":"Osion sisältö"
+          },
+          {
+            "label":"Erota osio vaakaviivalla",
+            "options":[
+              {
+                "label":"Auto (oletus)"
+              },
+              {
+                "label":"Älä koskaan käytä erotinta"
+              },
+              {
+                "label":"Käytä erotinta aina"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

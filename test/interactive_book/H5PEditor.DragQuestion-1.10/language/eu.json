@@ -1,0 +1,16 @@
+{
+  "libraryStrings": {
+    "insertElement": "Gehitu :type",
+    "done": "Egina",
+    "remove": "Kendu",
+    "image": "Irudia",
+    "text": "Testua",
+    "noTaskSize": "Zehaztu atazaren tamaina lehenik.",
+    "confirmRemoval": "Ziur zaude kendu nahi duzula elementu hau?",
+    "backgroundOpacityOverridden": "Atzeko planoaren opakutasuna ezeztatuta dago",
+    "advancedtext": "Testua",
+    "dropzone": "Jaregiteko zona",
+    "selectAll": "Hautatu dena",
+    "deselectAll": "Desautatu dena"
+  }
+}

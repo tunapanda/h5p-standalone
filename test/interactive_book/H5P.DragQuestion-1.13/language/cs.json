@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "Tlačítko zkontrolovat odpovědi",
+      "default": "Zkontrolovat"
+    },
+    {
+      "label": "Tlačítko opakovat",
+      "default": "Opakovat"
+    },
+    {
+      "label": "Text s vysvětlením skóre",
+      "default": "Za správné odpovědi získáte +1 bodu. Za nesprávné odpovědi získáte -1 bod. Nejnižší možné skóre je 0."
+    },
+    {
+      "fields": [
+        {
+          "label": "Nastavení",
+          "fields": [
+            {
+              "label": "Obrázek na pozadí",
+              "description": "Volitelné. Vyberte obrázek, který chcete použít jako pozadí pro úkol přetažení."
+            },
+            {
+              "label": "Velikost úkolu",
+              "description": "Určete, jak velká by měla být plocha úkolu (v px)."
+            }
+          ]
+        },
+        {
+          "label": "Úkol",
+          "description": "Začněte tím, že umístíte své přetahovací zóny. <br/> Dále umístěte rozevírací prvky a zaškrtněte příslušné zóny přetažení. <br/> Nakonec znovu upravte zónu přetažení a zkontrolujte správné odpovědi.",
+          "fields": [
+            {
+              "label": "Prvky",
+              "entity": "prvek",
+              "field": {
+                "label": "Prvek",
+                "fields": [
+                  {
+                    "description": "Vyberte typ obsahu, který chcete přidat."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Vyberte zóny přetažení"
+                  },
+                  {
+                    "label": "Průhlednost pozadí"
+                  },
+                  {
+                    "label": "Nekonečný počet instancí prvků",
+                    "description": "Klonuje tento prvek, takže jej lze přetáhnout do více zón přetažení."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Zóny přetažení",
+              "entity": "Zóna přetažení",
+              "field": {
+                "label": "Zóna přetažení",
+                "fields": [
+                  {
+                    "label": "Popisek"
+                  },
+                  {
+                    "label": "Zobrazit popisek"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Vyberte správné prvky"
+                  },
+                  {
+                    "label": "Průhlednost pozadí"
+                  },
+                  {
+                    "label": "Nápovědy a zpětná vazba",
+                    "fields": [
+                      {
+                        "label": "Text nápovědy"
+                      },
+                      {
+                        "label": "Zpráva zobrazená při správné shodě",
+                        "description": "Zpráva se zobrazí pod úkolem \"Kontrola\", pokud je shoda správná."
+                      },
+                      {
+                        "label": "Zpráva zobrazená při nesprávné shodě",
+                        "description": "Zpráva se zobrazí pod úkolem \"Kontrola\", pokud  je shoda nesprávná."
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Tato zóna přetažení může obsahovat pouze jeden prvek",
+                    "description": "Ujistěte se, že pro tuto zónu existuje pouze jedna správná odpověď"
+                  },
+                  {
+                    "label": "Povolit automatické vyrovnávání",
+                    "description": "Automaticky zarovná všechny přetahované objekty v této zóně."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Celková zpětná vazba",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Výchozí"
+            }
+          ],
+          "label": "Definujte vlastní zpětnou vazbu pro libovolný rozsah skóre",
+          "description": "Klikněte na tlačítko \"Přidat rozsah\" a přidejte rozsahy podle potřeby. Příklad: 0-20% špatné skóre, 21-91% průměrné skóre, 91-100% výborné skóre!",
+          "entity": "rozsah",
+          "field": {
+            "fields": [
+              {
+                "label": "Rozsah skóre"
+              },
+              {},
+              {
+                "label": "Zpětná vazba pro definovaný rozsah skóre",
+                "placeholder": "Vyplňte zpětnou vazbu"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Nastavení chování",
+      "description": "Tyto možnosti vám umožní řídit, jak se bude úloha chovat.",
+      "fields": [
+        {
+          "label": "Povolit tlačítko \"Opakovat\""
+        },
+        {
+          "label": "Povolit tlačítko \"Kontrola\" "
+        },
+        {
+          "label": "Před zobrazením řešení je třeba zadat vstup uživatele"
+        },
+        {
+          "label": "Jeden bod za celý úkol",
+          "description": "Zakázat udělit jeden bod za každou přesouvanou položku, která je umístěna správně."
+        },
+        {
+          "label": "Použití sankcí",
+          "description": "Uložte sankce za prvky vyhozené do nesprávných zón přetažení. To musí být povoleno, pokud mohou být stejné prvky rozhozeny do více zón, nebo pokud existuje pouze jedna zóna. Pokud to není povoleno, mohou žáci spojovat všechny položky se všemi zónami uložení a vždy získat plné skóre."
+        },
+        {
+          "label": "Povolit vysvětlení skóre",
+          "description": "Při kontrole jejich odpovědí zobrazte vysvětlení skóre uživateli (pokud byla vybrána možnost Použít sankce)."
+        },
+        {
+          "label": "Neprůhlednost pozadí při přetahování",
+          "description": "Pokud je toto pole nastaveno, přepíše neprůhlednost nastavenou na všech přesouvaných prvcích. To by mělo být číslo mezi 0 a 100, kde 0 znamená úplnou průhlednost a 100 znamená neprůhlednost"
+        },
+        {
+          "label": "Zvýraznění zóny přetažení",
+          "description": "Zvolte, kdy zvýraznit zóny přetažení.",
+          "options": [
+            {
+              "label": "Při přetažení"
+            },
+            {
+              "label": "Vždy"
+            },
+            {
+              "label": "Nikdy"
+            }
+          ]
+        },
+        {
+          "label": "Mezery při automatickém zarovnání (v px)"
+        },
+        {
+          "label": "Povolit celou obrazovku",
+          "description": "Zaškrtnutím této možnosti povolíte tlačítko celé obrazovky."
+        },
+        {
+          "label": "Zobrazit body",
+          "description": "Zobrazit body získané za každou odpověď. Není k dispozici, pokud je povolena možnost 'Přiřadit jeden bod pro celý úkol'."
+        },
+        {
+          "label": "Zobrazit nadpis",
+          "description": "Zrušte zaškrtnutí této možnosti, pokud nechcete, aby se tento nadpis zobrazoval. Nadpis se zobrazí pouze v souhrnech, statistikách atd."
+        }
+      ]
+    },
+    {
+      "label": "Localizace",
+      "fields": [
+        {
+          "label": "Pipisek celá obrazovka",
+          "default": "Celá obrazovka"
+        },
+        {
+          "label": "Ukončit celou obrazovku",
+          "default": "Ukončit celou obrazovku"
+        }
+      ]
+    },
+    {
+      "label": "Předpona přetažení",
+      "default": "Přetažení {num} z {total}."
+    },
+    {
+      "label": "Přípona přetažení",
+      "default": "Umístěno v cílové zóně {num}."
+    },
+    {
+      "label": "Předpona cílové zóny",
+      "default": "Cílová zóna {num} of {total}."
+    },
+    {
+      "label": "Popisek bez výběru cílové zóny",
+      "default": "Žádná cílová zóna."
+    },
+    {
+      "label": "Popisek tlačítka pro zobrazení nápovědy",
+      "default": "Zobrazit nápovědu."
+    },
+    {
+      "label": "Popisek dostupná nápověda",
+      "default": "Dostupná nápověda"
+    },
+    {
+      "label": "Popisek pro správnou odpověď",
+      "default": "Správná odpověď"
+    },
+    {
+      "label": "Popisek pro nesprávnou odpověď",
+      "default": "Nesprávná odpověď"
+    },
+    {
+      "label": "Záhlaví panelu obsahující zpětnou vazbu pro správné/nesprávné odpovědi",
+      "default": "Zpětná vazba"
+    },
+    {
+      "label": "Textové znázornění výsledkové lišty pro ty, kteří používají čtecí zařízení",
+      "default": "Získal jste :num z celkem :total bodů"
+    },
+    {
+      "label": "Textové znázornění tlačítka pro vysvětlení skóre",
+      "default": "Zobrazit vysvětlení skóre"
+    }
+  ]
+}

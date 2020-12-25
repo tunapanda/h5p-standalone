@@ -1,0 +1,201 @@
+{
+  "semantics": [
+    {
+      "label": "Boekomslag inschakelen",
+      "description": "Een omslag die informatie over het boek toont voor toegang"
+    },
+    {
+      "label": "Omslag Pagina",
+      "fields": [
+        {
+          "label": "Omslag beschrijving",
+          "description": "Deze tekst wordt de beschrijving van je boek."
+        },
+        {
+          "label": "Omslag afbeelding",
+          "description": "Een optionele achtergrondafbeelding voor de inleiding."
+        },
+        {
+          "label": "Omslag afbeelding alternatieve tekst",
+          "description": "Een alternatieve tekst voor de omslag afbeelding"
+        }
+      ]
+    },
+    {
+      "label": "Pagina's",
+      "entity": "Pagina",
+      "widgets": [
+        {
+          "label": "Standaard"
+        }
+      ],
+      "field": {
+        "label": "Onderdeel",
+        "fields": [
+          {
+            "label": "Pagina"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Gedragsinstelingen",
+      "fields": [
+        {
+          "label": "Toon standaard inhoudsopgave",
+          "description": "Indien ingeschakeld wordt de inhoudsopgave getoond als het boek wordt geopend"
+        },
+        {
+          "label": "Toon voortgangsindicatoren",
+          "description": "Indien ingeschakeld worden er per pagina indicatoren getoond die de gebruiker tonen hoe ver hij op de pagina gevorderd is."
+        },
+        {
+          "label": "Automatische voortgang inschakelen",
+          "description": "Indien ingeschakeld wordt een pagina zonder taken als voltooid beschouwd wanneer die is bekeken, een pagina met taken als die klaar zijn. Indien uitgeschakeld wordt er een knop getoond op elke pagina waarop de gebruiker kan klikken als hij klaar is met de pagina."
+        },
+        {
+          "label": "Toon samenvatting",
+          "description": "Indien ingeschakeld kan de gebruiker een samenvatting zien en de voortgang/antwoorden inzenden"
+        }
+      ]
+    },
+    {
+      "label": "Vertaling voor \"Lezen\"",
+      "default": "Lezen"
+    },
+    {
+      "label": "Vertaling voor \"Toon 'Inhoudsopgave'\"",
+      "default": "Toon 'Inhoudsopgave'"
+    },
+    {
+      "label": "Vertaling voor \"Verberg 'Inhoudsopgave'\"",
+      "default": "Verberg 'Inhoudsopgave'"
+    },
+    {
+      "label": "Vertaling voor \"Volgende pagina\"",
+      "default": "Volgende pagina"
+    },
+    {
+      "label": "Vertaling voor \"Vorige pagina\"",
+      "default": "Vorige pagina"
+    },
+    {
+      "label": "Vertaling voor \"Pagina voltooid!\"",
+      "default": "Pagina voltooid!"
+    },
+    {
+      "label": "Vertaling voor \"@pages van @total voltooid\" (@pages en @total worden vervangen door werkelijke waardes)",
+      "default": "@pages van @total voltooid"
+    },
+    {
+      "label": "Vertaling voor \"Onvoltooide pagina\"",
+      "default": "Onvoltooide pagina"
+    },
+    {
+      "label": "Vertaling voor \"Navigeer naar boven\"",
+      "default": "Navigeer naar boven"
+    },
+    {
+      "label": "Vertaling voor \"Ik heb deze pagina voltooid\"",
+      "default": "Ik heb deze pagina voltooid"
+    },
+    {
+      "label": "Volledig scherm knop label",
+      "default": "Volledig scherm"
+    },
+    {
+      "label": "Volledig scherm afsluiten knop label",
+      "default": "Volledig scherm afsluiten"
+    },
+    {
+      "label": "Paginavoortgang in boek",
+      "description": "\"@count\" wordt vervangen door paginatelling, en \"@total\" door het totaal aantal pagina's",
+      "default": "@count van @total pagina's"
+    },
+    {
+      "label": "Interactie voortgang",
+      "description": "\"@count\" wordt vervangen door paginatelling, en \"@total\" door het totaal aantal pagina's",
+      "default": "@count van @total interacties"
+    },
+    {
+      "label": "Vertaling voor \"Rapport inzenden\"",
+      "default": "Rapport inzenden"
+    },
+    {
+      "label": "Label voor \"Opnieuw starten\" knop",
+      "default": "Opnieuw starten"
+    },
+    {
+      "label": "Samenvatting koptekst",
+      "default": "Samenvatting"
+    },
+    {
+      "label": "Vertaling voor \"Alle interacties\"",
+      "default": "Alle interacties"
+    },
+    {
+      "label": "Vertaling voor \"Niet-beantwoorde interacties\"",
+      "default": "Niet-beantwoorde interacties"
+    },
+    {
+      "label": "Score",
+      "description": "\"@score\" wordt vervangen door huidige score, en \"@maxscore\" wordt vervangen door max haalbare score",
+      "default": "@score / @maxscore"
+    },
+    {
+      "label": "Per pagina interacties voltooiing",
+      "description": "\"@left\" wordt vervangen door resterende interacties, en \"@max\" wordt vervangen door het totaal aantal interacties op de pagina",
+      "default": "@left van @max interacties resterend"
+    },
+    {
+      "label": "Vertaling voor \"Geen interacties\"",
+      "default": "Geen interacties"
+    },
+    {
+      "label": "Vertaling voor \"Score\"",
+      "default": "Score"
+    },
+    {
+      "label": "Label voor \"Samenvatting & inzenden\" knop",
+      "default": "Samenvatting & inzenden"
+    },
+    {
+      "label": "Vertaling voor \"Er zijn geen interacties met pagina's.\"",
+      "default": "Er zijn geen interacties met pagina's."
+    },
+    {
+      "label": "Vertaling voor \"Je moet tenminste één interactie hebben voltooid om de samenvatting te kunnen zien.\"",
+      "default": "Je moet tenminste één interactie hebben voltooid om de samenvatting te kunnen zien."
+    },
+    {
+      "label": "Vertaling voor \"Je antwoorden zijn ingezonden voor review!\"",
+      "default": "Je antwoorden zijn ingezonden voor review!"
+    },
+    {
+      "label": "Samenvatting voortgang label",
+      "default": "Boek voortgang"
+    },
+    {
+      "label": "Interacties voortgang label",
+      "default": "Interacties voortgang"
+    },
+    {
+      "label": "Totaalscore label",
+      "default": "Totaalscore"
+    },
+    {
+      "label": "Accessibility texts",
+      "fields": [
+        {
+          "label": "Pagina voortgang tekstueel alternatieve",
+          "description": "Een alternatieve tekst voor de visuele pagina voortgang. @page en @total variabelen beschikbaar",
+          "default": "Pagina @page van @total."
+        },
+        {
+          "label": "Label voor uitvouwen/invouwen navigatie menu",
+          "default": "Uit-/invouwen navigatie menu"
+        }
+      ]
+    }
+  ]
+}

@@ -18,14 +18,13 @@ export default class H5PStandalone {
   constructor(el, pathToContent = 'workspace', options = {}, displayOptions = {}, librariesPath) {
     this.id = options.id || Math.random().toString(36).substr(2, 9);
     this.path = pathToContent;
+    this.H5P = H5P;
 
     if (!librariesPath) {
       this.librariesPath = this.path;
     } else {
       this.librariesPath = librariesPath;
     }
-
-    console.log(this.librariesPath);
     this.initElement(el);
     return this.initH5P(options.frameCss, options.frameJs, displayOptions, options.preventH5PInit);
   }
@@ -66,12 +65,13 @@ export default class H5PStandalone {
       styles: styles,
       scripts: scripts,
       displayOptions: displayOptions,
-      contentUrl: urlPath(`${this.path}/content`)
+      contentUrl: urlPath(`${this.path}/content`),
+      metadata: this.h5p
     };
-
     // if (!preventH5PInit) {
     H5P.init();
     // }
+    return this;
   }
 
   getJSON(url) {
@@ -211,10 +211,18 @@ export default class H5PStandalone {
     });
 
     if (this.mainLibrary.preloadedCss) {
-      Array.prototype.push.apply(styles, this.mainLibrary.preloadedCss.map(style => `${this.librariesPath}/${this.mainLibraryPath}/${style.path}`));
+      $.each(this.mainLibrary.preloadedCss, (i, style) => {
+        const stylePath = `${this.librariesPath}/${this.mainLibraryPath}/${style.path}`
+        if($.inArray(stylePath, styles) === -1) styles.push(stylePath);
+      });
     }
+    
+    //Make sure there are no duplicated dependencies to avoid babel-polyfill error
     if (this.mainLibrary.preloadedJs) {
-      Array.prototype.push.apply(scripts, this.mainLibrary.preloadedJs.map(script => `${this.librariesPath}/${this.mainLibraryPath}/${script.path}`));
+      $.each(this.mainLibrary.preloadedJs, (i, script) => {
+        const scriptPath = `${this.librariesPath}/${this.mainLibraryPath}/${script.path}`
+        if($.inArray(scriptPath, scripts) === -1) scripts.push(scriptPath);
+      });
     }
     return { styles, scripts };
   }

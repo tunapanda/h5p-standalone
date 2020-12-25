@@ -1,0 +1,204 @@
+.field.wizard {
+  border: 1px solid #d0d0d1;
+}
+.field.wizard > .h5peditor-label-wrapper {
+  display: none;
+}
+.field.wizard > .h5peditor-tabs {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+ol.h5peditor-tabs {
+  counter-reset: li;
+}
+ol.h5peditor-tabs > li.h5peditor-tab-li {
+  list-style-type: none;
+  position: relative;
+}
+.field.wizard .h5peditor-tab-li {
+  padding: 0;
+  position: relative;
+  display: table-cell;
+  line-height: initial;
+}
+.field.wizard .h5peditor-tab-a {
+  display: block;
+  position: relative;
+  background: #e3e3e3;
+  margin-right: 1px;
+  padding: 11px 15px;
+  color: #616161;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.field.wizard .h5peditor-tab-a span {
+  display: block;
+  padding-left: 45px;
+  line-height: 1.5em;
+}
+.field.wizard .h5peditor-tab-a .field-step {
+  font-size: 0.6em;
+  font-style: italic;
+}
+
+/* Make the step field white on guided tour */
+.field.wizard .h5peditor-tab-a.shepherd-enabled .field-step {
+  color: white;
+}
+
+.field.wizard .h5peditor-tab-a:before {
+  font-family: 'H5PFontIcons';
+  position: absolute;
+  content: "?";
+  font-size: 2em;
+}
+.field.wizard .h5peditor-tab-a:hover {
+  background: #eaeaea;
+  text-decoration: none;
+}
+.field.wizard .h5peditor-tab-a:focus {
+  box-shadow: none;
+}
+.field.wizard .h5peditor-tab-a:hover:before,
+.field.wizard .h5peditor-tab-a:hover:after {
+  border-top-color: #ddd;
+  border-bottom-color: #ddd;
+}
+.field.wizard .h5peditor-tab-a:hover:after {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: #ddd;
+}
+.field.wizard .h5peditor-tab-a .field-name {
+  font-weight: 600;
+  font-size: 0.9em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.field.wizard .h5peditor-tab-li:first-child > .h5peditor-tab-a:before,
+.field.wizard .h5peditor-tab-li:last-child > .h5peditor-tab-a:after {
+  border: 0;
+}
+.field.wizard .h5peditor-tab-li:last-child > .h5peditor-tab-a {
+  margin-right: 0;
+}
+.field.wizard .h5peditor-tab-a.h5peditor-active {
+  background: #ffffff;
+  cursor: default;
+  color: #444
+}
+.field.wizard .h5peditor-tab-a.h5peditor-active:before {
+  border-top-color: #e8e8e8;
+  border-bottom-color: #e8e8e8;
+  color: #2579c6;
+}
+.field.wizard .h5peditor-tab-a.h5peditor-active:after {
+  border-left-color: #e8e8e8;
+}
+.field.wizard .h5peditor-tab-a.h5peditor-active:hover:after {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+.field.wizard > .h5peditor-panes > .group {
+  background-color: transparent;
+  box-shadow: none;
+  border: 0px;
+  display: block;
+}
+.field.wizard > .h5peditor-panes > .group > .title {
+  display: none;
+}
+.field.wizard > .h5peditor-panes > .group > .content {
+  display: block;
+}
+.field.wizard > .h5peditor-panes > .field {
+  margin: 0;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons {
+  display: table;
+  width: 100%;
+  background-color: #e3e3e3;
+  font-size: 17px;
+  line-height: initial;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons span {
+  display: block;
+  vertical-align: middle;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons div div span:first-child {
+  font-style: italic;
+  color: #6B6B6B;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons .nav-button-icon {
+  display: table-cell;
+  padding: 0.5em 0.75em;
+  vertical-align: middle;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons .nav-button-icon:before {
+  font-family: 'H5PFontAwesome4';
+}
+.field.wizard .h5peditor-wizard-navigation-buttons .nav-button-prev .nav-button-icon:before {
+  content: "\f104";
+}
+.field.wizard .h5peditor-wizard-navigation-buttons .nav-button-next .nav-button-icon:before {
+  content: "\f105";
+}
+.field.wizard .h5peditor-wizard-navigation-buttons > div {
+  background: #fdfdfd;
+  background: linear-gradient(#fdfdfd, #f3f3f3);
+  border: 1px solid #d0d0d1;
+  border-radius: 5px;
+  margin: 0.5em;
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons > div:hover {
+  background: linear-gradient(to bottom, #fff 0, #d0d0d1 100%);
+  border-color: #999;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons > div div {
+  padding: 0.45em 0.7em;
+  display: table-cell;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons > div div span:first-child {
+  font-size: 0.625em;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons > div div .nav-button-label {
+  font-size: 0.75em;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons .nav-button-label:before {
+  font-family: 'H5PFontIcons';
+  content: "?";
+  font-size: 1.3em;
+  color: #6B6B6B;
+  padding-right: 0.1em;
+  top: 0.075em;
+  left: -0.1em;
+  position: relative;
+}
+.field.wizard .nav-button-prev {
+  float: left;
+}
+.field.wizard .nav-button-next {
+  float: right;
+}
+.field.wizard .nav-button-prev > div {
+  border-left: 1px solid #d0d0d1;
+}
+.field.wizard .nav-button-next > div {
+  border-right: 1px solid #d0d0d1;
+}

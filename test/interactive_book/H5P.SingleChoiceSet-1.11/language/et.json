@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "Küsimuste loetelu",
+      "entity": "küsimus",
+      "widgets": [
+        {
+          "label": "Vaikimisi"
+        },
+        {
+          "label": "Tekstiline"
+        }
+      ],
+      "field": {
+        "label": "Küsimus ja alternatiivid",
+        "fields": [
+          {
+            "label": "Küsimus"
+          },
+          {
+            "label": "Alternatiivid - esimene alternatiiv on õige.",
+            "entity": "vastus",
+            "field": {
+              "label": "Alternatiiv"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Üldine tagasiside",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Vaikimisi"
+            }
+          ],
+          "label": "Määratle iga punktisummavahemiku jaoks kohandatud tagasiside",
+          "description": "Vajuta \"Lisa vahemik\" nuppu, et lisada vajalikud vahemikud. Näiteks: 0-20% halb tulemus, 21-91% keskmine tulemus, 91-100% suurepärane tulemus!",
+          "entity": "vahemik",
+          "field": {
+            "fields": [
+              {
+                "label": "Punktisumma vahemik"
+              },
+              {},
+              {
+                "label": "Määratletud punktisumma vahemiku tagasiside",
+                "placeholder": "Sisesta tagasiside"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Käitumisseaded",
+      "fields": [
+        {
+          "label": "Automaatne jätkamine",
+          "description": "Automaatselt liigu järgmisele küsimusele, kui alternatiiv on valitud"
+        },
+        {
+          "label": "Õige vastuse timeout",
+          "description": "Väärtus millisekundites"
+        },
+        {
+          "label": "Valede vastuste timeout",
+          "description": "Väärtus millisekundites"
+        },
+        {
+          "label": "Luba heliefektid"
+        },
+        {
+          "label": "Luba Proovi uuesti nupp"
+        },
+        {
+          "label": "Luba Näita lahendust nupp"
+        },
+        {
+          "label": "Edenemise protsent",
+          "description": "Protsent kogupunktisummast, mis on viktoriini läbimiseks vajalik."
+        }
+      ]
+    },
+    {
+      "label": "Kohanda ühe valiku kogum",
+      "fields": [
+        {
+          "label": "\"Järgmine\" nupu silt",
+          "default": "Järgmine küsimus"
+        },
+        {
+          "label": "\"Näita lahendust\" nupu silt",
+          "default": "Näita lahendust"
+        },
+        {
+          "label": "\"Proovi uuesti\" nupu silt",
+          "default": "Proovi uuesti"
+        },
+        {
+          "label": "Näita lahendust vaate pealkiri",
+          "default": "Lahendus"
+        },
+        {
+          "label": "Õige vastuse tekstilugeri tekst",
+          "default": "Õige!"
+        },
+        {
+          "label": "Vale vastuse tekstilugeri tekst",
+          "default": "Vale!"
+        },
+        {
+          "label": "\"Vaigista\" nupu silt, keelamaks tagasiside heli",
+          "default": "Vaigista tagasiside heli"
+        },
+        {
+          "label": "\"Sulge\" nupu silt",
+          "default": "Sulge"
+        },
+        {
+          "label": "Leheküljenumbri tekst",
+          "description": "Teavitab jooksva lehekülje numbri ja lehekülgede koguarvu. Kasutatavad muutujad on :num ja :total",
+          "default": "Lehekülg :num kokku :total leheküljest"
+        },
+        {
+          "label": "Punktisumma riba tekstiline esitamine tekstilugeri kasutajaile",
+          "default": "Sa said :num punkti :total punktist"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
+        }
+      ]
+    }
+  ]
+}

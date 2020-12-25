@@ -1,0 +1,29 @@
+{
+  "semantics":[
+    {
+      "label":"Veeru sisu loetelu",
+      "entity":"sisu",
+      "field":{
+        "fields":[
+          {
+            "label":"Sisu"
+          },
+          {
+            "label":"Eralda sisu horisontaaljoonega",
+            "options":[
+              {
+                "label":"Automaatne (vaikimisi)"
+              },
+              {
+                "label":"Ära kasuta eraldajat kunagi"
+              },
+              {
+                "label":"Alati kasuta eraldajat"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+.h5p-dragnbar-element.focused > .h5p-dragnresize-handle {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 6px;
+  height: 6px;
+  cursor: nwse-resize;
+  border: 1px solid #0099ff;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.h5p-dragnbar-element.focused > .h5p-dragnresize-handle.ne {
+  left: auto;
+  right: -5px;
+  cursor: nesw-resize;
+}
+
+.h5p-dragnbar-element.focused > .h5p-dragnresize-handle.sw {
+  top: auto;
+  bottom: -5px;
+  cursor: nesw-resize;
+}
+
+.h5p-dragnbar-element.focused > .h5p-dragnresize-handle.se {
+  top: auto;
+  left: auto;
+  bottom: -5px;
+  right: -5px;
+}
+
+.h5p-dragnbar-element.focused > .h5p-dragnresize-handle.n {
+  left: calc(50% - 4px);
+  cursor: ns-resize;
+}
+
+.h5p-dragnbar-element.focused > .h5p-dragnresize-handle.w {
+  top: calc(50% - 4px);
+  cursor: ew-resize;
+}
+
+.h5p-dragnbar-element.focused > .h5p-dragnresize-handle.e {
+  top: calc(50% - 4px);
+  left: auto;
+  right: -5px;
+  cursor: ew-resize;
+}
+
+.h5p-dragnbar-element.focused > .h5p-dragnresize-handle.s {
+  top: auto;
+  left: auto;
+  bottom: -5px;
+  right: calc(50% - 4px);
+  cursor: ns-resize;
+}

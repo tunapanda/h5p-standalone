@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "Liste des questions",
+      "entity": "question",
+      "widgets": [
+        {
+          "label": "Default"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
+      "field": {
+        "label": "Question et réponses possibles",
+        "fields": [
+          {
+            "label": "Question"
+          },
+          {
+            "label": "Réponses possibles - la première de la liste est celle qui est juste.",
+            "entity": "réponse",
+            "field": {
+              "label": "Réponse possible"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Opacité des étiquettes",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Par défaut"
+            }
+          ],
+          "label": "Définissez le feedback pour chaque intervalle de score",
+          "description": "Cliquez le bouton \"Ajouter Intervalle\"  pour ajouter autant d'intervalles que vous le souhaitez. Exemple : 0-20% Mauvais score, 21-91% Score moyen, 91-100% Score excellent!",
+          "entity": "intervalle",
+          "field": {
+            "fields": [
+              {
+                "label": "Intervalle de score"
+              },
+              {},
+              {
+                "label": "Feedback pour l'intervalle de score défini",
+                "placeholder": "Remplir le feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Options générales",
+      "fields": [
+        {
+          "label": "Continuer automatiquement",
+          "description": "Aller automatiquement vers la question suivante quand cette option est séléctionnée"
+        },
+        {
+          "label": "Temps de pause en cas de réponse correcte",
+          "description": "En millisecondes"
+        },
+        {
+          "label": "Temps de pause en cas de réponse incorrecte",
+          "description": "En millisecondes"
+        },
+        {
+          "label": "Activer les effets sonores"
+        },
+        {
+          "label": "Activer le bouton \"Recommencer\""
+        },
+        {
+          "label": "Activer le bouton \"Voir la correction\""
+        },
+        {
+          "label": "Pourcentage de réussite",
+          "description": "Pourcentage exigé pour considérer que le quiz est réussi."
+        }
+      ]
+    },
+    {
+      "label": "Interface de la série de questions à choix unique",
+      "fields": [
+        {
+          "label": "Texte pour le bouton \"Suivant\"",
+          "default": "Question suivante"
+        },
+        {
+          "label": "Texte pour le bouton \"Voir la solution\"",
+          "default": "Voir la solution"
+        },
+        {
+          "label": "Texte pour le mode \"Correction\"",
+          "default": "Correction"
+        },
+        {
+          "label": "Texte pour le bouton \"Recommencer\"",
+          "default": "Recommencer"
+        },
+        {
+          "label": "Texte exprimé par la synthèse vocale en cas de réponse correcte",
+          "default": "Correct !"
+        },
+        {
+          "label": "Texte exprimé par la synthèse vocale en cas de réponse incorrecte",
+          "default": "Incorrect !"
+        },
+        {
+          "label": "Étiquette pour le bouton \"Muet\", pour désactiver la rétroaction sonore",
+          "default": "Couper les retours sons"
+        },
+        {
+          "label": "Étiquette pour le bouton \"Fermer\"",
+          "default": "Fermer"
+        },
+        {
+          "label": "Texte du numéro de diapositive",
+          "description": "Annonce la diapositive actuelle et le nombre total de diapositives, les variables sont :num et :total",
+          "default": "Diapositive :num sur :total"
+        },
+        {
+          "label": "Représentation textuelle du panneau du score pour les utilisateurs de la synthèse vocale",
+          "default": "Vous avez :num points sur un total de :total"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
+        }
+      ]
+    }
+  ]
+}

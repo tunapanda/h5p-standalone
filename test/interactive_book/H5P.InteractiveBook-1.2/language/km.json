@@ -1,0 +1,201 @@
+{
+  "semantics": [
+    {
+      "label": "Enable book cover",
+      "description": "A cover that shows info regarding the book before access"
+    },
+    {
+      "label": "Cover Page",
+      "fields": [
+        {
+          "label": "Cover description",
+          "description": "This text will be the description of your book."
+        },
+        {
+          "label": "Cover image",
+          "description": "An optional background image for the introduction."
+        },
+        {
+          "label": "Cover image alternative text",
+          "description": "An alternative text for the cover image"
+        }
+      ]
+    },
+    {
+      "label": "Pages",
+      "entity": "Page",
+      "widgets": [
+        {
+          "label": "Default"
+        }
+      ],
+      "field": {
+        "label": "Item",
+        "fields": [
+          {
+            "label": "Page"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Behavioural settings",
+      "fields": [
+        {
+          "label": "Display table of contents as default",
+          "description": "When enabled the table of contents is showed when opening the book"
+        },
+        {
+          "label": "Display Progress Indicators",
+          "description": "When enabled there will be indicators per page showing the user if he is done with the page or not."
+        },
+        {
+          "label": "Enable automatic progress",
+          "description": "If enabled a page without tasks is considered done when viewed. A page with tasks when all tasks are done. If disabled there will be a button at the bottom of every page for the user to click when done with the page."
+        },
+        {
+          "label": "Display summary",
+          "description": "When enabled the user can see a summary and submit the progress/answers"
+        }
+      ]
+    },
+    {
+      "label": "Translation for \"Read\"",
+      "default": "អាន"
+    },
+    {
+      "label": "Translation for \"Display 'Table of contents'\"",
+      "default": "បង្ហាញ «តារាងមាតិកា»"
+    },
+    {
+      "label": "Translation for \"Hide 'Table of contents'\"",
+      "default": "លាក់ «តារាងមាតិកា»"
+    },
+    {
+      "label": "Translation for \"Next page\"",
+      "default": "ទំព័របន្ទាប់"
+    },
+    {
+      "label": "Translation for \"Previous page\"",
+      "default": "ទំព័រមុន"
+    },
+    {
+      "label": "Translation for \"Page completed!\"",
+      "default": "ទំព័របានបញ្ចប់!"
+    },
+    {
+      "label": "Translation for \"@pages of @total completed\" (@pages and @total will be replaced by actual values)",
+      "default": "បានបញ្ចប់ @pages ទំព័រចំណោម @total ទំព័រ"
+    },
+    {
+      "label": "Translation for \"Incomplete page\"",
+      "default": "ទំព័រមិនបានបញ្ចប់"
+    },
+    {
+      "label": "Translation for \"Navigate to the top\"",
+      "default": "ផ្លាស់ទីទៅលើ"
+    },
+    {
+      "label": "Translation for \"I have finished this page\"",
+      "default": "ខ្ញុំបានបញ្ចប់ទំព័រនេះ"
+    },
+    {
+      "label": "Fullscreen button label",
+      "default": "ពេញអេក្រង់"
+    },
+    {
+      "label": "Exit fullscreen button label",
+      "default": "បិទពេញអេក្រង់"
+    },
+    {
+      "label": "Page progress in book",
+      "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+      "default": "@count ចំណោម @total ទំព័រ"
+    },
+    {
+      "label": "Interaction progress",
+      "description": "\"@count\" will be replaced by page count, and \"@total\" with the total number of pages",
+      "default": "@count ចំណោម @total អន្តរកម្ម"
+    },
+    {
+      "label": "Translation for \"Submit report\"",
+      "default": "ប្រគល់របាយការណ៍"
+    },
+    {
+      "label": "Label for \"restart\" button",
+      "default": "ចាប់ផ្តើមឡើងវិញ"
+    },
+    {
+      "label": "Summary header",
+      "default": "សង្ខេប"
+    },
+    {
+      "label": "Translation for \"All interactions\"",
+      "default": "អន្តរកម្មទាំងអស់"
+    },
+    {
+      "label": "Translation for \"Unanswered interactions\"",
+      "default": "អន្តរកម្មមិនទាន់បានឆ្លើយ"
+    },
+    {
+      "label": "Score",
+      "description": "\"@score\" will be replaced with current score, and \"@maxscore\" will be replaced with max achievable score",
+      "default": "@score / @maxscore"
+    },
+    {
+      "label": "Per page interactions completion",
+      "description": "\"@left\" will be replaced with remaining interactions, and \"@max\" will be replaced with total number of interactions on the page",
+      "default": "@left ចំណោម @max អន្តរកម្មបានបញ្ចប់"
+    },
+    {
+      "label": "Translation for \"No interactions\"",
+      "default": "មិនមានអន្តរកម្ម"
+    },
+    {
+      "label": "Translation for \"Score\"",
+      "default": "ពិន្ទុ"
+    },
+    {
+      "label": "Label for \"Summary & submit\" button",
+      "default": "សងេ្ខប & ប្រគល់កិច្ចការ"
+    },
+    {
+      "label": "Translation for \"You have not interacted with any pages.\"",
+      "default": "អ្នកមិនទាន់បានធ្វើអន្តរកម្មជាមួយទំព័រណាមួយនៅឡើយទេ។"
+    },
+    {
+      "label": "Translation for \"You have to interact with at least one page before you can see the summary.\"",
+      "default": "អ្នកត្រូវតែមើលយ៉ាងហោចណាស់មួយទំព័រមុននឹងអ្នកអាចមើលសង្ខេបបាន។"
+    },
+    {
+      "label": "Translation for \"Your answers are submitted for review!\"",
+      "default": "ចម្លើយរបស់អ្នកត្រូវបានប្រគល់ដើម្បីត្រួតពិនិត្យ!"
+    },
+    {
+      "label": "Summary progress label",
+      "default": "វឌ្ឍនភាពសៀវភៅ"
+    },
+    {
+      "label": "Interactions progress label",
+      "default": "វឌ្ឍនភាពអន្តរកម្ម"
+    },
+    {
+      "label": "Total score label",
+      "default": "ពិន្ទុសរុប"
+    },
+    {
+      "label": "Accessibility texts",
+      "fields": [
+        {
+          "label": "Page progress textual alternative",
+          "description": "An alternative text for the visual page progress. @page and @total variables available.",
+          "default": "ទំព័រ @page ចំណោម @total"
+        },
+        {
+          "label": "Label for expanding/collapsing navigation menu",
+          "default": "បិទបើកម៉ឺនុយផ្លាស់ទី"
+        }
+      ]
+    }
+  ]
+}

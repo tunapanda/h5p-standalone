@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "Vragenoverzicht",
+      "entity": "vraag",
+      "widgets": [
+        {
+          "label": "Standaard"
+        },
+        {
+          "label": "Tekstueel"
+        }
+      ],
+      "field": {
+        "label": "Vraag & alternatieven",
+        "fields": [
+          {
+            "label": "Vraag"
+          },
+          {
+            "label": "Alternatieven - het eerste alternatief is het juiste antwoord.",
+            "entity": "antwoord",
+            "field": {
+              "label": "Alternatief"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Algemene feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Standaard"
+            }
+          ],
+          "label": "Definieer aangepaste feedback voor elk scorebereik",
+          "description": "Druk op de knop \"Voeg scorereeks toe\" om zoveel reeksen toe te voegen als nodig is. Voorbeeld: 0-20% Onvoldoende score, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
+          "entity": "reeks",
+          "field": {
+            "fields": [
+              {
+                "label": "Scorereeks"
+              },
+              {},
+              {
+                "label": "Feedback voor de gedefinieerde scorereeks",
+                "placeholder": "Vul de aangepaste feedback in"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Gedragsinstellingen",
+      "fields": [
+        {
+          "label": "Automatisch doorgaan",
+          "description": "Ga automatisch naar de volgende vraag wanneer een alternatief is geselecteerd"
+        },
+        {
+          "label": "Time-out bij juiste antwoorden",
+          "description": "Waarde in milliseconden"
+        },
+        {
+          "label": "Time-out bij onjuiste antwoorden",
+          "description": "Waarde in milliseconden"
+        },
+        {
+          "label": "Activeer geluidseffecten"
+        },
+        {
+          "label": "Activeer opnieuw knop"
+        },
+        {
+          "label": "Activeer toon oplossing knop"
+        },
+        {
+          "label": "Slagingspercentage",
+          "description": "Percentage van de totale score die vereist is om te slagen."
+        }
+      ]
+    },
+    {
+      "label": "Lokaliseer enkele keuze set",
+      "fields": [
+        {
+          "label": "Tekst voor de \"Volgende vraag\" -knop",
+          "default": "Volgende vraag"
+        },
+        {
+          "label": "Tekst voor de \"Toon oplossing\" -knop",
+          "default": "Toon oplossing"
+        },
+        {
+          "label": "Tekst voor de \"Opnieuw\" -knop",
+          "default": "Opnieuw proberen"
+        },
+        {
+          "label": "Titel voor het tonen van de oplossing",
+          "default": "Oplossing"
+        },
+        {
+          "label": "Readspeaker tekst voor het juiste antwoord",
+          "default": "Juist!"
+        },
+        {
+          "label": "Readspeaker tekst voor het onjuiste antwoord",
+          "default": "Onjuist!"
+        },
+        {
+          "label": "Tekst voor de \"demp\" -knop, om het feedbackgeluid uit te schakelen",
+          "default": "Demp het feedbackgeluid"
+        },
+        {
+          "label": "Tekst voor de \"Afsluiten\" -knop",
+          "default": "Afsluiten"
+        },
+        {
+          "label": "Tekst voor het dianummer",
+          "description": "Geeft de huidige dia en het totale aantal dia's weer, variabelen zijn :num and :total",
+          "default": "Dia :num van :total"
+        },
+        {
+          "label": "Tekstuele weergave van de scorebalk voor de gebruikers van de readspeaker",
+          "default": "Je hebt :num van de :total punten"
+        },
+        {
+          "label": "Label voor het vraagnummer in het antwoordoverzicht",
+          "description": "Geeft het huidige vraagnummer in het antwoordoverzicht, variabele is :num",
+          "default": "Vraag :num"
+        }
+      ]
+    }
+  ]
+}

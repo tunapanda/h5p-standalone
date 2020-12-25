@@ -1,0 +1,8 @@
+{
+  "semantics": [
+    {
+      "label": "Πίνακας",
+      "default": "<table class=\"h5p-table\"><thead><tr><th scope=\"col\">Επικεφαλίδα Στήλης 1</th><th scope=\"col\">Επικεφαλίδα Στήλης 2</th></tr></thead><tbody><tr><td>Γρ 1 Στ 1</td><td>Γρ 1 Στ 2</td></tr><tr><td>Γρ 2 Στ 1</td><td>Γρ 2 Στ 2</td></tr></tbody></table>"
+    }
+  ]
+}

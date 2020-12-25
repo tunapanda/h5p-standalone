@@ -1,0 +1,17 @@
+{
+  "libraryStrings": {
+    "transformLabel": "Teisenda",
+    "editLabel": "Töötle",
+    "removeLabel": "Eemalda",
+    "bringToFrontLabel": "Too esiplaanile",
+    "sendToBackLabel": "Saada taustale",
+    "unableToPaste": "Ei saa seda objekti kleepida - see sisutüüp või versioon ei toeta objekti, mida püüad kleepida.",
+    "sizeLabel": "Suurus",
+    "positionLabel": "Asukoht",
+    "heightLabel": "Kõrgus",
+    "widthLabel": "Laius",
+    "copyLabel": "Kopeeri",
+    "paste": "Kleebi",
+    "moreElements": "Rohkem elemente"
+  }
+}

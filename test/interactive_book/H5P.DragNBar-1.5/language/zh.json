@@ -1,0 +1,17 @@
+{
+  "libraryStrings": {
+    "transformLabel": "轉換",
+    "editLabel": "編輯",
+    "removeLabel": "移除",
+    "bringToFrontLabel": "移至最前",
+    "sendToBackLabel": "移至最後",
+    "unableToPaste": "無法貼上物件。很抱歉，目前的內容形式不支援貼上此物件。",
+    "sizeLabel": "尺寸",
+    "positionLabel": "位置",
+    "heightLabel": "高度",
+    "widthLabel": "寬度",
+    "copyLabel": "複製",
+    "paste": "貼上",
+    "moreElements": "更多元素"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "libraryStrings":{
+    "insertElement":"Voeg :type toe",
+    "done":"Klaar",
+    "remove":"Verwijderen",
+    "image":"Afbeelding",
+    "text":"Tekst",
+    "noTaskSize":"Specificeer eerst de taak grootte.",
+    "confirmRemoval":"Weet je zeker dat je dit element wilt verwijderen?",
+    "backgroundOpacityOverridden":"De achtergronddoorzichtigheid is overschreven",
+    "advancedtext":"Tekst",
+    "dropzone":"Neerzetgebied",
+    "selectAll":"Selecteer alles",
+    "deselectAll":"Deselecteer alles"
+  }
+}

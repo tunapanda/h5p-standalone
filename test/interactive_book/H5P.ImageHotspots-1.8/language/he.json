@@ -1,0 +1,94 @@
+{
+  "semantics": [
+    {
+      "label": "תמונת רקע",
+      "description": "תמונה מוצגת ברקע."
+    },
+    {
+      "label": "",
+      "description": ""
+    },
+    {
+      "label": "צלמית נקודה־חמה",
+      "options": [
+        {
+          "label": "צלמית מוגדרת מראש"
+        },
+        {
+          "label": "תמונה שהועלתה"
+        }
+      ]
+    },
+    {
+      "label": "צלמית מוגדרת מראש",
+      "description": "Using a predefined icon for the hotspot.",
+      "options": [
+        {
+          "label": "ועוד"
+        },
+        {
+          "label": "מינוס"
+        },
+        {
+          "label": "כפול"
+        },
+        {
+          "label": "בדיקה"
+        },
+        {
+          "label": "שאלה"
+        },
+        {
+          "label": "מידע"
+        },
+        {
+          "label": "סימן קריאה"
+        }
+      ]
+    },
+    {
+      "label": "התמונה שעלתה",
+      "description": ""
+    },
+    {
+      "label": "צבע הנקודה־החמה",
+      "description": "צבע הנקודות־החמות"
+    },
+    {
+      "entity": "נקודה־חמה",
+      "label": "נקודות־חמות",
+      "field": {
+        "label": "נקודה־חמה",
+        "fields": [
+          {
+            "label": "מיקום נקודה־חמה",
+            "description": "Click on the thumbnail image to place the hotspot"
+          },
+          {
+            "label": "Cover entire background image",
+            "description": "When the user clicks the hotspot the popup will cover the entire background image"
+          },
+          {
+            "label": "כותרת",
+            "description": "כותרת אפשרית עבור החלון הקופץ"
+          },
+          {
+            "label": "תוכן החלון הקופץ",
+            "field": {
+              "label": "תוכן הפריט"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Hotspot label for assistive technologies",
+      "default": "נקודה־חמה #num",
+      "description": "Will help announce what hotspot element has been navigated to if there is no header specified for a hotspot. #num can be used to replace the hotspot number."
+    },
+    {
+      "label": "Close button label for assistive technologies",
+      "default": "סגירה"
+    }
+  ]
+}

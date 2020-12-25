@@ -1,0 +1,259 @@
+{
+  "semantics": [
+    {
+      "label": "Painikkeen \"Tarkista\" nimi",
+      "default": "Tarkista"
+    },
+    {
+      "label": "Painikkeen \"Yritä uudelleen\" nimi",
+      "default": "Yritä uudelleen"
+    },
+    {
+      "label": "Tuloksen selite",
+      "default": "Saat oikeista vastauksista +1 pistettä. Vääristä vastauksista saat -1 pistettä. Pienin mahdollinen tulos on 0."
+    },
+    {
+      "fields": [
+        {
+          "label": "Asetukset",
+          "fields": [
+            {
+              "label": "Taustakuva",
+              "description": "Valinnainen. Valitse taustakuva tehtävälle."
+            },
+            {
+              "label": "Tehtäväalueen koko",
+              "description": "Määrittele pikseleissä tehtäväalueen koko."
+            }
+          ]
+        },
+        {
+          "label": "Tehtävä",
+          "description": "Aloita asettamalla pudotuskohteet.<br/>Seuraavaksi, asettele pudotettavat elementit ja valitse niille halutut kohteet.<br/>Viimeiseksi, muokkaa uudestaan pudotuskohteita ja valitse niille oikeat raahattavat.",
+          "fields": [
+            {
+              "label": "Elementit",
+              "entity": "elementti",
+              "field": {
+                "label": "Elementti",
+                "fields": [
+                  {
+                    "description": "Valitse lisättävä sisältötyyppi."
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Valitse pudotuskohteet"
+                  },
+                  {
+                    "label": "Taustan läpinäkyvyys 0-100 (0 = läpinäkyvä, 100 = valkoinen)"
+                  },
+                  {
+                    "label": "Loputon määrä elementin kopioita",
+                    "description": "Kloonaa elementin, jotta sen voi raahata useisiin kohteisiin."
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Pudotuskohteet",
+              "entity": "Pudotuskohde",
+              "field": {
+                "label": "Pudotuskohde",
+                "fields": [
+                  {
+                    "label": "Kohteen kuvaus"
+                  },
+                  {
+                    "label": "Näytä kuvaus"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Valitse oikeat elementit"
+                  },
+                  {
+                    "label": "Taustan läpinäkyvyys 0-100 (0 = läpinäkyvä, 100 = valkoinen)"
+                  },
+                  {
+                    "label": "Vihjeet ja palaute",
+                    "fields": [
+                      {
+                        "label": "Vihjeteksti"
+                      },
+                      {
+                        "label": "Palaute oikeille vastauksille",
+                        "description": "Palaute ilmestyy tehtävän alapuolelle, kun klikataan \"Tarkista\", jos pudotettava elementti on oikein."
+                      },
+                      {
+                        "label": "Palaute väärille vastauksille",
+                        "description": "Palaute ilmestyy tehtävän alapuolelle, kun klikataan \"Tarkista\", jos pudotettava elementti on väärin."
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Tämä pudotuskohde voi sisältää vain yhden elementin",
+                    "description": "Tälle pudotuskohteelle on vain yksi oikea vastaus"
+                  },
+                  {
+                    "label": "Salli automaattinen kohdistus",
+                    "description": "Kohdistaa pudotetut elementit kohteen kanssa."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Yleinen palaute",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Oletus"
+            }
+          ],
+          "label": "Määritä muokattu palaute pisterajojen mukaan.",
+          "description": "Klikkaa \"Lisää alue\" painiketta lisätäksesi niin monta pisterajaa kuin tarvit. Esimerkiksi: 0-20% Huono tulos, 21-91% Kelpo tulos, 91-100% Mahtava tulos!",
+          "entity": "alue",
+          "field": {
+            "fields": [
+              {
+                "label": "Pisteraja"
+              },
+              {},
+              {
+                "label": "Palaute määritellylle pisterajalle",
+                "placeholder": "Kirjoita palaute"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Yleisasetukset",
+      "description": "Näillä valinnoilla voit ohjailla tehtävän toimintoja.",
+      "fields": [
+        {
+          "label": "Salli painike \"Yritä uudelleen\""
+        },
+        {
+          "label": "Salli \"Check\" painike"
+        },
+        {
+          "label": "Vaadi vastaus ennen kuin ratkaisun saa nähdä"
+        },
+        {
+          "label": "Anna yksi piste koko tehtävästä",
+          "description": "Jos tämä ei ole valittuna, niin kaikista oikein pudotetuista saa pisteen."
+        },
+        {
+          "label": "Rankaise vääristä vastauksista",
+          "description": "Rankaise vääristä pudotuksista. Tämän täytyy olla valittuna siinä tapauksessa, kun sama elementti voidaan pudottaa useisiin kohteisiin, tai kun kohteita on vain yksi. Jos tämä ei ole valittuna, voivat opiskelijat silloin aina saada kaikki oikein."
+        },
+        {
+          "label": "Salli pisteiden selite",
+          "description": "Näytä pisteiden selite, kun käyttäjä tarkistaa vastauksensa (jos Rankaise vääristä vastauksista on valittuna)."
+        },
+        {
+          "label": "Raahattavien taustan läpinäkyvyys",
+          "description": "Tämän valitseminen yliajaa raahattavien elementtien läpinäkyvyysasetukset. Tämän pitää olla numeroarvo välillä 0-100, missä 0 tarkoittaa täyttä läpinäkyvyyttä ja 100 ei lainkaan läpinäkyvyyttä."
+        },
+        {
+          "label": "Pudotuskohteiden korostus",
+          "description": "Valitse milloin pudotuskohteita korostetaan.",
+          "options": [
+            {
+              "label": "Raahattaessa"
+            },
+            {
+              "label": "Aina"
+            },
+            {
+              "label": "Ei koskaan"
+            }
+          ]
+        },
+        {
+          "label": "Välistys automaattiselle kohdistukselle (pikseleissä)"
+        },
+        {
+          "label": "Salli \"Koko ruutu\"",
+          "description": "Valitse salliaksesi \"Koko ruutu\"-painike."
+        },
+        {
+          "label": "Näytä pisteet",
+          "description": "Näytä jokaisesta vastauksesta ansaitut pisteet. Ei käytössä, kun Anna yksi piste koko tehtävästä on valittuna."
+        },
+        {
+          "label": "Näytä tehtävän otsikko",
+          "description": "Jätä valitsematta, jos et halua otsikkoa näkyviin. Tällöin otsikko näkyy vain yhteenvedoissa, tilastoissa jne."
+        }
+      ]
+    },
+    {
+      "label": "Muokkaa",
+      "fields": [
+        {
+          "label": "\"Koko ruutu\"-painikkeen teksti",
+          "default": "Koko ruutu"
+        },
+        {
+          "label": "\"Poistu koko ruudun tilasta\"-painikkeen teksti",
+          "default": "Poistu kokoruudun tilasta"
+        }
+      ]
+    },
+    {
+      "label": "Raahattavan etuliite",
+      "default": "Raahattava {num}/{total}."
+    },
+    {
+      "label": "Raahattavan jälkiliite",
+      "default": "Pudotettu kohteeseen {num}."
+    },
+    {
+      "label": "Pudotuskohteen etuliite",
+      "default": "Pudotuskohde {num}/{total}."
+    },
+    {
+      "label": "Ei pudotuskohdetta teksti",
+      "default": "Ei pudotuskohdetta."
+    },
+    {
+      "label": "Vihjepainikkeen teksti",
+      "default": "Näytä vihje."
+    },
+    {
+      "label": "Vihje saatavilla teksti",
+      "default": "Vihje saatavilla"
+    },
+    {
+      "label": "Oikea vastaus",
+      "default": "Oikea vastaus"
+    },
+    {
+      "label": "Väärä vastaus",
+      "default": "Väärä vastaus"
+    },
+    {
+      "label": "Palaute-paneelin otsikko joka sisältää tiedon oikeista/vääristä vastauksista.",
+      "default": "Palaute"
+    },
+    {
+      "label": "Tekstimuotoinen esitys pistepalkista niille jotka käyttävät ruudunlukijasovellusta",
+      "default": "Sait :num pistettä :total pisteestä"
+    },
+    {
+      "label": "Tekstimuotoinen esitys pisteidenselityspainikkeesta",
+      "default": "Näytä pisteselvitys"
+    }
+  ]
+}

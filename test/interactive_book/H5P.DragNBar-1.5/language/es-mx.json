@@ -1,0 +1,17 @@
+{
+  "libraryStrings": {
+    "transformLabel": "Transformar",
+    "editLabel": "Editar",
+    "removeLabel": "Eliminar",
+    "bringToFrontLabel": "Traer al Frente",
+    "sendToBackLabel": "Enviar Atrás",
+    "unableToPaste": "No se puede pegar este objeto. Desafortunadamente, el objeto que está intentando pegar no está soportado por este tipo de contenido o versión.",
+    "sizeLabel": "Tamaño",
+    "positionLabel": "Posición",
+    "heightLabel": "Altura",
+    "widthLabel": "Ancho",
+    "copyLabel": "Copiar",
+    "paste": "Pegar",
+    "moreElements": "Más elementos"
+  }
+}

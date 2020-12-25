@@ -1,0 +1,139 @@
+{
+  "semantics": [
+    {
+      "label": "List of questions",
+      "entity": "question",
+      "widgets": [
+        {
+          "label": "Default"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
+      "field": {
+        "label": "Question & alternatives",
+        "fields": [
+          {
+            "label": "Soru"
+          },
+          {
+            "label": "Alternatives - first alternative is the correct one.",
+            "entity": "answer",
+            "field": {
+              "label": "Alternative"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Overall Feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Varsayılan"
+            }
+          ],
+          "label": "Define custom feedback for any score range",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Score Range"
+              },
+              {},
+              {
+                "label": "Feedback for defined score range",
+                "placeholder": "Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Davranış ayarları",
+      "fields": [
+        {
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected"
+        },
+        {
+          "label": "Timeout on correct answers",
+          "description": "Value in milliseconds"
+        },
+        {
+          "label": "Timeout on wrong answers",
+          "description": "Value in milliseconds"
+        },
+        {
+          "label": "Enable sound effects"
+        },
+        {
+          "label": "Enable retry button"
+        },
+        {
+          "label": "Enable show solution button"
+        },
+        {
+          "label": "Geçiş yüzdesi",
+          "description": "Quizi geçmek için gerekli toplam puan yüzdesi."
+        }
+      ]
+    },
+    {
+      "label": "Localize single choice set",
+      "fields": [
+        {
+          "label": "Label for the \"Next\" button",
+          "default": "Next question"
+        },
+        {
+          "label": "Label for the \"Show solution\" button",
+          "default": "Çözümü göster"
+        },
+        {
+          "label": "Label for the \"Retry\" button",
+          "default": "Yeniden dene"
+        },
+        {
+          "label": "Title for the show solution view",
+          "default": "Solution"
+        },
+        {
+          "label": "Readspeaker text for correct answer",
+          "default": "Correct!"
+        },
+        {
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect!"
+        },
+        {
+          "label": "Label for the \"mute\" button, to disable feedback sound",
+          "default": "Mute feedback sound"
+        },
+        {
+          "label": "Label for the \"Close\" button",
+          "default": "Close"
+        },
+        {
+          "label": "Slide number text",
+          "description": "Announces current slide and total number of slides, variables are :num and :total",
+          "default": "Slide :num of :total"
+        },
+        {
+          "label": "Textual representation of the score bar for those using a readspeaker",
+          "default": "You got :num out of :total points"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
+        }
+      ]
+    }
+  ]
+}

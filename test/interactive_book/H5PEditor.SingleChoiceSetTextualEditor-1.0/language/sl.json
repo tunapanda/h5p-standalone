@@ -1,0 +1,6 @@
+{
+  "libraryStrings": {
+    "helpText": "Polje za zapis vprašanj, ki jim v ločenih vrsticah sledijo odgovori. Posamezna vprašanja so ločena s prazno vrstico. Pravilen odgovor je vedno zapisan na prvem mestu.",
+    "warning": "Opozorilo! Sprememba besedila v tekstovnem urejevalniku bo počistila morebitno drugo oblikovanje (npr. krepka pisava, prelomi vrstic)."
+  }
+}
