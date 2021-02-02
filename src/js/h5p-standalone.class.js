@@ -4,6 +4,9 @@ import H5P from 'imports-loader?H5PIntegration=>window.H5PIntegration!H5P';
 H5PIntegration = window.H5PIntegration;
 
 function urlPath(file) {
+  if (file.match(/^[a-z0-9]+:\/\//i)) {
+    return file;
+  }
   let prefix = window.location.protocol + "//" + window.location.host;
 
   if (window.location.pathname.indexOf('/') > -1) {
