@@ -1,0 +1,35 @@
+name: Release
+on:
+  push:
+    branches: [master]
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/yarn
+            **/node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Test
+        uses: cypress-io/github-action@v1.16.1
+
+      - name: Release
+        uses: cycjimmy/semantic-release-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
