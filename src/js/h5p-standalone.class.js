@@ -7,6 +7,9 @@ function urlPath(file) {
   if (file.match(/^[a-z0-9]+:\/\//i)) {
     return file;
   }
+  if (file.match(/^\//)) {
+    return file;
+  }
   let prefix = window.location.protocol + "//" + window.location.host;
 
   if (window.location.pathname.indexOf('/') > -1) {
