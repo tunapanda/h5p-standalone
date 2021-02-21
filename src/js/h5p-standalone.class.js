@@ -3,17 +3,32 @@ import H5P from 'imports-loader?H5PIntegration=>window.H5PIntegration!H5P';
 
 H5PIntegration = window.H5PIntegration;
 
+function urlPath(file) {
+  if (file.match(/^[a-z0-9]+:\/\//i)) {
+    return file;
+  }
+  let prefix = window.location.protocol + "//" + window.location.host;
+
+  if (window.location.pathname.indexOf('/') > -1) {
+    prefix = prefix + window.location.pathname.split('/').slice(0, -1).join("/");
+  } else {
+    prefix = prefix + window.location.pathname;
+  }
+  return prefix + "/" + file;
+}
+
 export default class H5PStandalone {
-    constructor(el, pathToContent = 'workspace', options = {}, displayOptions = {}, librariesPath = {}) {
+  constructor(el, pathToContent = 'workspace', options = {}, displayOptions = {}, librariesPath) {
     this.id = options.id || Math.random().toString(36).substr(2, 9);
     this.path = pathToContent;
 
-    if (librariesPath == {}) {
-        this.librariesPath = this.path;
+    if (!librariesPath) {
+      this.librariesPath = this.path;
     } else {
-        this.librariesPath = librariesPath;
+      this.librariesPath = librariesPath;
     }
-    console.log('This.librariesPath = '+this.librariesPath);
+
+    console.log(this.librariesPath);
     this.initElement(el);
     return this.initH5P(options.frameCss, options.frameJs, displayOptions, options.preventH5PInit);
   }
@@ -40,7 +55,7 @@ export default class H5PStandalone {
 
     const { styles, scripts } = this.sortDependencies(dependencies);
 
-    H5PIntegration.url = this.path;
+    H5PIntegration.urlLibraries = this.path;
     H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
 
     H5PIntegration.core = {
@@ -53,7 +68,8 @@ export default class H5PStandalone {
       jsonContent: JSON.stringify(content),
       styles: styles,
       scripts: scripts,
-      displayOptions: displayOptions
+      displayOptions: displayOptions,
+      contentUrl: urlPath(`${this.path}/content`)
     };
 
     // if (!preventH5PInit) {
