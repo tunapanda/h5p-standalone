@@ -18,17 +18,29 @@ function urlPath(file) {
 }
 
 export default class H5PStandalone {
-  constructor(el, pathToContent = 'workspace', options = {}, displayOptions = {}, librariesPath) {
-    this.id = options.id || Math.random().toString(36).substr(2, 9);
-    this.path = pathToContent;
+  constructor(el, options) {
 
-    if (!librariesPath) {
-      this.librariesPath = this.path;
+    if (options.h5pJsonPath) {
+      this.h5pJsonPath = urlPath(options.h5pJsonPath);
     } else {
-      this.librariesPath = librariesPath;
+      this.h5pJsonPath = urlPath('workspace')
     }
+    if (!options.librariesPath) {
+      this.librariesPath = this.h5pJsonPath;
+    } else {
+      this.librariesPath = urlPath(options.librariesPath);
+    }
+    if (!options.contentJsonPath) {
+      this.contentUrl = urlPath(`${this.h5pJsonPath}/content`);
+    } else {
+      this.contentUrl = urlPath(options.contentJsonPath);
+    }
+    const displayOptions = {
+      frame: options.frame, copyright: options.copyright,
+      embed: options.embed, download: options.download, icon: options.icon,
+      export: options.export
+    };
 
-    console.log(this.librariesPath);
     this.initElement(el);
     return this.initH5P(options.frameCss, options.frameJs, displayOptions, options.preventH5PInit);
   }
@@ -44,9 +56,9 @@ export default class H5PStandalone {
   }
 
   async initH5P(frameCss = './styles/h5p.css', frameJs = './frame.bundle.js', displayOptions, preventH5PInit) {
-    this.h5p = await this.getJSON(`${this.path}/h5p.json`);
+    this.h5p = await this.getJSON(`${this.h5pJsonPath}/h5p.json`);
 
-    const content = await this.getJSON(`${this.path}/content/content.json`);
+    const content = await this.getJSON(`${this.contentUrl}/content.json`);
     H5PIntegration.pathIncludesVersion = this.pathIncludesVersion = await this.checkIfPathIncludesVersion();
 
     this.mainLibrary = await this.findMainLibrary();
@@ -69,7 +81,7 @@ export default class H5PStandalone {
       styles: styles,
       scripts: scripts,
       displayOptions: displayOptions,
-      contentUrl: urlPath(`${this.path}/content`)
+      contentUrl: this.contentUrl
     };
 
     // if (!preventH5PInit) {
