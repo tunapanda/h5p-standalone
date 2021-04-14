@@ -37,7 +37,7 @@ module.exports = {
     rules: [
       {
         test: require.resolve(path.resolve(__dirname, 'vendor/h5p/js', 'h5p')),
-        use: ['exports-loader?H5P', 'imports-loader?jQuery=h5pjquery'],
+        use: ['exports-loader?exports=default|H5P', 'imports-loader?imports=default|h5pjquery|jQuery'],
       },
       {
         test: /src\/.*\.js$/,
@@ -59,9 +59,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new CopyPlugin([
-      { from: 'vendor/h5p/styles', to: 'styles' },
-      { from: 'vendor/h5p/fonts', to: 'fonts' },
-    ]),
+    new CopyPlugin({
+      patterns: [
+        { from: 'vendor/h5p/styles', to: 'styles' },
+        { from: 'vendor/h5p/fonts', to: 'fonts' },
+      ]
+    }),
   ]
 };

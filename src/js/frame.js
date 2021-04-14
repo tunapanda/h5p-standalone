@@ -1,4 +1,4 @@
-import H5P from 'imports-loader?H5PIntegration=>window.parent.H5PIntegration!H5P';
+import H5P from 'imports-loader?imports=H5PIntegration|window.parent.H5PIntegration!H5P';
 import 'H5PEventDispatcher';
 import 'H5PxAPI';
 import 'H5PxAPIEvent';
