@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -60,11 +59,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      '$': 'jquery',
-      // 'H5PIntegration': [require.resolve(path.resolve(__dirname, 'src/js', 'h5p-integration')), 'default'],
-      // 'H5P': require.resolve(path.resolve(__dirname, 'vendor/h5p/js', 'h5p'))
-    }),
     new CopyPlugin([
       { from: 'vendor/h5p/styles', to: 'styles' },
       { from: 'vendor/h5p/fonts', to: 'fonts' },
