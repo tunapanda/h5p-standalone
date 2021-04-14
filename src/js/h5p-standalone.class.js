@@ -1,5 +1,5 @@
 import Toposort from 'toposort-class';
-import H5P from 'imports-loader?H5PIntegration=>window.H5PIntegration!H5P';
+import H5P from 'imports-loader?imports=H5PIntegration|window.H5PIntegration!H5P';
 
 H5PIntegration = window.H5PIntegration;
 
