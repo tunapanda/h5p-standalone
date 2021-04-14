@@ -1,3 +1,7 @@
+#2.1.4
+* Remove jQuery as project dependency on package.json
+* Fixes failing CircleCi  Github action
+
 # 2.1.3
 * Remove H5P overrides, found a better solution
 * Shoud fix #43
