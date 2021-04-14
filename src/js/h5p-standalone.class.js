@@ -39,7 +39,7 @@ export default class H5PStandalone {
     }
 
     el.innerHTML = `<div class="h5p-iframe-wrapper" style="background-color:#DDD;">
-        <iframe id="h5p-iframe-${this.id}" class="h5p-iframe" data-content-id="${this.id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
+        <iframe id="h5p-iframe-${this.id}" class="h5p-iframe" scrolling="no" data-content-id="${this.id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
       </div>`;
   }
 
