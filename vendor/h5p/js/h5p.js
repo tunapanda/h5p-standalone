@@ -4,6 +4,33 @@
 /** @namespace */
 var H5P = window.H5P = window.H5P || {};
 
+
+/**
+ * Since H5P object is created when processing this file,
+ * the following jQuery override snipped has been moved here from ./jquery
+ *
+ */
+H5P.jQuery = jQuery.noConflict(true);
+H5P.jQuery.fn.__originalLoad = H5P.jQuery.load;
+
+H5P.jQuery.fn.load = function (url, params, callback) {
+  /**
+   * NOTE:
+   * This is needed in order to support old libraries that uses the .load() function
+   * for elements in the deprecated jQuery way (elem.load(fn)), the correct way to do this
+   * now is elem.on('load', fn)
+   */
+  if (typeof url === "function") {
+    console.warn('You are using a deprecated H5P library. Please upgrade!');
+    let args = Array.prototype.slice.call(arguments);
+    args.unshift('load');
+    return H5P.jQuery.fn.on.apply(this, args);
+  }
+
+  return H5P.jQuery.fn.__originalLoad.apply(this, arguments);
+}
+
+
 /**
  * Tells us if we're inside of an iframe.
  * @member {boolean}
@@ -378,8 +405,11 @@ H5P.init = function (target) {
   // Insert H5Ps that should be in iframes.
   H5P.jQuery('iframe.h5p-iframe:not(.h5p-initialized)', target).each(function () {
     var contentId = H5P.jQuery(this).addClass('h5p-initialized').data('content-id');
+    const contentData = H5PIntegration.contents['cid-' + contentId];
+    const language = contentData && contentData.metadata && contentData.metadata.defaultLanguage
+      ? contentData.metadata.defaultLanguage : 'en';
     this.contentDocument.open();
-    this.contentDocument.write('<!doctype html><html class="h5p-iframe"><head>' + H5P.getHeadTags(contentId) + '</head><body><div class="h5p-content" data-content-id="' + contentId + '"/></body></html>');
+    this.contentDocument.write('<!doctype html><html class="h5p-iframe" lang="' + language + '"><head>' + H5P.getHeadTags(contentId) + '</head><body><div class="h5p-content" data-content-id="' + contentId + '"/></body></html>');
     this.contentDocument.close();
   });
 };
