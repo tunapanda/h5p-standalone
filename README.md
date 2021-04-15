@@ -9,6 +9,9 @@ yarn | `yarn add h5p-standalone`
 Release | [Donwload latest version here](https://github.com/tunapanda/h5p-standalone/releases/latest)
 
 ## Basic Usage
+Ensure you have an extracted H5P zip file in your workspace folder first. A simple guide on how to extract an H5P zip file is provided towards the [end section of this guide ](https://github.com/tunapanda/h5p-standalone#extracting-h5p)
+
+
 The player can be set up either by directly calling the already built scripts and styles in your `HTML` page or using `ES6` syntax. For the standalone player to work correctly on a webpage, both the assets, settings, and H5P specific files need to be set properly first.
 
 ### Direct use
@@ -33,7 +36,7 @@ The player can be set up either by directly calling the already built scripts an
       frameJs: '/assets/frame.bundle.js',
       frameCss: '/assets/styles/h5p.css',
     }
-    const h5p = new H5PStandalone.H5(el, options);
+    const h5p = new H5PStandalone.H5P(el, options);
 
     ```
     A detailed description of the H5P player arguments are provided  under the [advance section](https://github.com/tunapanda/h5p-standalone#advanced-usage)
