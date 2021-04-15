@@ -1,4 +1,9 @@
-#2.1.4
+#2.2.2
+* Update all project dependencies
+* Update H5P core libraries to latest version
+* Fix: Interactive videos causes the player to flicker #62
+
+#2.2.1
 * Remove jQuery as project dependency on package.json
 * Fixes failing CircleCi  Github action
 
