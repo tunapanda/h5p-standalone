@@ -19,6 +19,7 @@ function urlPath(file) {
 
 export default class H5PStandalone {
   constructor(el, options) {
+    this.id = options.id || Math.random().toString(36).substr(2, 9);
 
     if (options.h5pJsonPath) {
       this.h5pJsonPath = urlPath(options.h5pJsonPath);
