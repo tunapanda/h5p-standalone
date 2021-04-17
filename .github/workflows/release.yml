@@ -16,6 +16,7 @@ jobs:
         with:
           path: |
             ~/.cache/yarn
+            ~/.cache/Cypress
             **/node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
 
