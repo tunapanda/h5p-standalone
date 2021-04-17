@@ -13,10 +13,12 @@
     const {
       H5P
     } = H5PStandalone;
-    new H5P(document.getElementById('h5p-container'), 'h5p', {
+    new H5P(document.getElementById('h5p-container'), {
+      h5pJsonPath: 'h5p',
+      librariesPath: 'libraries',
       frameJs: '/dist/frame.bundle.js',
       frameCss: '/dist/styles/h5p.css'
-    }, {}, 'libraries');
+    });
   </script>
 </body>
 
