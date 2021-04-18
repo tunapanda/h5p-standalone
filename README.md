@@ -92,8 +92,11 @@ The standalone H5P player constructor accepts two arguments.
 `export` |false|  A boolean on whether display a download button
 `icon`  |false|   A boolean on whether display H5P icon
 
-**Any relative path is treated to be relative to the site root.**
-
+**Note:**
+- One can use absolute URL for `frameCss`, `frameJs`, and for other path options(`h5pJsonPath`,`librariesPath`, & `librariesPath`)
+- Any path that starts with a forward slash `/` is treated as relative to the site root.
+- Any path starting with a dot is treated to be in respect to the current page directory.
+----
 #### Example with advance options
 ```javascript
 import { H5P } from 'h5p-standalone';
@@ -127,7 +130,7 @@ const h5p = await new H5P(el, options);
 
 ```
 
-### Multiple H5Ps on the same page
+### Multiple H5P players on the same page
 To render multiple H5Ps, your code **must** be async aware.
 
 ```javascript
