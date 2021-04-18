@@ -3,10 +3,18 @@ import H5P from 'imports-loader?imports=H5PIntegration|window.H5PIntegration!H5P
 
 H5PIntegration = window.H5PIntegration;
 
-function urlPath(file) {
-  if (file.match(/^[a-z0-9]+:\/\//i)) {
-    return file;
+function urlPath(path) {
+  if (path.match(/^[a-z0-9]+:\/\//i)) {
+    return path;
   }
+
+  path = path.trim();
+
+  //if path starts with a slash, its relative in repsect to page URL root
+  if(path.startsWith('/')){
+    return window.location.origin+path;
+  }
+
   let prefix = window.location.protocol + "//" + window.location.host;
 
   if (window.location.pathname.indexOf('/') > -1) {
@@ -14,7 +22,7 @@ function urlPath(file) {
   } else {
     prefix = prefix + window.location.pathname;
   }
-  return prefix + "/" + file;
+  return prefix + "/" + path;
 }
 
 export default class H5PStandalone {
