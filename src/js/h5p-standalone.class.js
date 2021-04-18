@@ -46,12 +46,15 @@ export default class H5PStandalone {
     }
     const displayOptions = {
       frame: options.frame, copyright: options.copyright,
-      embed: options.embed, download: options.download, icon: options.icon,
+      embed: options.embed, icon: options.icon,
       export: options.export
     };
 
+    const h5pStylesBundle = urlPath(options.frameCss);
+    const h5pScriptsBundle = urlPath(options.frameJs);
+
     this.initElement(el);
-    return this.initH5P(options.frameCss, options.frameJs, displayOptions, options.preventH5PInit);
+    return this.initH5P(h5pStylesBundle,h5pScriptsBundle, displayOptions, options.preventH5PInit);
   }
 
   initElement(el) {
