@@ -4,15 +4,19 @@ import H5P from 'imports-loader?imports=H5PIntegration|window.H5PIntegration!H5P
 H5PIntegration = window.H5PIntegration;
 
 function urlPath(path) {
+  path = path.trim();
+
   if (path.match(/^[a-z0-9]+:\/\//i)) {
     return path;
   }
+  //if path starts with a double slash, it's protocol relative URL
+  if (path.startsWith('//')) {
+    return window.location.protocol + path;
+  }
 
-  path = path.trim();
-
-  //if path starts with a slash, its relative in repsect to page URL root
-  if(path.startsWith('/')){
-    return window.location.origin+path;
+  //if path starts with a slash, its relative in respect to page URL root
+  if (path.startsWith('/')) {
+    return window.location.origin + path;
   }
 
   let prefix = window.location.protocol + "//" + window.location.host;
@@ -54,7 +58,7 @@ export default class H5PStandalone {
     const h5pScriptsBundle = urlPath(options.frameJs);
 
     this.initElement(el);
-    return this.initH5P(h5pStylesBundle,h5pScriptsBundle, displayOptions, options.preventH5PInit);
+    return this.initH5P(h5pStylesBundle, h5pScriptsBundle, displayOptions, options.preventH5PInit);
   }
 
   initElement(el) {
