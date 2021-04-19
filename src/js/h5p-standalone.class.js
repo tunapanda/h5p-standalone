@@ -3,10 +3,22 @@ import H5P from 'imports-loader?imports=H5PIntegration|window.H5PIntegration!H5P
 
 H5PIntegration = window.H5PIntegration;
 
-function urlPath(file) {
-  if (file.match(/^[a-z0-9]+:\/\//i)) {
-    return file;
+function urlPath(path) {
+  path = path.trim();
+
+  if (path.match(/^[a-z0-9]+:\/\//i)) {
+    return path;
   }
+  //if path starts with a double slash, it's protocol relative URL
+  if (path.startsWith('//')) {
+    return window.location.protocol + path;
+  }
+
+  //if path starts with a slash, its relative in respect to page URL root
+  if (path.startsWith('/')) {
+    return window.location.origin + path;
+  }
+
   let prefix = window.location.protocol + "//" + window.location.host;
 
   if (window.location.pathname.indexOf('/') > -1) {
@@ -14,7 +26,7 @@ function urlPath(file) {
   } else {
     prefix = prefix + window.location.pathname;
   }
-  return prefix + "/" + file;
+  return prefix + "/" + path;
 }
 
 export default class H5PStandalone {
@@ -38,12 +50,15 @@ export default class H5PStandalone {
     }
     const displayOptions = {
       frame: options.frame, copyright: options.copyright,
-      embed: options.embed, download: options.download, icon: options.icon,
+      embed: options.embed, icon: options.icon,
       export: options.export
     };
 
+    const h5pStylesBundle = urlPath(options.frameCss);
+    const h5pScriptsBundle = urlPath(options.frameJs);
+
     this.initElement(el);
-    return this.initH5P(options.frameCss, options.frameJs, displayOptions, options.preventH5PInit);
+    return this.initH5P(h5pStylesBundle, h5pScriptsBundle, displayOptions, options.preventH5PInit);
   }
 
   initElement(el) {
