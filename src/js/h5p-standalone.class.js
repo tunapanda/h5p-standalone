@@ -66,9 +66,30 @@ export default class H5PStandalone {
       throw new Error('createH5P must be passed an element');
     }
 
-    el.innerHTML = `<div class="h5p-iframe-wrapper" style="background-color:#DDD;">
-        <iframe id="h5p-iframe-${this.id}" class="h5p-iframe" scrolling="no" data-content-id="${this.id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
-      </div>`;
+    const parent =document.createElement('div');
+    parent.classList.add('h5p-iframe-wrapper');
+    parent.style.backgroundColor='#DDD;';
+
+
+    const iframe = document.createElement('iframe');
+    iframe.id = `h5p-iframe-${this.id}`;
+    iframe.src='about:blank';
+
+    iframe.classList.add('h5p-iframe');
+    iframe.setAttribute('scrolling','no');
+    iframe.setAttribute('data-content-id',`${this.id}`);
+
+    iframe.setAttribute('frameBorder',0);
+    iframe.style.width='100%'
+    iframe.style.height='100%'
+    iframe.style.border='none'
+    iframe.style.display='block'
+
+    parent.append(iframe);
+    el.append(parent);
+
+    // inject jQuery property to avoid fatal error if required
+    iframe.contentWindow['jQuery'] ={}
   }
 
   async initH5P(frameCss = './styles/h5p.css', frameJs = './frame.bundle.js', displayOptions, preventH5PInit) {
