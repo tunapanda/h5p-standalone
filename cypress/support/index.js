@@ -16,5 +16,14 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+before( () =>{
+
+    cy.task('unzip:h5p') // Extract .h5p for tests
+        .task('copy:libraries') // copy libraries
+        .task('copy:content') // copy content
+        .task('copy:h5pjson'); // copy H5P.json file to content folder
+});
+
+after(()=>{
+   cy.task('clean'); //we need to clean up after ourselves
+})
