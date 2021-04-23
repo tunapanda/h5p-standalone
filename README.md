@@ -32,7 +32,7 @@ The player can be set up either by directly calling the already built scripts an
 
     const el = document.getElementById('h5p-container');
     const options = {
-      h5pJsonPath:  '/h5p-folder';
+      h5pJsonPath:  '/h5p-folder',
       frameJs: '/assets/frame.bundle.js',
       frameCss: '/assets/styles/h5p.css',
     }
@@ -89,8 +89,9 @@ The standalone H5P player constructor accepts two arguments.
 `frame` |false| A boolean on whether to show frame and buttons below H5P
 `copyright` |false| A boolean on whether display copyright button
 `embed` |false| A boolean on whether display embed button
-`export` |false|  A boolean on whether display a download button
+`export` |false|  A boolean on whether display a download button.
 `icon`  |false|   A boolean on whether display H5P icon
+`downloadUrl` |false| A path or a url that returns zipped h5p for download. The link is used by H5P `export` button
 
 **Note:**
 - One can use absolute URL for `frameCss`, `frameJs`, and for other path options(`h5pJsonPath`,`librariesPath`, & `librariesPath`)
@@ -115,7 +116,8 @@ const options = {
     copyright: true,
     embed: false,
    'export': false,
-    icon: true
+    icon: true,
+    downloadUrl: '/path/to/exercise-one.h5p'
   };
 
 
