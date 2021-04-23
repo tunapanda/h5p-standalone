@@ -54,11 +54,33 @@ export default class H5PStandalone {
       export: options.export
     };
 
-    const h5pStylesBundle = urlPath(options.frameCss);
-    const h5pScriptsBundle = urlPath(options.frameJs);
+    const  contentOptions = {
+      displayOptions
+    };
+
+    if(options.downloadUrl){
+      contentOptions.exportUrl = urlPath(options.downloadUrl);
+    }
+
+    const generalIntegrationOptions ={
+      preventH5PInit: options.preventH5PInit?options.preventH5PInit:false,
+    };
+
+    // The following behaviour may change in future
+    if(options.frameJs){
+      generalIntegrationOptions.coreScripts = [urlPath(options.frameJs)]
+    }else{
+      generalIntegrationOptions.coreScripts  = ['./frame.bundle.js']
+    }
+    // The following behaviour may change in future
+    if(options.frameCss){
+     generalIntegrationOptions.coreStyles =[urlPath(options.frameCss)];
+    }else{
+      generalIntegrationOptions.coreStyles =[urlPath('./styles/h5p.css')];
+    }
 
     this.initElement(el);
-    return this.initH5P(h5pStylesBundle, h5pScriptsBundle, displayOptions, options.preventH5PInit);
+    return this.initH5P(generalIntegrationOptions, contentOptions);
   }
 
   initElement(el) {
@@ -92,7 +114,7 @@ export default class H5PStandalone {
     iframe.contentWindow['jQuery'] ={}
   }
 
-  async initH5P(frameCss = './styles/h5p.css', frameJs = './frame.bundle.js', displayOptions, preventH5PInit) {
+  async initH5P(generalIntegrationOptions,contentOptions) {
     this.h5p = await this.getJSON(`${this.h5pJsonPath}/h5p.json`);
 
     const content = await this.getJSON(`${this.contentUrl}/content.json`);
@@ -104,12 +126,12 @@ export default class H5PStandalone {
 
     const { styles, scripts } = this.sortDependencies(dependencies);
 
-    H5PIntegration.urlLibraries = this.path;
+    H5PIntegration.urlLibraries = this.librariesPath ;
     H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
 
     H5PIntegration.core = {
-      styles: [frameCss],
-      scripts: [frameJs]
+      styles: generalIntegrationOptions.coreStyles,
+      scripts: generalIntegrationOptions.coreScripts
     };
 
     H5PIntegration.contents[`cid-${this.id}`] = {
@@ -117,13 +139,17 @@ export default class H5PStandalone {
       jsonContent: JSON.stringify(content),
       styles: styles,
       scripts: scripts,
-      displayOptions: displayOptions,
-      contentUrl: this.contentUrl
+      displayOptions: contentOptions.displayOptions,
+      contentUrl: this.contentUrl,
     };
 
-    // if (!preventH5PInit) {
+    if(contentOptions.exportUrl){
+      H5PIntegration.contents[`cid-${this.id}`].exportUrl = contentOptions.exportUrl;
+    }
+
+   if (!generalIntegrationOptions.preventH5PInit) {
     H5P.init();
-    // }
+    }
   }
 
   getJSON(url) {
