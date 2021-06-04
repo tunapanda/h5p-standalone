@@ -36,7 +36,7 @@ The player can be set up either by directly calling the already built scripts an
       frameJs: '/assets/frame.bundle.js',
       frameCss: '/assets/styles/h5p.css',
     }
-    const h5p = new H5PStandalone.H5P(el, options);
+   new H5PStandalone.H5P(el, options);
 
     ```
     A detailed description of the H5P player arguments are provided  under the [advance section](https://github.com/tunapanda/h5p-standalone#advanced-usage)
@@ -70,7 +70,7 @@ const options = {
     frameCss: '/assets/styles/h5p.css',
 };
 
-const h5p = new H5P(el, h5pLocation);
+new H5P(el, h5pLocation);
 ```
    A detailed description of the H5P player arguments are provided under the [advance section](https://github.com/tunapanda/h5p-standalone#advanced-usage)
 ## Advanced Usage
@@ -161,6 +161,53 @@ player1.then(() => {
   // do stuff
 }));
 ```
+
+## Listening to xAPI events
+To listen for [xAPI events](https://h5p.org/documentation/api/H5P.XAPIEvent.html) emmitted by the player, you must wait for the player to finish loading and initializing the required content libraries. You can find more info about xAPI events here https://h5p.org/documentation/x-api
+1) Using `then()` method
+```js
+import { H5P } from 'h5p-standalone';
+
+const el = document.getElementById("h5p-container");
+const options = {
+  h5pJsonPath: "/h5p-folder",
+  frameJs: "/assets/frame.bundle.js",
+  frameCss: "/assets/styles/h5p.css",
+};
+
+new H5PStandalone.H5P(el, options).then(function () {
+  H5P.externalDispatcher.on("xAPI", (event) => {
+    //do something useful with the event
+    console.log("xAPI event: ", event);
+  });
+});
+
+```
+2) Using `async` function
+```js
+import { H5P } from 'h5p-standalone';
+
+async function myAwesomePlayer() {
+  const el = document.getElementById("h5p-container");
+  const options = {
+    h5pJsonPath: "/h5p-folder",
+    frameJs: "/assets/frame.bundle.js",
+    frameCss: "/assets/styles/h5p.css",
+  };
+
+  await new H5P(el, options);
+
+  H5P.externalDispatcher.on("xAPI", (event) => {
+    //do something useful with the event
+    console.log("xAPI event: ", event);
+  });
+}
+
+//don't forget to call the function
+myAwesomePlayer();
+
+```
+
 ### Extracting H5P
 1. Rename the H5P file extension from `.h5p` file to `.zip`
 2. Extract the renamed file contents into your workspace `h5p-folder` folder
