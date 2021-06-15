@@ -92,6 +92,7 @@ The standalone H5P player constructor accepts two arguments.
 `export` |false|  A boolean on whether display a download button.
 `icon`  |false|   A boolean on whether display H5P icon
 `downloadUrl` |false| A path or a url that returns zipped h5p for download. The link is used by H5P `export` button
+`fullScreen` |false| A boolean on whether to enable fullscreen button if browser supports the feature. Default is `false`
 
 **Note:**
 - One can use absolute URL for `frameCss`, `frameJs`, and for other path options(`h5pJsonPath`,`librariesPath`, & `librariesPath`)
@@ -117,7 +118,8 @@ const options = {
     embed: false,
    'export': false,
     icon: true,
-    downloadUrl: '/path/to/exercise-one.h5p'
+    downloadUrl: '/path/to/exercise-one.h5p',
+    fullScreen: true //enable fullscreen button
   };
 
 
