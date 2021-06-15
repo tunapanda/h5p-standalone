@@ -54,29 +54,29 @@ export default class H5PStandalone {
       export: options.export
     };
 
-    const  contentOptions = {
+    const contentOptions = {
       displayOptions
     };
 
-    if(options.downloadUrl){
+    if (options.downloadUrl) {
       contentOptions.exportUrl = urlPath(options.downloadUrl);
     }
 
-    const generalIntegrationOptions ={
-      preventH5PInit: options.preventH5PInit?options.preventH5PInit:false,
+    const generalIntegrationOptions = {
+      preventH5PInit: options.preventH5PInit ? options.preventH5PInit : false,
     };
 
     // The following behaviour may change in future
-    if(options.frameJs){
+    if (options.frameJs) {
       generalIntegrationOptions.coreScripts = [urlPath(options.frameJs)]
-    }else{
-      generalIntegrationOptions.coreScripts  = ['./frame.bundle.js']
+    } else {
+      generalIntegrationOptions.coreScripts = ['./frame.bundle.js']
     }
     // The following behaviour may change in future
-    if(options.frameCss){
-     generalIntegrationOptions.coreStyles =[urlPath(options.frameCss)];
-    }else{
-      generalIntegrationOptions.coreStyles =[urlPath('./styles/h5p.css')];
+    if (options.frameCss) {
+      generalIntegrationOptions.coreStyles = [urlPath(options.frameCss)];
+    } else {
+      generalIntegrationOptions.coreStyles = [urlPath('./styles/h5p.css')];
     }
 
     this.initElement(el);
@@ -88,33 +88,33 @@ export default class H5PStandalone {
       throw new Error('createH5P must be passed an element');
     }
 
-    const parent =document.createElement('div');
+    const parent = document.createElement('div');
     parent.classList.add('h5p-iframe-wrapper');
-    parent.style.backgroundColor='#DDD;';
+    parent.style.backgroundColor = '#DDD;';
 
 
     const iframe = document.createElement('iframe');
     iframe.id = `h5p-iframe-${this.id}`;
-    iframe.src='about:blank';
+    iframe.src = 'about:blank';
 
     iframe.classList.add('h5p-iframe');
-    iframe.setAttribute('scrolling','no');
-    iframe.setAttribute('data-content-id',`${this.id}`);
+    iframe.setAttribute('scrolling', 'no');
+    iframe.setAttribute('data-content-id', `${this.id}`);
 
-    iframe.setAttribute('frameBorder',0);
-    iframe.style.width='100%'
-    iframe.style.height='100%'
-    iframe.style.border='none'
-    iframe.style.display='block'
+    iframe.setAttribute('frameBorder', 0);
+    iframe.style.width = '100%'
+    iframe.style.height = '100%'
+    iframe.style.border = 'none'
+    iframe.style.display = 'block'
 
     parent.append(iframe);
     el.append(parent);
 
     // inject jQuery property to avoid fatal error if required
-    iframe.contentWindow['jQuery'] ={}
+    iframe.contentWindow['jQuery'] = null;
   }
 
-  async initH5P(generalIntegrationOptions,contentOptions) {
+  async initH5P(generalIntegrationOptions, contentOptions) {
     this.h5p = await this.getJSON(`${this.h5pJsonPath}/h5p.json`);
 
     const content = await this.getJSON(`${this.contentUrl}/content.json`);
@@ -126,7 +126,7 @@ export default class H5PStandalone {
 
     const { styles, scripts } = this.sortDependencies(dependencies);
 
-    H5PIntegration.urlLibraries = this.librariesPath ;
+    H5PIntegration.urlLibraries = this.librariesPath;
     H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
 
     H5PIntegration.core = {
@@ -141,14 +141,15 @@ export default class H5PStandalone {
       scripts: scripts,
       displayOptions: contentOptions.displayOptions,
       contentUrl: this.contentUrl,
+      fullScreen: contentOptions.fullScreen,
     };
 
-    if(contentOptions.exportUrl){
+    if (contentOptions.exportUrl) {
       H5PIntegration.contents[`cid-${this.id}`].exportUrl = contentOptions.exportUrl;
     }
 
-   if (!generalIntegrationOptions.preventH5PInit) {
-    H5P.init();
+    if (!generalIntegrationOptions.preventH5PInit) {
+      H5P.init();
     }
   }
 
