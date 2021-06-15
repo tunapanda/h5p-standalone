@@ -1,4 +1,4 @@
-# H5P Standalone Player 3.0.0 [![CircleCI](https://circleci.com/gh/tunapanda/h5p-standalone.svg?style=svg)](https://circleci.com/gh/tunapanda/h5p-standalone)
+# H5P Standalone Player 3.x [![CircleCI](https://circleci.com/gh/tunapanda/h5p-standalone.svg?style=svg)](https://circleci.com/gh/tunapanda/h5p-standalone)
 Display H5P content without the need for an H5P server
 
 ## Installation
@@ -48,10 +48,7 @@ Install the player using yarn
 ```
 yarn add h5p-standalone
 ```
-Or, [download](https://github.com/tunapanda/h5p-standalone/releases/latest), extract and include the H5P standalone main script on your HTML page:
-```html
-<script type="text/javascript" src="assets/main.bundle.js"></script>
-```
+
 Add an element to attach the player
 ```html
 <div id='h5p-container'></div>
@@ -61,7 +58,6 @@ initialize the H5P
 import { H5P } from 'h5p-standalone'; // ES6
 // const { H5P } = require('h5p-standalone'); AMD
 // const { H5P } = 'H5PStandalone'; // object destructuring
-// <script src="node_modules/h5p-standalone/dist/main.bundle.js"> // Global include
 
 const el = document.getElementById('h5p-container');
 const options = {
@@ -128,9 +124,9 @@ new H5P(el,options)
   // do stuff
 });
 
-// Or using async-await syntax :
+// Or using async-await syntax (async wrapper function removed for readability) :
 
-const h5p = await new H5P(el, options);
+ await new H5P(el, options);
 
 ```
 
@@ -150,10 +146,6 @@ const player2Options = {
     frameJs: '/assets/frame.bundle.js',
     frameCss: '/assets/styles/h5p.css',
 };
-await new H5P(document.getElementById('h5p-container-1'), player1Options);
-await new H5P(document.getElementById('h5p-container-2'), player2Options);
-
-// OR
 
 const player1 = new H5P(document.getElementById('h5p-container-1'), player1Options);
 
@@ -162,13 +154,19 @@ player1.then(() => {
 }).then(( => {
   // do stuff
 }));
+
+
+// OR (async wrapper function removed for readability)
+await new H5P(document.getElementById('h5p-container-1'), player1Options);
+await new H5P(document.getElementById('h5p-container-2'), player2Options);
+
+
 ```
 
 ## Listening to xAPI events
 To listen for [xAPI events](https://h5p.org/documentation/api/H5P.XAPIEvent.html) emmitted by the player, you must wait for the player to finish loading and initializing the required content libraries. You can find more info about xAPI events here https://h5p.org/documentation/x-api
 1) Using `then()` method
 ```js
-import { H5P } from 'h5p-standalone';
 
 const el = document.getElementById("h5p-container");
 const options = {
