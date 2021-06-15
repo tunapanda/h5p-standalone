@@ -55,7 +55,8 @@ export default class H5PStandalone {
     };
 
     const contentOptions = {
-      displayOptions
+      displayOptions,
+      fullScreen: false
     };
 
     if (options.downloadUrl) {
@@ -77,6 +78,10 @@ export default class H5PStandalone {
       generalIntegrationOptions.coreStyles = [urlPath(options.frameCss)];
     } else {
       generalIntegrationOptions.coreStyles = [urlPath('./styles/h5p.css')];
+    }
+
+    if (options.fullScreen) {
+      contentOptions.fullScreen = options.fullScreen
     }
 
     this.initElement(el);
@@ -141,11 +146,12 @@ export default class H5PStandalone {
       scripts: scripts,
       displayOptions: contentOptions.displayOptions,
       contentUrl: this.contentUrl,
-      fullScreen: contentOptions.fullScreen,
     };
 
-    if (contentOptions.exportUrl) {
-      H5PIntegration.contents[`cid-${this.id}`].exportUrl = contentOptions.exportUrl;
+    for (const key in contentOptions) {
+      if (H5PIntegration.contents[`cid-${this.id}`][key] == undefined) { //this is just a guard
+        H5PIntegration.contents[`cid-${this.id}`][key] = contentOptions[key];
+      }
     }
 
     if (!generalIntegrationOptions.preventH5PInit) {
