@@ -187,7 +187,7 @@ new H5PStandalone.H5P(el, options).then(function () {
 ```
 2) Using `async` function
 ```js
-import { H5P } from 'h5p-standalone';
+import { H5P as H5PStandalone } from 'h5p-standalone'; //you need you an alias due to conflict
 
 async function myAwesomePlayer() {
   const el = document.getElementById("h5p-container");
@@ -197,7 +197,7 @@ async function myAwesomePlayer() {
     frameCss: "/assets/styles/h5p.css",
   };
 
-  await new H5P(el, options);
+  await new H5PStandalone(el, options);
 
   H5P.externalDispatcher.on("xAPI", (event) => {
     //do something useful with the event
