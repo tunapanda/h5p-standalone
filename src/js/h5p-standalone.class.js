@@ -56,7 +56,8 @@ export default class H5PStandalone {
 
     const contentOptions = {
       displayOptions,
-      fullScreen: false
+      fullScreen: false,
+      url: window.location.href.split('?')[0].split('#')[0]
     };
 
     if (options.downloadUrl) {
@@ -83,6 +84,11 @@ export default class H5PStandalone {
     if (options.fullScreen) {
       contentOptions.fullScreen = options.fullScreen
     }
+
+    if (options.xAPIObjectIRI) {
+      contentOptions.url = options.xAPIObjectIRI; //no validation
+    }
+
 
     this.initElement(el);
     return this.initH5P(generalIntegrationOptions, contentOptions);

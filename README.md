@@ -88,7 +88,8 @@ The standalone H5P player constructor accepts two arguments.
 `export` |false|  A boolean on whether display a download button.
 `icon`  |false|   A boolean on whether display H5P icon
 `downloadUrl` |false| A path or a url that returns zipped h5p for download. The link is used by H5P `export` button
-`fullScreen` |false| A boolean on whether to enable fullscreen button if browser supports the feature. Default is `false`
+`fullScreen` |false| A boolean on whether to enable fullscreen button if browser supports the feature. Default is `false`|
+`xAPIObjectIRI`|false| An identifier for a single unique Activity ~ utilized when generating xAPI [object](https://github.com/adlnet/xAPI-Spec/blob/master/xAPI-Data.md#acturi) field. Default is page host+pathname
 
 **Note:**
 - One can use absolute URL for `frameCss`, `frameJs`, and for other path options(`h5pJsonPath`,`librariesPath`, & `librariesPath`)
