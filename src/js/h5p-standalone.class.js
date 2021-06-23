@@ -89,6 +89,9 @@ export default class H5PStandalone {
       contentOptions.url = options.xAPIObjectIRI; //no validation
     }
 
+    if (options.extras) {
+      contentOptions.extras = options.extras;
+    }
 
     this.initElement(el);
     return this.initH5P(generalIntegrationOptions, contentOptions);

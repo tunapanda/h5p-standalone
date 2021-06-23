@@ -160,8 +160,13 @@ H5P.init = function (target) {
       // If previousState is false we don't have a previous state
     });
 
+    let extras = { standalone: true }
+    if (typeof(contentData.extras) == 'object') {
+      extras = Object.assign(extras, contentData.extras)
+    }
+
     // Create new instance.
-    var instance = H5P.newRunnable(library, contentId, $container, true, {standalone: true});
+    var instance = H5P.newRunnable(library, contentId, $container, true, extras);
 
     H5P.offlineRequestQueue = new H5P.OfflineRequestQueue({instance: instance});
 
