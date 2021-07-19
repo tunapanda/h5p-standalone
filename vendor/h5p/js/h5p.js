@@ -2446,7 +2446,12 @@ H5P.createTitle = function (rawTitle, maxLength) {
 
         // Done. Try to decode JSON
         try {
-          done(undefined, JSON.parse(data));
+          if (typeof(data) == 'string') {
+            done(undefined, JSON.parse(data));
+          } else {
+            // No need to parse
+            done(undefined, data);
+          }          
         }
         catch (e) {
           done(e);
