@@ -160,8 +160,13 @@ H5P.init = function (target) {
       // If previousState is false we don't have a previous state
     });
 
+    let extras = { standalone: true }
+    if (typeof(contentData.extras) == 'object') {
+      extras = Object.assign(extras, contentData.extras)
+    }
+
     // Create new instance.
-    var instance = H5P.newRunnable(library, contentId, $container, true, {standalone: true});
+    var instance = H5P.newRunnable(library, contentId, $container, true, extras);
 
     H5P.offlineRequestQueue = new H5P.OfflineRequestQueue({instance: instance});
 
@@ -2441,7 +2446,12 @@ H5P.createTitle = function (rawTitle, maxLength) {
 
         // Done. Try to decode JSON
         try {
-          done(undefined, JSON.parse(data));
+          if (typeof(data) == 'string') {
+            done(undefined, JSON.parse(data));
+          } else {
+            // No need to parse
+            done(undefined, data);
+          }          
         }
         catch (e) {
           done(e);

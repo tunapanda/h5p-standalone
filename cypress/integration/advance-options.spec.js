@@ -6,6 +6,9 @@ describe('single', () => {
         cy.get('.h5p-iframe').should(iframe => {
             expect(iframe.contents().find('.h5p-content')).to.exist;
 
+            // Using extra options to pre-check answer
+            expect(iframe.contents().find('.h5p-true-false-answer[aria-checked="true"]')).to.exist
+
             iframe.contents().find('.h5p-true-false-answer').click();
 
             iframe.contents().find('.h5p-question-check-answer').click();
