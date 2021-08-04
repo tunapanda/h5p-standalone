@@ -64,6 +64,10 @@ export default class H5PStandalone {
       contentOptions.exportUrl = urlPath(options.downloadUrl);
     }
 
+    if (options.metadata) {
+      contentOptions.metadata = options.metadata;
+    }
+
     const generalIntegrationOptions = {
       preventH5PInit: options.preventH5PInit ? options.preventH5PInit : false,
     };
