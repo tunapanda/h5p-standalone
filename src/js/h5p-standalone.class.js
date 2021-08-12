@@ -152,6 +152,7 @@ export default class H5PStandalone {
       scripts: scripts,
       displayOptions: contentOptions.displayOptions,
       contentUrl: this.contentUrl,
+      metadata: this.h5p,
     };
 
     for (const key in contentOptions) {
@@ -305,7 +306,12 @@ export default class H5PStandalone {
       Array.prototype.push.apply(styles, this.mainLibrary.preloadedCss.map(style => `${this.librariesPath}/${this.mainLibraryPath}/${style.path}`));
     }
     if (this.mainLibrary.preloadedJs) {
-      Array.prototype.push.apply(scripts, this.mainLibrary.preloadedJs.map(script => `${this.librariesPath}/${this.mainLibraryPath}/${script.path}`));
+      this.mainLibrary.preloadedJs.forEach(function(script){
+        const scriptPath = `${this.librariesPath}/${this.mainLibraryPath}/${script.path}`;
+        if(scripts.includes(scriptPath === false)){
+          scripts.push(scriptPath);
+        }
+      }, this);
     }
     return { styles, scripts };
   }
