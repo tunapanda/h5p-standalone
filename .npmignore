@@ -1,3 +1,7 @@
 test
 vendor
 cypress
+.github
+.circleci
+.eslintrc.json
+cypress.json
