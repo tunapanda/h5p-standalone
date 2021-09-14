@@ -213,8 +213,8 @@ myAwesomePlayer();
 1. Rename the H5P file extension from `.h5p` file to `.zip`
 2. Extract the renamed file contents into your workspace `h5p-folder` folder
 
-## Testing
-
-```
-yarn test
-```
+## Testing during development
+ After modifying the project, build the files:
+ `` yarn build``
+ to run available [Cypress](https://www.cypress.io/) tests:
+`` yarn test``
