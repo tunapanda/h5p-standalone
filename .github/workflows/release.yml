@@ -15,7 +15,6 @@ jobs:
         with:
           node-version:  ${{ matrix.node }}
           cache: 'yarn'
-          cache-dependency-path:  ~/.cache/Cypress
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
