@@ -20,8 +20,15 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
+      - name: Build project
+        run: yarn build
+
       - name: Test
         uses: cypress-io/github-action@v2
+
+      - name: Compress Github release files
+        run: |
+          zip -r h5p-standalone-release.zip dist/ README.md
 
       - name: Release
         uses: cycjimmy/semantic-release-action@v2
