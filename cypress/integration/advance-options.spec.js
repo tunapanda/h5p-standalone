@@ -22,4 +22,22 @@ describe('single', () => {
             expect(iframe.contents().find('.h5p-download-button')).to.exist;
         });
     });
+
+    it('should display embed code dialog', () => {
+
+        cy.visit('test/advance-options.html');
+        cy.get('.h5p-iframe').should((iframe) => {
+
+            expect(iframe.contents().find('.h5p-actions').find('.h5p-embed')).to.exist;
+
+            iframe.contents()
+                .find('.h5p-actions')
+                .find('.h5p-embed')
+                .click();
+
+            expect(iframe.contents().find('.h5p-embed-code-container')).to.exist;
+            expect(iframe.contents().find('.h5p-embed-size')).to.exist;
+        })
+
+    });
 });
