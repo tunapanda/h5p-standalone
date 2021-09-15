@@ -10,18 +10,17 @@
   <div id="h5p-container"></div>
 
   <script type="text/javascript">
-    const {
-      H5P
-    } = H5PStandalone;
-    new H5P(document.getElementById('h5p-container'),  {
+
+    new H5PStandalone.H5P(document.getElementById('h5p-container'), {
       h5pJsonPath: 'full_workspace',
       frameJs: '/dist/frame.bundle.js',
       frameCss: '/dist/styles/h5p.css',
       frame: true,
       copyright: true,
-      embed: false,
       export: true,
-      downloadUrl: 'test.h5p'
+      downloadUrl: 'test.h5p',
+      embed: true,
+      embedCode: '<iframe width=":w" height=":h" src="https://yourembecode.om" frameBorder="0" scrolling="no"></iframe>',
     });
   </script>
 </body>

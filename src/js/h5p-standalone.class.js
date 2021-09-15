@@ -93,6 +93,11 @@ export default class H5PStandalone {
       contentOptions.url = options.xAPIObjectIRI; //no validation
     }
 
+    if (options.embedCode) { // this will not be dependent on displayOptions.embed
+      contentOptions.embedCode = options.embedCode;
+      contentOptions.resizeCode = options.resizeCode || ''; // resize code is already bundled in main.bundle.js
+    }
+
 
     this.initElement(el);
     return this.initH5P(generalIntegrationOptions, contentOptions);
