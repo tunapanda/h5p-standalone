@@ -5,3 +5,4 @@ cypress
 .circleci
 .eslintrc.json
 cypress.json
+h5p-standalone-release.zip
