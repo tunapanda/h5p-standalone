@@ -26,10 +26,10 @@ module.exports = (on, config) => {
 
     on('task', {
         'unzip:h5p': async () => {
-            await fs.createReadStream(`${workspace}${h5pFile}`)
+            return await fs.createReadStream(`${workspace}${h5pFile}`)
                 .pipe(unzipper.Extract({path: `${workspace}${extractFolder}`}))
-                .promise();
-            return true;
+                .promise()
+                .then(() => true);
         },
         'copy:libraries': () => {
             const H5PLibraries = ['Drop-1.0', 'FontAwesome-4.5', 'H5P.FontIcons-1.0', 'H5P.JoubelUI-1.3',
