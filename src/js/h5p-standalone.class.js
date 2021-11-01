@@ -64,7 +64,7 @@ export default class H5PStandalone {
       contentOptions.exportUrl = urlPath(options.downloadUrl);
     }
 
-    if (options.metadata) {
+    if (options.metadata) { // exposing content['id'].metadata key to allow overrides
       contentOptions.metadata = options.metadata;
     }
 
@@ -161,11 +161,20 @@ export default class H5PStandalone {
       scripts: scripts,
       displayOptions: contentOptions.displayOptions,
       contentUrl: this.contentUrl,
+      metadata: {}
     };
 
     for (const key in contentOptions) {
       if (H5PIntegration.contents[`cid-${this.id}`][key] == undefined) { //this is just a guard
         H5PIntegration.contents[`cid-${this.id}`][key] = contentOptions[key];
+      }
+    }
+
+    // add missing content metadata from h5p.json
+    for (const key in this.h5p) {
+      if (H5PIntegration.contents[`cid-${this.id}`]?.['metadata']?.[key] === undefined) {
+        console.log(H5PIntegration.contents[`cid-${this.id}`])
+        H5PIntegration.contents[`cid-${this.id}`].['metadata'].[key] = this.h5p[key]
       }
     }
 
