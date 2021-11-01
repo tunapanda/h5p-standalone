@@ -4,7 +4,7 @@ describe("H5P player with advance options", () => {
   });
 
   it("should display h5p", () => {
-    cy.iframe("iframe.h5p-iframe.h5p-iframe.h5p-initialized")
+    cy.iframe("iframe.h5p-iframe.h5p-initialized")
       .should("be.visible")
       .within(() => {
         cy.get(".h5p-true-false-answers .h5p-true-false-answer")
@@ -17,7 +17,7 @@ describe("H5P player with advance options", () => {
   });
 
   it("should display export dialog", () => {
-    cy.iframe("iframe.h5p-iframe.h5p-iframe.h5p-initialized").within(() => {
+    cy.iframe("iframe.h5p-iframe.h5p-initialized").within(() => {
       cy.get(".h5p-actions").find(".h5p-export").should("be.visible").click();
 
       cy.get(".h5p-download-button").should("be.visible");
@@ -25,7 +25,7 @@ describe("H5P player with advance options", () => {
   });
 
   it("should display embed code dialog", () => {
-    cy.iframe("iframe.h5p-iframe.h5p-iframe.h5p-initialized").within(() => {
+    cy.iframe("iframe.h5p-iframe.h5p-initialized").within(() => {
       cy.get(".h5p-actions").find(".h5p-embed").should("be.visible").click();
 
       cy.get(".h5p-embed-code-container").should("be.visible");
