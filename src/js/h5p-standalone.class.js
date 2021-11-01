@@ -111,6 +111,14 @@ export default class H5PStandalone {
       customJs: (options.customJs || []).map(script => [urlPath(script)] ),
     };
 
+    if (options.contentUserData) {
+      contentOptions.contentUserData = options.contentUserData;
+    }
+
+    if (options.saveFreq) {
+      H5PIntegration.saveFreq = options.saveFreq
+    }
+
     this.initElement(el);
     return this.initH5P(generalIntegrationOptions, contentOptions, customOptions);
   }
