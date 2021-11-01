@@ -114,7 +114,7 @@ const options = {
     frameJs: './frame.bundle.js',
     frameCss: './styles/h5p.css',
     h5pJsonPath: '/path/to/h5p-folder',
-    librariesPath: '/path/to/h5p-folder', //content is on same folder level as h5p.json
+    contentJsonPath: '/path/to/h5p-folder', //content is on same folder level as h5p.json
     librariesPath: '/path/to/shared/libaries', //shared libraries path
     frame: true, //required to display copyright,  embed, & export buttons
     copyright: true,
@@ -161,9 +161,9 @@ const player1 = new H5P(document.getElementById('h5p-container-1'), player1Optio
 
 player1.then(() => {
   return new H5P(document.getElementById('h5p-container-2'), player2Options);
-}).then(( => {
+}).then(() => {
   // do stuff
-}));
+});
 
 
 // OR (async wrapper function removed for readability)
@@ -226,7 +226,7 @@ Example that combines above points:
 ```js
 <iframe width=":w" height=":h"
 src="https://app.wikonnect.org/embed/JJuzs-OAACU"  //replace this with your URL
-frameBorder="0" scrolling="no" styles="width:100%"></iframe
+frameBorder="0" scrolling="no" styles="width:100%"></iframe>
 ```
 
 
