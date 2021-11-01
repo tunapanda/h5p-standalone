@@ -93,6 +93,9 @@ The standalone H5P player constructor accepts two arguments.
 `embedCode` |unless `embed` is true| Embed/Iframe code that user can insert on their site to view same content. Check some caveats to consider [below](#caveats-while-adding-embed-code)
 `customCss` | No | Path(s) to custom stylesheet file(s)
 `customJs` | No | Path(s) to custom script file(s)
+`saveFreq` |if `contentUserData` or `ajax.*` is set| How often current user engagement content state should be saved (in seconds). Default is `false`. 
+`contentUserData`| No| User previous content interaction state (json string) 
+
 
 **Note:**
 - One can use absolute URL for `frameCss`, `frameJs`, and for other path options(`h5pJsonPath`,`librariesPath`, & `librariesPath`)
