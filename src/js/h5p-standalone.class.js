@@ -309,13 +309,6 @@ export default class H5PStandalone {
       Array.prototype.push.apply(styles, CSSDependencies[dependencyName]);
       Array.prototype.push.apply(scripts, JSDependencies[dependencyName]);
     });
-
-    if (this.mainLibrary.preloadedCss) {
-      Array.prototype.push.apply(styles, this.mainLibrary.preloadedCss.map(style => `${this.librariesPath}/${this.mainLibraryPath}/${style.path}`));
-    }
-    if (this.mainLibrary.preloadedJs) {
-      Array.prototype.push.apply(scripts, this.mainLibrary.preloadedJs.map(script => `${this.librariesPath}/${this.mainLibraryPath}/${script.path}`));
-    }
     return { styles, scripts };
   }
 }
