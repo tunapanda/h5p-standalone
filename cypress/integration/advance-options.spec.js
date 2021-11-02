@@ -1,43 +1,35 @@
-describe('single', () => {
-    it('should display h5p', () => {
+describe("H5P player with advance options", () => {
+  beforeEach(() => {
+    cy.visit("test/advance-options.html");
+  });
 
-        cy.visit('test/advance-options.html');
+  it("should display h5p", () => {
+    cy.iframe("iframe.h5p-iframe.h5p-initialized")
+      .should("be.visible")
+      .within(() => {
+        cy.get(".h5p-true-false-answers .h5p-true-false-answer")
+          .contains("False")
+          .click();
 
-        cy.get('.h5p-iframe').should(iframe => {
-            expect(iframe.contents().find('.h5p-content')).to.exist;
+        cy.get(".h5p-question-check-answer").click();
+        cy.get(".h5p-joubelui-score-bar-star").should("be.visible");
+      });
+  });
 
-            iframe.contents().find('.h5p-true-false-answer').click();
+  it("should display export dialog", () => {
+    cy.iframe("iframe.h5p-iframe.h5p-initialized").within(() => {
+      cy.get(".h5p-actions").find(".h5p-export").should("be.visible").click();
 
-            iframe.contents().find('.h5p-question-check-answer').click();
-
-            expect(iframe.contents().find('.h5p-joubelui-score-bar-star')).to.exist;
-
-            expect(iframe.contents().find('.h5p-actions').find('.h5p-export')).to.exist;
-
-            iframe.contents()
-                .find('.h5p-actions')
-                .find('.h5p-export')
-                .click();
-
-            expect(iframe.contents().find('.h5p-download-button')).to.exist;
-        });
+      cy.get(".h5p-download-button").should("be.visible");
     });
+  });
 
-    it('should display embed code dialog', () => {
+  it("should display embed code dialog", () => {
+    cy.iframe("iframe.h5p-iframe.h5p-initialized").within(() => {
+      cy.get(".h5p-actions").find(".h5p-embed").should("be.visible").click();
 
-        cy.visit('test/advance-options.html');
-        cy.get('.h5p-iframe').should((iframe) => {
-
-            expect(iframe.contents().find('.h5p-actions').find('.h5p-embed')).to.exist;
-
-            iframe.contents()
-                .find('.h5p-actions')
-                .find('.h5p-embed')
-                .click();
-
-            expect(iframe.contents().find('.h5p-embed-code-container')).to.exist;
-            expect(iframe.contents().find('.h5p-embed-size')).to.exist;
-        })
-
+      cy.get(".h5p-embed-code-container").should("be.visible");
+      cy.get(".h5p-embed-size").should("be.visible");
     });
+  });
 });
