@@ -9,7 +9,7 @@ yarn | `yarn add h5p-standalone`
 Release | [Download latest version here](https://github.com/tunapanda/h5p-standalone/releases/latest)
 
 ## Basic Usage
-Ensure you have an extracted H5P zip file in your workspace folder first. A simple guide on how to extract an H5P zip file is provided  [here ](https://github.com/tunapanda/h5p-standalone#extracting-h5p)
+Ensure you have an extracted H5P zip file in your workspace folder first. A simple guide on how to extract an H5P zip file is provided  [here ](#extracting-h5p)
 
 
 The player can be set up either by directly calling the already built scripts and styles in your `HTML` page or using `ES6` syntax.
@@ -39,8 +39,8 @@ The player can be set up either by directly calling the already built scripts an
    new H5PStandalone.H5P(el, options);
 
     ```
-    A detailed description of the H5P player arguments are provided  under the [advance section](https://github.com/tunapanda/h5p-standalone#advanced-usage)
-    Simple instruction on how to extract H5P zipped file provided [here](https://github.com/tunapanda/h5p-standalone#extracting-h5p)
+    A detailed description of the H5P player arguments are provided  under the [advance section](#advanced-usage)
+    Simple instruction on how to extract H5P zipped file provided [here](#extracting-h5p)
 
 ### Using ES6
 Install the player using yarn
@@ -68,7 +68,7 @@ const options = {
 
 new H5P(el, options);
 ```
-   A detailed description of the H5P player arguments are provided under the [advance section](https://github.com/tunapanda/h5p-standalone#advanced-usage)
+   A detailed description of the H5P player arguments are provided under the [advance section](#advanced-usage)
 ## Advanced Usage
 The standalone H5P player constructor accepts two arguments.
 1. A HTML element where the H5P iframe will be embedded as the first argument.
@@ -91,7 +91,7 @@ The standalone H5P player constructor accepts two arguments.
 `downloadUrl` |No| A path or a url that returns zipped h5p for download. The link is used by H5P `export` button
 `fullScreen` |No| A boolean on whether to enable the fullscreen button if the browser supports the feature. Default is `false`|
 `embed` |No| A boolean on whether display embed button. Default is `false`.  N.B. Setting this option to `true` will require an `embedCode` below.
-`embedCode` |unless `embed` is true| Embed/Iframe code that user can insert on their site to view same content. Check some caveats to consider [below](#caveats-while-adding-embed-code)
+`embedCode` |unless `embed` is true| Embed/Iframe code that user can insert on their site to view the same content. Check some caveats to consider [below](#caveats-while-adding-embed-code)
 `customCss` | No | Path(s) to custom stylesheet file(s)
 `customJs` | No | Path(s) to custom script file(s)
 `xAPIObjectIRI`|No| An identifier for a single unique Activity ~ utilized when generating xAPI [object](https://github.com/adlnet/xAPI-Spec/blob/master/xAPI-Data.md#acturi) field. Default is page host+pathname
@@ -242,9 +242,15 @@ A summary of the previous state restoration process:
 1) If the `contentUserData` option is available, skip to the 3rd step.
 2) If `contentUserData` is not available but `user.*` and `ajax.contentUserDataUrl` options were provided, request the data from `ajax.contentUserDataUrl` endpoint.
 3) Process the previous state `data` as follows:
-    - where `data.[0].state` equals `RESET`, any previous state will be deleted
-    - else, parse `data.[0].state` string and pass it to the H5P player instance
+    - where `data[0].state` equals `RESET`, any previous state will be deleted
+    - else, parse `data[0].state` string and pass it to the H5P player instance.
     
+ `ajax.contentUserDataUrl` may include (contentId,dataType,subContentId) placeholders that will be replaced with respective data _automagically_. Placeholders are prefixed with `:`
+ Placeholders are effective when you need to query only current content user data.
+ 
+ `ajax.contentUserDataUrl` example:
+ `/api/users/123/h5p/:contentId?data_type=:dataType&subContentId=:subContentId`
+
 ### Caveats while adding embed code
 - This library includes an H5P resizer by default in `main.bundle.js` at the moment. But, to allow the iframe width to resize promptly, add CSS style setting the width to 100% i.e. `style="width:100%;"`
 - If you want to allow users to resize the iframe width and height, set them using placeholders provided by H5P i.e., `width=":w"` and `height=":h"`
