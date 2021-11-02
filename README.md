@@ -66,7 +66,7 @@ const options = {
     frameCss: '/assets/styles/h5p.css',
 };
 
-new H5P(el, h5pLocation);
+new H5P(el, options);
 ```
    A detailed description of the H5P player arguments are provided under the [advance section](https://github.com/tunapanda/h5p-standalone#advanced-usage)
 ## Advanced Usage
@@ -121,7 +121,6 @@ The standalone H5P player constructor accepts two arguments.
 import { H5P } from 'h5p-standalone';
 
 const el = document.getElementById('h5p-container');
-const h5pLocation = './workspace';
 
 const options = {
     id: 'exercise-one',
@@ -149,7 +148,6 @@ new H5P(el,options)
 });
 
 // Or using the async-await syntax (async wrapper function removed for readability) :
-
  await new H5P(el, options);
 
 ```
