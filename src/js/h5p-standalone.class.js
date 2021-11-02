@@ -115,6 +115,9 @@ export default class H5PStandalone {
       contentOptions.contentUserData = options.contentUserData;
     }
 
+    /**
+     * following options overrides global H5PIntegration.
+     */
     if (options.saveFreq) {
       H5PIntegration.saveFreq = options.saveFreq
     }
@@ -125,6 +128,10 @@ export default class H5PStandalone {
 
     if (options.ajax && options.ajax.setFinishedUrl) {
       H5PIntegration.ajax.setFinished = options.ajax.setFinishedUrl
+    }
+
+    if (options.user) {
+      H5PIntegration['user'] = options.user;
     }
 
     this.initElement(el);
