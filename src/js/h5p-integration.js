@@ -1,4 +1,5 @@
 const integration = {
+  saveFreq: false,
   l10n: {
     H5P: {
       "fullscreen": "Fullscreen",
@@ -72,4 +73,4 @@ const integration = {
   }
 };
 
-window.H5PIntegration = window.H5PIntegration ? {...window.H5PIntegration,...integration} : integration;
+window.H5PIntegration = window.H5PIntegration ? { ...window.H5PIntegration, ...integration } : integration;
