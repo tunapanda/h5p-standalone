@@ -3,6 +3,7 @@ const integration = {
   postUserStatistics: false,
   ajax: {
     setFinished: undefined,
+    contentUserData: undefined
   },
   l10n: {
     H5P: {

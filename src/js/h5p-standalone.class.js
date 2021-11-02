@@ -134,6 +134,10 @@ export default class H5PStandalone {
       H5PIntegration['user'] = options.user;
     }
 
+    if (options.ajax && options.ajax.contentUserDataUrl) {
+      H5PIntegration.ajax.contentUserData = options.ajax.contentUserDataUrl
+    }
+
     this.initElement(el);
     return this.initH5P(generalIntegrationOptions, contentOptions, customOptions);
   }
