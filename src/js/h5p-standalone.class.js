@@ -119,6 +119,10 @@ export default class H5PStandalone {
       H5PIntegration.saveFreq = options.saveFreq
     }
 
+    if (options.postUserStatistics) {
+      H5PIntegration.postUserStatistics = false
+    }
+
     this.initElement(el);
     return this.initH5P(generalIntegrationOptions, contentOptions, customOptions);
   }

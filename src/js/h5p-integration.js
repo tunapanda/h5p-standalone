@@ -1,5 +1,6 @@
 const integration = {
   saveFreq: false,
+  postUserStatistics: false,
   l10n: {
     H5P: {
       "fullscreen": "Fullscreen",
