@@ -1,6 +1,9 @@
 const integration = {
   saveFreq: false,
   postUserStatistics: false,
+  ajax: {
+    setFinished: undefined,
+  },
   l10n: {
     H5P: {
       "fullscreen": "Fullscreen",

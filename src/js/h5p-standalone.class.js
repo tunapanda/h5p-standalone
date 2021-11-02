@@ -123,6 +123,10 @@ export default class H5PStandalone {
       H5PIntegration.postUserStatistics = false
     }
 
+    if (options.ajax && options.ajax.setFinishedUrl) {
+      H5PIntegration.ajax.setFinished = options.ajax.setFinishedUrl
+    }
+
     this.initElement(el);
     return this.initH5P(generalIntegrationOptions, contentOptions, customOptions);
   }
