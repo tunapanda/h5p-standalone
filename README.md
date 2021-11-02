@@ -91,7 +91,8 @@ The standalone H5P player constructor accepts two arguments.
 `xAPIObjectIRI`|No| An identifier for a single unique Activity ~ utilized when generating xAPI [object](https://github.com/adlnet/xAPI-Spec/blob/master/xAPI-Data.md#acturi) field. Default is page host+pathname
 `embed` |No| A boolean on whether display embed button. Default is `false`.  N.B. Setting this option to `true` will require an `embedCode` below.
 `embedCode` |unless `embed` is true| Embed/Iframe code that user can insert on their site to view same content. Check some caveats to consider [below](#caveats-while-adding-embed-code)
-
+`customCss` | No | Path(s) to custom stylesheet file(s)
+`customJs` | No | Path(s) to custom script file(s)
 
 **Note:**
 - One can use absolute URL for `frameCss`, `frameJs`, and for other path options(`h5pJsonPath`,`librariesPath`, & `librariesPath`)
@@ -109,17 +110,19 @@ const options = {
     id: 'exercise-one',
     frameJs: './frame.bundle.js',
     frameCss: './styles/h5p.css',
-    h5pJsonPath: "/path/to/h5p-folder",
-    librariesPath: "/path/to/h5p-folder", //content is on same folder level as h5p.json
-    librariesPath: "/path/to/shared/libaries", //shared libraries path
+    h5pJsonPath: '/path/to/h5p-folder',
+    librariesPath: '/path/to/h5p-folder', //content is on same folder level as h5p.json
+    librariesPath: '/path/to/shared/libaries', //shared libraries path
     frame: true, //required to display copyright,  embed, & export buttons
     copyright: true,
-   'export': false,
+    export: false,
     icon: true,
     downloadUrl: '/path/to/exercise-one.h5p',
-    fullScreen: true //enable fullscreen button,
-     embed: true,
-     embedCode:'<iframe width=":w" height=":h" src="https://replacethiswithyoururl.io" frameBorder="0" scrolling="no" styles="width:100%"></iframe>'
+    fullScreen: true, //enable fullscreen button
+    embed: true,
+    embedCode:'<iframe width=":w" height=":h" src="https://replacethiswithyoururl.io" frameBorder="0" scrolling="no" styles="width:100%"></iframe>',
+    customCss: ['/path/to/some-css.css', '/path/to/some-other-css.css'], // custom stylesheets
+    customJs: '/path/to/custom-script.js' // custom script
   };
 
 

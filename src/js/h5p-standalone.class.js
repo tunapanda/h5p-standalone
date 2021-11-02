@@ -98,9 +98,21 @@ export default class H5PStandalone {
       contentOptions.resizeCode = options.resizeCode || ''; // resize code is already bundled in main.bundle.js
     }
 
+    // Custom options for styles and scripts in analogy to regular H5P overrides
+    if (typeof options.customCss === 'string') {
+      options.customCss = [options.customCss];
+    }
+    if (typeof options.customJs === 'string') {
+      options.customJs = [options.customJs];
+    }
+
+    const customOptions = {
+      customCss: (options.customCss || []).map(style => [urlPath(style)] ),
+      customJs: (options.customJs || []).map(script => [urlPath(script)] ),
+    };
 
     this.initElement(el);
-    return this.initH5P(generalIntegrationOptions, contentOptions);
+    return this.initH5P(generalIntegrationOptions, contentOptions, customOptions);
   }
 
   initElement(el) {
@@ -134,7 +146,7 @@ export default class H5PStandalone {
     iframe.contentWindow['jQuery'] = null;
   }
 
-  async initH5P(generalIntegrationOptions, contentOptions) {
+  async initH5P(generalIntegrationOptions, contentOptions, customOptions) {
     this.h5p = await this.getJSON(`${this.h5pJsonPath}/h5p.json`);
 
     const content = await this.getJSON(`${this.contentUrl}/content.json`);
@@ -144,7 +156,7 @@ export default class H5PStandalone {
 
     const dependencies = await this.findAllDependencies();
 
-    const { styles, scripts } = this.sortDependencies(dependencies);
+    const { styles, scripts } = this.sortDependencies(dependencies, customOptions);
 
     H5PIntegration.urlLibraries = this.librariesPath;
     H5PIntegration.contents = H5PIntegration.contents ? H5PIntegration.contents : {};
@@ -276,10 +288,13 @@ export default class H5PStandalone {
 
   /**
    * Resolves the library dependency tree and sorts the JS and CSS files into order
-   * @param {object[]} dependencies 
+   * @param {object[]} dependencies
+   * @param {object[]} customOptions Custom options for styles and scripts.
+   * @param {string[]} customOptions.customCss Paths of custom stylesheet files.
+   * @param {string[]} customOptions.customJs Paths of custom script files.
    * @return {object}
    */
-  sortDependencies(dependencies) {
+  sortDependencies(dependencies, customOptions) {
     const dependencySorter = new Toposort();
     let CSSDependencies = {};
     let JSDependencies = {};
@@ -316,6 +331,11 @@ export default class H5PStandalone {
     if (this.mainLibrary.preloadedJs) {
       Array.prototype.push.apply(scripts, this.mainLibrary.preloadedJs.map(script => `${this.librariesPath}/${this.mainLibraryPath}/${script.path}`));
     }
+
+    // Append custom styles and scripts at the end to override original values
+    styles = styles.concat(customOptions.customCss);
+    scripts = scripts.concat(customOptions.customJs);
+
     return { styles, scripts };
   }
 }
