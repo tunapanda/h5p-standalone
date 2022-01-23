@@ -185,8 +185,7 @@ export default class H5PStandalone {
     // add missing content metadata from h5p.json
     for (const key in this.h5p) {
       if (H5PIntegration.contents[`cid-${this.id}`]?.['metadata']?.[key] === undefined) {
-        console.log(H5PIntegration.contents[`cid-${this.id}`])
-        H5PIntegration.contents[`cid-${this.id}`].['metadata'].[key] = this.h5p[key]
+        H5PIntegration.contents[`cid-${this.id}`]['metadata'][key] = this.h5p[key]
       }
     }
 
