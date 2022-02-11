@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <link type="text/css" rel="stylesheet" media="all" href="/dist/styles/h5p.css"/>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script type="text/javascript" src="/dist/main.bundle.js"></script>
+</head>
+
+<body>
+<div id="h5p-container-1"></div>
+
+<script type="text/javascript">
+    new H5PStandalone.H5P(document.getElementById('h5p-container-1'), {
+        h5pJsonPath: 'full_workspace',
+        frameJs: '/dist/frame.bundle.js',
+        frameCss: '/dist/styles/h5p.css',
+        saveFreq: 3000,
+        contentUserData: [{
+            state: '{"answer":false}'
+        }]
+    });
+</script>
+</body>
+
+</html>

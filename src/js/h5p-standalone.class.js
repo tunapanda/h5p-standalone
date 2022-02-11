@@ -111,6 +111,33 @@ export default class H5PStandalone {
       customJs: (options.customJs || []).map(script => [urlPath(script)] ),
     };
 
+    if (options.contentUserData) {
+      contentOptions.contentUserData = options.contentUserData;
+    }
+
+    /**
+     * following options overrides global H5PIntegration.
+     */
+    if (options.saveFreq) {
+      H5PIntegration.saveFreq = options.saveFreq
+    }
+
+    if (options.postUserStatistics) {
+      H5PIntegration.postUserStatistics = false
+    }
+
+    if (options.ajax && options.ajax.setFinishedUrl) {
+      H5PIntegration.ajax.setFinished = options.ajax.setFinishedUrl
+    }
+
+    if (options.user) {
+      H5PIntegration['user'] = options.user;
+    }
+
+    if (options.ajax && options.ajax.contentUserDataUrl) {
+      H5PIntegration.ajax.contentUserData = options.ajax.contentUserDataUrl
+    }
+
     this.initElement(el);
     return this.initH5P(generalIntegrationOptions, contentOptions, customOptions);
   }

@@ -1,4 +1,10 @@
 const integration = {
+  saveFreq: false,
+  postUserStatistics: false,
+  ajax: {
+    setFinished: undefined,
+    contentUserData: undefined
+  },
   l10n: {
     H5P: {
       "fullscreen": "Fullscreen",
@@ -72,4 +78,4 @@ const integration = {
   }
 };
 
-window.H5PIntegration = window.H5PIntegration ? {...window.H5PIntegration,...integration} : integration;
+window.H5PIntegration = window.H5PIntegration ? { ...window.H5PIntegration, ...integration } : integration;
