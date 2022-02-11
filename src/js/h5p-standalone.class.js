@@ -64,7 +64,7 @@ export default class H5PStandalone {
       contentOptions.exportUrl = urlPath(options.downloadUrl);
     }
 
-    if (options.metadata) {
+    if (options.metadata) { // exposing content['id'].metadata key to allow overrides
       contentOptions.metadata = options.metadata;
     }
 
@@ -173,11 +173,19 @@ export default class H5PStandalone {
       scripts: scripts,
       displayOptions: contentOptions.displayOptions,
       contentUrl: this.contentUrl,
+      metadata: {}
     };
 
     for (const key in contentOptions) {
       if (H5PIntegration.contents[`cid-${this.id}`][key] == undefined) { //this is just a guard
         H5PIntegration.contents[`cid-${this.id}`][key] = contentOptions[key];
+      }
+    }
+
+    // add missing content metadata from h5p.json
+    for (const key in this.h5p) {
+      if (H5PIntegration.contents[`cid-${this.id}`]?.['metadata']?.[key] === undefined) {
+        H5PIntegration.contents[`cid-${this.id}`]['metadata'][key] = this.h5p[key]
       }
     }
 
@@ -324,13 +332,6 @@ export default class H5PStandalone {
       Array.prototype.push.apply(styles, CSSDependencies[dependencyName]);
       Array.prototype.push.apply(scripts, JSDependencies[dependencyName]);
     });
-
-    if (this.mainLibrary.preloadedCss) {
-      Array.prototype.push.apply(styles, this.mainLibrary.preloadedCss.map(style => `${this.librariesPath}/${this.mainLibraryPath}/${style.path}`));
-    }
-    if (this.mainLibrary.preloadedJs) {
-      Array.prototype.push.apply(scripts, this.mainLibrary.preloadedJs.map(script => `${this.librariesPath}/${this.mainLibraryPath}/${script.path}`));
-    }
 
     // Append custom styles and scripts at the end to override original values
     styles = styles.concat(customOptions.customCss);
