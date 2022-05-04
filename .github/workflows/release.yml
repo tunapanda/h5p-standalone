@@ -13,7 +13,7 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version:  ${{ matrix.node }}
+          node-version:  14
           cache: 'yarn'
 
       - name: Install dependencies
