@@ -1,3 +1,11 @@
+## [3.5.1](https://github.com/tunapanda/h5p-standalone/compare/v3.5.0...v3.5.1) (2022-05-12)
+
+
+### Bug Fixes
+
+* auto-commit changelog file via semantic release package ([6bea820](https://github.com/tunapanda/h5p-standalone/commit/6bea820dd99d83144cdf0a178a7009dde537195f))
+* Node release matrix doesn't exist. Fix it to version 14 ([3cdea3c](https://github.com/tunapanda/h5p-standalone/commit/3cdea3cc2aad2de2795bd0246e622dff99650ff9))
+
 ## [3.0.3](https://github.com/tunapanda/h5p-standalone/compare/v3.0.2...v3.0.3) (2021-04-19)
 
 
