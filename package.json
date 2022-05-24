@@ -14,6 +14,7 @@
     "@babel/preset-env": "^7.13.15",
     "@babel/runtime": "^7.15.4",
     "@commitlint/config-conventional": "^12.1.1",
+    "@types/toposort": "^2.0.3",
     "babel-loader": "^8.2.2",
     "babel-plugin-add-module-exports": "^1.0.4",
     "commitlint": "^12.1.1",
