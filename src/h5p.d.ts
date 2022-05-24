@@ -2,7 +2,7 @@
  * H5PIntegration Interface
  */
 export interface H5PIntegration {
-    baseUrl: string; //should not include a trailing slash
+    baseUrl?: string; //should not include a trailing slash
     url: string;  //should not include trailing slash
 
     urlLibraries?: string; //url to override where to fetch content libraries
