@@ -1,4 +1,4 @@
-import Toposort from 'toposort-class';
+import toposort from "toposort";
 import H5P from 'imports-loader?imports=H5PIntegration|window.H5PIntegration!H5P';
 
 H5PIntegration = window.H5PIntegration;
@@ -330,12 +330,17 @@ export default class H5PStandalone {
    * @return {object}
    */
   sortDependencies(dependencies, customOptions) {
-    const dependencySorter = new Toposort();
+
     let CSSDependencies = {};
     let JSDependencies = {};
+    const dependencyGraph = [];
 
     dependencies.forEach(dependency => {
-      dependencySorter.add(dependency.libraryPath, dependency.dependencies);
+
+      //since toposort has no add method, replace it with a loop
+      dependency.dependencies.forEach((node)=>{
+        dependencyGraph.push([dependency.libraryPath, node]);
+      })
 
       if (dependency.preloadedCss) {
         CSSDependencies[dependency.libraryPath] = CSSDependencies[dependency.libraryPath] ? CSSDependencies[dependency.libraryPath] : [];
@@ -355,7 +360,7 @@ export default class H5PStandalone {
     let styles = [];
     let scripts = [];
 
-    dependencySorter.sort().reverse().forEach(function (dependencyName) {
+    toposort(dependencyGraph).reverse().forEach(function (dependencyName) {
       Array.prototype.push.apply(styles, CSSDependencies[dependencyName]);
       Array.prototype.push.apply(scripts, JSDependencies[dependencyName]);
     });
