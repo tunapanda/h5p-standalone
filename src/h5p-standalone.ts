@@ -82,9 +82,14 @@ export class H5PStandalone {
 
                 this.renderPlayerFrame(anchorElement, contentId, options.embedType);
 
-                //initialize the H5P
-                if (options.preventH5PInit === undefined || !!options.preventH5PInit) {
+                //initialize the H5P if available
+                if (options.preventH5PInit === undefined || !!options.preventH5PInit
+                    && (<any>window).H5P) {
                     (<any>window).H5P.init();
+                } else {
+                    //if developer doesn't want to initialize the H5P, pass it to core H5P settings.
+                    (<any>window).H5P = (<any>window).H5P || {};
+                    (<any>window).H5P.preventH5PInit = false;
                 }
             });
 
