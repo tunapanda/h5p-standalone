@@ -10,7 +10,7 @@ import {
     User
 } from "./h5p";
 import {defaultH5PIntegration} from "./h5p-integration";
-import {getJSON, urlPath} from "./utils";
+import {getJSON, loadScripts, loadStylesheets, urlPath} from "./utils";
 
 interface Options {
     id?: string;
@@ -69,6 +69,13 @@ interface LocalLibraryDependency {
     preloadedJs?: H5PLibraryDefinition['preloadedJs'];
 }
 
+interface PlayerFrameOptions {
+    anchorElement: HTMLElement,
+    contentId: string,
+    embedType: Options['embedType'],
+    H5PIntegration: H5PIntegration,
+}
+
 export class H5PStandalone {
 
     libraryFolderContainsVersion = true;
@@ -78,40 +85,47 @@ export class H5PStandalone {
         const contentId = options.id || Math.random().toString(36).substr(2, 9);
 
         this.prepareH5PEnvironment(contentId, options)
-            .then(() => {
+            .then((H5PIntegration: H5PIntegration) => {
 
-                this.renderPlayerFrame(anchorElement, contentId, options.embedType);
-
-                //initialize the H5P if available
-                if (options.preventH5PInit === undefined || !!options.preventH5PInit
-                    && (<any>window).H5P) {
-                    (<any>window).H5P.init();
-                } else {
-                    //if developer doesn't want to initialize the H5P, pass it to core H5P settings.
-                    (<any>window).H5P = (<any>window).H5P || {};
-                    (<any>window).H5P.preventH5PInit = false;
+                //set the flag to avoid H5P initializing immediately on script load
+                if (!(<any>window).H5P) {
+                    (<any>window).H5P = {};
                 }
+                (<any>window).H5P.preventInit = true;
+
+                const embedType = options.embedType ? options.embedType : 'iframe';
+
+                this.renderPlayerFrame({anchorElement, contentId, embedType, H5PIntegration})
+                    .then(() => {
+                        //initialize the H5P
+                        if (options.preventH5PInit === undefined || !!options.preventH5PInit) {
+                            if (typeof (<any>window).H5P.init === 'function') {
+                                (<any>window).H5P.init();
+                            }
+                            (<any>window).H5P.preventInit = false; //reset for any subsequent request
+                        }
+                    })
             });
 
     }
 
-    renderPlayerFrame(el: HTMLElement, contentId: string, embedType: 'iframe' | 'div' = 'iframe') {
-        if (!(el instanceof HTMLElement)) {
+    async renderPlayerFrame(params: PlayerFrameOptions) {
+        if (!(params.anchorElement instanceof HTMLElement)) {
             throw new Error('createH5P must be passed an element');
         }
 
-        if (embedType === 'iframe') {
+        if (params.embedType === 'iframe') {
             const wrapper = document.createElement('div');
             wrapper.classList.add('h5p-iframe-wrapper');
             wrapper.style.backgroundColor = '#DDD;';
 
             const iframe = document.createElement('iframe');
-            iframe.id = `h5p-iframe-${contentId}`;
+            iframe.id = `h5p-iframe-${params.contentId}`;
             iframe.src = 'about:blank';
 
             iframe.classList.add('h5p-iframe');
             iframe.setAttribute('scrolling', 'no');
-            iframe.setAttribute('data-content-id', contentId);
+            iframe.setAttribute('data-content-id', params.contentId);
 
             iframe.setAttribute('frameBorder', '0');
             iframe.style.width = '100%'
@@ -120,24 +134,39 @@ export class H5PStandalone {
             iframe.style.display = 'block'
 
             // inject jQuery property to avoid fatal error if required
-            iframe.contentWindow['jQuery'] = null; //TODO: remove if not bundling H5P in main.bundle.js
 
             wrapper.append(iframe);
-            el.append(wrapper);
+            params.anchorElement.append(wrapper);
 
-            //todo: load H5P core assets or frame.js if not bundling  H5P in main.bundle.js
+            //TODO: only h5p-jquery + h5p.js are required. Modern browsers are intelligent w/ caching
+            //load H5P core scripts or frame.js as H5P is not bundled in main.bundle.js
+            await loadScripts(iframe, params.H5PIntegration.core.scripts);
         } else {
             const wrapper = document.createElement('div');
             wrapper.classList.add('h5p-iframe')
 
             const contentDiv = document.createElement('div')
             contentDiv.classList.add('h5p-content',)
-            contentDiv.setAttribute('data-content-id', contentId);
+            contentDiv.setAttribute('data-content-id', params.contentId);
 
             wrapper.append(contentDiv)
 
-            el.append(wrapper);
-            //TODO: load H5P core assets and main library assets+dependencies
+            params.anchorElement.append(wrapper);
+
+            //dynamically load core and libraries stylesheets and scripts
+            const coreAssetsAnchor = document.head || document.body || params.anchorElement;
+
+            //stylesheets
+            const requiredStyles = (params.H5PIntegration.core.styles || [])
+                .concat(params.H5PIntegration.contents[`cid-${params.contentId}`].styles);
+
+            loadStylesheets(coreAssetsAnchor, requiredStyles)
+
+            //javascript
+            const requiredScripts = (params.H5PIntegration.core.scripts || [])
+                .concat(params.H5PIntegration.contents[`cid-${params.contentId}`].scripts);
+
+            await loadScripts(coreAssetsAnchor, requiredScripts)
         }
     }
 
@@ -180,6 +209,10 @@ export class H5PStandalone {
             H5PIntegration = {...(<any>window).H5PIntegration, ...H5PIntegration}
         }
 
+        /**
+         *  Set H5P core scripts and stylesheets.
+         *  In the future, we should allow user to provide their own unbundled H5P core assets
+         */
         let coreScripts = [urlPath('./frame.bundle.js')];
         let coreStyles = [urlPath('./styles/h5p.css')];
 
@@ -190,6 +223,7 @@ export class H5PStandalone {
             coreStyles = [urlPath(options.frameCss)];
         }
 
+        //todo: should we override or merge?
         H5PIntegration.core = {
             styles: coreStyles,
             scripts: coreScripts

@@ -32,3 +32,68 @@ export async function getJSON<T>(url: string): Promise<T> {
     const res = await fetch(url);
     return res.json();
 }
+
+export async function loadScripts(target: HTMLElement, scripts: string[]) {
+    const existingScripts = target.getElementsByTagName('script');
+    const existingH5PScripts = [];
+
+    //filter all scripts with `data-h5p` attribute
+    for (let i = 0; i < existingScripts.length; i++) {
+        if (existingScripts[i].dataset.h5p) {
+            existingH5PScripts.push(existingScripts[i]);
+        }
+    }
+
+    const scriptRequests = [];
+    scripts.forEach((path) => {
+        //if script already exists, ignore
+        if (existingH5PScripts.some((script) => script.dataset.h5p === path)) {
+            return
+        }
+
+        const script = document.createElement("script");
+        script.src = path;
+        script.async = false;
+        script.defer = false;
+        script.dataset.h5p = path;
+        const scriptRequest = new Promise((resolve) => {
+            //listen for load
+            script.onload = resolve
+        })
+
+        //attach it to the target
+        target.append(script);
+
+        scriptRequests.push(scriptRequest);
+    });
+
+    await Promise.all(scriptRequests);
+}
+
+export function loadStylesheets(target: HTMLElement, styles: string[]) {
+    const existingStylesheets = target.getElementsByTagName('link');
+    const existingH5PStylesheets = [];
+
+    //filter all styles links with `data-h5p` attribute
+    for (let i = 0; i < existingStylesheets.length; i++) {
+        if (existingStylesheets[i].dataset.h5p) {
+            existingH5PStylesheets.push(existingStylesheets[i]);
+        }
+    }
+
+
+    styles.forEach((path) => {
+        //if style already exists, ignore
+        if (existingH5PStylesheets.some((link) => link.dataset.h5p === path)) {
+            return
+        }
+
+        const link = document.createElement("link");
+        link.href = path;
+        link.dataset.h5p = path;
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        //attach it to the target
+        target.append(link);
+    })
+}
