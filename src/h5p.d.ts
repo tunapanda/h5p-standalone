@@ -222,8 +222,8 @@ interface H5PPackageDefinition {
 
 interface LibraryDependency {
     machineName: string
-    minorVersion: string
-    majorVersion: string
+    minorVersion: number
+    majorVersion: number
 }
 
 interface License { //enum would have been better

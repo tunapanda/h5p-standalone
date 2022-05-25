@@ -317,10 +317,10 @@ export class H5PStandalone {
         let name = library.machineName;
 
         if (this.libraryFolderContainsVersion) {
-            if (library.majorVersion) {
+            if (library.majorVersion !== undefined) {
                 name += `-${library.majorVersion}`
             }
-            if (library.minorVersion) {
+            if (library.minorVersion !== undefined) {
                 name += `.${library.minorVersion}`;
             }
         }
