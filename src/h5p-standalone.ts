@@ -200,8 +200,8 @@ export default class H5PStandalone {
         }
 
         // Append custom styles and scripts at the end to override original values
-        styles = styles.concat((options.customCss || []).map(style => [urlPath(style)]));
-        scripts = scripts.concat((options.customJs || []).map(script => [urlPath(script)]));
+        styles = styles.concat((options.customCss || []).map(style => urlPath(style)));
+        scripts = scripts.concat((options.customJs || []).map(script => urlPath(script)));
 
 
         const displayOptions: H5PPlayerDisplayOptions = {
