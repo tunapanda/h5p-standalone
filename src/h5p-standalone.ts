@@ -69,7 +69,9 @@ interface LocalLibraryDependency {
     preloadedJs?: H5PLibraryDefinition['preloadedJs'];
 }
 
-export default class H5PStandalone {
+export class H5PStandalone {
+
+    libraryFolderContainsVersion = true;
 
     constructor(anchorElement: HTMLElement, options: Options) {
 
@@ -134,7 +136,7 @@ export default class H5PStandalone {
         }
     }
 
-    async prepareH5PEnvironment(contentId, options: Options) {
+    async prepareH5PEnvironment(contentId, options: Options): Promise<H5PIntegration> {
 
         /**
          * Load H5P content and libraries
@@ -144,20 +146,20 @@ export default class H5PStandalone {
 
         const H5PJsonContent = <H5PPackageDefinition>(await getJSON(`${h5pJsonPath}/h5p.json`));
 
+        //populate the variable before executing other functions.We assume other dependent
+        // libraries follow the same format rather than performing the check for each library
+        this.libraryFolderContainsVersion = await this.libraryFolderNameIncludesVersion(
+            librariesPath, H5PJsonContent.preloadedDependencies[0]);
+
+
         const H5PContentJsonContent = await getJSON(`${contentJsonPath}/content.json`);
 
-        const libraryFolderIncludesVersion = await this.checkIfPathIncludesVersion(librariesPath,
-            H5PJsonContent.preloadedDependencies[0]);
+        const mainLibrary = await this.findMainLibrary(H5PJsonContent, librariesPath);
 
-        const mainLibrary = await this.findMainLibrary(
-            H5PJsonContent, librariesPath, libraryFolderIncludesVersion);
-
-        const dependencies = await this.findAllDependencies(H5PJsonContent, librariesPath,
-            libraryFolderIncludesVersion);
+        const dependencies = await this.findAllDependencies(H5PJsonContent, librariesPath);
 
 
-        let {styles, scripts} = this.sortDependencies(dependencies, librariesPath,
-            libraryFolderIncludesVersion);
+        let {styles, scripts} = this.sortDependencies(dependencies, librariesPath);
 
         /**
          * Prepare H5PIntegration settings
@@ -280,8 +282,9 @@ export default class H5PStandalone {
      *
      * @return {boolean}
      */
-    async checkIfPathIncludesVersion(librariesPath: string, dependency: LibraryDependency): Promise<boolean> {
-        const libraryPath = this.libraryFolderName(true, dependency);
+    async libraryFolderNameIncludesVersion(librariesPath: string, dependency: LibraryDependency): Promise<boolean> {
+
+        const libraryPath = this.libraryToFolderName(dependency);
 
         let libraryFolderIncludesVersion: boolean;
 
@@ -295,40 +298,57 @@ export default class H5PStandalone {
     }
 
     /**
-     * return the name of a library folder
-     * @param {boolean} libraryFolderIncludesVersion
+     * Get the name of a library folder
+     *
+     *
      * @param {object} library
      * @return {string}
      */
-    libraryFolderName(libraryFolderIncludesVersion: boolean, library: LibraryDependency): string {
-        return library.machineName +
-            (libraryFolderIncludesVersion ? `-${library.majorVersion}.${library.minorVersion}` : '');
+    libraryToFolderName(library: LibraryDependency): string {
+        /*
+         * Be backwards compatible: not all libraries include versions on folder names
+         */
+
+        let name = library.machineName;
+
+        if (this.libraryFolderContainsVersion) {
+            if (library.majorVersion) {
+                name += `-${library.majorVersion}`
+            }
+            if (library.minorVersion) {
+                name += `.${library.minorVersion}`;
+            }
+        }
+
+
+        return name;
     }
 
     /**
      * FInd the main library for this H5P
      * @return {Promise}
      */
-    async findMainLibrary(h5pJsonContent: H5PPackageDefinition, librariesPath: string,
-                          libraryFolderIncludesVersion: boolean): Promise<H5PLibraryDefinition> {
+    async findMainLibrary(h5pJsonContent: H5PPackageDefinition,
+                          librariesPath: string): Promise<H5PLibraryDefinition> {
 
         const mainLibraryInfo = h5pJsonContent.preloadedDependencies
             .find(dependency => dependency.machineName === h5pJsonContent.mainLibrary);
 
-        const mainLibraryFolderName = this.libraryFolderName(libraryFolderIncludesVersion, mainLibraryInfo)
-        return getJSON<H5PLibraryDefinition>(`${librariesPath}/${mainLibraryFolderName}/library.json`);
+        const mainLibraryFolderName = this.libraryToFolderName(mainLibraryInfo)
+        const libraryFileUrl = `${librariesPath}/${mainLibraryFolderName}/library.json`;
+        return getJSON<H5PLibraryDefinition>(libraryFileUrl);
     }
 
     /**
      * find all the libraries used in this H5P
      * @return {Promise}
      */
-    async findAllDependencies(h5pJsonContent: H5PPackageDefinition, librariesPath, libraryFolderIncludesVersion: boolean) {
+    async findAllDependencies(h5pJsonContent: H5PPackageDefinition,
+                              librariesPath): Promise<LocalLibraryDependency[]> {
         const directDependencyFolderNames: string[] = h5pJsonContent.preloadedDependencies
-            .map(dependency => this.libraryFolderName(libraryFolderIncludesVersion, dependency));
+            .map(dependency => this.libraryToFolderName(dependency));
 
-        return this.loadDependencies(directDependencyFolderNames, [], librariesPath,
-            libraryFolderIncludesVersion);
+        return this.loadDependencies(directDependencyFolderNames, [], librariesPath);
     }
 
     /**
@@ -338,22 +358,17 @@ export default class H5PStandalone {
      * @param {string[]} toFind list of libraries to find the dependencies of
      * @param {string[]} alreadyFound the dependencies that have already been found
      * @param librariesPath
-     * @param libraryFolderIncludesVersion
      * @param librariesPath
-     * @param libraryFolderIncludesVersion
      *
      */
-    async loadDependencies(toFind: string[], alreadyFound: LocalLibraryDependency[], librariesPath: string,
-                           libraryFolderIncludesVersion: boolean): Promise<LocalLibraryDependency[]> {
+    async loadDependencies(toFind: string[], alreadyFound: LocalLibraryDependency[],
+                           librariesPath: string): Promise<LocalLibraryDependency[]> {
 
         const dependencies = alreadyFound;
         const findNext = [];
 
         const dependenciesDiscoveryRequests = toFind.map((libraryFolderName) => {
-            return this.findLibraryDependencies(
-                libraryFolderName, librariesPath,
-                libraryFolderIncludesVersion
-            )
+            return this.findLibraryDependencies(libraryFolderName, librariesPath)
         });
 
         const discoveredDependencies = await Promise.all(dependenciesDiscoveryRequests);
@@ -382,10 +397,7 @@ export default class H5PStandalone {
         });
 
         if (findNext.length > 0) {
-            return this.loadDependencies(
-                findNext, dependencies,
-                librariesPath, libraryFolderIncludesVersion
-            );
+            return this.loadDependencies(findNext, dependencies, librariesPath);
         }
         return dependencies;
     }
@@ -396,19 +408,18 @@ export default class H5PStandalone {
      *
      * @param libraryFolderName
      * @param librariesPath
-     * @param libraryFolderIncludesVersion
      */
-    async findLibraryDependencies(libraryFolderName: string, librariesPath: string,
-                                  libraryFolderIncludesVersion: boolean): Promise<LocalLibraryDependency> {
+    async findLibraryDependencies(libraryFolderName: string,
+                                  librariesPath: string): Promise<LocalLibraryDependency> {
 
-        const libraryPath = `${librariesPath}/${libraryFolderName}/library.json`;
-        const library = await getJSON<H5PLibraryDefinition>(libraryPath);
+        const libraryFileUrl = `${librariesPath}/${libraryFolderName}/library.json`;
+        const library = await getJSON<H5PLibraryDefinition>(libraryFileUrl);
 
 
         let dependencies: string[] = [];
         if (library.preloadedDependencies) {
             dependencies = library.preloadedDependencies
-                .map(dependency => this.libraryFolderName(libraryFolderIncludesVersion, dependency));
+                .map(dependency => this.libraryToFolderName(dependency));
         }
 
         return {
@@ -425,11 +436,10 @@ export default class H5PStandalone {
      *
      * @param {object[]} dependencies
      * @param librariesPath
-     * @param libraryFolderIncludesVersion
      * @return {object}
      */
-    sortDependencies(dependencies: LocalLibraryDependency[], librariesPath: string,
-                     libraryFolderIncludesVersion: boolean) {
+    sortDependencies(dependencies: LocalLibraryDependency[],
+                     librariesPath: string): { styles: string[], scripts: string[] } {
 
         const dependencyGraph = [];
         let CSSDependencies = {};
@@ -449,8 +459,8 @@ export default class H5PStandalone {
                 }
                 dependency.preloadedCss.forEach(style => {
 
-                    const stylePath = `${librariesPath}/${dependency.libraryFolderName}/${style.path}`;
-                    CSSDependencies[dependency.libraryFolderName].push(stylePath);
+                    const styleFileUrl = `${librariesPath}/${dependency.libraryFolderName}/${style.path}`;
+                    CSSDependencies[dependency.libraryFolderName].push(styleFileUrl);
                 });
             }
 
@@ -460,8 +470,8 @@ export default class H5PStandalone {
                     JSDependencies[dependency.libraryFolderName] = JSDependencies[dependency.libraryFolderName];
                 }
                 dependency.preloadedJs.forEach(script => {
-                    const scriptPath = `${librariesPath}/${dependency.libraryFolderName}/${script.path}`;
-                    JSDependencies[dependency.libraryFolderName].push(scriptPath);
+                    const scriptFileUrl = `${librariesPath}/${dependency.libraryFolderName}/${script.path}`;
+                    JSDependencies[dependency.libraryFolderName].push(scriptFileUrl);
                 });
             }
         });
