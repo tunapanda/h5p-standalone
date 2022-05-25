@@ -452,6 +452,10 @@ export class H5PStandalone {
 
         dependencies.forEach(dependency => {
 
+            if (dependency.dependencies.length === 0) {
+                dependencyGraph.push([dependency.libraryFolderName])
+            }
+
             dependency.dependencies.forEach((node) => {
                 dependencyGraph.push([dependency.libraryFolderName, node]);
             });
