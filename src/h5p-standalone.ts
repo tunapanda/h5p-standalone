@@ -197,6 +197,11 @@ export class H5PStandalone {
 
         H5PIntegration.urlLibraries = librariesPath;
 
+        //since the default is false, only set if it's a number?
+        if (options.saveFreq && typeof options.saveFreq === 'number') {
+            H5PIntegration.saveFreq = options.saveFreq;
+        }
+
 
         if (options.customCss && typeof options.customCss === 'string') {
             options.customCss = [options.customCss]
