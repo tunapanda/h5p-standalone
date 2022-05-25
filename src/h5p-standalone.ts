@@ -195,6 +195,7 @@ export class H5PStandalone {
             scripts: coreScripts
         };
 
+        H5PIntegration.url = contentId;
         H5PIntegration.urlLibraries = librariesPath;
 
         //since the default is false, only set if it's a number?
@@ -236,7 +237,8 @@ export class H5PStandalone {
         H5PIntegration.contents[`cid-${contentId}`] = {
             library: mainLibraryName,
             title: options.title ? options.title : '',
-            url: window.location.href.split('?')[0].split('#')[0],
+            url: h5pJsonPath,
+            contentUrl: contentJsonPath,
             jsonContent: JSON.stringify(H5PContentJsonContent),
             styles: styles,
             scripts: scripts,

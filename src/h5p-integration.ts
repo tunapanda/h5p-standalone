@@ -2,7 +2,7 @@ import {H5PIntegration} from './h5p';
 
 export const defaultH5PIntegration: H5PIntegration = {
     baseUrl: window.location.origin,
-    url: window.location.pathname,
+    url: '',
     contents: {},
     saveFreq: false,
     postUserStatistics: false,
