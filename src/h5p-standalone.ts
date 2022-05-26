@@ -10,7 +10,14 @@ import {
     User
 } from "./h5p";
 import {defaultH5PIntegration} from "./h5p-integration";
-import {getJSON, loadScripts, loadStylesheets, urlPath} from "./utils";
+import {
+    getJSON,
+    loadScripts,
+    loadStylesheets,
+    mergeArrayUnique,
+    mergeIntegration,
+    urlPath
+} from "./utils";
 
 interface Options {
     id?: string;
@@ -201,12 +208,11 @@ export class H5PStandalone {
 
         let H5PIntegration: H5PIntegration = defaultH5PIntegration();
 
-        H5PIntegration.contents = {};
 
         //if window property exists
         if (window && (<any>window).H5PIntegration) {
             //if the window already has H5PIntegration property,
-            H5PIntegration = {...(<any>window).H5PIntegration, ...H5PIntegration}
+            H5PIntegration = mergeIntegration(H5PIntegration, (<any>window).H5PIntegration)
         }
 
         /**
@@ -223,11 +229,16 @@ export class H5PStandalone {
             coreStyles = [urlPath(options.frameCss)];
         }
 
-        //todo: should we override or merge?
-        H5PIntegration.core = {
-            styles: coreStyles,
-            scripts: coreScripts
-        };
+        if (!H5PIntegration.core) {
+            H5PIntegration.core = {
+                styles: coreStyles,
+                scripts: coreScripts
+            };
+        } else {
+            //merge unique
+            H5PIntegration.core.styles = mergeArrayUnique(H5PIntegration.core.styles, coreStyles);
+            H5PIntegration.core.scripts = mergeArrayUnique(H5PIntegration.core.scripts, coreScripts);
+        }
 
         H5PIntegration.url = contentId;
         H5PIntegration.urlLibraries = librariesPath;
@@ -266,6 +277,10 @@ export class H5PStandalone {
         }
         if (mainLibrary.minorVersion) {
             mainLibraryName += `.${mainLibrary.minorVersion}`
+        }
+
+        if (!H5PIntegration.contents) {
+            H5PIntegration.contents = {};
         }
 
         H5PIntegration.contents[`cid-${contentId}`] = {

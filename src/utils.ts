@@ -97,3 +97,50 @@ export function loadStylesheets(target: HTMLElement, styles: string[]) {
         target.append(link);
     })
 }
+
+/**
+ * Check if a value is an object
+ * @param value
+ */
+function isObject(value: any): boolean {
+    return value instanceof Object && !Array.isArray(value)
+}
+
+/**
+ * Merge H5P Integration settings
+ *
+ * Source attribution: https://stackoverflow.com/a/34749873
+ *
+ * @param target
+ * @param sources
+ */
+export function mergeIntegration<H5PIntegration>(target: any,... sources: any): H5PIntegration {
+
+    if (!sources.length) return target;
+    const source = sources.shift();
+
+    if (isObject(target) && isObject(source)) {
+        for (const key in source) {
+            if (isObject(source[key])) {
+                if (!target[key]) Object.assign(target, { [key]: {} });
+                mergeIntegration(target[key], source[key]);
+            } else {
+                Object.assign(target, { [key]: source[key] });
+            }
+        }
+    }
+
+    return mergeIntegration(target, ...sources);
+}
+
+/**
+ * return unique items after merging arrays
+ *
+ * @param array1
+ * @param array2
+ */
+export function mergeArrayUnique(array1: string[], array2: string[]): string[] {
+    const uniqueInSource = array2.filter((item) => array1.indexOf(item) < 0);
+    return uniqueInSource.concat(array1);
+
+}
