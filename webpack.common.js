@@ -3,8 +3,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './src/js/index.js',
-    frame: './src/js/frame.js'
+    main: './src/index.ts',
+    frame: './src/frame.ts'
   },
   output: {
     filename: '[name].bundle.js',
@@ -19,42 +19,36 @@ module.exports = {
     libraryTarget: 'umd'
   },
   resolve: {
-    alias: {
-      h5pjquery: require.resolve(path.resolve(__dirname, 'vendor/h5p/js', 'jquery')),
-      H5P: path.resolve(__dirname, 'vendor/h5p/js', 'h5p'),
-      H5PIntegration: require.resolve(path.resolve(__dirname, 'src/js', 'h5p-integration')),
-      H5PEventDispatcher: require.resolve(path.resolve(__dirname, 'vendor/h5p/js', 'h5p-event-dispatcher')),
-      H5PxAPI: require.resolve(path.resolve(__dirname, 'vendor/h5p/js', 'h5p-x-api')),
-      H5PxAPIEvent: require.resolve(path.resolve(__dirname, 'vendor/h5p/js', 'h5p-x-api-event')),
-      H5PContentType: require.resolve(path.resolve(__dirname, 'vendor/h5p/js', 'h5p-content-type')),
-      H5PActionBar: require.resolve(path.resolve(__dirname, 'vendor/h5p/js', 'h5p-action-bar')),
-      H5PRequestQueue: require.resolve(path.resolve(__dirname, 'vendor/h5p/js', 'request-queue')),
-      H5PConfirmationDialog: require.resolve(path.resolve(__dirname, 'vendor/h5p/js', 'h5p-confirmation-dialog')),
-      'h5p-standalone': require.resolve(path.resolve(__dirname, 'src/js', 'index'))
-    }
+    extensions: ['.js', '.ts'], //try if *js first then *.ts
   },
   module: {
     rules: [
       {
-        test: require.resolve(path.resolve(__dirname, 'vendor/h5p/js', 'h5p')),
-        use: ['exports-loader?exports=default|H5P', 'imports-loader?imports=default|h5pjquery|jQuery'],
+        //H5P jquery should be exported under H5P variable
+        test: require.resolve(path.resolve(__dirname, 'vendor/h5p/js', 'jquery')),
+        use: 'exports-loader?exports=H5P'
       },
       {
-        test: /src\/.*\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            plugins: [
-              ["@babel/plugin-transform-runtime",
-                {
-                  "regenerator": true
-                }
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: [
+                ["@babel/plugin-transform-runtime",
+                  {
+                    "regenerator": true
+                  }
+                ]
               ]
-            ]
+            }
+          },
+          {
+            loader: 'ts-loader'
           }
-        }
+        ]
       },
     ]
   },
