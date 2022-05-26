@@ -242,12 +242,24 @@ export class H5PStandalone {
 
         H5PIntegration.url = contentId;
         H5PIntegration.urlLibraries = librariesPath;
+        H5PIntegration.postUserStatistics = !!options.postUserStatistics
 
         //since the default is false, only set if it's a number?
         if (options.saveFreq && typeof options.saveFreq === 'number') {
             H5PIntegration.saveFreq = options.saveFreq;
         }
 
+        if (options.user) {
+            H5PIntegration.user = options.user; //replacing full object for compatibility
+        }
+
+        if (options.ajax?.contentUserDataUrl) {  //replace content user data url only if available
+            H5PIntegration.ajax.contentUserData = options.ajax.contentUserDataUrl
+        }
+
+        if (options.ajax?.setFinishedUrl) { //replace finished url only if available
+            H5PIntegration.ajax.setFinished = options.ajax.setFinishedUrl
+        }
 
         if (options.customCss && typeof options.customCss === 'string') {
             options.customCss = [options.customCss]
