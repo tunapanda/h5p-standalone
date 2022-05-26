@@ -114,7 +114,7 @@ function isObject(value: any): boolean {
  * @param target
  * @param sources
  */
-export function mergeIntegration<H5PIntegration>(target: any,... sources: any): H5PIntegration {
+export function mergeObject<T>(target: any, ... sources: any): T {
 
     if (!sources.length) return target;
     const source = sources.shift();
@@ -123,14 +123,14 @@ export function mergeIntegration<H5PIntegration>(target: any,... sources: any): 
         for (const key in source) {
             if (isObject(source[key])) {
                 if (!target[key]) Object.assign(target, { [key]: {} });
-                mergeIntegration(target[key], source[key]);
+                mergeObject(target[key], source[key]);
             } else {
                 Object.assign(target, { [key]: source[key] });
             }
         }
     }
 
-    return mergeIntegration(target, ...sources);
+    return mergeObject(target, ...sources);
 }
 
 /**

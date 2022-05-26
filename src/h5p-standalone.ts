@@ -15,7 +15,7 @@ import {
     loadScripts,
     loadStylesheets,
     mergeArrayUnique,
-    mergeIntegration,
+    mergeObject,
     urlPath
 } from "./utils";
 
@@ -61,6 +61,8 @@ interface Options {
     user?: User;
 
     metadata?: H5PContent['metadata'];
+
+    translations?: H5PIntegration['l10n'];
 }
 
 interface H5PKeyPaths {
@@ -217,7 +219,7 @@ export class H5PStandalone {
         //if window property exists
         if (window && (<any>window).H5PIntegration) {
             //if the window already has H5PIntegration property,
-            H5PIntegration = mergeIntegration(H5PIntegration, (<any>window).H5PIntegration)
+            H5PIntegration = mergeObject(H5PIntegration, (<any>window).H5PIntegration)
         }
 
         /**
@@ -264,6 +266,10 @@ export class H5PStandalone {
 
         if (options.ajax?.setFinishedUrl) { //replace finished url only if available
             H5PIntegration.ajax.setFinished = options.ajax.setFinishedUrl
+        }
+
+        if (options.translations) {
+            H5PIntegration.l10n = mergeObject(H5PIntegration.l10n, options.translations);
         }
 
         if (options.customCss && typeof options.customCss === 'string') {
