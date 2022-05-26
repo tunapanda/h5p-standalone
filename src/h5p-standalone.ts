@@ -145,6 +145,11 @@ export class H5PStandalone {
             wrapper.append(iframe);
             params.anchorElement.append(wrapper);
 
+            //TODO: only h5p.js is required for fullscreen support
+            //load H5P core style
+            loadStylesheets(document.head || document.body || params.anchorElement,
+                params.H5PIntegration.core.styles)
+
             //TODO: only h5p-jquery + h5p.js are required. Modern browsers are intelligent w/ caching
             //load H5P core scripts or frame.js as H5P is not bundled in main.bundle.js
             await loadScripts(iframe, params.H5PIntegration.core.scripts);
