@@ -22,7 +22,6 @@
     "cypress": "^7.1.0",
     "exports-loader": "^2.0.0",
     "husky": "^6.0.0",
-    "imports-loader": "^2.0.0",
     "semantic-release": "^17.4.2",
     "toposort": "^2.0.2",
     "ts-loader": "^9.3.0",
