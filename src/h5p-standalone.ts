@@ -93,7 +93,9 @@ export class H5PStandalone {
 
         const contentId = options.id || Math.random().toString(36).substr(2, 9);
 
-        this.prepareH5PEnvironment(contentId, options)
+        //TODO: this should be moved to a callable function in future e.g render() function
+        // @ts-ignore
+        return this.prepareH5PEnvironment(contentId, options)
             .then((H5PIntegration: H5PIntegration) => {
 
                 //set the flag to avoid H5P initializing immediately on script load
@@ -104,7 +106,7 @@ export class H5PStandalone {
 
                 const embedType = options.embedType ? options.embedType : 'iframe';
 
-                this.renderPlayerFrame({anchorElement, contentId, embedType, H5PIntegration})
+                return this.renderPlayerFrame({anchorElement, contentId, embedType, H5PIntegration})
                     .then(() => {
                         //initialize the H5P
                         if (options.preventH5PInit === undefined || !!options.preventH5PInit) {
@@ -113,6 +115,8 @@ export class H5PStandalone {
                             }
                             (<any>window).H5P.preventInit = false; //reset for any subsequent request
                         }
+
+                        return contentId; //better than nothing
                     })
             });
 
