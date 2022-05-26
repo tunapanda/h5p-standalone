@@ -199,7 +199,7 @@ export class H5PStandalone {
          * Prepare H5PIntegration settings
          */
 
-        let H5PIntegration: H5PIntegration = defaultH5PIntegration;
+        let H5PIntegration: H5PIntegration = defaultH5PIntegration();
 
         H5PIntegration.contents = {};
 
