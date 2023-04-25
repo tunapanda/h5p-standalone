@@ -222,7 +222,7 @@ export default class H5PStandalone {
   }
 
   getJSON(url) {
-    return fetch(url).then(res => res.json());
+    return fetch(url, {credentials: 'include'}).then(res => res.json());
   }
 
   /**

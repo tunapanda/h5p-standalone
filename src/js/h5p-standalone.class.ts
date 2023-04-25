@@ -101,7 +101,7 @@ export default class H5PStandalone {
   }
 
   async getJSON(url: string): Promise<any> {
-    const res = await fetch(url);
+    const res = await fetch(url, {credentials: 'include'});
     return res.json();
   }
 
