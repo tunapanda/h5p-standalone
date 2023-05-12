@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "incremental": true,
+    "outDir": "dist",
+    "removeComments": true,
+    "module": "esnext",
+    "target": "es5",
+    "moduleResolution": "node",
+    "esModuleInterop": false,
+    "sourceMap": false,
+    "alwaysStrict": true,
+    "allowJs": false,
+   "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "DOM"
+    ],
+    "types": [
+      "node"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist/*",
+    ".idea/*",
+    ".git/*"
+  ]
+}
