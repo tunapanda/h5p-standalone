@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version:  14
           cache: 'yarn'
@@ -25,14 +25,14 @@ jobs:
         run: yarn build
 
       - name: Run e2e tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v3
 
       - name: Compress Github release files
         run: |
           zip -r h5p-standalone-release.zip dist/ README.md
 
       - name: Release
-        uses: cycjimmy/semantic-release-action@v2
+        uses: cycjimmy/semantic-release-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
