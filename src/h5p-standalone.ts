@@ -63,6 +63,8 @@ interface Options {
     metadata?: H5PContent['metadata'];
 
     translations?: H5PIntegration['l10n'];
+
+    assetsRequestFetchOptions?: RequestInit;
 }
 
 interface H5PKeyPaths {
@@ -196,15 +198,15 @@ export class H5PStandalone {
 
         const {h5pJsonPath, contentJsonPath, librariesPath} = this.getH5PPaths(options);
 
-        const H5PJsonContent = <H5PPackageDefinition>(await getJSON(`${h5pJsonPath}/h5p.json`));
+        const H5PJsonContent = <H5PPackageDefinition>(await getJSON(`${h5pJsonPath}/h5p.json`, options?.assetsRequestFetchOptions));
 
         //populate the variable before executing other functions.We assume other dependent
         // libraries follow the same format rather than performing the check for each library
         this.libraryFolderContainsVersion = await this.libraryFolderNameIncludesVersion(
-            librariesPath, H5PJsonContent.preloadedDependencies[0]);
+            librariesPath, H5PJsonContent.preloadedDependencies[0], options?.assetsRequestFetchOptions);
 
 
-        const H5PContentJsonContent = await getJSON(`${contentJsonPath}/content.json`);
+        const H5PContentJsonContent = await getJSON(`${contentJsonPath}/content.json`, options?.assetsRequestFetchOptions);
 
         const mainLibrary = await this.findMainLibrary(H5PJsonContent, librariesPath);
 
@@ -310,7 +312,7 @@ export class H5PStandalone {
             H5PIntegration.contents = {};
         }
 
-        if(!options?.metadata){
+        if (!options?.metadata) {
             options.metadata = {
                 title: options.title ? options.title : '',
                 license: 'U'
@@ -375,16 +377,19 @@ export class H5PStandalone {
      * Check if the library folder include the version or not
      * This was changed at some point in H5P and we need to be backwards compatible
      *
-     * @return {boolean}
      */
-    async libraryFolderNameIncludesVersion(librariesPath: string, dependency: LibraryDependency): Promise<boolean> {
-
+    async libraryFolderNameIncludesVersion(
+      librariesPath: string,
+      dependency: LibraryDependency,
+      assetsRequestFetchOptions?: RequestInit
+    ): Promise<boolean>
+    {
         const libraryPath = this.libraryToFolderName(dependency);
 
         let libraryFolderIncludesVersion: boolean;
 
         try {
-            await getJSON<H5PLibraryDefinition>(`${librariesPath}/${libraryPath}/library.json`);
+            await getJSON<H5PLibraryDefinition>(`${librariesPath}/${libraryPath}/library.json`, assetsRequestFetchOptions);
             libraryFolderIncludesVersion = true;
         } catch (e) {
             libraryFolderIncludesVersion = false;

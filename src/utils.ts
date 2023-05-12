@@ -28,8 +28,11 @@ export function urlPath(path: string): string {
     return `${prefix}/${path}`;
 }
 
-export async function getJSON<T>(url: string): Promise<T> {
-    const res = await fetch(url);
+export async function getJSON<T>(url: string,requestOptions?: RequestInit): Promise<T> {
+    if(!requestOptions){
+        requestOptions = {credentials: 'include'}
+    }
+    const res = await fetch(url,requestOptions);
     return res.json();
 }
 
