@@ -1,3 +1,16 @@
+# [3.6.0](https://github.com/tunapanda/h5p-standalone/compare/v3.5.1...v3.6.0) (2023-05-12)
+
+
+### Bug Fixes
+
+* h5p integration postuserstatistics  is always false ([a5b8e9f](https://github.com/tunapanda/h5p-standalone/commit/a5b8e9f71d3d0edb936c48b46e4677d8967bea12))
+
+
+### Features
+
+* accept override of assets fetch function ([f9ca0be](https://github.com/tunapanda/h5p-standalone/commit/f9ca0be48cc31809dbee436d738ab47895968927))
+* add default fallback metadata options for interactive book type ([e4037b9](https://github.com/tunapanda/h5p-standalone/commit/e4037b98c2f7cc39ecb9d9f9a615152dd387ae90))
+
 ## [3.5.1](https://github.com/tunapanda/h5p-standalone/compare/v3.5.0...v3.5.1) (2022-05-12)
 
 
