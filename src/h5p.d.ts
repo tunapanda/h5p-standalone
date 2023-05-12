@@ -49,6 +49,7 @@ export interface H5PIntegration {
 
 /**
  * User interface
+ *
  */
 export interface User {
     name: string;
@@ -57,6 +58,9 @@ export interface User {
     canToggleViewOthersH5PContents?: 0 | 1;
 }
 
+/**
+ * H5P content types
+ */
 export interface H5PContent {
     title: string; //content title
     url: string; //content URI (absolute + canonical) used to generate xAPI statement.object.id
