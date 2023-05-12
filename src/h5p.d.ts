@@ -47,6 +47,9 @@ export interface H5PIntegration {
     contents: { [key: `cid-${string}`]: H5PContent }
 }
 
+/**
+ * User interface
+ */
 export interface User {
     name: string;
     mail: string; //unique user email
