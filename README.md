@@ -1,4 +1,4 @@
-# H5P Standalone Player 3.x [![CircleCI](https://circleci.com/gh/tunapanda/h5p-standalone.svg?style=svg)](https://circleci.com/gh/tunapanda/h5p-standalone)
+# H5P Standalone Player ![GitHub release (latest by date)](https://img.shields.io/github/v/release/tunapanda/h5p-standalone?color=00a928&display_name=tag&label=Latest&style=flat-square) ![Release](https://github.com/tunapanda/h5p-standalone/actions/workflows/release.yml/badge.svg)
 Display H5P content without the need for an H5P server
 
 ## Installation
