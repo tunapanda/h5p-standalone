@@ -310,6 +310,13 @@ export class H5PStandalone {
             H5PIntegration.contents = {};
         }
 
+        if(!options?.metadata){
+            options.metadata = {
+                title: options.title ? options.title : '',
+                license: 'U'
+            }
+        }
+
         H5PIntegration.contents[`cid-${contentId}`] = {
             library: mainLibraryName,
             title: options.title ? options.title : '',
