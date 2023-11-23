@@ -2,7 +2,7 @@ export function urlPath(path: string): string {
     path = path.trim();
 
     //regex to check if is an absolute url (with *a* protocol) or a valid URI
-    const urlRegex = /^([a-z0-9]+:\/\/|www.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i;
+    const urlRegex = /^([a-z0-9]+:\/\/|www.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}(\.[a-z]{2,6}|(?::\d{1,5}))\b([-a-zA-Z0-9@:%_\+.~#?&=]*)/i;
 
     if (path.match(urlRegex)) {
         return path;
