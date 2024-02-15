@@ -30,7 +30,7 @@ export function urlPath(path: string): string {
 
 export async function getJSON<T>(url: string,requestOptions?: RequestInit): Promise<T> {
     if(!requestOptions){
-        requestOptions = {credentials: 'include'}
+        requestOptions = {credentials: 'same-origin'}
     }
     const res = await fetch(url,requestOptions);
     return res.json();
