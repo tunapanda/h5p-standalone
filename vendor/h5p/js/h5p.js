@@ -226,6 +226,8 @@ H5P.init = function (target) {
 
       var saveTimer, save = function () {
         var state = instance.getCurrentState();
+        if ( H5PIntegration.saveFunctionCallback instanceof Function ||
+          typeof H5PIntegration.saveFunctionCallback === 'function') H5PIntegration.saveFunctionCallback(state);
         if (state !== undefined) {
           H5P.setUserData(contentId, 'state', state, {deleteOnChange: true});
         }
@@ -2461,7 +2463,7 @@ H5P.createTitle = function (rawTitle, maxLength) {
    *   Callback with error as parameters.
    * @param {boolean} [extras.async=true]
    */
-  H5P.setUserData = function (contentId, dataId, data, extras) {
+  H5P.setUserData = function (contentId, dataId, data, extras, saveState = false) {
     var options = H5P.jQuery.extend(true, {}, {
       subContentId: 0,
       preloaded: true,
