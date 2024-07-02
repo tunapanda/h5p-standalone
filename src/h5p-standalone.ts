@@ -52,6 +52,7 @@ interface Options {
 
     contentUserData?: H5PContent['contentUserData'];
     saveFreq?: number | false;
+    saveFunctionCallback?: (state: object) => void;
     postUserStatistics?: boolean;
 
     ajax?: {
@@ -119,6 +120,10 @@ export class H5PStandalone {
                             (<any>window).H5P.preventInit = false; //reset for any subsequent request
                         }
 
+                        window.addEventListener('saveState', (event: CustomEvent<string>) => {
+                            const state = event.detail;
+                            if (H5PIntegration.contents['cid-'+contentId]) H5PIntegration.contents['cid-'+contentId].contentUserData = [{state: state}];
+                        });
                         return contentId; //better than nothing
                     })
             });
@@ -271,6 +276,13 @@ export class H5PStandalone {
         //since the default is false, only set if it's a number?
         if (options.saveFreq && typeof options.saveFreq === 'number') {
             H5PIntegration.saveFreq = options.saveFreq;
+        }
+        
+        if (
+            options.saveFunctionCallback && options.saveFunctionCallback instanceof Function
+            && typeof options.saveFunctionCallback === 'function'
+        ) {
+            H5PIntegration.saveFunctionCallback = options.saveFunctionCallback;
         }
 
         if (options.user) {
