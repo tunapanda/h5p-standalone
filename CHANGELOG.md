@@ -1,3 +1,18 @@
+# [3.7.0](https://github.com/tunapanda/h5p-standalone/compare/v3.6.0...v3.7.0) (2024-07-16)
+
+
+### Bug Fixes
+
+* CORS issue while fetch assets ([5c33534](https://github.com/tunapanda/h5p-standalone/commit/5c335342b1a6a6ea49c6fa4295c88fa6acd76a5a)), closes [tunapanda/h5p-standalone#151](https://github.com/tunapanda/h5p-standalone/issues/151)
+* library not use assetsRequestFetchOptions ([4f3598b](https://github.com/tunapanda/h5p-standalone/commit/4f3598bac3d3e0b196646728b5b487a64cdf977d)), closes [tunapanda/h5p-standalone#151](https://github.com/tunapanda/h5p-standalone/issues/151)
+
+
+### Features
+
+* disable npm release ([4e69712](https://github.com/tunapanda/h5p-standalone/commit/4e69712f7f2e861cfd789e8889433ba132ca9d6b))
+* sample jsdocs ([f2d2771](https://github.com/tunapanda/h5p-standalone/commit/f2d2771364ffcf076f20ea209888830e5aa70f4c))
+* sample jsdocs ([0b39636](https://github.com/tunapanda/h5p-standalone/commit/0b39636e6a8e41fcddcefe7f299beab8e62218cd))
+
 # [3.6.0](https://github.com/tunapanda/h5p-standalone/compare/v3.5.1...v3.6.0) (2023-05-12)
 
 
