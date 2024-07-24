@@ -6,6 +6,7 @@ export function defaultH5PIntegration(): H5PIntegration {
         url: '',
         contents: {},
         saveFreq: false,
+        saveFunctionCallback: () => {},
         postUserStatistics: false,
         ajax: {},
         l10n: {

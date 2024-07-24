@@ -32,7 +32,9 @@ export async function getJSON<T>(url: string,requestOptions?: RequestInit): Prom
     if(!requestOptions){
         requestOptions = {credentials: 'same-origin'}
     }
-    const res = await fetch(url,requestOptions);
+    const res = await fetch(url,requestOptions).then((e) => {
+        return e;
+    });
     return res.json();
 }
 

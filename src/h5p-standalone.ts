@@ -29,6 +29,8 @@ interface Options {
     h5pJsonPath?: string;
     librariesPath?: string;
     contentJsonPath?: string;
+    contentAsJson?: string;
+    h5pAsJson?: string;
 
     frame?: boolean;
     copyright?: boolean;
@@ -51,6 +53,7 @@ interface Options {
 
     contentUserData?: H5PContent['contentUserData'];
     saveFreq?: number | false;
+    saveFunctionCallback?: (state: object) => void;
     postUserStatistics?: boolean;
 
     ajax?: {
@@ -118,6 +121,10 @@ export class H5PStandalone {
                             (<any>window).H5P.preventInit = false; //reset for any subsequent request
                         }
 
+                        window.addEventListener('saveState', (event: CustomEvent<string>) => {
+                            const state = event.detail;
+                            if (H5PIntegration.contents['cid-'+contentId]) H5PIntegration.contents['cid-'+contentId].contentUserData = [{state: state}];
+                        });
                         return contentId; //better than nothing
                     })
             });
@@ -195,18 +202,37 @@ export class H5PStandalone {
         /**
          * Load H5P content and libraries
          */
-
+        const { contentAsJson, h5pAsJson } = options;
         const {h5pJsonPath, contentJsonPath, librariesPath} = this.getH5PPaths(options);
 
-        const H5PJsonContent = <H5PPackageDefinition>(await getJSON(`${h5pJsonPath}/h5p.json`, options?.assetsRequestFetchOptions));
+        let H5PJsonContent;
+        if (h5pAsJson) {
+            try {
+                H5PJsonContent = JSON.parse(h5pAsJson);
+            } catch (e) {
+                throw new Error(`Structure of h5pAsJson is not a valid json. ${e}`);
+            }
+        } else {
+            H5PJsonContent = <H5PPackageDefinition>(await getJSON(`${h5pJsonPath}/h5p.json`, options?.assetsRequestFetchOptions).catch((e) => {
+                console.log('Error while trying to fetch h5p json content: ', e, `${h5pJsonPath}/h5p.json`, options?.assetsRequestFetchOptions)
+            }));
+        }
 
         //populate the variable before executing other functions.We assume other dependent
         // libraries follow the same format rather than performing the check for each library
         this.libraryFolderContainsVersion = await this.libraryFolderNameIncludesVersion(
             librariesPath, H5PJsonContent.preloadedDependencies[0], options?.assetsRequestFetchOptions);
 
-
-        const H5PContentJsonContent = await getJSON(`${contentJsonPath}/content.json`, options?.assetsRequestFetchOptions);
+        let H5PContentJsonContent;
+        if (contentAsJson) {
+            try {
+                H5PContentJsonContent = JSON.parse(contentAsJson);
+            } catch (e) {
+                H5PContentJsonContent = await getJSON(`${contentJsonPath}/content.json`, options?.assetsRequestFetchOptions);
+            }
+        } else {
+            H5PContentJsonContent = await getJSON(`${contentJsonPath}/content.json`, options?.assetsRequestFetchOptions);
+        }
 
         const mainLibrary = await this.findMainLibrary(H5PJsonContent, librariesPath, options?.assetsRequestFetchOptions);
 
@@ -260,6 +286,13 @@ export class H5PStandalone {
         //since the default is false, only set if it's a number?
         if (options.saveFreq && typeof options.saveFreq === 'number') {
             H5PIntegration.saveFreq = options.saveFreq;
+        }
+        
+        if (
+            options.saveFunctionCallback && options.saveFunctionCallback instanceof Function
+            && typeof options.saveFunctionCallback === 'function'
+        ) {
+            H5PIntegration.saveFunctionCallback = options.saveFunctionCallback;
         }
 
         if (options.user) {
@@ -346,6 +379,7 @@ export class H5PStandalone {
             //no validation
             H5PIntegration.contents[`cid-${contentId}`].url = options.xAPIObjectIRI;
         }
+        
         //now override the window H5PIntegration
         (<any>window).H5PIntegration = H5PIntegration
 
