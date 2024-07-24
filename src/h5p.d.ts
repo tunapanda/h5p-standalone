@@ -13,6 +13,9 @@ export interface H5PIntegration {
     siteUrl?: string; //user site homepage on xAPI actor property. Used if user data is not provided.
 
     saveFreq?: false | number;
+
+    saveFunctionCallback?: (state: object) => void;
+
     postUserStatistics?: boolean; //makes sense if user is available
     ajax: {
         /**
