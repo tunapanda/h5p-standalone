@@ -30,6 +30,7 @@ interface Options {
     librariesPath?: string;
     contentJsonPath?: string;
     contentAsJson?: string;
+    h5pAsJson?: string;
 
     frame?: boolean;
     copyright?: boolean;
@@ -201,12 +202,21 @@ export class H5PStandalone {
         /**
          * Load H5P content and libraries
          */
-        const { contentAsJson } = options
+        const { contentAsJson, h5pAsJson } = options;
         const {h5pJsonPath, contentJsonPath, librariesPath} = this.getH5PPaths(options);
 
-        const H5PJsonContent = <H5PPackageDefinition>(await getJSON(`${h5pJsonPath}/h5p.json`, options?.assetsRequestFetchOptions).catch((e) => {
-            console.log('Error while trying to fetch h5p json content: ', e, `${h5pJsonPath}/h5p.json`, options?.assetsRequestFetchOptions)
-        }));
+        let H5PJsonContent;
+        if (h5pAsJson) {
+            try {
+                H5PJsonContent = JSON.parse(h5pAsJson);
+            } catch (e) {
+                throw new Error(`Structure of h5pAsJson is not a valid json. ${e}`);
+            }
+        } else {
+            H5PJsonContent = <H5PPackageDefinition>(await getJSON(`${h5pJsonPath}/h5p.json`, options?.assetsRequestFetchOptions).catch((e) => {
+                console.log('Error while trying to fetch h5p json content: ', e, `${h5pJsonPath}/h5p.json`, options?.assetsRequestFetchOptions)
+            }));
+        }
 
         //populate the variable before executing other functions.We assume other dependent
         // libraries follow the same format rather than performing the check for each library
