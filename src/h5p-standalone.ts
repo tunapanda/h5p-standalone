@@ -210,9 +210,7 @@ export class H5PStandalone {
             try {
                 H5PJsonContent = JSON.parse(h5pAsJson);
             } catch (e) {
-                H5PJsonContent = <H5PPackageDefinition>(await getJSON(`${h5pJsonPath}/h5p.json`, options?.assetsRequestFetchOptions).catch((e) => {
-                    console.log('Error while trying to fetch h5p json content: ', e, `${h5pJsonPath}/h5p.json`, options?.assetsRequestFetchOptions)
-                }));
+                throw new Error(`Structure of h5pAsJson is not a valid json. ${e}`);
             }
         } else {
             H5PJsonContent = <H5PPackageDefinition>(await getJSON(`${h5pJsonPath}/h5p.json`, options?.assetsRequestFetchOptions).catch((e) => {
