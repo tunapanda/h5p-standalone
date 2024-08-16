@@ -52,6 +52,7 @@ interface Options {
     contentUserData?: H5PContent['contentUserData'];
     saveFreq?: number | false;
     postUserStatistics?: boolean;
+    reportingIsEnabled?: boolean;
 
     ajax?: {
         setFinishedUrl?: string;
@@ -255,7 +256,8 @@ export class H5PStandalone {
 
         H5PIntegration.url = contentId;
         H5PIntegration.urlLibraries = librariesPath;
-        H5PIntegration.postUserStatistics = !!options.postUserStatistics
+        H5PIntegration.postUserStatistics = !!options.postUserStatistics;
+        H5PIntegration.reportingIsEnabled = !!options.reportingIsEnabled;
 
         //since the default is false, only set if it's a number?
         if (options.saveFreq && typeof options.saveFreq === 'number') {
