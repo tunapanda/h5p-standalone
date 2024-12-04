@@ -1,3 +1,11 @@
+## [3.7.1](https://github.com/tunapanda/h5p-standalone/compare/v3.7.0...v3.7.1) (2024-12-04)
+
+
+### Bug Fixes
+
+* allow url without tld to match regex path ([be65d7d](https://github.com/tunapanda/h5p-standalone/commit/be65d7d45bf40d098d138d70f0db4c9bdd0df772))
+* url tld should be between 2 and 63 xcters ([de578ec](https://github.com/tunapanda/h5p-standalone/commit/de578ec04cd6c3155357e39d0b110a96a39432c0))
+
 # [3.7.0](https://github.com/tunapanda/h5p-standalone/compare/v3.6.0...v3.7.0) (2024-07-16)
 
 
