@@ -32,6 +32,7 @@
     "webpack-merge": "^5.8.0"
   },
   "scripts": {
+    "preinstall": "npx only-allow yarn",
     "watch": "webpack --watch --config webpack.dev.js",
     "start": "webpack-dev-server --mode development --config webpack.dev.js",
     "build:dev": "webpack --mode development --config webpack.dev.js",
