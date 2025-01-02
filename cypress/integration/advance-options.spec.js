@@ -18,7 +18,7 @@ describe("H5P player with advance options", () => {
 
   it("should display export dialog", () => {
     cy.iframe("iframe.h5p-iframe.h5p-initialized").within(() => {
-      cy.get(".h5p-actions").find(".h5p-export").should("be.visible").click();
+      cy.get(".h5p-actions").find(".h5p-export > button").should("be.visible").click();
 
       cy.get(".h5p-download-button").should("be.visible");
     });
@@ -26,7 +26,7 @@ describe("H5P player with advance options", () => {
 
   it("should display embed code dialog", () => {
     cy.iframe("iframe.h5p-iframe.h5p-initialized").within(() => {
-      cy.get(".h5p-actions").find(".h5p-embed").should("be.visible").click();
+      cy.get(".h5p-actions").find(".h5p-embed > button").should("be.visible").click();
 
       cy.get(".h5p-embed-code-container").should("be.visible");
       cy.get(".h5p-embed-size").should("be.visible");
