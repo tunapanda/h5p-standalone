@@ -656,7 +656,7 @@ H5P.fullScreen = function ($element, instance, exitCallback, body, forceSemiFull
 
     before('h5p-fullscreen');
     var first, eventName = (H5P.fullScreenBrowserPrefix === 'ms' ? 'MSFullscreenChange' : H5P.fullScreenBrowserPrefix + 'fullscreenchange');
-    document.addEventListener(eventName, function () {
+    document.addEventListener(eventName, function fullscreenCallback() {
       if (first === undefined) {
         // We are entering fullscreen mode
         first = false;
@@ -666,7 +666,7 @@ H5P.fullScreen = function ($element, instance, exitCallback, body, forceSemiFull
 
       // We are exiting fullscreen
       done('h5p-fullscreen');
-      document.removeEventListener(eventName, arguments.callee, false);
+      document.removeEventListener(eventName, fullscreenCallback, false);
     });
 
     if (H5P.fullScreenBrowserPrefix === '') {
@@ -1039,13 +1039,16 @@ H5P.t = function (key, vars, ns) {
  *   Displayed inside the dialog.
  * @param {H5P.jQuery} $element
  *   Which DOM element the dialog should be inserted after.
+ * @param {H5P.jQuery} $returnElement
+ *   Which DOM element the focus should be moved to on close
  */
-H5P.Dialog = function (name, title, content, $element) {
+H5P.Dialog = function (name, title, content, $element, $returnElement) {
   /** @alias H5P.Dialog# */
   var self = this;
-  var $dialog = H5P.jQuery('<div class="h5p-popup-dialog h5p-' + name + '-dialog" role="dialog" tabindex="-1">\
+  this.activeElement = document.activeElement;
+  var $dialog = H5P.jQuery('<div class="h5p-popup-dialog h5p-' + name + '-dialog" aria-labelledby="' + name + '-dialog-header" aria-modal="true" role="dialog" tabindex="-1">\
                               <div class="h5p-inner">\
-                                <h2>' + title + '</h2>\
+                                <h2 id="' + name + '-dialog-header">' + title + '</h2>\
                                 <div class="h5p-scroll-content">' + content + '</div>\
                                 <div class="h5p-close" role="button" tabindex="0" aria-label="' + H5P.t('close') + '" title="' + H5P.t('close') + '"></div>\
                               </div>\
@@ -1104,7 +1107,15 @@ H5P.Dialog = function (name, title, content, $element) {
       $dialog.remove();
       H5P.jQuery(self).trigger('dialog-closed', [$dialog]);
       $element.attr('tabindex', '-1');
-      $element.focus();
+      if ($returnElement) {
+        $returnElement.focus();
+      }
+      else if(self.activeElement) {
+        self.activeElement.focus();
+      }
+      else {
+        $element.focus();
+      }
     }, 200);
   };
 };
@@ -1237,7 +1248,7 @@ H5P.findCopyrights = function (info, parameters, contentId, extras) {
           const path = data.params.file.path;
           const width = data.params.file.width;
           const height = data.params.file.height;
-          metadataCopyrights.setThumbnail(new H5P.Thumbnail(H5P.getPath(path, contentId), width, height));
+          metadataCopyrights.setThumbnail(new H5P.Thumbnail(H5P.getPath(path, contentId), width, height, data.params.alt));
         }
         info.addMedia(metadataCopyrights);
       }
@@ -1887,8 +1898,10 @@ H5P.MediaCopyright = function (copyright, labels, order, extraFields) {
  * @param {string} source
  * @param {number} width
  * @param {number} height
+ * @param {string} alt
+ *  alternative text for the thumbnail
  */
-H5P.Thumbnail = function (source, width, height) {
+H5P.Thumbnail = function (source, width, height, alt) {
   var thumbWidth, thumbHeight = 100;
   if (width !== undefined) {
     thumbWidth = Math.round(thumbHeight * (width / height));
@@ -1900,7 +1913,7 @@ H5P.Thumbnail = function (source, width, height) {
    * @returns {string} HTML.
    */
   this.toString = function () {
-    return '<img src="' + source + '" alt="' + H5P.t('thumbnail') + '" class="h5p-thumbnail" height="' + thumbHeight + '"' + (thumbWidth === undefined ? '' : ' width="' + thumbWidth + '"') + '/>';
+    return '<img src="' + source + '" alt="' + (alt ? alt : '') + '" class="h5p-thumbnail" height="' + thumbHeight + '"' + (thumbWidth === undefined ? '' : ' width="' + thumbWidth + '"') + '/>';
   };
 };
 
@@ -2064,6 +2077,13 @@ H5P.libraryFromString = function (library) {
  *   The full path to the library.
  */
 H5P.getLibraryPath = function (library) {
+  if (H5PIntegration &&
+      H5PIntegration.libraryDirectories &&
+      library in H5PIntegration.libraryDirectories) {
+    // Use H5PIntegration.libraryDirectories if it exists for this library
+    library = H5PIntegration.libraryDirectories[library];
+  }
+
   if (H5PIntegration.urlLibraries !== undefined) {
     // This is an override for those implementations that has a different libraries URL, e.g. Moodle
     return H5PIntegration.urlLibraries + '/' + library;
@@ -2112,6 +2132,35 @@ H5P.trim = function (value) {
   // TODO: Only include this or String.trim(). What is best?
   // I'm leaning towards implementing the missing ones: http://kangax.github.io/compat-table/es5/
   // So should we make this function deprecated?
+};
+
+/**
+ * Recursive function that detects deep empty structures.
+ *
+ * @param {*} value
+ * @returns {bool}
+ */
+H5P.isEmpty = value => {
+  if (!value && value !== 0 && value !== false) {
+    return true; // undefined, null, NaN and empty strings.
+  }
+  else if (Array.isArray(value)) {
+    for (let i = 0; i < value.length; i++) {
+      if (!H5P.isEmpty(value[i])) {
+        return false; // Array contains a non-empty value
+      }
+    }
+    return true; // Empty array
+  }
+  else if (typeof value === 'object') {
+    for (let prop in value) {
+      if (value.hasOwnProperty(prop) && !H5P.isEmpty(value[prop])) {
+        return false; // Object contains a non-empty value
+      }
+    }
+    return true; // Empty object
+  }
+  return false;
 };
 
 /**
@@ -2678,7 +2727,7 @@ H5P.createTitle = function (rawTitle, maxLength) {
         }
         return path.substr(0, prefix.length) === prefix ? path : prefix + path;
       }
-      
+
       return path; // Will automatically be looked for in tmp folder
     });
 

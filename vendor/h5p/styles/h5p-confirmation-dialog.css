@@ -107,6 +107,14 @@ button.h5p-confirmation-dialog-exit:hover {
 }
 
 .h5p-core-button.h5p-confirmation-dialog-confirm-button {
+  @media screen and (max-width: 576px) {
+    padding-left: 1.5rem;
+
+    span {
+      display: none;
+    }
+  }
+
   padding-left: 0.75em;
   margin-bottom: 0;
 }
@@ -179,5 +187,23 @@ button.h5p-confirmation-dialog-exit:hover {
 
   to {
     transform: rotate(359deg);
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .h5p-confirmation-dialog-background {
+    -webkit-transition: none;
+    transition: none;
+
+    .h5p-confirmation-dialog-popup {
+      -webkit-transition: none;
+      transition: none;
+    }
+
+    &.hiding {
+      .h5p-confirmation-dialog-popup {
+        opacity: 0;
+      }
+    }
   }
 }
