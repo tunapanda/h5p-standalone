@@ -1,3 +1,19 @@
+# [3.8.0](https://github.com/tunapanda/h5p-standalone/compare/v3.7.1...v3.8.0) (2025-01-03)
+
+
+### Bug Fixes
+
+* copy the vendor images to dist folder ([3249f20](https://github.com/tunapanda/h5p-standalone/commit/3249f206816bd2532941d02d682856428929c622))
+* merge the player css files not explicitly requested ([f95352b](https://github.com/tunapanda/h5p-standalone/commit/f95352b9f5ffe48efa3f273db4740da7a355f092))
+
+
+### Features
+
+* add plugin to merge css (or any utf compatible content) ([60d4400](https://github.com/tunapanda/h5p-standalone/commit/60d4400e2479dfebaf8ac56a9d7e2d75e4280d30))
+* include the tooltip file into the frame bundle ([13ca602](https://github.com/tunapanda/h5p-standalone/commit/13ca602b60b05cf96f0d80caa3ddd40ba67d9588))
+* merge h5p with tooltip content ([6d6adb8](https://github.com/tunapanda/h5p-standalone/commit/6d6adb8af132ace88a867b713b9336eeeced38bf))
+* update h5p core vendor library to match upstream ([1bc80ba](https://github.com/tunapanda/h5p-standalone/commit/1bc80ba78bb7f94d85756450d9f6e48a7483da6b))
+
 ## [3.7.1](https://github.com/tunapanda/h5p-standalone/compare/v3.7.0...v3.7.1) (2024-12-04)
 
 
