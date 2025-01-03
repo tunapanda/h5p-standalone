@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -61,3 +62,28 @@ module.exports = {
     }),
   ]
 };
+
+
+function CssMergePlugin(outputFilename, cssFilesToMerge = []) {
+  return {
+    apply: (compiler) => {
+      compiler.hooks.emit.tapAsync('CssMergePlugin', (compilation, callback) => {
+
+        // Read content of the files to merge
+        const mergedCssContent = cssFilesToMerge
+          .map((filePath) => fs.readFileSync(filePath, 'utf8'))
+          .join('\n'); // Join the CSS content
+
+        // Ensure the output directory exists
+
+        fs.mkdirSync(path.resolve(compiler.options.output.path, path.dirname(outputFilename)), { recursive: true });
+
+
+        // Write the merged content
+        fs.writeFileSync(path.resolve(compiler.options.output.path, outputFilename), mergedCssContent);
+
+        callback(); // Continue Webpack build
+      });
+    }
+  }
+}
