@@ -49,6 +49,9 @@ interface Options {
     preventH5PInit?: boolean;
     embedType?: 'div' | 'iframe';
 
+    // following options are ripped from interactive book https://github.com/h5p/h5p-interactive-book/blob/6373b8440b0ef5eaf25fe21cae8ad57e9f8d8a9e/src/scripts/app.js#L57-L61
+    reportingIsEnabled?: boolean;
+
     contentUserData?: H5PContent['contentUserData'];
     saveFreq?: number | false;
     postUserStatistics?: boolean;
@@ -256,6 +259,8 @@ export class H5PStandalone {
         H5PIntegration.url = contentId;
         H5PIntegration.urlLibraries = librariesPath;
         H5PIntegration.postUserStatistics = !!options.postUserStatistics
+
+        H5PIntegration.reportingIsEnabled= options.reportingIsEnabled
 
         //since the default is false, only set if it's a number?
         if (options.saveFreq && typeof options.saveFreq === 'number') {

@@ -14,6 +14,7 @@ export interface H5PIntegration {
 
     saveFreq?: false | number;
     postUserStatistics?: boolean; //makes sense if user is available
+    reportingIsEnabled?: boolean; //this option is from interactive book https://github.com/h5p/h5p-interactive-book/blob/6373b8440b0ef5eaf25fe21cae8ad57e9f8d8a9e/src/scripts/app.js#L57-L61
     ajax: {
         /**
          * endpoint where to post results on completion.
