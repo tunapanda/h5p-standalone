@@ -60,6 +60,10 @@ module.exports = {
         { from: 'vendor/h5p/fonts', to: 'fonts' },
       ]
     }),
+    CssMergePlugin(
+      'styles/h5p.css',
+      ['vendor/h5p/styles/h5p.css', 'vendor/h5p/styles/h5p-tooltip.css'] // files required by h5p player
+    )
   ]
 };
 
