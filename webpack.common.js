@@ -59,7 +59,8 @@ module.exports = {
         { from: 'vendor/h5p/styles/font-open-sans.css', to: 'styles' },
         { from: 'vendor/h5p/fonts', to: 'fonts' },
         { from: 'vendor/h5p/images', to: 'images' },
-      ]
+        { from: 'src/**/*.d.ts', to: '[name][ext]' },
+  ]
     }),
     CssMergePlugin(
       'styles/h5p.css',
