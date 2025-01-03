@@ -56,13 +56,20 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: 'vendor/h5p/styles', to: 'styles' },
+        { from: 'vendor/h5p/styles/font-open-sans.css', to: 'styles' },
         { from: 'vendor/h5p/fonts', to: 'fonts' },
       ]
     }),
     CssMergePlugin(
       'styles/h5p.css',
-      ['vendor/h5p/styles/h5p.css', 'vendor/h5p/styles/h5p-tooltip.css'] // files required by h5p player
+      [
+        // styles files required by h5p player and not explicitly loaded
+        'vendor/h5p/styles/h5p.css',
+        'vendor/h5p/styles/h5p-confirmation-dialog.css',
+        'vendor/h5p/styles/h5p-core-button.css',
+        'vendor/h5p/styles/h5p-tooltip.css',
+        'vendor/h5p/styles/h5p-table.css',
+      ]
     )
   ]
 };
