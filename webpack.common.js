@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -55,9 +56,47 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: 'vendor/h5p/styles', to: 'styles' },
+        { from: 'vendor/h5p/styles/font-open-sans.css', to: 'styles' },
         { from: 'vendor/h5p/fonts', to: 'fonts' },
-      ]
+        { from: 'vendor/h5p/images', to: 'images' },
+        { from: 'src/**/*.d.ts', to: '[name][ext]' },
+  ]
     }),
+    CssMergePlugin(
+      'styles/h5p.css',
+      [
+        // styles files required by h5p player and not explicitly loaded
+        'vendor/h5p/styles/h5p.css',
+        'vendor/h5p/styles/h5p-confirmation-dialog.css',
+        'vendor/h5p/styles/h5p-core-button.css',
+        'vendor/h5p/styles/h5p-tooltip.css',
+        'vendor/h5p/styles/h5p-table.css',
+      ]
+    )
   ]
 };
+
+
+function CssMergePlugin(outputFilename, cssFilesToMerge = []) {
+  return {
+    apply: (compiler) => {
+      compiler.hooks.emit.tapAsync('CssMergePlugin', (compilation, callback) => {
+
+        // Read content of the files to merge
+        const mergedCssContent = cssFilesToMerge
+          .map((filePath) => fs.readFileSync(filePath, 'utf8'))
+          .join('\n'); // Join the CSS content
+
+        // Ensure the output directory exists
+
+        fs.mkdirSync(path.resolve(compiler.options.output.path, path.dirname(outputFilename)), { recursive: true });
+
+
+        // Write the merged content
+        fs.writeFileSync(path.resolve(compiler.options.output.path, outputFilename), mergedCssContent);
+
+        callback(); // Continue Webpack build
+      });
+    }
+  }
+}

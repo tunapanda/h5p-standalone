@@ -30,6 +30,7 @@ H5P.ConfirmationDialog = (function (EventDispatcher) {
     options.headerText = options.headerText || H5P.t('confirmDialogHeader');
     options.dialogText = options.dialogText || H5P.t('confirmDialogBody');
     options.cancelText = options.cancelText || H5P.t('cancelLabel');
+    options.closeText = options.closeText || H5P.t('close');
     options.confirmText = options.confirmText || H5P.t('confirmLabel');
 
     /**
@@ -53,13 +54,24 @@ H5P.ConfirmationDialog = (function (EventDispatcher) {
     }
 
     /**
-     * Flow focus to element
-     * @param {HTMLElement} element Next element to be focused
+     * Flow focus to button
+     * @param {number} index 0 to focus first button, -1 for last
      * @param {Event} e Original tab event
      */
-    function flowTo(element, e) {
-      element.focus();
-      e.preventDefault();
+    function flowTo(index, e) {
+      if (index === 0) {
+        buttons.firstChild.focus();
+      }
+      else if (index === -1) {
+        if (!options.hideExit) {
+          exitButton.focus();
+        }
+        else {
+          buttons.lastChild.focus();
+        }
+      }
+
+      e?.preventDefault();
     }
 
     // Offset of exit button
@@ -83,11 +95,13 @@ H5P.ConfirmationDialog = (function (EventDispatcher) {
       });
     }
 
-    popup.setAttribute('role', 'dialog');
-    popup.setAttribute('aria-labelledby', 'h5p-confirmation-dialog-dialog-text-' + uniqueId);
+    popup.setAttribute('role', 'alertdialog');
+    popup.setAttribute('aria-modal', 'true');
+    popup.setAttribute('aria-labelledby', 'h5p-confirmation-dialog-header-text-' + uniqueId);
+    popup.setAttribute('aria-describedby', 'h5p-confirmation-dialog-text-' + uniqueId);
     popupBackground.appendChild(popup);
     popup.addEventListener('keydown', function (e) {
-      if (e.which === 27) {// Esc key
+      if (e.key === 'Escape') {// Esc key
         // Exit dialog
         dialogCanceled(e);
       }
@@ -101,6 +115,7 @@ H5P.ConfirmationDialog = (function (EventDispatcher) {
     // Header text
     var headerText = document.createElement('div');
     headerText.classList.add('h5p-confirmation-dialog-header-text');
+    headerText.id = 'h5p-confirmation-dialog-dialog-header-text-' + uniqueId;
     headerText.innerHTML = options.headerText;
     header.appendChild(headerText);
 
@@ -122,65 +137,58 @@ H5P.ConfirmationDialog = (function (EventDispatcher) {
     body.appendChild(buttons);
 
     // Cancel button
-    var cancelButton = document.createElement('button');
-    cancelButton.classList.add('h5p-core-cancel-button');
-    cancelButton.textContent = options.cancelText;
+    if (!options.hideCancel) {
+      var cancelButton = document.createElement('button');
+      cancelButton.classList.add('h5p-core-cancel-button');
+      cancelButton.textContent = options.cancelText;
+      cancelButton.addEventListener('click', dialogCanceled);
+      buttons.appendChild(cancelButton);
+    }
+    else {
+      // Center remaining buttons
+      buttons.classList.add('center');
+    }
 
     // Confirm button
     var confirmButton = document.createElement('button');
     confirmButton.classList.add('h5p-core-button');
     confirmButton.classList.add('h5p-confirmation-dialog-confirm-button');
-    confirmButton.textContent = options.confirmText;
-
-    // Exit button
-    var exitButton = document.createElement('button');
-    exitButton.classList.add('h5p-confirmation-dialog-exit');
-    exitButton.setAttribute('aria-hidden', 'true');
-    exitButton.tabIndex = -1;
-    exitButton.title = options.cancelText;
-
-    // Cancel handler
-    cancelButton.addEventListener('click', dialogCanceled);
-    cancelButton.addEventListener('keydown', function (e) {
-      if (e.which === 32) { // Space
-        dialogCanceled(e);
-      }
-      else if (e.which === 9 && e.shiftKey) { // Shift-tab
-        flowTo(confirmButton, e);
-      }
-    });
-
-    if (!options.hideCancel) {
-      buttons.appendChild(cancelButton);
-    }
-    else {
-      // Center buttons
-      buttons.classList.add('center');
-    }
-
-    // Confirm handler
+    confirmButton.setAttribute('aria-label', options.confirmText);
     confirmButton.addEventListener('click', dialogConfirmed);
-    confirmButton.addEventListener('keydown', function (e) {
-      if (e.which === 32) { // Space
-        dialogConfirmed(e);
-      }
-      else if (e.which === 9 && !e.shiftKey) { // Tab
-        const nextButton = !options.hideCancel ? cancelButton : confirmButton;
-        flowTo(nextButton, e);
-      }
-    });
+    const confirmText = document.createElement('span');
+    confirmText.textContent = options.confirmText;
+    confirmButton.appendChild(confirmText);
     buttons.appendChild(confirmButton);
 
-    // Exit handler
-    exitButton.addEventListener('click', dialogCanceled);
-    exitButton.addEventListener('keydown', function (e) {
-      if (e.which === 32) { // Space
-        dialogCanceled(e);
-      }
-    });
+    // Exit button
     if (!options.hideExit) {
+      var exitButton = document.createElement('button');
+      exitButton.classList.add('h5p-confirmation-dialog-exit');
+      exitButton.setAttribute('aria-label', options.closeText);
+      exitButton.addEventListener('click', dialogCanceled);
+      exitButton.addEventListener('keydown', (event) => {
+        // Forwards tab
+        if (event.key === 'Tab' && !event.shiftKey) {
+          flowTo(0, event);
+        }
+      });
       popup.appendChild(exitButton);
     }
+    else {
+      // Last child should set focus on first (forwards tab)
+      buttons.lastChild.addEventListener('keydown', (event) => {
+        if (event.key === 'Tab' && !event.shiftKey) {
+          flowTo(0, event);
+        }
+      });
+    }
+
+    // First child should set focus on last (backwards tab)
+    buttons.firstChild.addEventListener('keydown', (event) => {
+      if (event.key === 'Tab' && event.shiftKey) {
+        flowTo(-1, event);
+      }
+    });
 
     // Wrapper element
     var wrapperElement;
@@ -212,8 +220,23 @@ H5P.ConfirmationDialog = (function (EventDispatcher) {
     var captureFocus = function (e) {
       if (!popupBackground.contains(e.target)) {
         e.preventDefault();
-        confirmButton.focus();
+        flowTo(0);
       }
+    };
+
+    /**
+     * Start capturing focus of parent and send it to dialog
+     */
+    var startCapturingFocus = function () {
+      focusPredator = wrapperElement.parentNode || wrapperElement;
+      focusPredator.addEventListener('focus', captureFocus, true);
+    };
+
+    /**
+     * Clean up event listener for capturing focus
+     */
+    var stopCapturingFocus = function () {
+      focusPredator.removeEventListener('focus', captureFocus, true);
     };
 
     /**
@@ -232,7 +255,12 @@ H5P.ConfirmationDialog = (function (EventDispatcher) {
           true : false;
 
         if (siblings[i] !== element) {
-          siblings[i].setAttribute('aria-hidden', true);
+          if (siblings[i].getAttribute('aria-live')) {
+            siblings[i].setAttribute('aria-busy', true);
+          }
+          else {
+            siblings[i].setAttribute('aria-hidden', true);
+          }
         }
       }
       return hiddenSiblings;
@@ -249,25 +277,14 @@ H5P.ConfirmationDialog = (function (EventDispatcher) {
       var i;
       for (i = 0; i < siblings.length; i += 1) {
         if (siblings[i] !== element && !hiddenSiblings[i]) {
-          siblings[i].removeAttribute('aria-hidden');
+          if (siblings[i].getAttribute('aria-live')) {
+            siblings[i].setAttribute('aria-busy', false);
+          }
+          else {
+            siblings[i].removeAttribute('aria-hidden');
+          }
         }
       }
-    };
-
-    /**
-     * Start capturing focus of parent and send it to dialog
-     */
-    var startCapturingFocus = function () {
-      focusPredator = wrapperElement.parentNode || wrapperElement;
-      focusPredator.addEventListener('focus', captureFocus, true);
-    };
-
-    /**
-     * Clean up event listener for capturing focus
-     */
-    var stopCapturingFocus = function () {
-      focusPredator.removeAttribute('aria-hidden');
-      focusPredator.removeEventListener('focus', captureFocus, true);
     };
 
     /**
@@ -324,27 +341,23 @@ H5P.ConfirmationDialog = (function (EventDispatcher) {
       previouslyFocused = document.activeElement;
       wrapperElement.appendChild(popupBackground);
       startCapturingFocus();
-      disableUnderlay();
       popupBackground.classList.remove('hidden');
       fitToContainer(offsetTop);
-      setTimeout(function () {
-        popup.classList.remove('hidden');
-        popupBackground.classList.remove('hiding');
+      popup.classList.remove('hidden');
+      popupBackground.classList.remove('hiding');
 
-        setTimeout(function () {
-          // Focus confirm button
-          confirmButton.focus();
+      // Focus first button
+      flowTo(0);
+      disableUnderlay();
 
-          // Resize iFrame if necessary
-          if (resizeIFrame && options.instance) {
-            var minHeight = parseInt(popup.offsetHeight, 10) +
-              exitButtonOffset + (2 * shadowOffset);
-            self.setViewPortMinimumHeight(minHeight);
-            options.instance.trigger('resize');
-            resizeIFrame = false;
-          }
-        }, 100);
-      }, 0);
+      // Resize iFrame if necessary
+      if (resizeIFrame && options.instance) {
+        var minHeight = parseInt(popup.offsetHeight, 10) +
+          exitButtonOffset + (2 * shadowOffset);
+        self.setViewPortMinimumHeight(minHeight);
+        options.instance.trigger('resize');
+        resizeIFrame = false;
+      }
 
       return this;
     };
@@ -354,6 +367,7 @@ H5P.ConfirmationDialog = (function (EventDispatcher) {
      * @returns {H5P.ConfirmationDialog}
      */
     this.hide = function () {
+      restoreUnderlay();
       popupBackground.classList.add('hiding');
       popup.classList.add('hidden');
 
@@ -362,12 +376,9 @@ H5P.ConfirmationDialog = (function (EventDispatcher) {
       if (!options.skipRestoreFocus) {
         previouslyFocused.focus();
       }
-      restoreUnderlay();
-      setTimeout(function () {
-        popupBackground.classList.add('hidden');
-        wrapperElement.removeChild(popupBackground);
-        self.setViewPortMinimumHeight(null);
-      }, 100);
+      popupBackground.classList.add('hidden');
+      wrapperElement.removeChild(popupBackground);
+      self.setViewPortMinimumHeight(null);
 
       return this;
     };

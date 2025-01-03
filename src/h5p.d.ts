@@ -12,6 +12,8 @@ export interface H5PIntegration {
     user?: User; //provide only if user account is available - form part of xAPI actor
     siteUrl?: string; //user site homepage on xAPI actor property. Used if user data is not provided.
 
+    reportingIsEnabled?: boolean; //Enable submit button on Interactive book https://github.com/h5p/h5p-interactive-book/blob/6373b8440b0ef5eaf25fe21cae8ad57e9f8d8a9e/src/scripts/app.js#L60
+
     saveFreq?: false | number;
     postUserStatistics?: boolean; //makes sense if user is available
     ajax: {
