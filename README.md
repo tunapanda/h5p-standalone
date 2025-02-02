@@ -39,8 +39,12 @@ The player can be set up either by directly calling the already built scripts an
    new H5PStandalone.H5P(el, options);
 
     ```
-    A detailed description of the H5P player arguments are provided  under the [advance section](#advanced-usage)
-    Simple instruction on how to extract H5P zipped file provided [here](#extracting-h5p)
+
+A detailed description of the H5P player arguments are provided under the [advanced usage section](#advanced-usage)
+
+Simple instructions on how to extract H5P zipped files are provided in the [extracting H5P section](#extracting-h5p)
+
+If you'd like a simple, step by step setup guide to direct usage, please see the [Basic setup guide](docs/basic-setup-guide.md)
 
 ### Using ES6
 Install the player using yarn
