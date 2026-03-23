@@ -1,12 +1,54 @@
-/*global H5P*/
+/* global H5P */
 H5P.Tooltip = (function () {
-  'use strict';
-
   // Position (allowed and default)
   const Position = {
     allowed: ['top', 'bottom', 'left', 'right'],
-    default: 'top'
+    default: 'top',
   };
+
+  /** {number} DELAY_SHOW_MS Delay before tooltip is shown */
+  const DELAY_SHOW_MS = 500;
+
+  /** {number} DELAY_HIDE_MS Delay before tooltip is hidden */
+  const DELAY_HIDE_MS = 500;
+
+  /**
+   * Strips html tags and converts special characters.
+   * Example: "<div>Me &amp; you</div>" is converted to "Me & you".
+   *
+   * @param {String} text The text to be parsed
+   * @returns {String} The parsed text
+   */
+  function parseString(text) {
+    if (text === null || text === undefined) {
+      return '';
+    }
+    const div = document.createElement('div');
+    div.innerHTML = text;
+    return div.textContent;
+  }
+
+  /**
+   * Keep track of whether the user is using their mouse or keyboard to
+   * navigate. Will determine whether tooltip should be shown on focus.
+   */
+  let usingMouse;
+
+  function debounce(callback, delay) {
+    let timeout = null;
+
+    return function (...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        callback(...args);
+      }, delay);
+    };
+  }
+
+  // The mousemove listener is debounced for performance reasons
+  document.addEventListener('mousemove', debounce(() => usingMouse = true, 100));
+  document.addEventListener('mousedown', () => usingMouse = true);
+  document.addEventListener('keydown', () => usingMouse = false);
 
   /**
    * Create an accessible tooltip
@@ -29,20 +71,20 @@ H5P.Tooltip = (function () {
   function Tooltip(triggeringElement, options) {
     // Make sure tooltips have unique id
     H5P.Tooltip.uniqueId += 1;
-    const tooltipId = 'h5p-tooltip-' + H5P.Tooltip.uniqueId;
+    const tooltipId = `h5p-tooltip-${H5P.Tooltip.uniqueId}`;
 
     // Default options
     options = options || {};
     options.classes = options.classes || [];
     options.ariaHidden = options.ariaHidden || true;
     options.tooltipSource = options.tooltipSource || 'aria-label';
-    options.position = (options.position && Position.allowed.includes(options.position)) 
+    options.position = (options.position && Position.allowed.includes(options.position))
       ? options.position
       : Position.default;
 
     // Add our internal classes
     options.classes.push('h5p-tooltip');
-    if (options.position === 'left' || options.position === 'right' ) {
+    if (options.position === 'left' || options.position === 'right') {
       options.classes.push('h5p-tooltip-narrow');
     }
 
@@ -61,7 +103,7 @@ H5P.Tooltip = (function () {
     const tooltip = document.createElement('div');
     tooltip.id = tooltipId;
     tooltip.role = 'tooltip';
-    tooltip.innerHTML = options.text || triggeringElement.getAttribute(options.tooltipSource) || '';
+    tooltip.textContent = parseString(options.text || triggeringElement.getAttribute(options.tooltipSource) || '');
     tooltip.setAttribute('aria-hidden', options.ariaHidden);
     tooltip.classList.add(...options.classes);
 
@@ -76,20 +118,19 @@ H5P.Tooltip = (function () {
     // changed for the triggering element. If so, update the tooltip.
     // Mutation observer will be used even if the original elements
     // doesn't have any options.tooltipSource.
-    this.observer = new MutationObserver(function (mutations) {
+    this.observer = new MutationObserver((mutations) => {
       const updatedText = mutations[0].target.getAttribute(options.tooltipSource);
 
       if (tooltip.parentNode === null) {
         triggeringElement.appendChild(tooltip);
       }
-      
-      tooltip.innerHTML = options.text || updatedText;
 
-      if (tooltip.innerHTML.trim().length === 0 && tooltip.classList.contains('h5p-tooltip-visible')) {
+      tooltip.textContent = parseString(options.text || updatedText);
+
+      if (tooltip.textContent.trim().length === 0 && tooltip.classList.contains('h5p-tooltip-visible')) {
         tooltip.classList.remove('h5p-tooltip-visible');
       }
-      
-    })
+    });
     this.observer.observe(triggeringElement, {
       attributes: true,
       attributeFilter: [options.tooltipSource, 'class'],
@@ -103,6 +144,9 @@ H5P.Tooltip = (function () {
     // triggered (either by mouseenter or focusin)
     let showTooltipTimer;
 
+    // Timer responsible for hiding the tooltip x ms after it has been untriggered
+    let hideTooltipTimer;
+
     // This timer makes sure the tooltip is not hidden when the mouse
     // moves from the trigger to the tooltip.
     let triggerMouseLeaveTimer;
@@ -113,17 +157,24 @@ H5P.Tooltip = (function () {
      * @param {UIEvent} event The triggering event
      */
     const showTooltip = function (event, wait = true) {
+      if (!event.target || event.target.disabled || event.target.getAttribute('aria-disabled') === 'true') {
+        return;
+      }
+
+      clearTimeout(hideTooltipTimer); // Prevent from hiding while supposed to show
+
       if (wait === true) {
         // We don't want to show the tooltip right away.
         // Adding a 300 ms waiting period here.
+        clearTimeout(showTooltipTimer);
         showTooltipTimer = setTimeout(() => {
           showTooltip(event, false);
-        }, 300);
+        }, DELAY_SHOW_MS);
         return;
       }
 
       // Don't show tooltip if it is empty
-      if (tooltip.innerHTML.trim().length === 0) {
+      if (tooltip.textContent.trim().length === 0) {
         return;
       }
 
@@ -160,32 +211,32 @@ H5P.Tooltip = (function () {
 
       if (options.position === 'top') {
         // Places it centered above
-        tooltip.style.left = (triggerRect.left + (triggerRect.width / 2) - (tooltipRect.width / 2)) + 'px';
-        tooltip.style.top = (triggerRect.top - tooltipRect.height)  + 'px';
+        tooltip.style.left = `${triggerRect.left + (triggerRect.width / 2) - (tooltipRect.width / 2)}px`;
+        tooltip.style.top = `${triggerRect.top - tooltipRect.height}px`;
       }
       else if (options.position === 'bottom') {
         // Places it centered below
-        tooltip.style.left = (triggerRect.left + (triggerRect.width / 2) - (tooltipRect.width / 2)) + 'px';
-        tooltip.style.top = triggerRect.bottom + 'px';
+        tooltip.style.left = `${triggerRect.left + (triggerRect.width / 2) - (tooltipRect.width / 2)}px`;
+        tooltip.style.top = `${triggerRect.bottom}px`;
       }
       else if (options.position === 'left') {
-        tooltip.style.left = (triggerRect.left - tooltipRect.width) + 'px';
-        tooltip.style.top = (triggerRect.top + (triggerRect.height - tooltipRect.height) / 2) + 'px';
+        tooltip.style.left = `${triggerRect.left - tooltipRect.width}px`;
+        tooltip.style.top = `${triggerRect.top + (triggerRect.height - tooltipRect.height) / 2}px`;
         // We trust this option makes the tooltip being shown
         return;
       }
       else if (options.position === 'right') {
-        tooltip.style.left = triggerRect.right + 'px';
-        tooltip.style.top = (triggerRect.top + (triggerRect.height - tooltipRect.height) / 2) + 'px';
+        tooltip.style.left = `${triggerRect.right}px`;
+        tooltip.style.top = `${triggerRect.top + (triggerRect.height - tooltipRect.height) / 2}px`;
         // We trust this option makes the tooltip being shown
         return;
       }
-     
+
       tooltipRect = tooltip.getBoundingClientRect();
-      const isVisible = tooltipRect.left >= 0 &&
-        tooltipRect.top >= 0 &&
-        tooltipRect.right <= rootRect.width &&
-        tooltipRect.bottom <= rootRect.height;
+      const isVisible = tooltipRect.left >= 0
+        && tooltipRect.top >= 0
+        && tooltipRect.right <= rootRect.width
+        && tooltipRect.bottom <= rootRect.height;
 
       if (!isVisible) {
         // The tooltip placement needs to be adjusted. This logic will move the
@@ -201,7 +252,6 @@ H5P.Tooltip = (function () {
       }
     };
 
-    
     /**
      * Hides the tooltip and removes listeners
      *
@@ -209,12 +259,14 @@ H5P.Tooltip = (function () {
      */
     const hideTooltip = function (event) {
       let hide = false;
+      let wait = false;
 
       if (event.type === 'click') {
         hide = true;
       }
       else {
         if (event.type === 'mouseleave') {
+          wait = true; // Tooltip should not disappear right away
           hover = false;
         }
         else {
@@ -226,26 +278,37 @@ H5P.Tooltip = (function () {
 
       // Only hide tooltip if neither hovered nor focused
       if (hide) {
+        clearTimeout(showTooltipTimer); // Prevent from showing while supposed to hide
 
-        // We're hiding the tooltip. If the showTooltipTimer is running
-        // we have to stop it.
-        clearTimeout(showTooltipTimer);
+        const cleanupTooltip = () => {
+          tooltip.classList.remove('h5p-tooltip-visible');
+          document.body.removeEventListener('keydown', hideOnEscape, true); // Remove iframe body listener
+        };
 
-        tooltip.classList.remove('h5p-tooltip-visible');
-
-        // Remove iframe body listener
-        document.body.removeEventListener('keydown', hideOnEscape, true);
+        if (wait) {
+          clearTimeout(hideTooltipTimer);
+          hideTooltipTimer = setTimeout(() => {
+            cleanupTooltip();
+          }, DELAY_HIDE_MS);
+        }
+        else {
+          cleanupTooltip();
+        }
       }
     };
 
     // Add event listeners to triggeringElement
     triggeringElement.addEventListener('mouseenter', showTooltip);
-    triggeringElement.addEventListener('mouseleave', event => {
+    triggeringElement.addEventListener('mouseleave', (event) => {
       triggerMouseLeaveTimer = setTimeout(() => {
         hideTooltip(event);
       }, 1);
     });
-    triggeringElement.addEventListener('focusin', showTooltip);
+    triggeringElement.addEventListener('focusin', (event) => {
+      if (!usingMouse) {
+        showTooltip(event);
+      }
+    });
     triggeringElement.addEventListener('focusout', hideTooltip);
     triggeringElement.addEventListener('click', hideTooltip);
     tooltip.addEventListener('mouseenter', () => {
@@ -253,8 +316,7 @@ H5P.Tooltip = (function () {
     });
     tooltip.addEventListener('mouseleave', hideTooltip);
 
-
-    tooltip.addEventListener('click', function (event) {
+    tooltip.addEventListener('click', (event) => {
       // Prevent clicks on the tooltip from triggering click
       // listeners on the triggering element
       event.stopPropagation();
@@ -272,7 +334,7 @@ H5P.Tooltip = (function () {
      */
     this.setText = function (text) {
       options.text = text;
-      tooltip.innerHTML = options.text || triggeringElement.getAttribute(options.tooltipSource) || '';
+      tooltip.textContent = parseString(options.text || triggeringElement.getAttribute(options.tooltipSource) || '');
     };
 
     /**
@@ -310,7 +372,6 @@ H5P.Tooltip = (function () {
   }
 
   return Tooltip;
-
-})();
+}());
 
 H5P.Tooltip.uniqueId = -1;

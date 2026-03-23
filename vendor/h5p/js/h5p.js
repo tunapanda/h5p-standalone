@@ -104,6 +104,10 @@ H5P.init = function (target) {
       metadata: contentData.metadata
     };
 
+    // Apply theme density
+    let density = H5PIntegration.theme?.density ?? 'large';
+    $element.addClass('h5p-' + density);
+
     H5P.getUserData(contentId, 'state', function (err, previousState) {
       if (previousState) {
         library.userDatas = {
@@ -182,7 +186,11 @@ H5P.init = function (target) {
       var $actions = actionBar.getDOMElement();
 
       actionBar.on('reuse', function () {
-        H5P.openReuseDialog($actions, contentData, library, instance, contentId);
+        H5P.openReuseDialog($actions, contentData, {
+          library: contentData.library,
+          params: JSON.parse(contentData.jsonContent),
+          metadata: contentData.metadata
+        }, instance, contentId);
         instance.triggerXAPI('accessed-reuse');
       });
       actionBar.on('copyrights', function () {
@@ -1289,20 +1297,25 @@ H5P.buildMetadataCopyrights = function (metadata) {
  */
 H5P.openReuseDialog = function ($element, contentData, library, instance, contentId) {
   let html = '';
+  let buttonCount = 0;
   if (contentData.displayOptions.export) {
     html += '<button type="button" class="h5p-big-button h5p-download-button"><div class="h5p-button-title">Download as an .h5p file</div><div class="h5p-button-description">.h5p files may be uploaded to any web-site where H5P content may be created.</div></button>';
+    buttonCount += 1;
   }
   if (contentData.displayOptions.export && contentData.displayOptions.copy) {
     html += '<div class="h5p-horizontal-line-text"><span>or</span></div>';
   }
   if (contentData.displayOptions.copy) {
     html += '<button type="button" class="h5p-big-button h5p-copy-button"><div class="h5p-button-title">Copy content</div><div class="h5p-button-description">Copied content may be pasted anywhere this content type is supported on this website.</div></button>';
+    buttonCount += 1;
   }
 
   const dialog = new H5P.Dialog('reuse', H5P.t('reuseContent'), html, $element);
 
   // Selecting embed code when dialog is opened
   H5P.jQuery(dialog).on('dialog-opened', function (e, $dialog) {
+    const scrollContent = $dialog[0].querySelector('.h5p-scroll-content');
+    scrollContent.style.setProperty('--button-count', buttonCount);
     H5P.jQuery('<a href="https://h5p.org/node/442225" target="_blank">More Info</a>').click(function (e) {
       e.stopPropagation();
     }).appendTo($dialog.find('h2'));

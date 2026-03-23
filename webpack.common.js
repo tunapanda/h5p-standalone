@@ -56,7 +56,7 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: 'vendor/h5p/styles/font-open-sans.css', to: 'styles' },
+        { from: 'vendor/h5p/styles/h5p-fonts.css', to: 'styles' },
         { from: 'vendor/h5p/fonts', to: 'fonts' },
         { from: 'vendor/h5p/images', to: 'images' },
         { from: 'src/**/*.d.ts', to: '[name][ext]' },
@@ -66,9 +66,12 @@ module.exports = {
       'styles/h5p.css',
       [
         // styles files required by h5p player and not explicitly loaded
+        'vendor/h5p/styles/h5p-fonts.css',
         'vendor/h5p/styles/h5p.css',
         'vendor/h5p/styles/h5p-confirmation-dialog.css',
         'vendor/h5p/styles/h5p-core-button.css',
+        'vendor/h5p/styles/h5p-theme-variables.css',
+        'vendor/h5p/styles/h5p-theme.css',
         'vendor/h5p/styles/h5p-tooltip.css',
         'vendor/h5p/styles/h5p-table.css',
       ]
