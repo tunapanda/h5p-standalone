@@ -94,7 +94,7 @@ export class H5PStandalone {
 
     constructor(anchorElement: HTMLElement, options: Options) {
 
-        const contentId = options.id || Math.random().toString(36).substr(2, 9);
+        const contentId = options.id || Math.random().toString(36).substring(2, 9);
 
         //TODO: this should be moved to a callable function in future e.g render() function
         // @ts-ignore
@@ -156,12 +156,11 @@ export class H5PStandalone {
 
             //TODO: only h5p.js is required for fullscreen support
             //load H5P core style
-            loadStylesheets(document.head || document.body || params.anchorElement,
-                params.H5PIntegration.core.styles)
+            loadStylesheets(document.head || document.body || params.anchorElement, params.H5PIntegration.core?.styles ?? [])
 
             //TODO: only h5p-jquery + h5p.js are required. Modern browsers are intelligent w/ caching
             //load H5P core scripts or frame.js as H5P is not bundled in main.bundle.js
-            await loadScripts(iframe, params.H5PIntegration.core.scripts);
+            await loadScripts(iframe, params.H5PIntegration.core?.scripts ?? []);
         } else {
             const wrapper = document.createElement('div');
             wrapper.classList.add('h5p-iframe')
@@ -178,20 +177,20 @@ export class H5PStandalone {
             const coreAssetsAnchor = document.head || document.body || params.anchorElement;
 
             //stylesheets
-            const requiredStyles = (params.H5PIntegration.core.styles || [])
+            const requiredStyles = (params.H5PIntegration.core?.styles ?? [])
                 .concat(params.H5PIntegration.contents[`cid-${params.contentId}`].styles);
 
             loadStylesheets(coreAssetsAnchor, requiredStyles)
 
             //javascript
-            const requiredScripts = (params.H5PIntegration.core.scripts || [])
+            const requiredScripts = (params.H5PIntegration.core?.scripts ?? [])
                 .concat(params.H5PIntegration.contents[`cid-${params.contentId}`].scripts);
 
             await loadScripts(coreAssetsAnchor, requiredScripts)
         }
     }
 
-    async prepareH5PEnvironment(contentId, options: Options): Promise<H5PIntegration> {
+    async prepareH5PEnvironment(contentId: string, options: Options): Promise<H5PIntegration> {
 
         /**
          * Load H5P content and libraries
@@ -381,11 +380,10 @@ export class H5PStandalone {
      *
      */
     async libraryFolderNameIncludesVersion(
-      librariesPath: string,
-      dependency: LibraryDependency,
-      assetsRequestFetchOptions?: RequestInit
-    ): Promise<boolean>
-    {
+        librariesPath: string,
+        dependency: LibraryDependency,
+        assetsRequestFetchOptions?: RequestInit
+    ): Promise<boolean> {
         const libraryPath = this.libraryToFolderName(dependency);
 
         let libraryFolderIncludesVersion: boolean;
@@ -437,6 +435,10 @@ export class H5PStandalone {
         const mainLibraryInfo = h5pJsonContent.preloadedDependencies
             .find(dependency => dependency.machineName === h5pJsonContent.mainLibrary);
 
+        if (!mainLibraryInfo) {
+            throw `Main library missing: ${h5pJsonContent.title}`;
+        }
+
         const mainLibraryFolderName = this.libraryToFolderName(mainLibraryInfo)
         const libraryFileUrl = `${librariesPath}/${mainLibraryFolderName}/library.json`;
         return getJSON<H5PLibraryDefinition>(libraryFileUrl, assetsRequestFetchOptions);
@@ -447,7 +449,7 @@ export class H5PStandalone {
      * @return {Promise}
      */
     async findAllDependencies(h5pJsonContent: H5PPackageDefinition,
-                              librariesPath,
+                              librariesPath: string,
                               assetsRequestFetchOptions?: RequestInit): Promise<LocalLibraryDependency[]> {
         const directDependencyFolderNames: string[] = h5pJsonContent.preloadedDependencies
             .map(dependency => this.libraryToFolderName(dependency));
@@ -463,14 +465,14 @@ export class H5PStandalone {
      * @param {string[]} alreadyFound the dependencies that have already been found
      * @param librariesPath
      * @param librariesPath
-     *
+     * @param assetsRequestFetchOptions
      */
     async loadDependencies(toFind: string[], alreadyFound: LocalLibraryDependency[],
                            librariesPath: string,
                            assetsRequestFetchOptions?: RequestInit): Promise<LocalLibraryDependency[]> {
 
         const dependencies = alreadyFound;
-        const findNext = [];
+        const findNext: string[] = [];
 
         const dependenciesDiscoveryRequests = toFind.map((libraryFolderName) => {
             return this.findLibraryDependencies(libraryFolderName, librariesPath, assetsRequestFetchOptions)
@@ -513,6 +515,7 @@ export class H5PStandalone {
      *
      * @param libraryFolderName
      * @param librariesPath
+     * @param assetsRequestFetchOptions
      */
     async findLibraryDependencies(libraryFolderName: string,
                                   librariesPath: string,
@@ -547,9 +550,9 @@ export class H5PStandalone {
     sortDependencies(dependencies: LocalLibraryDependency[],
                      librariesPath: string): { styles: string[], scripts: string[] } {
 
-        const dependencyGraph = [];
-        let CSSDependencies = {};
-        let JSDependencies = {};
+        const dependencyGraph: string[][] = [];
+        let CSSDependencies: { [key: string]: string[] } = {};
+        let JSDependencies: { [key: string]: string[] } = {};
 
         dependencies.forEach(dependency => {
 
@@ -586,10 +589,10 @@ export class H5PStandalone {
             }
         });
 
-        let styles = [];
-        let scripts = [];
+        let styles: string[] = [];
+        let scripts: string[] = [];
 
-        toposort(dependencyGraph).reverse().forEach(function (dependencyName) {
+        toposort(dependencyGraph).reverse().forEach(function (dependencyName: string) {
             Array.prototype.push.apply(styles, CSSDependencies[dependencyName]);
             Array.prototype.push.apply(scripts, JSDependencies[dependencyName]);
         });
