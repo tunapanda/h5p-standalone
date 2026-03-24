@@ -2,20 +2,23 @@ name: Release
 on:
   push:
     branches: [master]
-
+permissions:
+  id-token: write # to enable use of OIDC for trusted publishing and npm provenance
+  contents: write # to be able to publish a GitHub release
+  issues: write # to be able to comment on released issues
+  pull-requests: write # to be able to comment on released pull requests
+  
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: false
+        uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v6
         with:
-          node-version:  14
+          node-version:  24
           cache: 'yarn'
 
       - name: Install dependencies
@@ -25,18 +28,17 @@ jobs:
         run: yarn build
 
       - name: Run e2e tests
-        uses: cypress-io/github-action@v3
+        uses: cypress-io/github-action@v7
 
       - name: Compress Github release files
         run: |
           zip -r h5p-standalone-release.zip dist/ README.md
 
       - name: Release
-        uses: cycjimmy/semantic-release-action@v3
+        uses: cycjimmy/semantic-release-action@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
         with:
+          semantic_version: 25.0.3
           extra_plugins: |
-            @semantic-release/changelog
             @semantic-release/git
