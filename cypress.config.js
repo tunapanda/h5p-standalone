@@ -5,6 +5,7 @@ import StreamZip from 'node-stream-zip';
 
 export default defineConfig({
     allowCypressEnv: false,
+    experimentalInteractiveRunEvents: true,
     e2e: {
         specPattern: 'cypress/e2e/*.spec.js',
         setupNodeEvents(on, config) {
@@ -14,43 +15,35 @@ export default defineConfig({
             const librariesFolder = 'libraries/'
             const contentFolder = 'h5p/'
 
+            on('before:run', async () => {
 
-            on('task', {
-                'unzip:h5p': async () => {
-                    const zip = new StreamZip.async({ file: `${workspace}${h5pFile}` });
+                //unzip h5p
+                const zip = new StreamZip.async({ file: `${workspace}${h5pFile}` });
+                await zip.extract(null, `${workspace}${extractFolder}`);
+                await zip.close();
 
-                    await zip.extract(null, `${workspace}${extractFolder}`);
+                //copy h5p libraries
+                const H5PLibraries = ['Drop-1.0', 'FontAwesome-4.5', 'H5P.FontIcons-1.0', 'H5P.JoubelUI-1.3',
+                    'H5P.Question-1.4', 'H5P.Transition-1.0', 'H5P.TrueFalse-1.6', 'H5PEditor.RadioGroup-1.1',
+                    'H5PEditor.ShowWhen-1.0', 'Tether-1.0']; //reading from H5P.json is most dynamic approach
 
-                    await zip.close();
-                    return true;
-                },
-                'copy:libraries': () => {
-                    const H5PLibraries = ['Drop-1.0', 'FontAwesome-4.5', 'H5P.FontIcons-1.0', 'H5P.JoubelUI-1.3',
-                        'H5P.Question-1.4', 'H5P.Transition-1.0', 'H5P.TrueFalse-1.6', 'H5PEditor.RadioGroup-1.1',
-                        'H5PEditor.ShowWhen-1.0', 'Tether-1.0']; //reading from H5P.json is most dynamic approach
+                H5PLibraries.map((folder) => {
+                    recursiveCopy(`${workspace}${extractFolder}${folder}/`, `${workspace}${librariesFolder}${folder}`)
+                });
 
-                    H5PLibraries.map((folder) => {
-                        recursiveCopy(`${workspace}${extractFolder}${folder}/`, `${workspace}${librariesFolder}${folder}`)
-                    });
+                // copy content
+                recursiveCopy(`${workspace}${extractFolder}content/`, `${workspace}${contentFolder}content`)
 
-                    return true;
-                },
-                'copy:content': () => {
-                    recursiveCopy(`${workspace}${extractFolder}content/`, `${workspace}${contentFolder}content`)
-                    return true;
-                },
-                'copy:h5pjson': () => {
-                    fs.copyFileSync(`${workspace}${extractFolder}h5p.json`, `${workspace}${contentFolder}h5p.json`);
-                    return true;
-                },
-                'clean': () => {
-                    fs.rmdirSync(`${workspace}${extractFolder}`, { recursive: true });
-                    fs.rmdirSync(`${workspace}${librariesFolder}`, { recursive: true });
-                    fs.rmdirSync(`${workspace}${contentFolder}`, { recursive: true });
-
-                    return true;
-                }
+                //copy h5p.json
+                fs.copyFileSync(`${workspace}${extractFolder}h5p.json`, `${workspace}${contentFolder}h5p.json`);
             });
+
+            on('after:run', () => {
+                //cleanup by deleting extracted archive file
+                fs.rmdirSync(`${workspace}${extractFolder}`, { recursive: true });
+                fs.rmdirSync(`${workspace}${librariesFolder}`, { recursive: true });
+                fs.rmdirSync(`${workspace}${contentFolder}`, { recursive: true });
+            })
         }
     },
 });
