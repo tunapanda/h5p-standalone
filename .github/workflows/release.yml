@@ -3,10 +3,11 @@ on:
   push:
     branches: [master]
 permissions:
-  id-token: write
-  pull-requests: write
-  contents: write
-
+  id-token: write # to enable use of OIDC for trusted publishing and npm provenance
+  contents: write # to be able to publish a GitHub release
+  issues: write # to be able to comment on released issues
+  pull-requests: write # to be able to comment on released pull requests
+  
 jobs:
   release:
     name: Release
@@ -43,5 +44,4 @@ jobs:
         with:
           semantic_version: 25.0.3
           extra_plugins: |
-            @semantic-release/changelog
             @semantic-release/git
