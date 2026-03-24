@@ -68,7 +68,7 @@ export interface H5PContent {
     scripts: string[]; // content libraries scripts
     styles: string[]; //content libraries styles
     displayOptions: H5PPlayerDisplayOptions;
-    exportUrl: string; //path to download the H5P
+    exportUrl?: string; //path to download the H5P
     embedCode: string; //code to show on embed dialog
     resizeCode?: string; // script to use for resize. h5p standalone already bundles one by default
 

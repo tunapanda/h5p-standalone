@@ -28,17 +28,17 @@ export function urlPath(path: string): string {
     return `${prefix}/${path}`;
 }
 
-export async function getJSON<T>(url: string,requestOptions?: RequestInit): Promise<T> {
-    if(!requestOptions){
+export async function getJSON<T>(url: string, requestOptions?: RequestInit): Promise<T> {
+    if (!requestOptions) {
         requestOptions = {credentials: 'same-origin'}
     }
-    const res = await fetch(url,requestOptions);
+    const res = await fetch(url, requestOptions);
     return res.json();
 }
 
 export async function loadScripts(target: HTMLElement, scripts: string[]) {
     const existingScripts = target.getElementsByTagName('script');
-    const existingH5PScripts = [];
+    const existingH5PScripts: HTMLScriptElement[] = [];
 
     //filter all scripts with `data-h5p` attribute
     for (let i = 0; i < existingScripts.length; i++) {
@@ -47,7 +47,7 @@ export async function loadScripts(target: HTMLElement, scripts: string[]) {
         }
     }
 
-    const scriptRequests = [];
+    const scriptRequests: Promise<Event>[] = [];
     scripts.forEach((path) => {
         //if script already exists, ignore
         if (existingH5PScripts.some((script) => script.dataset.h5p === path)) {
@@ -59,7 +59,7 @@ export async function loadScripts(target: HTMLElement, scripts: string[]) {
         script.async = false;
         script.defer = false;
         script.dataset.h5p = path;
-        const scriptRequest = new Promise((resolve) => {
+        const scriptRequest = new Promise<Event>((resolve) => {
             //listen for load
             script.onload = resolve
         })
@@ -75,7 +75,7 @@ export async function loadScripts(target: HTMLElement, scripts: string[]) {
 
 export function loadStylesheets(target: HTMLElement, styles: string[]) {
     const existingStylesheets = target.getElementsByTagName('link');
-    const existingH5PStylesheets = [];
+    const existingH5PStylesheets: HTMLLinkElement[] = [];
 
     //filter all styles links with `data-h5p` attribute
     for (let i = 0; i < existingStylesheets.length; i++) {
@@ -117,7 +117,7 @@ function isObject(value: any): boolean {
  * @param target
  * @param sources
  */
-export function mergeObject<T>(target: any, ... sources: any): T {
+export function mergeObject<T>(target: any, ...sources: any): T {
 
     if (!sources.length) return target;
     const source = sources.shift();
@@ -125,10 +125,10 @@ export function mergeObject<T>(target: any, ... sources: any): T {
     if (isObject(target) && isObject(source)) {
         for (const key in source) {
             if (isObject(source[key])) {
-                if (!target[key]) Object.assign(target, { [key]: {} });
+                if (!target[key]) Object.assign(target, {[key]: {}});
                 mergeObject(target[key], source[key]);
             } else {
-                Object.assign(target, { [key]: source[key] });
+                Object.assign(target, {[key]: source[key]});
             }
         }
     }
